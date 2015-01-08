@@ -85,10 +85,11 @@ WHERE {  \n\
  ; \n\
 WITH <${graphURI}> \n\
 DELETE {  \n\
-?o foaf:nick ?nick . \n\
+?maker foaf:nick ?nick . \n\
 }  \n\
 WHERE {  \n\
-<${pageURI}> foaf:maker [ foaf:nick ?nick ] \n\
+<${pageURI}> foaf:maker ?maker . \n\
+?maker foaf:nick ?nick . \n\
 } \n\
  ; \n\
 WITH <${graphURI}> \n\

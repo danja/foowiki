@@ -1,6 +1,31 @@
+See also [To Investigate](To Investigate)
+
+* escape angle brackets etc from sparql !!!
+* fix deletes to remove orphan nick bnodes
+* make SELECT use graphs
+* tweak edit form labels for
+* format dates
+* import
+* MD page import/export
+* search
+* support images
+* include related links in RDF
+* tags
+* [WikiWhiteBoard](WikiWhiteBoard)
+
+* start proper docs - /projects on github
+* announce - Jena & semweb lists
+
+* support source extensions
+* graph view [vis.js](http://visjs.org/docs/index.html)
+
+* no! // not worth it right now...change model to include versioning (hasVersion) [Content Model](ContentModel)
+
+
 README.md
 add error handling
 remove extra css
+test on Mish lappie
 http://en.wikipedia.org/wiki/Meta_refresh
 <meta http-equiv="refresh" content="0; url=http://example.com/">
 http://www.ecyrd.com/JSPWiki/attach/WikiWhiteboardPlugin/WikiWhiteboard_for_JSPWiki.htm
