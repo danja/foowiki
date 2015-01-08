@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>FuWiki</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    <script src="js/marked.js"></script>
+
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/jquery-migrate-1.2.1.js"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/sparql-templates.js"></script>
+    <script src="js/utils.js"></script>
+
+
+    <script type="text/javascript" language="javascript">
+        var pageURI = queryString["uri"];
+
+        pageURI = encodeURI(pageURI);
+        var getPageSparql = replaceAll(getPageSparqlTemplate, "${pageURI}", pageURI);
+        getPageSparql = replaceAll(getPageSparql, "${graphURI}", graphURI);
+        console.log(getPageSparql);
+
+        var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
+
+        $(function () {
+            var $loading = $('#spinner').hide();
+            $.ajaxSetup({
+                beforeSend: function () {
+                    $('#spinner').show();
+                },
+                complete: function () {
+                    $('#spinner').hide();
+                },
+                success: function () {}
+            });
+            console.log("X");
+            getPage();
+            console.log("Y");
+            setupPosting();
+            console.log("Z");
+        });
+
+        function setupPosting() {
+            $('#cancel').click(function () {
+                window.location.href = window.location.href.replace("edit.html", "page.html");
+                return false;
+            });
+
+            $('#submit').click(function () {
+                title = $('#title').val();
+                nick = $('#nick').val();
+                var content = $('#content').val();
+                var data = replaceAll(postPageSparqlTemplate, "${content}", content);
+                data = replaceAll(data, "${graphURI}", graphURI);
+                data = replaceAll(data, "${pageURI}", pageURI);
+                data = replaceAll(data, "${title}", title);
+                data = replaceAll(data, "${date}", date);
+                data = replaceAll(data, "${nick}", nick);
+                console.log("POST data = " + data);
+                $.ajax({
+                    type: "POST",
+                    url: sparqlUpdateEndpoint,
+                    data: ({
+                        update: data
+                    })
+                }).done(function () {
+                    window.location.href = window.location.href.replace("edit.html", "page.html");
+                });
+
+
+                return false;
+            });
+            $('#delete').click(function () {
+
+                var content = $('#content').val();
+                var data = replaceAll(deletePageSparqlTemplate, "${pageURI}", pageURI);
+                data = replaceAll(data, "${graphURI}", graphURI);
+                $.ajax({
+                    type: "POST",
+                    url: sparqlUpdateEndpoint,
+                    data: ({
+                        update: data
+                    })
+                }).done(function () {
+                    window.location.href = "index.html";
+                });
+
+
+                return false;
+            });
+        }
+
+        var uri = "URI",
+            date = "DATE",
+            title = "TITLE",
+            content = "CONTENT",
+            nick = "NICK";
+
+        function getPage() {
+            $.ajax({
+                url: getPageUrl,
+                accept: {
+                    xml: 'application/xml;charset=UTF-8',
+                    sparql: 'sparql-results+xml;charset=UTF-8'
+                },
+                headers: { // belt and braces
+                    'Accept': 'sparql-results+xml;charset=UTF-8'
+                    //   'Accept-Charset': 'UTF-8' unsafe
+                }
+
+            }).done(function (xml) {
+
+                var xmlString = (new XMLSerializer()).serializeToString(xml);
+
+                // workaround for wrong interpretation of charset
+                xmlString = xmlString.replace(/[^\u0000-\u007F]/g, '');
+                // maybe force to ISO-8859-1, also known as Latin-1 instead?
+
+                var $xml = $(xmlString);
+                var entry = "";
+
+                //		console.log("xml.find"+$.isEmptyObject($xml.find("result")));
+
+
+                uri = "page.html?uri=" + pageURI;
+                var results = $xml.find("result");
+
+                if (results.length == 0) { // page doesn't exist, so create it
+                    var d = new Date();
+                    date = d.toISOString();
+                    nick = "danja";
+                    var split = pageURI.split("/");
+                    title = split[split.length - 1];
+                    title = decodeURI(title);
+                    content = "enter content here";
+                    entry += generateEntry(uri, date, title, content, nick);
+                } else {
+                    $xml.find("result").each(function () {
+
+                        $(this).find("binding[name='date']").each(function () {
+                            date = $(this).text().trim();
+                        });
+                        $(this).find("binding[name='title']").each(function () {
+                            title = $(this).text().trim();
+                        });
+                        $(this).find("binding[name='content']").each(function () {
+                            content = $(this).text().trim();
+                        });
+                        $(this).find("binding[name='nick']").each(function () {
+                            nick = $(this).text().trim();
+                        });
+
+                        entry += generateEntry(uri, date, title, content, nick);
+                    });
+
+                }
+                $("#entry").replaceWith(entry);
+                translateLocalLinks();
+                //  $("table").colResizable();
+            });
+
+        }
+
+
+        function generateEntry(uri, date, title, content, nick) {
+            console.log("uri = " + uri + ", date = " + date + " , title = " + title + ", content = " + content + ", nick = " + nick);
+            var entry = "<div class='entry'>";
+            entry += "<h1 class='center'><a href=\"" + uri + "\">" + title + "</a></h1>";
+
+            entry += "<form>";
+            entry += "Title : <input id='title' type='text' value='" + title + "'></input>";
+            entry += "<textarea class='content' id='content' rows='10'>" + content + "</textarea>";
+            entry += "<br/>Nick : <input id='nick' type='text' value='" + nick + "'></input>";
+            entry += "</form>";
+            //   entry += "<div class='byline center'>" + date + "</div>";
+            entry += "</div>";
+            return entry;
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="container">
+
+        <div class="center"><a href="index.html">FuWiki</a>
+        </div>
+
+        <div id="entry"></div>
+
+        <p class="center">
+            <button id="submit">Update</button>
+            <button id="cancel">Cancel</button>
+            <button id="delete">Delete</button>
+        </p>
+
+        <div id="spinner" class="spinner"></div>
+    </div>
+</body>
+
+</html>

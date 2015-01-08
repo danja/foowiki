@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>FuWiki</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    <script src="js/marked.js"></script>
+    <!-- markdown processor -->
+
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/jquery-migrate-1.2.1.js"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/sparql-templates.js"></script>
+    <script src="js/utils.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        var getPageListSparql = replaceAll(getPageListSparqlTemplate, "${graphURI}", graphURI);
+        var getPagesUrl = sparqlQueryEndpoint + encodeURIComponent(getPageListSparql) + "&output=xml";
+
+        $(function () {
+
+            spinner();
+            getPages();
+        });
+
+        function spinner() {
+            var $loading = $('#spinner').hide();
+            $.ajaxSetup({
+                beforeSend: function () {
+                    $('#spinner').show();
+                },
+                complete: function () {
+                    $('#spinner').hide();
+                },
+                success: function () {}
+            });
+        }
+
+        function getPages() {
+            //	$.get(url, function(xml) {
+            $.ajax({
+                url: getPagesUrl,
+                accept: {
+                    xml: 'application/xml;charset=UTF-8',
+                    sparql: 'sparql-results+xml;charset=UTF-8'
+                },
+                headers: { // belt and braces
+                    'Accept': 'sparql-results+xml;charset=UTF-8'
+                    //   'Accept-Charset': 'UTF-8' unsafe
+                }
+
+            }).done(function (xml) {
+
+                var xmlString = (new XMLSerializer()).serializeToString(xml);
+
+                // workaround for wrong interpretation of charset
+                xmlString = xmlString.replace(/[^\u0000-\u007F]/g, '');
+                // maybe force to ISO-8859-1, also known as Latin-1 instead?
+
+                var $xml = $(xmlString);
+                var rows = "";
+
+                $xml.find("result").each(function () {
+                    var uri, date, title, nick; // content,
+
+                    $(this).find("binding[name='uri']").each(function () {
+                        uri = $(this).text().trim();
+                    });
+                    $(this).find("binding[name='date']").each(function () {
+                        date = $(this).text().trim();
+                    });
+                    $(this).find("binding[name='title']").each(function () {
+                        title = $(this).text().trim();
+                    });
+                    //	$(this).find("binding[name='content']").each(function() {
+                    //		content = $(this).text().trim();
+                    //	});
+                    $(this).find("binding[name='nick']").each(function () {
+                        nick = $(this).text().trim();
+                    });
+
+                    rows += generatePageRow(uri, date, title, nick); // content, 
+                });
+                $("#pages").replaceWith(rows);
+                //  $("table").colResizable();
+            });
+        }
+
+        function generatePageRow(uri, date, title, nick) { // content, 
+            console.log("uri = " + uri + ", date = " + date + " , title = " + title + ", nick = " + nick); // content = "+content+", 
+            var row = "<tr>";
+
+            uri = "page.html?uri=" + uri;
+            row += "<td><a href=\"" + uri + "\">" + title + "</a></td>";
+            //		row += "<td class=\"center\">"+marked(content)+"</td>";
+            row += "<td class=\"center\">" + date + "</td>";
+            row += "<td class=\"center\">" + nick + "</td>";
+            return row;
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="container">
+
+        <table id="pagesTable" class="table table-bordered">
+            <tr>
+                <th colspan="8" class="center"><a href="index.html">FuWiki</a> Pages</th>
+            </tr>
+            <tr>
+                <th class="center">Page</th>
+                <th class="center">Date</th>
+                <th class="center">Creator</th>
+            </tr>
+            <tr id="pages"></tr>
+        </table>
+        <p class="center">
+            <button id="turtle">Export Turtle</button>
+        </p>
+        <div id="spinner" class="spinner"></div>
+    </div>
+</body>
+
+<script type="text/javascript" language="javascript">
+    document.getElementById("turtle").onclick = function () {
+
+        var turtleURL = sparqlQueryEndpoint + "CONSTRUCT+%7B+%3Fs+%3Fp+%3Fo+%7D++WHERE+%7B%0D%0A+++GRAPH+%3Chttp%3A%2F%2Fhyperdata.it%2Fwiki%3E+%7B%0D%0A++++++%3Fs+%3Fp+%3Fo%0D%0A+++%7D%0D%0A%7D";
+        location.href = turtleURL;
+    };
+</script>
+
+</html>
