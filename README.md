@@ -1,0 +1,2 @@
+# FuWiki
+Minimal SPARQL Wiki
