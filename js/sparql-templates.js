@@ -79,7 +79,7 @@ DELETE {  \n\
 ?o sioc:topic ?topic . \n\
 }  \n\
 WHERE {  \n\
-<${pageURI}>  ?p ?o  \n\
+<${pageURI}>  ?p ?o  . \n\
 ?o sioc:topic ?topic . \n\
 } \n\
  ; \n\
