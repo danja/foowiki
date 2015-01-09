@@ -3,40 +3,63 @@
     margin: 0px auto;
     position: relative;
 }
+
+table {
+     border: 1px solid lightgray;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
 td,
 th {
-    padding: 5em;
+    border: 1px solid lightgray;
+  padding: 4px;
 }
+
 a:link {
     text-decoration: none;
 }
+
 a:visited {
     text-decoration: none;
 }
+
 a:hover {
     text-decoration: underline;
 }
+
 a:active {
     text-decoration: underline;
 }
+
 .center {
     text-align: center;
 }
+
 .content {
     margin: 0px auto;
     position: relative;
 }
+
 textarea {
     display: block;
     width: 100%;
 }
+
 .byline {
     padding: 2em;
     font-weight: bold;
 }
+
 .missing {
     color: #66FF66;
 }
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
 .spinner {
     height: 60px;
     width: 60px;
@@ -52,35 +75,43 @@ textarea {
     border-top: 6px solid rgba(0, 174, 239, .8);
     border-radius: 100%;
 }
+
 @-webkit-keyframes rotation {
     from {
         -webkit-transform: rotate(0deg);
     }
-    to {
+    
+to {
         -webkit-transform: rotate(359deg);
     }
 }
+
 @-moz-keyframes rotation {
     from {
         -moz-transform: rotate(0deg);
     }
-    to {
+    
+to {
         -moz-transform: rotate(359deg);
     }
 }
+
 @-o-keyframes rotation {
     from {
         -o-transform: rotate(0deg);
     }
-    to {
+    
+to {
         -o-transform: rotate(359deg);
     }
 }
+
 @keyframes rotation {
     from {
         transform: rotate(0deg);
     }
-    to {
+    
+to {
         transform: rotate(359deg);
     }
 }

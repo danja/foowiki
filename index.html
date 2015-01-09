@@ -5,14 +5,17 @@
     <meta charset="utf-8">
     <title>FuWiki</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/common.css" />
 
+      <!-- markdown processor -->
     <script src="js/marked.js"></script>
-    <!-- markdown processor -->
 
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/jquery-migrate-1.2.1.js"></script>
+    
+    <!-- date formatting -->
+    <script src="js/moment.js"></script>
 
     <script src="js/config.js"></script>
     <script src="js/sparql-templates.js"></script>
@@ -56,38 +59,10 @@
 
             }).done(function (xml) {
 
-                var xmlString = (new XMLSerializer()).serializeToString(xml);
-
-                // workaround for wrong interpretation of charset
-                xmlString = xmlString.replace(/[^\u0000-\u007F]/g, '');
-                // maybe force to ISO-8859-1, also known as Latin-1 instead?
-
-                var $xml = $(xmlString);
-                var rows = "";
-
-                $xml.find("result").each(function () {
-                    var uri, date, title, nick; // content,
-
-                    $(this).find("binding[name='uri']").each(function () {
-                        uri = $(this).text().trim();
-                    });
-                    $(this).find("binding[name='date']").each(function () {
-                        date = $(this).text().trim();
-                    });
-                    $(this).find("binding[name='title']").each(function () {
-                        title = $(this).text().trim();
-                    });
-                    //	$(this).find("binding[name='content']").each(function() {
-                    //		content = $(this).text().trim();
-                    //	});
-                    $(this).find("binding[name='nick']").each(function () {
-                        nick = $(this).text().trim();
-                    });
-
-                    rows += generatePageRow(uri, date, title, nick); // content, 
-                });
+                var rows = xmlToRows(xml);
+                
                 $("#pages").replaceWith(rows);
-                //  $("table").colResizable();
+
             });
         }
 
@@ -98,7 +73,7 @@
             uri = "page.html?uri=" + uri;
             row += "<td><a href=\"" + uri + "\">" + title + "</a></td>";
             //		row += "<td class=\"center\">"+marked(content)+"</td>";
-            row += "<td class=\"center\">" + date + "</td>";
+            row += "<td class=\"center\">" + moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a") + "</td>";
             row += "<td class=\"center\">" + nick + "</td>";
             return row;
         }
@@ -109,9 +84,9 @@
 <body>
     <div id="container">
 
-        <table id="pagesTable" class="table table-bordered">
+        <table id="pagesTable">
             <tr>
-                <th colspan="8" class="center"><a href="index.html">FuWiki</a> Pages</th>
+                <th colspan="3"><a href="index.html">FuWiki</a> Pages</th>
             </tr>
             <tr>
                 <th class="center">Page</th>
@@ -129,8 +104,7 @@
 
 <script type="text/javascript" language="javascript">
     document.getElementById("turtle").onclick = function () {
-
-        var turtleURL = sparqlQueryEndpoint + "CONSTRUCT+%7B+%3Fs+%3Fp+%3Fo+%7D++WHERE+%7B%0D%0A+++GRAPH+%3Chttp%3A%2F%2Fhyperdata.it%2Fwiki%3E+%7B%0D%0A++++++%3Fs+%3Fp+%3Fo%0D%0A+++%7D%0D%0A%7D";
+        var turtleURL = sparqlQueryEndpoint + "CONSTRUCT+%7B+%3Fs+%3Fp+%3Fo+%7D++WHERE+%7B%0D%0A+++GRAPH+%3Chttp%3A%2F%2Fhyperdata.it%2Fwiki%3E+%7B%0D%0A++++++%3Fs+%3Fp+%3Fo%0D%0A+++%7D%0D%0A%7D&output=text";
         location.href = turtleURL;
     };
 </script>

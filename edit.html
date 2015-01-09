@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>FuWiki</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/common.css">
 
     <script src="js/marked.js"></script>
@@ -56,6 +56,7 @@
                 title = $('#title').val();
                 nick = $('#nick').val();
                 var content = $('#content').val();
+                content = escape(content);
                 var data = replaceAll(postPageSparqlTemplate, "${content}", content);
                 data = replaceAll(data, "${graphURI}", graphURI);
                 data = replaceAll(data, "${pageURI}", pageURI);
@@ -63,44 +64,64 @@
                 data = replaceAll(data, "${date}", date);
                 data = replaceAll(data, "${nick}", nick);
                 console.log("POST data = " + data);
-                $.ajax({
-                    type: "POST",
-                    url: sparqlUpdateEndpoint,
-                    data: ({
-                        update: data
-                    })
-                }).done(function () {
-                    window.location.href = window.location.href.replace("edit.html", "page.html");
-                });
+
+                // put current data in local storage here
+                var callback = function () {
+                    $.ajax({
+                        type: "POST",
+                        url: sparqlUpdateEndpoint,
+                        data: ({
+                            update: data
+                        })
+                    }).done(function () {
+                        window.location.href = window.location.href.replace("edit.html", "page.html");
+                    });
+                }
+
+                deletePage(graphURI, pageURI, callback);
+
 
 
                 return false;
             });
             $('#delete').click(function () {
-
-                var content = $('#content').val();
-                var data = replaceAll(deletePageSparqlTemplate, "${pageURI}", pageURI);
-                data = replaceAll(data, "${graphURI}", graphURI);
-                $.ajax({
-                    type: "POST",
-                    url: sparqlUpdateEndpoint,
-                    data: ({
-                        update: data
-                    })
-                }).done(function () {
+                var callback = function () {
                     window.location.href = "index.html";
-                });
-
-
-                return false;
+                }
+                return deletePage(graphURI, pageURI, callback);
             });
         }
 
-        var uri = "URI",
-            date = "DATE",
-            title = "TITLE",
-            content = "CONTENT",
-            nick = "NICK";
+        var uri = "URI";
+         //        var    date = "DATE";
+        var title = "TITLE";
+        var content = "CONTENT";
+         //        var    nick = "NICK";
+        var d = new Date();
+        date = d.toISOString();
+        nick = "danja";
+
+        function deletePage(graphURI, pageURI, callback) {
+            var content = $('#content').val();
+            var data = replaceAll(deletePageSparqlTemplate, "${pageURI}", pageURI);
+            data = replaceAll(data, "${graphURI}", graphURI);
+            $.ajax({
+                type: "POST",
+                url: sparqlUpdateEndpoint,
+                data: ({
+                    update: data
+                })
+            }).done(function () {
+                callback();
+                //  if (redirectToIndex) {
+                //      window.location.href = "index.html";
+                //   }
+            });
+
+
+            return false;
+
+        }
 
         function getPage() {
             $.ajax({
@@ -116,31 +137,32 @@
 
             }).done(function (xml) {
 
-                var xmlString = (new XMLSerializer()).serializeToString(xml);
+                entry = xmlToEntry(pageURI, xml);
+                //    $("#entry").replaceWith(entry);
+                //  translateLocalLinks();
+
+                //        var xmlString = (new XMLSerializer()).serializeToString(xml);
 
                 // workaround for wrong interpretation of charset
-                xmlString = xmlString.replace(/[^\u0000-\u007F]/g, '');
+                //          xmlString = xmlString.replace(/[^\u0000-\u007F]/g, '');
                 // maybe force to ISO-8859-1, also known as Latin-1 instead?
 
-                var $xml = $(xmlString);
-                var entry = "";
-
-                //		console.log("xml.find"+$.isEmptyObject($xml.find("result")));
-
+                //        var $xml = $(xmlString);
+                //       var entry = "";
 
                 uri = "page.html?uri=" + pageURI;
-                var results = $xml.find("result");
+                //      var results = $xml.find("result");
 
-                if (results.length == 0) { // page doesn't exist, so create it
-                    var d = new Date();
-                    date = d.toISOString();
-                    nick = "danja";
+                if (!entry) { // page doesn't exist, so create it
+
                     var split = pageURI.split("/");
                     title = split[split.length - 1];
                     title = decodeURI(title);
                     content = "enter content here";
                     entry += generateEntry(uri, date, title, content, nick);
-                } else {
+                }
+                /*
+                else {
                     $xml.find("result").each(function () {
 
                         $(this).find("binding[name='date']").each(function () {
@@ -160,9 +182,10 @@
                     });
 
                 }
+                */
                 $("#entry").replaceWith(entry);
+                // put data in versioned here
                 translateLocalLinks();
-                //  $("table").colResizable();
             });
 
         }
@@ -174,9 +197,12 @@
             entry += "<h1 class='center'><a href=\"" + uri + "\">" + title + "</a></h1>";
 
             entry += "<form>";
-            entry += "Title : <input id='title' type='text' value='" + title + "'></input>";
+            entry += "<label for='title'>Title</label>";
+            entry += "<input id='title' type='text' value='" + title + "'></input>";
+            entry += "<label for='content'>Content</label>";
             entry += "<textarea class='content' id='content' rows='10'>" + content + "</textarea>";
-            entry += "<br/>Nick : <input id='nick' type='text' value='" + nick + "'></input>";
+            entry += "<label for='nick'>Nick</label>";
+            entry += "<input id='nick' type='text' value='" + nick + "'></input>";
             entry += "</form>";
             //   entry += "<div class='byline center'>" + date + "</div>";
             entry += "</div>";

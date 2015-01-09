@@ -5,14 +5,16 @@
     <meta charset="utf-8">
     <title>FuWiki</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/common.css">
 
     <script src="js/marked.js"></script>
 
     <script src="js/jquery-1.10.2.js"></script>
-
     <script src="js/jquery-migrate-1.2.1.js"></script>
+    
+        <!-- date formatting -->
+    <script src="js/moment.js"></script>
 
     <script src="js/config.js"></script>
     <script src="js/sparql-templates.js"></script>
@@ -60,53 +62,18 @@
                 }
 
             }).done(function (xml) {
-
-                var xmlString = (new XMLSerializer()).serializeToString(xml);
-
-                // workaround for wrong interpretation of charset
-                xmlString = xmlString.replace(/[^\u0000-\u007F]/g, '');
-                // maybe force to ISO-8859-1, also known as Latin-1 instead?
-
-                var $xml = $(xmlString);
-                var entry = "";
-
-                $xml.find("result").each(function () {
-                    var uri, date, title, content, nick;
-
-                    //			$(this).find("binding[name='uri']").each(function() {
-                    //				uri = $(this).text().trim();
-                    //			});
-                    uri = "page.html?uri=" + pageURI;
-
-                    $(this).find("binding[name='date']").each(function () {
-                        date = $(this).text().trim();
-                    });
-                    $(this).find("binding[name='title']").each(function () {
-                        title = $(this).text().trim();
-                    });
-                    $(this).find("binding[name='content']").each(function () {
-                        content = $(this).text().trim();
-                    });
-                    $(this).find("binding[name='nick']").each(function () {
-                        nick = $(this).text().trim();
-                    });
-
-                    entry += generateEntry(uri, date, title, content, nick);
-                });
+                entry = xmlToEntry(pageURI, xml);
                 $("#entry").replaceWith(entry);
                 translateLocalLinks();
-                //  $("table").colResizable();
             });
         }
-
-
 
         function generateEntry(uri, date, title, content, nick) {
             console.log("uri = " + uri + ", date = " + date + " , title = " + title + ", content = " + content + ", nick = " + nick);
             var entry = "<div class='entry'>";
             entry += "<h1 class='center'><a href=\"" + uri + "\">" + title + "</a></h1>";
             entry += "<div class='content'>" + marked(content) + "</div>";
-            entry += "<div class='byline center'> by " + nick + " on " + date + "</div>";
+            entry += "<div class='byline center'>latest edit by " + nick + " on " + moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a")  + "</div>";
             entry += "</div>";
             return entry;
         }
