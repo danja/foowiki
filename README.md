@@ -12,15 +12,17 @@ First clone the FuWiki files somewhere convenient. These will be served as regul
 
 Next download Fuseki according to the [instructions](http://jena.apache.org/documentation/serving_data/). Then adjust the configuration according to your setup and run it. There are three files to consider for this:
 
-1. the Fuseki config file - the one provided as FuWiki/etc/seki-config.ttl includes a suitable store definition (called seki)
-2. a script to run Fuseki pointing at its config file - the one provided as FuWiki/etc/run-fuseki.bat should help as a starting point
-3. the FuWiki config file, FuWiki/js/config.js - the one provided is the one I use against the two files above
+1. the Fuseki config file - the one provided as fuwiki/etc/seki-config.ttl includes a suitable store definition (called seki)
+2. a script to run Fuseki pointing at its config file - the one provided as fuwiki/etc/run-fuseki.bat should help as a starting point
+3. the FuWiki config file, fuwiki/js/config.js - the one provided is the one I use against the two files above
 
+### Checking Fuseki 
 Assuming you have a setup close to this, opening http://localhost:3030 should take you to the Fuseki pages. Click on Control Panel. When offered, select the /seki dataset. You should now see Fuseki's raw SPARQL interface. 
 
-It's easiest to bootstrap the Wiki with a few pages, so go to File upload at the bottom of the SPARQL interface and enter the wiki graph name '''http://hyperdata.it/wiki''' and upload fuwiki/examples/pages.ttl
+### Bootstrap Data
+It's easiest to bootstrap the Wiki with a few pages. Open http://localhost:3030/fuwiki/index.html in a browser and go to Upload RDF at the bottom of the page, click Select Files and navigate to fuwiki/examples/pages.ttl, select it then click Upload. (Currently you will need to use the back button to get back to http://localhost:3030/fuwiki/index.html and refresh the browser to see the page list).
 
-You may wish to customise the graph name, it's specified in FuWiki/js/config.js. If so, either do a search/replace in pages.ttl or skip the file upload and go straight to a (non-existent) page by pointing your browser at a URL of the form '''http://localhost:3030/fuwiki/page.html?uri=http://hyperdata.it/wiki/Hello%20World'''.
+You may wish to customise the graph name, it's specified in fuwiki/js/config.js. If so, either do a search/replace in pages.ttl or skip the file upload and go straight to a (non-existent) page by pointing your browser at a URL of the form '''http://localhost:3030/fuwiki/page.html?uri=http://hyperdata.it/wiki/Hello%20World'''.
 
 ## Using FuWiki
 Opening http://localhost:3030/fuwiki/index.html in a browser will display a list of pages in the Wiki. From there it should be self-explanatory, if not, let me know.

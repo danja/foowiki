@@ -5,15 +5,15 @@
 }
 
 table {
-     border: 1px solid lightgray;
-    margin-left:auto; 
-    margin-right:auto;
+    border: 1px solid lightgray;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 td,
 th {
     border: 1px solid lightgray;
-  padding: 4px;
+    padding: 4px;
 }
 
 a:link {
@@ -58,6 +58,7 @@ textarea {
 label {
     display: block;
     margin-top: 10px;
+    font-weight: bold;
 }
 
 .spinner {
