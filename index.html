@@ -20,6 +20,7 @@
     <script src="js/config.js"></script>
     <script src="js/sparql-templates.js"></script>
     <script src="js/utils.js"></script>
+    <script src="js/core.js"></script>
 
     <script type="text/javascript" language="javascript">
         var getPageListSparql = replaceAll(getPageListSparqlTemplate, "${graphURI}", graphURI);
@@ -29,7 +30,14 @@
             $("#graphName").attr("value", graphURI);
             setupButtons();
             spinner();
-            getPages();
+            var doneCallback = function (xml) {
+
+                var rows = xmlToRows(xml);
+
+                $("#pages").replaceWith(rows);
+
+            };
+            getPage(doneCallback, getPagesUrl);
         });
 
         function spinner() {
@@ -45,6 +53,7 @@
             });
         }
 
+        /*
         function getPages() {
             //	$.get(url, function(xml) {
             $.ajax({
@@ -58,14 +67,9 @@
                     //   'Accept-Charset': 'UTF-8' unsafe
                 }
 
-            }).done(function (xml) {
-
-                var rows = xmlToRows(xml);
-
-                $("#pages").replaceWith(rows);
-
-            });
+            }).done();
         }
+        */
 
         function generatePageRow(uri, date, title, nick) { // content, 
             console.log("uri = " + uri + ", date = " + date + " , title = " + title + ", nick = " + nick); // content = "+content+", 

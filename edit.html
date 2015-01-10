@@ -16,6 +16,7 @@
     <script src="js/config.js"></script>
     <script src="js/sparql-templates.js"></script>
     <script src="js/utils.js"></script>
+    <script src="js/core.js"></script>
 
 
     <script type="text/javascript" language="javascript">
@@ -40,10 +41,27 @@
                 success: function () {}
             });
             console.log("X");
-            getPage();
-            console.log("Y");
+
+            var doneCallback = function (xml, pageURI) {
+
+                entry = xmlToEntry(xml, pageURI);
+                uri = "page.html?uri=" + pageURI;
+
+                if (!entry) { // page doesn't exist, so create it
+
+                    var split = pageURI.split("/");
+                    title = split[split.length - 1];
+                    title = decodeURI(title);
+                    content = "enter content here";
+                    entry += generateEntry(uri, date, title, content, nick);
+                }
+
+                $("#entry").replaceWith(entry);
+                // put data in versioned here
+                translateLocalLinks();
+            };
+            getPage(doneCallback, getPageUrl);
             setupPosting();
-            console.log("Z");
         });
 
         function setupPosting() {
@@ -122,74 +140,6 @@
             return false;
 
         }
-
-        function getPage() {
-            $.ajax({
-                url: getPageUrl,
-                accept: {
-                    xml: 'application/xml;charset=UTF-8',
-                    sparql: 'sparql-results+xml;charset=UTF-8'
-                },
-                headers: { // belt and braces
-                    'Accept': 'sparql-results+xml;charset=UTF-8'
-                    //   'Accept-Charset': 'UTF-8' unsafe
-                }
-
-            }).done(function (xml) {
-
-                entry = xmlToEntry(pageURI, xml);
-                //    $("#entry").replaceWith(entry);
-                //  translateLocalLinks();
-
-                //        var xmlString = (new XMLSerializer()).serializeToString(xml);
-
-                // workaround for wrong interpretation of charset
-                //          xmlString = xmlString.replace(/[^\u0000-\u007F]/g, '');
-                // maybe force to ISO-8859-1, also known as Latin-1 instead?
-
-                //        var $xml = $(xmlString);
-                //       var entry = "";
-
-                uri = "page.html?uri=" + pageURI;
-                //      var results = $xml.find("result");
-
-                if (!entry) { // page doesn't exist, so create it
-
-                    var split = pageURI.split("/");
-                    title = split[split.length - 1];
-                    title = decodeURI(title);
-                    content = "enter content here";
-                    entry += generateEntry(uri, date, title, content, nick);
-                }
-                /*
-                else {
-                    $xml.find("result").each(function () {
-
-                        $(this).find("binding[name='date']").each(function () {
-                            date = $(this).text().trim();
-                        });
-                        $(this).find("binding[name='title']").each(function () {
-                            title = $(this).text().trim();
-                        });
-                        $(this).find("binding[name='content']").each(function () {
-                            content = $(this).text().trim();
-                        });
-                        $(this).find("binding[name='nick']").each(function () {
-                            nick = $(this).text().trim();
-                        });
-
-                        entry += generateEntry(uri, date, title, content, nick);
-                    });
-
-                }
-                */
-                $("#entry").replaceWith(entry);
-                // put data in versioned here
-                translateLocalLinks();
-            });
-
-        }
-
 
         function generateEntry(uri, date, title, content, nick) {
             console.log("uri = " + uri + ", date = " + date + " , title = " + title + ", content = " + content + ", nick = " + nick);
