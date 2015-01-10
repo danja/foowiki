@@ -38,48 +38,60 @@
             var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
             var doneCallback = function (xml) {
-                entry = xmlToEntry(xml, pageURI);
-            //    $("#entry").replaceWith(entry);
-            //    translateLocalLinks();
-            //    fixHeaderIDs(); // little workaround for odd marked.js behaviour
+                var entry = xmlToEntry(xml, pageURI);
+                console.log("PJ=" + JSON.stringify(entry));
+                if (!entry) {
+                    entry = {
+                        content: "",
+                        date: "",
+                        title: "",
+                        nick: ""
+                    };
+                    window.location.href = window.location.href.replace("page.html", "edit.html");
+                }
+                var params = "";
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.async = true;
+                script.text = entry.content;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(script, s);
+
+                var toRun = entry.title + "(" + params + ");"
+
+                console.log(toRun);
+                eval(toRun);
             };
 
             getPage(doneCallback, getPageUrl);
 
             $('#editButton').click(function () {
-                window.location.href = window.location.href.replace("page.html", "edit.html");
+                window.location.href = window.location.href.replace("run.html", "edit.html");
                 return false;
             });
         });
 
-        function formatEntry(uri, date, title, content, nick) {
-            content = marked(content);
-            date = moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a");
+        function formatEntry(entry) {
+            //   console.log("J=" + JSON.stringify(entry));
 
-            var map = {
-                "uri": uri,
-                "title": title,
-                "date": date,
-                "content": content,
-                "nick": nick
-            };
+            entry.content = marked(entry.content);
+            entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
 
             var entryTemplate = "<div class='entry'> \
             <h1 class='center'><a href=${uri}>${title}</a></h1> \
             <div class='content'>${content}</div> \
             <div class='byline center'>latest edit by ${nick} on ${date}</div> \
             </div>";
-            return templater(entryTemplate, map);
+            return templater(entryTemplate, entry);
         }
     </script>
-    <script id="injection" type="text/javascript" language="javascript">
-</script>
 
+    <script id="targetScript" type="text/javascript" language="javascript">
+    </script>
 </head>
 
 <body>
     <div id="container">
-
         <div colspan="8" class="center"><a href="index.html">FuWiki</a>
         </div>
 
@@ -88,7 +100,6 @@
         <p class="center">
             <button id="editButton">Edit</button>
         </p>
-
         <div id="spinner" class="spinner"></div>
     </div>
 </body>

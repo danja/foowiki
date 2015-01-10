@@ -30,9 +30,7 @@
             $("#graphName").attr("value", graphURI);
             setupButtons();
             spinner();
-
             
-
             var doneCallback = function (xml) {
                 var rows = "";
                 var entryArray = xmlToEntryArray(xml);
@@ -49,30 +47,10 @@
         function formatRow(entry) { // content, 
             entry.uri = "page.html?uri=" + entry.uri;
             entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
-            //   console.log("uri = " + uri + ", date = " + date + " , title = " + title + ", nick = " + nick); // content = "+content+", 
-           // console.log("\n\nrowentry = " + JSON.stringify(entry));
             var rowTemplate = "<tr> \
            <td><a href=\"${uri}\">${title}</a></td> \
            <td class=\"center\">${date}</td> \
             <td class=\"center\">${nick}</td>";
-
-            /*
-            var map = {
-                "uri": uri,
-                "title": title,
-                "date": date,
-                "nick": nick 
-            };
-            */
-            /*
-            var row = "<tr>";
-
-            uri = "page.html?uri=" + uri;
-            row += "<td><a href=\"" + uri + "\">" + title + "</a></td>";
-            //		row += "<td class=\"center\">"+marked(content)+"</td>";
-            row += "<td class=\"center\">" + moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a") + "</td>";
-            row += "<td class=\"center\">" + nick + "</td>";
-            */
             return templater(rowTemplate, entry);
         }
 
@@ -99,12 +77,10 @@
             });
         }
     </script>
-
 </head>
 
 <body>
     <div id="container">
-
         <table id="pagesTable">
             <tr>
                 <th colspan="3"><a href="index.html">FuWiki</a> Pages</th>
@@ -132,11 +108,7 @@
                 <input type="submit" value="Upload">
             </form>
         </p>
-
         <div id="spinner" class="spinner"></div>
-
     </div>
 </body>
-
-
 </html>
