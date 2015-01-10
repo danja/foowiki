@@ -1,6 +1,4 @@
  function getPage(doneCallback, getPageURL) {
-
-
      $.ajax({
          url: getPageURL,
          accept: {
@@ -13,7 +11,9 @@
          }
 
      }).done(function (xml) {
-         doneCallback(xml);
+         var pageURI = queryString["uri"];
+            pageURI = encodeURI(pageURI);
+         doneCallback(xml, pageURI);
      });
  }
 
@@ -28,7 +28,7 @@
      // maybe force to ISO-8859-1, also known as Latin-1 instead?
 
      var $xml = $(xmlString);
-     var entry = "";
+     var entry = {};
 
      var results = $xml.find("result");
 
@@ -42,27 +42,28 @@
          //			$(this).find("binding[name='uri']").each(function() {
          //				uri = $(this).text().trim();
          //			});
-         uri = "page.html?uri=" + pageURI;
+         entry.uri = "page.html?uri=" + pageURI;
 
          $(this).find("binding[name='date']").each(function () {
-             date = $(this).text().trim();
+             entry.date = $(this).text().trim();
          });
          $(this).find("binding[name='title']").each(function () {
-             title = $(this).text().trim();
+             entry.title = $(this).text().trim();
          });
          $(this).find("binding[name='content']").each(function () {
-             content = $(this).text().trim();
+             entry.content = $(this).text().trim();
          });
          $(this).find("binding[name='nick']").each(function () {
-             nick = $(this).text().trim();
+             entry.nick = $(this).text().trim();
          });
 
-         entry += generateEntry(uri, date, title, content, nick);
+      //   entry += formatEntry(uri, date, title, content, nick);
      });
+     
      return entry;
  }
 
- function xmlToRows(xml) {
+ function xmlToEntryArray(xml) {
      var xmlString = (new XMLSerializer()).serializeToString(xml);
 
      // workaround for wrong interpretation of charset
@@ -70,28 +71,28 @@
      // maybe force to ISO-8859-1, also known as Latin-1 instead?
 
      var $xml = $(xmlString);
-     var rows = "";
+     var entryArray= [];
 
      $xml.find("result").each(function () {
-         var uri, date, title, nick; // content,
+         var entry = {};
 
          $(this).find("binding[name='uri']").each(function () {
-             uri = $(this).text().trim();
+             entry.uri = $(this).text().trim();
          });
          $(this).find("binding[name='date']").each(function () {
-             date = $(this).text().trim();
+             entry.date = $(this).text().trim();
          });
          $(this).find("binding[name='title']").each(function () {
-             title = $(this).text().trim();
+             entry.title = $(this).text().trim();
          });
          //	$(this).find("binding[name='content']").each(function() {
          //		content = $(this).text().trim();
          //	});
          $(this).find("binding[name='nick']").each(function () {
-             nick = $(this).text().trim();
+             entry.nick = $(this).text().trim();
          });
-
-         rows += generatePageRow(uri, date, title, nick); // content, 
+         entryArray.push(entry);
+    //     rows += formatPageRow(uri, date, title, nick); // content, 
      });
-     return rows;
+     return entryArray;
  }

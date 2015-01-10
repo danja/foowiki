@@ -31,43 +31,35 @@
 
         var getPageSparql = templater(getPageSparqlTemplate, map);
 
-        console.log(getPageSparql);
+         // console.log(getPageSparql);
 
         var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
         $(function () {
-            var $loading = $('#spinner').hide();
-            $.ajaxSetup({
-                beforeSend: function () {
-                    $('#spinner').show();
-                },
-                complete: function () {
-                    $('#spinner').hide();
-                },
-                success: function () {}
-            });
-            console.log("X");
+            spinner();
 
             var doneCallback = function (xml, pageURI) {
-
-                entry = xmlToEntry(xml, pageURI);
+                var entry = xmlToEntry(xml, pageURI);
+                var entryHTML = "";
                 uri = "page.html?uri=" + pageURI;
 
                 if (!entry) { // page doesn't exist, so create it
-
+                    var entry = {};
                     var split = pageURI.split("/");
-                    title = split[split.length - 1];
-                    title = decodeURI(title);
-                    content = "enter content here";
-                    entry += generateEntry(uri, date, title, content, nick);
+                    entry.title = split[split.length - 1];
+                    entry.title = decodeURI(entry.title);
+                    entry.content = "enter content here";
+                    entry.nick="danja";
                 }
-
-                $("#entry").replaceWith(entry);
+             //   console.log("done=" + JSON.stringify(entry));
+                entryHTML += formatEntry(entry);
+                $("#entry").replaceWith(entryHTML);
                 // put data in versioned here
-                //  translateLocalLinks();
-
             };
+
+            console.log("A");
             getPage(doneCallback, getPageUrl);
+            console.log("B");
             setupPosting();
         });
 
@@ -78,20 +70,17 @@
             });
 
             $('#submit').click(function () {
-                title = $('#title').val();
-                nick = $('#nick').val();
-                var content = $('#content').val();
-                content = escape(content);
-                var map = {
-                    "content": content,
+                var entry = {
                     "graphURI": graphURI,
                     "pageURI": pageURI,
-                    "title": title,
-                    "date": date,
-                    "nick": nick
+                    "date": (new Date()).toISOString()
                 };
+                entry.title = $('#title').val();
+                entry.nick = $('#nick').val();
+                entry.content = $('#content').val();
+                entry.content = escape(entry.content);
 
-                var data = templater(postPageSparqlTemplate, map);
+                var data = templater(postPageSparqlTemplate, entry);
 
                 // put current data in local storage here
                 var callback = function () {
@@ -107,9 +96,6 @@
                 }
 
                 deletePage(graphURI, pageURI, callback);
-
-
-
                 return false;
             });
             $('#delete').click(function () {
@@ -120,17 +106,17 @@
             });
         }
 
-        var uri = "URI";
+         //    var uri = "URI";
          //        var    date = "DATE";
-        var title = "TITLE";
-        var content = "CONTENT";
+         //      var title = "TITLE";
+         //     var content = "CONTENT";
          //        var    nick = "NICK";
-        var d = new Date();
-        date = d.toISOString();
-        nick = "danja";
+         //     var d = new Date();
+         //    date = d.toISOString();
+         //    nick = "danja";
 
         function deletePage(graphURI, pageURI, callback) {
-            var content = $('#content').val();
+            //   var content = $('#content').val();
             var data = replaceAll(deletePageSparqlTemplate, "${pageURI}", pageURI);
             data = replaceAll(data, "${graphURI}", graphURI);
             $.ajax({
@@ -141,9 +127,6 @@
                 })
             }).done(function () {
                 callback();
-                //  if (redirectToIndex) {
-                //      window.location.href = "index.html";
-                //   }
             });
 
 
@@ -151,9 +134,9 @@
 
         }
 
-        function generateEntry(uri, date, title, content, nick) {
-           // console.log("uri = " + uri + ", date = " + date + " , title = " + title + ", content = " + content + ", nick = " + nick);
+        function formatEntry(entry) {
 
+            console.log("editEntry = " + JSON.stringify(entry));
             var editEntryTemplate = "<div class='entry'> \
             <h1 class='center'><a href=\"${uri}\">${title}</a></h1> \
             <form> \
@@ -166,15 +149,7 @@
             </form> \
             </div>";
 
-            //   entry += "<div class='byline center'>" + date + "</div>";
-            var map = {
-                "uri": uri,
-                "title": title,
-                "content": content,
-                "nick": nick
-            };
-
-            return templater(editEntryTemplate, map);
+            return templater(editEntryTemplate, entry);
 
         }
     </script>

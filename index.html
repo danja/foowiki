@@ -30,34 +30,40 @@
             $("#graphName").attr("value", graphURI);
             setupButtons();
             spinner();
+
+            
+
             var doneCallback = function (xml) {
-
-                var rows = xmlToRows(xml);
-
+                var rows = "";
+                var entryArray = xmlToEntryArray(xml);
+                for (var i = 0; i < entryArray.length; i++) {
+                    rows += formatRow(entryArray[i]); // content, 
+                }
                 $("#pages").replaceWith(rows);
-
             };
             getPage(doneCallback, getPagesUrl);
         });
 
 
 
-        function generatePageRow(uri, date, title, nick) { // content, 
-             uri = "page.html?uri=" + uri;
-            date = moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a");
-         //   console.log("uri = " + uri + ", date = " + date + " , title = " + title + ", nick = " + nick); // content = "+content+", 
+        function formatRow(entry) { // content, 
+            entry.uri = "page.html?uri=" + entry.uri;
+            entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
+            //   console.log("uri = " + uri + ", date = " + date + " , title = " + title + ", nick = " + nick); // content = "+content+", 
+           // console.log("\n\nrowentry = " + JSON.stringify(entry));
             var rowTemplate = "<tr> \
            <td><a href=\"${uri}\">${title}</a></td> \
            <td class=\"center\">${date}</td> \
             <td class=\"center\">${nick}</td>";
-            
+
+            /*
             var map = {
                 "uri": uri,
                 "title": title,
                 "date": date,
                 "nick": nick 
             };
-            
+            */
             /*
             var row = "<tr>";
 
@@ -67,7 +73,7 @@
             row += "<td class=\"center\">" + moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a") + "</td>";
             row += "<td class=\"center\">" + nick + "</td>";
             */
-            return templater(rowTemplate, map);
+            return templater(rowTemplate, entry);
         }
 
         function setupButtons() {
