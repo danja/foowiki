@@ -62,10 +62,22 @@
                 window.location.href = window.location.href.replace("page.html", "edit.html");
                 return false;
             });
+
+            var runnable = true;
+            if (runnable) {
+                var runButton = $("<button>");
+                $("#buttons").append(runButton);
+                runButton.attr("id", "runButton");
+                runButton.text("Run");
+                $("#runButton").click(function () {
+                    window.location.href = window.location.href.replace("page.html", "run.html");
+                    return false;
+                });
+            }
         });
 
         function formatEntry(entry) {
-         //   console.log("J=" + JSON.stringify(entry));
+            //   console.log("J=" + JSON.stringify(entry));
 
             entry.content = marked(entry.content);
             entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -88,7 +100,7 @@
 
         <div id="entry"></div>
 
-        <p class="center">
+        <p id="buttons" class="center">
             <button id="editButton">Edit</button>
         </p>
         <div id="spinner" class="spinner"></div>

@@ -1,3 +1,17 @@
+<http://hyperdata.it/wiki/Hello%20World%202>
+        a       <http://purl.org/stuff/wiki#Page> , <http://rdfs.org/sioc/ns#Post> ;
+        <http://purl.org/dc/terms/date>
+                "2015-01-10T20:22:34.613Z" ;
+        <http://purl.org/dc/terms/format>
+                <http://purl.org/NET/mediatypes/text/markdown> ;
+        <http://purl.org/dc/terms/title>
+                "HelloWorld2" ;
+        <http://rdfs.org/sioc/ns#content>
+                "function HelloWorld2() {\n   console.log(\"CALLED\");\n  $(\"#target\").html(\"Hello World!\");\n}" ;
+        <http://xmlns.com/foaf/0.1/maker>
+                [ <http://xmlns.com/foaf/0.1/nick>
+                          "danja" ] .
+
 <http://hyperdata.it/wiki/Content%20Model>
         a       <http://purl.org/stuff/wiki#Page> , <http://rdfs.org/sioc/ns#Post> ;
         <http://purl.org/dc/terms/date>
@@ -43,13 +57,13 @@
 <http://hyperdata.it/wiki/FuWiki%20To%20Do>
         a       <http://purl.org/stuff/wiki#Page> , <http://rdfs.org/sioc/ns#Post> ;
         <http://purl.org/dc/terms/date>
-                "2015-01-10T20:09:10.046Z" ;
+                "2015-01-10T20:15:01.822Z" ;
         <http://purl.org/dc/terms/format>
                 <http://purl.org/NET/mediatypes/text/markdown> ;
         <http://purl.org/dc/terms/title>
                 "FuWiki To Do" ;
         <http://rdfs.org/sioc/ns#content>
-                "See also [To Investigate](To Investigate)\n\n## [Home Page](Home Page)\n\n* [Core](#Core)\n* [Admin](#Admin)\n* [Foo](#Foo)\n\n## Core\n* ajaxian import http://www.nickdesteffen.com/blog/file-uploading-over-ajax-using-html5\n* support images \n* search\n* MD page import/export\n* view original MD\n* include related links in RDF - inlinks\n* tags\n* [WikiWhiteBoard](WikiWhiteBoard)\n* showing whether an intended target page exists or not.\n* mobile, printable views\n* LaTex (for maths)\n\n## Admin\n* rename to foowiki\n* start proper docs - /projects on github\n* announce - Jena &amp; semweb lists\n\n## [Foo](Foo)\n* add page media type editing\n* for most, render by wrapping in &lt;pre&gt;\n\n* foo = 'stored procedures' - resources with SPARQL/JS literal templates, pass parameters, return graphs, json... use jsonp?\n\n* support JS source extensions\n* support SPARQL source extensions\n* run.html\n* graph view [vis.js](http://visjs.org/docs/index.html)\n* install from URL\n* reduce whole app to a single bootstrap HTML file + RDF?\n\n* no! // not worth it right now...change model to include versioning (hasVersion) [Content Model](ContentModel)" ;
+                "See also [To Investigate](To Investigate)\n\n## [Home Page](Home Page)\n\n* [Core](#Core)\n* [Admin](#Admin)\n* [Foo](#Foo)\n\n## Core\n* ajaxian import http://www.nickdesteffen.com/blog/file-uploading-over-ajax-using-html5\n* support images \n* search\n* MD page import/export\n* view original MD\n* include related links in RDF - inlinks\n* tags\n* [WikiWhiteBoard](WikiWhiteBoard)\n* showing whether an intended target page exists or not.\n* mobile, printable views\n* LaTex (for maths)\n\n## Admin\n* rename to foowiki\n* start proper docs - /projects on github\n* announce - Jena &amp; semweb lists\n\n## [Foo](Foo)\n* add page media type editing\n* for most, render by wrapping in &lt;pre&gt;, courier font\n\n* foo = 'stored procedures' - resources with SPARQL/JS literal templates, pass parameters, return graphs, json... use jsonp?\n\n* support JS source extensions\n* support SPARQL source extensions\n* run.html\n* graph view [vis.js](http://visjs.org/docs/index.html)\n* install from URL\n* reduce whole app to a single bootstrap HTML file + RDF?\n\n* no! // not worth it right now...change model to include versioning (hasVersion) [Content Model](ContentModel)" ;
         <http://xmlns.com/foaf/0.1/maker>
                 [ <http://xmlns.com/foaf/0.1/nick>
                           "danja" ] .
@@ -57,13 +71,13 @@
 <http://hyperdata.it/wiki/Foo>
         a       <http://purl.org/stuff/wiki#Page> , <http://rdfs.org/sioc/ns#Post> ;
         <http://purl.org/dc/terms/date>
-                "2015-01-10T13:05:57.578Z" ;
+                "2015-01-10T20:11:49.038Z" ;
         <http://purl.org/dc/terms/format>
                 <http://purl.org/NET/mediatypes/text/markdown> ;
         <http://purl.org/dc/terms/title>
                 "Foo" ;
         <http://rdfs.org/sioc/ns#content>
-                "Foo is the working name of the extension/reflection parts of FuWiki\n\n* Javascript as content\n* SPARQL queries as content\n\n[Hello World 1](Hello World 1)" ;
+                "Foo is the working name of the extension/reflection parts of FuWiki\n\n* Javascript as content\n* SPARQL queries as content\n\n* [Hello World 1](Hello World 1)\n* [Hello World 2](Hello World 2)" ;
         <http://xmlns.com/foaf/0.1/maker>
                 [ <http://xmlns.com/foaf/0.1/nick>
                           "danja" ] .

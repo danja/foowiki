@@ -69,6 +69,7 @@
                 window.location.href = window.location.href.replace("run.html", "edit.html");
                 return false;
             });
+              
         });
 
         function formatEntry(entry) {
@@ -86,8 +87,13 @@
         }
     </script>
 
-    <script id="targetScript" type="text/javascript" language="javascript">
-    </script>
+    
+    <!-- script id="targetScript" type="text/javascript" language="javascript">
+function HelloWorld2() {
+   console.log("CALLED");
+    $("#target").html("<p>Hello World!</p>");
+}
+    </script -->
 </head>
 
 <body>
@@ -97,10 +103,11 @@
 
         <div id="entry"></div>
 
-        <p class="center">
+        <p class="center" id="buttons">
             <button id="editButton">Edit</button>
         </p>
         <div id="spinner" class="spinner"></div>
+        <div id="target"></div>
     </div>
 </body>
 
