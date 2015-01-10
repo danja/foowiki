@@ -23,8 +23,14 @@
         var pageURI = queryString["uri"];
 
         pageURI = encodeURI(pageURI);
-        var getPageSparql = replaceAll(getPageSparqlTemplate, "${pageURI}", pageURI);
-        getPageSparql = replaceAll(getPageSparql, "${graphURI}", graphURI);
+
+        var map = {
+            "pageURI": pageURI,
+            "graphURI": graphURI
+        };
+
+        var getPageSparql = templater(getPageSparqlTemplate, map);
+
         console.log(getPageSparql);
 
         var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
@@ -58,7 +64,8 @@
 
                 $("#entry").replaceWith(entry);
                 // put data in versioned here
-                translateLocalLinks();
+                //  translateLocalLinks();
+
             };
             getPage(doneCallback, getPageUrl);
             setupPosting();
@@ -75,13 +82,16 @@
                 nick = $('#nick').val();
                 var content = $('#content').val();
                 content = escape(content);
-                var data = replaceAll(postPageSparqlTemplate, "${content}", content);
-                data = replaceAll(data, "${graphURI}", graphURI);
-                data = replaceAll(data, "${pageURI}", pageURI);
-                data = replaceAll(data, "${title}", title);
-                data = replaceAll(data, "${date}", date);
-                data = replaceAll(data, "${nick}", nick);
-                console.log("POST data = " + data);
+                var map = {
+                    "content": content,
+                    "graphURI": graphURI,
+                    "pageURI": pageURI,
+                    "title": title,
+                    "date": date,
+                    "nick": nick
+                };
+
+                var data = templater(postPageSparqlTemplate, map);
 
                 // put current data in local storage here
                 var callback = function () {
@@ -142,21 +152,30 @@
         }
 
         function generateEntry(uri, date, title, content, nick) {
-            console.log("uri = " + uri + ", date = " + date + " , title = " + title + ", content = " + content + ", nick = " + nick);
-            var entry = "<div class='entry'>";
-            entry += "<h1 class='center'><a href=\"" + uri + "\">" + title + "</a></h1>";
+           // console.log("uri = " + uri + ", date = " + date + " , title = " + title + ", content = " + content + ", nick = " + nick);
 
-            entry += "<form>";
-            entry += "<label for='title'>Title</label>";
-            entry += "<input id='title' type='text' value='" + title + "'></input>";
-            entry += "<label for='content'>Content</label>";
-            entry += "<textarea class='content' id='content' rows='10'>" + content + "</textarea>";
-            entry += "<label for='nick'>Nick</label>";
-            entry += "<input id='nick' type='text' value='" + nick + "'></input>";
-            entry += "</form>";
+            var editEntryTemplate = "<div class='entry'> \
+            <h1 class='center'><a href=\"${uri}\">${title}</a></h1> \
+            <form> \
+            <label for='title'>Title</label> \
+            <input id='title' type='text' value='${title}'></input> \
+            <label for='content'>Content</label> \
+            <textarea class='content' id='content' rows='10'>${content}</textarea> \
+            <label for='nick'>Nick</label> \
+            <input id='nick' type='text' value='${nick}'></input> \
+            </form> \
+            </div>";
+
             //   entry += "<div class='byline center'>" + date + "</div>";
-            entry += "</div>";
-            return entry;
+            var map = {
+                "uri": uri,
+                "title": title,
+                "content": content,
+                "nick": nick
+            };
+
+            return templater(editEntryTemplate, map);
+
         }
     </script>
 
