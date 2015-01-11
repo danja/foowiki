@@ -3,7 +3,7 @@ A minimal [SPARQL](http://www.w3.org/TR/sparql11-overview/) [Wiki](http://en.wik
 
 As it stands it's suitable for use as a personal wiki. It uses [Markdown](http://en.wikipedia.org/wiki/Markdown) editing syntax. It doesn't contain features like page locking or authentication (feel free to add these!).
 
-All FooWiki needs is a (static file) HTTP server and a SPARQL 1.1 server. It's being developed against [Fuseki](http://jena.apache.org/documentation/serving_data/), the Jena SPARQL server (which has a built-in HTTP server) and the instructions below follow this setup. (Please let me know if you get it running against a different SPARQL server, I'll include notes here).
+All FooWiki needs is a (static file) HTTP server and a SPARQL 1.1 server, i.e. ** no server-side code**. It's being developed against [Fuseki](http://jena.apache.org/documentation/serving_data/), the Jena SPARQL server (which has a built-in HTTP server) and the instructions below follow this setup. (Please let me know if you get it running against a different SPARQL server, I'll include notes here).
 
 Issues: see foowiki/todo.txt (will move to github soonish)
 
@@ -27,9 +27,8 @@ You may wish to customise the graph name, it's specified in foowiki/js/config.js
 ## Using FooWiki
 Opening http://localhost:3030/foowiki/index.html in a browser will display a list of pages in the Wiki. From there it should be self-explanatory, if not, let me know.
 
-## (More) Experimental Features
-This is the **Foo!**
-
+## Foo!
+This is an experimental feature, the aim being in-app runtime extensibility via executable wiki pages (Javascript or *maybe* SPARQL). Think [emacs lisp](http://en.wikipedia.org/wiki/Emacs_Lisp) or [Smalltalk](http://en.wikipedia.org/wiki/Smalltalk). Ultimately I'd like it to have a relatively small core of static HTML/JS with everything else being maintained as RDF data.
 In addition to the core pages (see below) there's also a run.html which when called via a pattern like http://localhost:3030/foowiki/run.html?uri=http://hyperdata.it/wiki/Hello%20World%202 will run the source in the content of that page. There are examples in the sample data: HelloWorld1 and HelloWorld2 (more docs to follow once I've played with it a bit).
 
 
