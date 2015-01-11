@@ -27,8 +27,14 @@ You may wish to customise the graph name, it's specified in foowiki/js/config.js
 ## Using FooWiki
 Opening http://localhost:3030/foowiki/index.html in a browser will display a list of pages in the Wiki. From there it should be self-explanatory, if not, let me know.
 
+## (More) Experimental Features
+This is the **Foo!**
+
+In addition to the core pages (see below) there's also a run.html which when called via a pattern like http://localhost:3030/foowiki/run.html?uri=http://hyperdata.it/wiki/Hello%20World%202 will run the source in the content of that page. There are examples in the sample data: HelloWorld1 and HelloWorld2 (more docs to follow once I've played with it a bit).
+
+
 ## How it works
-Most of the code appears as jQuery-flavoured Javascript inside the HTML files (index.html, page.html and edit.html). Could do with refactoring :)
+Most of the code appears as jQuery-flavoured Javascript inside the core HTML files (index.html, page.html and edit.html). Could do with refactoring :)
 
 Queries are composed using (ever-so-simple) templating on foowiki/js/sparql-templates.js. The XML results are (crudely) parsed out using jQuery. Interaction with the SPARQL server is done using jQuery Ajax. Markdown parsing is done by the marked.js lib.
 
