@@ -5,7 +5,7 @@ As it stands it's suitable for use as a personal wiki. It uses [Markdown](http:/
 
 All FooWiki needs is a (static file) HTTP server and a SPARQL 1.1 server, i.e. ** no server-side code**. It's being developed against [Fuseki](http://jena.apache.org/documentation/serving_data/), the Jena SPARQL server (which has a built-in HTTP server) and the instructions below follow this setup. (Please let me know if you get it running against a different SPARQL server, I'll include notes here).
 
-Issues: see foowiki/todo.txt (will move to github soonish)
+I'm aiming for it being a "living system", see [Foo](#Foo).
 
 ## Installation
 First clone the FooWiki files somewhere convenient. These will be served as regular HTML.
@@ -28,9 +28,8 @@ You may wish to customise the graph name, it's specified in foowiki/js/config.js
 Opening http://localhost:3030/foowiki/index.html in a browser will display a list of pages in the Wiki. From there it should be self-explanatory, if not, let me know.
 
 ## Foo!
-This is an experimental feature, the aim being in-app runtime extensibility via executable wiki pages (Javascript or *maybe* SPARQL). Think [emacs lisp](http://en.wikipedia.org/wiki/Emacs_Lisp) or [Smalltalk](http://en.wikipedia.org/wiki/Smalltalk). Ultimately I'd like it to have a relatively small core of static HTML/JS with everything else being maintained as RDF data.
-In addition to the core pages (see below) there's also a run.html which when called via a pattern like http://localhost:3030/foowiki/run.html?uri=http://hyperdata.it/wiki/Hello%20World%202 will run the source in the content of that page. There are examples in the sample data: HelloWorld1 and HelloWorld2 (more docs to follow once I've played with it a bit).
-
+This is an experimental feature, the aim being in-app runtime extensibility via executable wiki pages (Javascript or *maybe* SPARQL). Think [emacs lisp](http://en.wikipedia.org/wiki/Emacs_Lisp) or [Smalltalk](http://en.wikipedia.org/wiki/Smalltalk#reflection) reflection. Ultimately I'd like it to have a relatively small core/kernel of static HTML/JS with everything else being maintained as RDF data.
+Towards this, in addition to the core pages (see below) there's also a run.html which when called via a pattern like http://localhost:3030/foowiki/run.html?uri=http://hyperdata.it/wiki/Hello%20World%202 will run the source in the content of that page. There are examples in the sample data: HelloWorld1 and HelloWorld2 (more docs to follow once I've played with it a bit).
 
 ## How it works
 Most of the code appears as jQuery-flavoured Javascript inside the core HTML files (index.html, page.html and edit.html). Could do with refactoring :)
