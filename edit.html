@@ -33,6 +33,7 @@
         var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
         $(function () {
+            setupErrorHandling();
             spinner();
 
             var doneCallback = function (xml, pageURI) {
@@ -46,9 +47,9 @@
                     entry.title = split[split.length - 1];
                     entry.title = decodeURI(entry.title);
                     entry.content = "enter content here";
-                    entry.nick="danja";
+                    entry.nick = "danja";
                 }
-             //   console.log("done=" + JSON.stringify(entry));
+                //   console.log("done=" + JSON.stringify(entry));
                 entryHTML += formatEntry(entry);
                 $("#entry").replaceWith(entryHTML);
                 // put data in versioned here
@@ -123,12 +124,15 @@
             var editEntryTemplate = "<div class='entry'> \
             <h1 class='center'><a href=\"${uri}\">${title}</a></h1> \
             <form> \
+  <fieldset> \
+        <legend>Edit Post</legend>\
             <label for='title'>Title</label> \
             <input id='title' type='text' value='${title}'></input> \
             <label for='content'>Content</label> \
-            <textarea class='content' id='content' rows='10'>${content}</textarea> \
+            <textarea class='content' id='content' rows='20'>${content}</textarea> \
             <label for='nick'>Nick</label> \
             <input id='nick' type='text' value='${nick}'></input> \
+ </fieldset> \
             </form> \
             </div>";
             return templater(editEntryTemplate, entry);
@@ -140,8 +144,8 @@
 
 <body>
     <div id="container">
-
-        <div class="center"><a href="index.html">FuWiki</a>
+         <div id="errorbox"></div>
+        <div><a href="index.html">Page Index</a>
         </div>
 
         <div id="entry"></div>

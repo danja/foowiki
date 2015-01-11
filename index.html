@@ -27,10 +27,12 @@
         var getPagesUrl = sparqlQueryEndpoint + encodeURIComponent(getPageListSparql) + "&output=xml";
 
         $(function () {
+            setupErrorHandling();
+            spinner();
+
             $("#graphName").attr("value", graphURI);
             setupButtons();
-            spinner();
-            
+
             var doneCallback = function (xml) {
                 var rows = "";
                 var entryArray = xmlToEntryArray(xml);
@@ -81,6 +83,7 @@
 
 <body>
     <div id="container">
+        <div id="errorbox"></div>
         <table id="pagesTable">
             <tr>
                 <th colspan="3"><a href="index.html">FuWiki</a> Pages</th>
@@ -111,4 +114,5 @@
         <div id="spinner" class="spinner"></div>
     </div>
 </body>
+
 </html>

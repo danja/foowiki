@@ -23,6 +23,8 @@
 
     <script type="text/javascript" language="javascript">
         $(function () {
+
+            setupErrorHandling();
             spinner();
 
             var pageURI = queryString["uri"];
@@ -95,7 +97,8 @@
 
 <body>
     <div id="container">
-        <div colspan="8" class="center"><a href="index.html">FuWiki</a>
+        <div id="errorbox"></div>
+        <div><a href="index.html">Page Index</a>
         </div>
 
         <div id="entry"></div>

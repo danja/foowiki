@@ -12,15 +12,16 @@
 
      }).done(function (xml) {
          var pageURI = queryString["uri"];
-            pageURI = encodeURI(pageURI);
+         pageURI = encodeURI(pageURI);
          doneCallback(xml, pageURI);
-     });
+     })
+       ;
  }
 
  function xmlToEntry(xml, pageURI) {
-     
-     console.log("XML = "+xml);
-     
+
+     console.log("XML = " + xml);
+
      var xmlString = (new XMLSerializer()).serializeToString(xml);
 
      // workaround for wrong interpretation of charset
@@ -57,9 +58,9 @@
              entry.nick = $(this).text().trim();
          });
 
-      //   entry += formatEntry(uri, date, title, content, nick);
+         //   entry += formatEntry(uri, date, title, content, nick);
      });
-     
+
      return entry;
  }
 
@@ -71,7 +72,7 @@
      // maybe force to ISO-8859-1, also known as Latin-1 instead?
 
      var $xml = $(xmlString);
-     var entryArray= [];
+     var entryArray = [];
 
      $xml.find("result").each(function () {
          var entry = {};
@@ -92,7 +93,7 @@
              entry.nick = $(this).text().trim();
          });
          entryArray.push(entry);
-    //     rows += formatPageRow(uri, date, title, nick); // content, 
+         //     rows += formatPageRow(uri, date, title, nick); // content, 
      });
      return entryArray;
  }

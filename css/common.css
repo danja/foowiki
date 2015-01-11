@@ -1,7 +1,25 @@
 #container {
     width: 75%;
     margin: 0px auto;
+    padding: 1em 1em 0em 1em;
     position: relative;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    border-right: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+}
+
+#errorbox {
+    display: block;
+    position: absolute;
+    right: 10px;
+    margin: 2px; 
+    border-radius: 10px;
+    width: 20%;
+    background-color: #f33;
+    padding: 4px;
+    text-align: center;
+    /*     font-size: 150%;
+    font-weight: bold; */
 }
 
 table {
@@ -14,6 +32,67 @@ td,
 th {
     border: 1px solid lightgray;
     padding: 4px;
+}
+
+.center {
+    text-align: center;
+}
+
+.content {
+    margin: 0px auto;
+    position: relative;
+}
+
+.byline {
+    padding: 2em;
+    /*  font-weight: bold; */
+    color: gray;
+}
+/* Form elements */
+
+form {
+    font-family: "Lucida Console", Monaco, monospace;
+    /*  border: 2px solid lightgray; */
+}
+
+fieldset {
+    border: 2px solid lightgray;
+    padding: 1em;
+}
+
+legend {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+textarea {
+    display: block;
+    width: 100%;
+    border: 2px solid pink;
+    font-size: 75%;
+}
+
+label {
+    text-align: right;
+}
+
+input {
+    border: 2px solid pink;
+    width: 100%;
+}
+
+pre {
+    "Courier New", Courier, monospace;
+}
+
+.missing {
+    color: #66FF66;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
 a:link {
@@ -31,35 +110,7 @@ a:hover {
 a:active {
     text-decoration: underline;
 }
-
-.center {
-    text-align: center;
-}
-
-.content {
-    margin: 0px auto;
-    position: relative;
-}
-
-textarea {
-    display: block;
-    width: 100%;
-}
-
-.byline {
-    padding: 2em;
-    font-weight: bold;
-}
-
-.missing {
-    color: #66FF66;
-}
-
-label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
+/* Spinner */
 
 .spinner {
     height: 60px;

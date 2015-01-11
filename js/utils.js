@@ -11,6 +11,24 @@
             });
         }
 
+        function setupErrorHandling() {
+
+            $("#errorbox").hide();
+            $("#errorbox").click(function () {
+                $("#errorbox").toggle(500);
+                //  $("#errorbox").hide();
+            });
+
+            $.ajaxSetup({
+                error: function (x, status, error) {
+                    $("#errorbox").text(status + ": " + error);
+                    $("#errorbox").toggle(500);
+                    // $("#errorbox").toggle(2000);
+                }
+            });
+
+        }
+
         /* ultra-simple templating engine
          * replacementMap contains { "name": value, ... }
          * every instance of ${name} in template gets replaced with value
@@ -56,8 +74,8 @@
                         var hashPosition = this.href.indexOf("#");
                         if (hashPosition != -1) {
                             var anchor = this.href.substring(hashPosition); // "#Something"
-                            
-                            anchor = anchor.toLowerCase().replace(/^\s+|\s+$/g,"");
+
+                            anchor = anchor.toLowerCase().replace(/^\s+|\s+$/g, "");
                             //.replace(/\w+/g, '-')
                             console.log("anchor = " + anchor);
 
@@ -90,11 +108,11 @@
                 var length = id.length;
                 if (id[0] == "-" && id[length - 1] == "-") {
                     //      console.log("need to fix");
-                    id = id.substring(1, length/2);
+                    id = id.substring(1, length / 2);
                     $(this).attr("id", id);
                 }
-            //    console.log("ID = " + id);
-                
+                //    console.log("ID = " + id);
+
             });
         }
 
