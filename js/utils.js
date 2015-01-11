@@ -15,8 +15,8 @@
 
             $("#errorbox").hide();
             $("#errorbox").click(function () {
-                $("#errorbox").toggle(500);
-                //  $("#errorbox").hide();
+                // $("#errorbox").toggle(500);
+                $("#errorbox").hide();
             });
 
             $.ajaxSetup({

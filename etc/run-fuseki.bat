@@ -1,10 +1,8 @@
 # adjust paths for your setup
 
-java -Xms2048M -Xmx2048M -jar ../jena-fuseki-1.0.0/fuseki-server.jar --verbose --update --config ../src/config/seki-config.ttl --pages ../jena-fuseki-1.0.0/pages
+java -Xms2048M -Xmx2048M -Xss4m  -jar ~/seki/jena-fuseki-1.0.0/fuseki-server.jar --verbose --update --config /home/danny/fuseki-pages/pages/foowiki/etc/foowiki-config.ttl --pages /home/danny/fuseki-pages/pages
 
-# was just -Xmx1200M
+# --pages ../jena-fuseki-1.0.0/pages
 
-# java -Xmx1200M -jar fuseki-server.jar --update --desc tdb.ttl /seki
-# --verbose
+# -Xss4m is stack
 
-# /home/java/eclipse/eclipse -vmargs -Xms1024M -Xmx1536M
