@@ -31,6 +31,9 @@ Opening http://localhost:3030/foowiki/index.html in a browser will display a lis
 This is an experimental feature, the aim being in-app runtime extensibility via executable wiki pages (Javascript or *maybe* SPARQL). Think [emacs lisp](http://en.wikipedia.org/wiki/Emacs_Lisp) or [Smalltalk](http://en.wikipedia.org/wiki/Smalltalk#reflection) reflection. Ultimately I'd like it to have a relatively small core/kernel of static HTML/JS with everything else being maintained as RDF data.
 Towards this, in addition to the core pages (see below) there's also a run.html which when called via a pattern like http://localhost:3030/foowiki/run.html?uri=http://hyperdata.it/wiki/Hello%20World%202 will run the source in the content of that page. There are examples in the sample data: HelloWorld1 and HelloWorld2 (more docs to follow once I've played with it a bit).
 
+### Why "FooWiki"?
+Initially I called this thing FuWiki as it uses Fuseki as a back end. But then I needed a name for the reflection bit so used the standard [metasyntactic variable](https://en.wikipedia.org/wiki/Metasyntactic_variable) [foo](https://en.wikipedia.org/wiki/Foo).
+
 ## How it works
 Most of the code appears as jQuery-flavoured Javascript inside the core HTML files (index.html, page.html and edit.html). Could do with refactoring :)
 
@@ -41,6 +44,7 @@ There's some sample data etc. in the foowiki/examples/ directory.
 Some background over here : https://dannyayers.wordpress.com/2014/12/30/browser-sparql-server-wiki/
 
 Apache 2 license.
+
 
 ## See Also
 I plan to use the same data model in [Seki](https://github.com/danja/seki) (middleware/a front-end for connecting to an independent SPARQL server using node.js) and [Thiki](https://github.com/danja/thiki) (Personal Wiki for Android Devices).
