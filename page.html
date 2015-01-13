@@ -41,7 +41,7 @@
 
             var doneCallback = function (xml) {
                 var entry = xmlToEntry(xml, pageURI);
-              //  console.log("PJ=" + JSON.stringify(entry));
+                //  console.log("PJ=" + JSON.stringify(entry));
                 if (!entry) {
                     entry = {
                         content: "",
@@ -52,12 +52,22 @@
                     window.location.href = window.location.href.replace("page.html", "edit.html");
                 }
 
-                 if(entry.format == "http://purl.org/NET/mediatypes/application/javascript") { // should make more general?
-                                            entry.content = "<pre>"+  entry.content + "</pre>";
-                                        };
-                
+                // check if it's runnable
+                if (entry.format == "http://purl.org/NET/mediatypes/application/javascript") { // should make more general?
+                    entry.content = "<pre>" + entry.content + "</pre>";
+
+                    var runButton = $("<button>");
+                    $("#buttons").append(runButton);
+                    runButton.attr("id", "runButton");
+                    runButton.text("Run");
+                    $("#runButton").click(function () {
+                        window.location.href = window.location.href.replace("page.html", "run.html");
+                        return false;
+                    });
+                };
+
                 var entryHTML = formatEntry(entry);
-                 
+
                 $("#entry").replaceWith(entryHTML);
                 translateLocalLinks();
                 fixHeaderIDs(); // little workaround for odd marked.js behaviour
@@ -70,17 +80,7 @@
                 return false;
             });
 
-            var runnable = true;
-            if (runnable) {
-                var runButton = $("<button>");
-                $("#buttons").append(runButton);
-                runButton.attr("id", "runButton");
-                runButton.text("Run");
-                $("#runButton").click(function () {
-                    window.location.href = window.location.href.replace("page.html", "run.html");
-                    return false;
-                });
-            }
+        
         });
 
         function formatEntry(entry) {
