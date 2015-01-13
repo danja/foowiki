@@ -3,7 +3,7 @@ A minimal [SPARQL](http://www.w3.org/TR/sparql11-overview/) [Wiki](http://en.wik
 
 As it stands it's suitable for use as a personal wiki. It uses [Markdown](http://en.wikipedia.org/wiki/Markdown) editing syntax. It doesn't contain features like page locking or authentication (feel free to add these!).
 
-All FooWiki needs is a (static file) HTTP server and a SPARQL 1.1 server, i.e. ** no server-side code**. It's being developed against [Fuseki](http://jena.apache.org/documentation/serving_data/), the Jena SPARQL server (which has a built-in HTTP server) and the instructions below follow this setup. (Please let me know if you get it running against a different SPARQL server, I'll include notes here).
+All FooWiki needs is a (static file) HTTP server and a SPARQL 1.1 server, i.e. *no server-side code*. It's being developed against [Fuseki](http://jena.apache.org/documentation/serving_data/), the Jena SPARQL server (which has a built-in HTTP server) and the instructions below follow this setup. (Please let me know if you get it running against a different SPARQL server, I'll include notes here).
 
 I'm aiming for it being a "living system", see [Foo](#Foo).
 
