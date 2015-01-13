@@ -70,7 +70,7 @@
             $('div.content  a').each(
                 function () {
                     console.log("this = " + this);
-                    if (this.href.indexOf(serverBaseURI) == 0) {
+                    if (this.href.indexOf(serverBaseURI) != -1) { // less than perfect
                         var hashPosition = this.href.indexOf("#");
                         if (hashPosition != -1) {
                             var anchor = this.href.substring(hashPosition); // "#Something"
@@ -88,9 +88,9 @@
                                 }, 250);
                             });
                         } else {
-                            //  console.log("old href = " + this.href);
+                              console.log("old href = " + this.href);
                             var localRef = this.href.substring(serverBaseURI.length);
-                            //   console.log("new = " + this.href.substring(serverBaseURI.length));
+                               console.log("new = " + this.href.substring(serverBaseURI.length));
                             //  console.log("new href = " + this.href);
                             this.href = serverBaseURI + "page.html?uri=" + pagesBaseURI + localRef;
                         }

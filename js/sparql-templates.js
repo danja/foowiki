@@ -8,7 +8,7 @@ SELECT DISTINCT * \n\
 FROM NAMED <${graphURI}>  \n\
 WHERE { \n\
 ?uri \n\
-dc:format <http://purl.org/NET/mediatypes/text/markdown> ; \n\
+dc:format ?format ; \n\
 dc:date ?date ; \n\
 dc:title ?title ; \n\
 a wiki:Page ; \n\
@@ -30,7 +30,7 @@ var getPageSparqlTemplate = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-synta
     FROM NAMED <${graphURI}>  \n\
     WHERE { \n\
     <${pageURI}> \n\
-    dc:format <http://purl.org/NET/mediatypes/text/markdown> ; \n\
+    dc:format ?format ; \n\
     dc:date ?date ; \n\
     dc:title ?title ; \n\
     sioc:content ?content ; \n\
@@ -55,7 +55,7 @@ INSERT DATA {  \n\
 GRAPH <${graphURI}> {  \n\
 \n\
 <${pageURI}> \n\
-dc:format <http://purl.org/NET/mediatypes/text/markdown> ; \n\
+dc:format <${format}> ; \n\
 dc:date \"${date}\" ; \n\
 dc:title \"\"\"${title}\"\"\" ; \n\
 sioc:content  \"\"\"${content}\"\"\" ; \n\

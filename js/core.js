@@ -14,13 +14,12 @@
          var pageURI = queryString["uri"];
          pageURI = encodeURI(pageURI);
          doneCallback(xml, pageURI);
-     })
-       ;
+     });
  }
 
  function xmlToEntry(xml, pageURI) {
 
-     console.log("XML = " + xml);
+     //  console.log("XML = " + xml);
 
      var xmlString = (new XMLSerializer()).serializeToString(xml);
 
@@ -29,7 +28,9 @@
      // maybe force to ISO-8859-1, also known as Latin-1 instead?
 
      var $xml = $(xmlString);
-     var entry = {};
+     var entry = {
+         "uri": "page.html?uri=" + pageURI
+     };
 
      var results = $xml.find("result");
 
@@ -38,12 +39,6 @@
      }
 
      results.each(function () {
-         var uri, date, title, content, nick;
-
-         //			$(this).find("binding[name='uri']").each(function() {
-         //				uri = $(this).text().trim();
-         //			});
-         entry.uri = "page.html?uri=" + pageURI;
 
          $(this).find("binding[name='date']").each(function () {
              entry.date = $(this).text().trim();
@@ -57,8 +52,9 @@
          $(this).find("binding[name='nick']").each(function () {
              entry.nick = $(this).text().trim();
          });
-
-         //   entry += formatEntry(uri, date, title, content, nick);
+         $(this).find("binding[name='format']").each(function () {
+             entry.format = $(this).text().trim();
+         });
      });
 
      return entry;

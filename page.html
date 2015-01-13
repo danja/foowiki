@@ -41,7 +41,7 @@
 
             var doneCallback = function (xml) {
                 var entry = xmlToEntry(xml, pageURI);
-                console.log("PJ=" + JSON.stringify(entry));
+              //  console.log("PJ=" + JSON.stringify(entry));
                 if (!entry) {
                     entry = {
                         content: "",
@@ -85,7 +85,7 @@
             entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
 
             var entryTemplate = "<div class='entry'> \
-            <h1 class='center'><a href=${uri}>${title}</a></h1> \
+            <h1 class='center' id='pagetitle'><a href=${uri}>${title}</a></h1> \
             <div class='content'>${content}</div> \
             <div class='byline center'>latest edit by ${nick} on ${date}</div> \
             </div>";
@@ -98,7 +98,7 @@
 <body>
     <div id="container">
         <div id="errorbox"></div>
-        <div><a href="index.html">Page Index</a>
+        <div class="tab"><a href="index.html">Page Index</a>
         </div>
 
         <div id="entry"></div>
