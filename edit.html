@@ -49,23 +49,25 @@
                         entry.content = "enter content here";
                         entry.nick = "danja";
                     }
+                        
                     //   console.log("done=" + JSON.stringify(entry));
                     entryHTML += formatEntry(entry);
-                    // makeSelectBlock($("#format"), selectedValue);
+                                        // makeSelectBlock($("#format"), selectedValue);
                     console.log("FORMAT = " + entry.format);
 
                     //  $("#format").val(entry.format);
                
                         $("#entry").replaceWith(entryHTML);
+                       $("#format option").each(
+                        function () {
+                       console.log("Q "+this.selected);
+                            this.selected = ($(this).attr("value") == entry.format);
+                                     
+                            });
                         // put data in versioned here
                     };
                     getPage(doneCallback, getPageUrl);
-                   $("option").each(
-                        function () {
-                       console.log("Q "+this.selected);
-                            this.selected = (this.attr("value") == entry.format);
-                                     
-                            });
+                
                     setupPosting();
           
 

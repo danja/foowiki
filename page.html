@@ -52,7 +52,12 @@
                     window.location.href = window.location.href.replace("page.html", "edit.html");
                 }
 
+                 if(entry.format == "http://purl.org/NET/mediatypes/application/javascript") { // should make more general?
+                                            entry.content = "<pre>"+  entry.content + "</pre>";
+                                        };
+                
                 var entryHTML = formatEntry(entry);
+                 
                 $("#entry").replaceWith(entryHTML);
                 translateLocalLinks();
                 fixHeaderIDs(); // little workaround for odd marked.js behaviour
