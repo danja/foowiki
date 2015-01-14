@@ -100,7 +100,8 @@ Array.prototype.contains = function(obj) {
                             });
                         } else {
                               console.log("old href = " + this.href);
-                            var localRef = this.href.substring(serverBaseURI.length);
+                            // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/FuWiki%20To%20Do
+                            var localRef = this.href.substring(this.href.indexOf(serverBaseURI)+serverBaseURI.length);
                                console.log("new = " + this.href.substring(serverBaseURI.length));
                             //  console.log("new href = " + this.href);
                             this.href = serverBaseURI + "page.html?uri=" + pagesBaseURI + localRef;

@@ -11,7 +11,7 @@
    var sparqlQueryEndpoint = "http://localhost:3030/foowiki/sparql?query=";
    var sparqlUpdateEndpoint = "http://localhost:3030/foowiki/update";
 */
-   var serverBaseURI = "/foowiki/";
+   var serverRootPath = "/foowiki/";
    var sparqlQueryEndpoint = "/foowiki/sparql?query=";
 
    var sparqlQueryEndpoint = "/foowiki/sparql?query=";
