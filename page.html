@@ -7,11 +7,19 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/common.css">
+    <!-- link rel="stylesheet" type="text/css" href="css/jquery-ui.css" -->
+    <!-- from https://github.com/aehlke/tag-it -->
+    <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
 
     <script src="js/marked.js"></script>
 
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/jquery-migrate-1.2.1.js"></script>
+    <script src="js/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- from https://github.com/aehlke/tag-it -->
+    <script src="js/tag-it.js" type="text/javascript" charset="utf-8"></script>
 
     <!-- date formatting -->
     <script src="js/moment.js"></script>
@@ -52,9 +60,17 @@
                     window.location.href = window.location.href.replace("page.html", "edit.html");
                 }
 
-                // check if it's runnable
-                if (entry.format == "http://purl.org/NET/mediatypes/application/javascript") { // should make more general?
+                
+                // check if it's 
+                if (preformatFormats.contains(entry.format)) { 
                     entry.content = "<pre>" + entry.content + "</pre>";
+                }
+                
+                console.log("entry.format = "+entry.format);
+                  console.log("runnableFormats = "+JSON.stringify(runnableFormats));
+                  console.log("runnableFormats.contains(entry.format) = "+runnableFormats.contains(entry.format));
+                   // check if it's runnable
+                if (runnableFormats.contains(entry.format)) { 
 
                     var runButton = $("<button>");
                     $("#buttons").append(runButton);
@@ -71,6 +87,7 @@
                 $("#entry").replaceWith(entryHTML);
                 translateLocalLinks();
                 fixHeaderIDs(); // little workaround for odd marked.js behaviour
+                setupTags();
             };
 
             getPage(doneCallback, getPageUrl);
@@ -80,8 +97,16 @@
                 return false;
             });
 
-        
+
         });
+
+        function setupTags() {
+
+            $("#tags").tagit({
+                availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
+                readOnly: true
+            });
+        }
 
         function formatEntry(entry) {
             //   console.log("J=" + JSON.stringify(entry));
@@ -93,6 +118,11 @@
             <h1 class='center' id='pagetitle'><a href=${uri}>${title}</a></h1> \
             <div class='content'>${content}</div> \
             <div class='byline center'>latest edit by ${nick} on ${date}</div> \
+      <label for='tags'>Tags</label> \
+            <ul id='tags'> \
+                <li>Tag1</li> \
+                <li>Tag2</li> \
+            </ul> \
             </div>";
             return templater(entryTemplate, entry);
         }

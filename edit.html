@@ -7,11 +7,21 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/common.css">
+    <!-- link rel="stylesheet" type="text/css" href="css/jquery-ui.css" -->
+    <!-- from https://github.com/aehlke/tag-it -->
+    <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
 
+    
+    
     <script src="js/marked.js"></script>
 
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/jquery-migrate-1.2.1.js"></script>
+    <script src="js/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- from https://github.com/aehlke/tag-it -->
+    <script src="js/tag-it.js" type="text/javascript" charset="utf-8"></script>
 
     <script src="js/config.js"></script>
     <script src="js/sparql-templates.js"></script>
@@ -33,109 +43,115 @@
         var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
         $(function () {
-                setupErrorHandling();
-                spinner();
+            setupErrorHandling();
+            spinner();
 
-                var doneCallback = function (xml, pageURI) {
-                    var entry = xmlToEntry(xml, pageURI);
-                    var entryHTML = "";
-                    uri = "page.html?uri=" + pageURI;
+            var doneCallback = function (xml, pageURI) {
+                var entry = xmlToEntry(xml, pageURI);
+                var entryHTML = "";
+                uri = "page.html?uri=" + pageURI;
 
-                    if (!entry) { // page doesn't exist, so create it
-                        var entry = {};
-                        var split = pageURI.split("/");
-                        entry.title = split[split.length - 1];
-                        entry.title = decodeURI(entry.title);
-                        entry.content = "enter content here";
-                        entry.nick = "danja";
-                    }
-                        
-                    //   console.log("done=" + JSON.stringify(entry));
-                    entryHTML += formatEntry(entry);
-                                        // makeSelectBlock($("#format"), selectedValue);
-                    console.log("FORMAT = " + entry.format);
+                if (!entry) { // page doesn't exist, so create it
+                    var entry = {};
+                    var split = pageURI.split("/");
+                    entry.title = split[split.length - 1];
+                    entry.title = decodeURI(entry.title);
+                    entry.content = "enter content here";
+                    entry.nick = "danja";
+                }
 
-                    //  $("#format").val(entry.format);
-               
-                        $("#entry").replaceWith(entryHTML);
-                       $("#format option").each(
-                        function () {
-                       console.log("Q "+this.selected);
-                            this.selected = ($(this).attr("value") == entry.format);
-                                     
-                            });
-                        // put data in versioned here
-                    };
-                    getPage(doneCallback, getPageUrl);
+                //   console.log("done=" + JSON.stringify(entry));
+                entryHTML += formatEntry(entry);
+
+//                console.log("FORMAT = " + entry.format);
+
+                //  $("#format").val(entry.format);
+
+                $("#entry").replaceWith(entryHTML);
+                $("#format option").each(
+                    function () {
+                        this.selected = ($(this).attr("value") == entry.format);
+
+                    });
+                // put data in versioned here
                 
-                    setupPosting();
-          
+                 setupTags();
+            };
+            getPage(doneCallback, getPageUrl);
+            setupPosting();
+        });
 
-                });
+        function setupTags() {
+            $("#tags").tagit({
+                availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
+                allowSpaces: true
+            });
+        }
 
-            function setupPosting() {
-                $('#cancel').click(function () {
-                    window.location.href = window.location.href.replace("edit.html", "page.html");
-                    return false;
-                });
-
-                $('#submit').click(function () {
-                    var entry = {
-                        "graphURI": graphURI,
-                        "pageURI": pageURI,
-                        "date": (new Date()).toISOString()
-                    };
-                    entry.title = $('#title').val();
-                    entry.nick = $('#nick').val();
-                    entry.content = $('#content').val();
-                    entry.content = escape(entry.content);
-                    entry.format = $('#format').val();
-                    console.log("CONTENT TYPE = " + entry.format);
-
-                    var data = templater(postPageSparqlTemplate, entry);
-
-                    // put current data in local storage here
-                    var callback = function () {
-                        $.ajax({
-                            type: "POST",
-                            url: sparqlUpdateEndpoint,
-                            data: ({
-                                update: data
-                            })
-                        }).done(function () {
-                            window.location.href = window.location.href.replace("edit.html", "page.html");
-                        });
-                    }
-
-                    deletePage(graphURI, pageURI, callback);
-                    return false;
-                });
-                $('#delete').click(function () {
-                    var callback = function () {
-                        window.location.href = "index.html";
-                    }
-                    return deletePage(graphURI, pageURI, callback);
-                });
-            }
-
-            function deletePage(graphURI, pageURI, callback) {
-                var data = replaceAll(deletePageSparqlTemplate, "${pageURI}", pageURI);
-                data = replaceAll(data, "${graphURI}", graphURI);
-                $.ajax({
-                    type: "POST",
-                    url: sparqlUpdateEndpoint,
-                    data: ({
-                        update: data
-                    })
-                }).done(function () {
-                    callback();
-                });
+        function setupPosting() {
+            $('#cancel').click(function () {
+                window.location.href = window.location.href.replace("edit.html", "page.html");
                 return false;
-            }
+            });
 
-            function formatEntry(entry) {
-                // console.log("editEntry = " + JSON.stringify(entry));
-                var editEntryTemplate = "<div class='entry'> \
+            $('#submit').click(function () {
+                var entry = {
+                    "graphURI": graphURI,
+                    "pageURI": pageURI,
+                    "date": (new Date()).toISOString()
+                };
+                entry.title = $('#title').val();
+                entry.nick = $('#nick').val();
+                entry.content = $('#content').val();
+                entry.content = escape(entry.content);
+                entry.format = $('#format').val();
+                console.log("CONTENT TYPE = " + entry.format);
+
+                var data = templater(postPageSparqlTemplate, entry);
+
+                // put current data in local storage here
+                var callback = function () {
+                    $.ajax({
+                        type: "POST",
+                        url: sparqlUpdateEndpoint,
+                        data: ({
+                            update: data
+                        })
+                    }).done(function () {
+                        window.location.href = window.location.href.replace("edit.html", "page.html");
+                    });
+                }
+
+                deletePage(graphURI, pageURI, callback);
+                return false;
+            });
+
+            $('#delete').click(function () {
+                var callback = function () {
+                    window.location.href = "index.html";
+                }
+                return deletePage(graphURI, pageURI, callback);
+            });
+        }
+
+        function deletePage(graphURI, pageURI, callback) {
+            var data = replaceAll(deletePageSparqlTemplate, "${pageURI}", pageURI);
+            data = replaceAll(data, "${graphURI}", graphURI);
+            $.ajax({
+                type: "POST",
+                url: sparqlUpdateEndpoint,
+                data: ({
+                    update: data
+                })
+            }).done(function () {
+                callback();
+            });
+            return false;
+        }
+
+        function formatEntry(entry) {
+            // console.log("editEntry = " + JSON.stringify(entry));
+            var editEntryTemplate = "<div class='entry'> \
             <h1 class='center'><a href=\"${uri}\">${title}</a></h1> \
             <form> \
   <fieldset> \
@@ -145,7 +161,10 @@
             <label for='content'>Content</label> \
             <textarea class='content' id='content' rows='20'>${content}</textarea> \
             <label for='tags'>Tags</label> \
-            <input id='tags' type='text' value='${tags}'></input> \
+            <ul id='tags'  id='allowSpacesTags'> \
+                <li>Tag1</li> \
+                <li>Tag2</li> \
+            </ul> \
             <label for='nick'>Nick</label> \
             <input id='nick' type='text' value='${nick}'></input> \
             <label for='format'>Format</label><!-- is Media Type URI --> \
@@ -156,8 +175,8 @@
  </fieldset> \
             </form> \
             </div>";
-                return templater(editEntryTemplate, entry);
-            }
+            return templater(editEntryTemplate, entry);
+        }
     </script>
 
 </head>
