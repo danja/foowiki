@@ -81,7 +81,7 @@ Array.prototype.contains = function(obj) {
             $('div.content  a').each(
                 function () {
                     console.log("this = " + this);
-                    if (this.href.indexOf(serverBaseURI) != -1) { // less than perfect
+                    if (this.href.indexOf(serverRootPath) != -1) { // less than perfect
                         var hashPosition = this.href.indexOf("#");
                         if (hashPosition != -1) {
                             var anchor = this.href.substring(hashPosition); // "#Something"
@@ -101,10 +101,10 @@ Array.prototype.contains = function(obj) {
                         } else {
                               console.log("old href = " + this.href);
                             // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/FuWiki%20To%20Do
-                            var localRef = this.href.substring(this.href.indexOf(serverBaseURI)+serverBaseURI.length);
-                               console.log("new = " + this.href.substring(serverBaseURI.length));
+                            var localRef = this.href.substring(this.href.indexOf(serverRootPath)+serverRootPath.length);
+                               console.log("new = " + this.href.substring(serverRootPath.length));
                             //  console.log("new href = " + this.href);
-                            this.href = serverBaseURI + "page.html?uri=" + pagesBaseURI + localRef;
+                            this.href = serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
                         }
                     }
 
