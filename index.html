@@ -14,6 +14,10 @@
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/jquery-migrate-1.2.1.js"></script>
 
+    <!-- script src="js/jquery-ui.js"></script>
+    <script src="js/jquery.fileupload.js"></script>
+    <script src="js/jquery.iframe-transport.js"></script -->
+
     <!-- date formatting -->
     <script src="js/moment.js"></script>
 
@@ -61,7 +65,14 @@
                 var turtleURL = sparqlQueryEndpoint + "CONSTRUCT+%7B+%3Fs+%3Fp+%3Fo+%7D++WHERE+%7B%0D%0A+++GRAPH+%3Chttp%3A%2F%2Fhyperdata.it%2Fwiki%3E+%7B%0D%0A++++++%3Fs+%3Fp+%3Fo%0D%0A+++%7D%0D%0A%7D&output=text";
                 location.href = turtleURL;
             });
+            
+            $("#newPageButton").click(function () {
+                var newPageName = $("#newPageName").val();
+                
+                 window.location.href = window.location.href = serverRootPath+"edit.html?uri="+graphURI+"/"+newPageName;
+            });
 
+            // OLD
             $("#upload-button").click(function () {
                 var data = new FormData($("#upload-file").val());
                 console.log("DATA = " + data);
@@ -77,6 +88,17 @@
                 });
                 //    e.preventDefault();
             });
+            // NEW
+            /*
+            $('#fileupload').fileupload({
+                dataType: 'json',
+                done: function (e, data) {
+                    $.each(data.result.files, function (index, file) {
+                        $('<p/>').text(file.name).appendTo(document.body);
+                    });
+                }
+            });
+            */
         }
     </script>
 </head>
@@ -95,14 +117,21 @@
             </tr>
             <tr id="pages"></tr>
         </table>
-        <p class="center">
-            <button id="turtle">Export Turtle</button>
+
+        <p>
+            <label for='newPageName'>New Page</label>
+            <button id="newPageButton">Create New Page</button>
+            <input id="newPageName" type="text" size="40" />
+        </p>
+        <p>
+
             <!-- form id="upload-form" enctype="multipart/form-data">
                 <input type="file" id="upload-file" name="upload" />
                 <button type="submit" id="upload-button">Upload Turtle</button>
             </form -->
             <h3>Upload RDF</h3>
-            <form action="/foowiki/upload" enctype="multipart/form-data" method="post"><!-- TODO move to config (bypass Fuseki) -->
+            <form action="/foowiki/upload" enctype="multipart/form-data" method="post">
+                <!-- TODO move to config (bypass Fuseki) -->
                 <!-- onsubmit="window.location.href = 'index.html'; return false;" -->
                 <input id="filename" type="file" name="UNSET FILE NAME" size="40" multiple="">
                 <label for='graphName'>Graph</label>
@@ -110,7 +139,12 @@
                 <br/>
                 <input type="submit" value="Upload">
             </form>
+            <h3>Export Turtle</h3>
+            <button id="turtle">Export</button>
         </p>
+
+        <!-- input id="fileupload" type="file" name="files[]" data-url="/foowiki/upload" multiple -->
+
         <div id="spinner" class="spinner"></div>
     </div>
 </body>
