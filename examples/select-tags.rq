@@ -7,11 +7,6 @@ PREFIX wiki: <http://purl.org/stuff/wiki#>
 
 SELECT DISTINCT * WHERE {
 	?uri     a wiki:Page ;
-	dc:format <http://purl.org/NET/mediatypes/text/markdown> ;
-    dc:date ?date ;
-    dc:title ?title ;
-    sioc:content ?content ;
-    foaf:maker [
-        foaf:nick ?nick
-    ] .
+	dc:topic ?topicURI .
+    ?topicURI rdfs:label ?topicLabel .
 }
