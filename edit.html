@@ -12,8 +12,8 @@
     <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
 
-    
-    
+
+
     <script src="js/marked.js"></script>
 
     <script src="js/jquery-1.10.2.js"></script>
@@ -47,9 +47,9 @@
             spinner();
 
             var doneCallback = function (xml, pageURI) {
-            //    var entry = xmlToEntry(xml, pageURI);
+                //    var entry = xmlToEntry(xml, pageURI);
                 var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
-                    var entry = entryJSON[0];
+                var entry = entryJSON[0];
                 entry["uri"] = "page.html?uri=" + pageURI;
                 var entryHTML = "";
                 uri = "page.html?uri=" + pageURI;
@@ -66,7 +66,7 @@
                 //   console.log("done=" + JSON.stringify(entry));
                 entryHTML += formatEntry(entry);
 
-//                console.log("FORMAT = " + entry.format);
+                //                console.log("FORMAT = " + entry.format);
 
                 //  $("#format").val(entry.format);
 
@@ -77,19 +77,21 @@
 
                     });
                 // put data in versioned here
-                
-                 setupTags();
+
+                //      var pageURI = queryString["uri"];
+                //  pageURI = encodeURI(pageURI);
+
+                var pageMap = {
+                    "pageURI": pageURI,
+                    "graphURI": graphURI
+                };
+
+                setupTags(pageMap, false);
+                //   $("#tags").tagit({
             };
             getDataForURL(doneCallback, getPageUrl);
             setupPosting();
         });
-
-        function setupTags() {
-            $("#tags").tagit({
-                availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
-                allowSpaces: true
-            });
-        }
 
         function setupPosting() {
             $('#cancel').click(function () {
@@ -121,7 +123,11 @@
                             update: data
                         })
                     }).done(function () {
-                        window.location.href = window.location.href.replace("edit.html", "page.html");
+                        var callback = function () {
+                            window.location.href = window.location.href.replace("edit.html", "page.html");
+                        };
+                    //    submitTags(graphURI, pageURI, callback);
+                        callback();
                     });
                 }
 
@@ -137,9 +143,13 @@
             });
         }
 
-        function deletePage(graphURI, pageURI, callback) {
-            var data = replaceAll(deletePageSparqlTemplate, "${pageURI}", pageURI);
-            data = replaceAll(data, "${graphURI}", graphURI);
+        function submitTags(graphURI, pageURI, callback) {
+            // TAGS
+            var tagsCommas = $("#tags").tagit("assignedTags");
+            // console.log("TAGS="+tags);
+            var tags = tagsCommas.split(",");
+            var data = templater(postTagsSparqlTemplate, tags);
+
             $.ajax({
                 type: "POST",
                 url: sparqlUpdateEndpoint,
@@ -147,14 +157,30 @@
                     update: data
                 })
             }).done(function () {
-                callback();
+                
+                        callback();
+               
             });
-            return false;
-        }
+                    }
 
-        function formatEntry(entry) {
-            // console.log("editEntry = " + JSON.stringify(entry));
-            var editEntryTemplate = "<div class='entry'> \
+            function deletePage(graphURI, pageURI, callback) {
+                var data = replaceAll(deletePageSparqlTemplate, "${pageURI}", pageURI);
+                data = replaceAll(data, "${graphURI}", graphURI);
+                $.ajax({
+                    type: "POST",
+                    url: sparqlUpdateEndpoint,
+                    data: ({
+                        update: data
+                    })
+                }).done(function () {
+                    callback();
+                });
+                return false;
+            }
+
+            function formatEntry(entry) {
+                // console.log("editEntry = " + JSON.stringify(entry));
+                var editEntryTemplate = "<div class='entry'> \
             <h1 class='center'><a href=\"${uri}\">${title}</a></h1> \
             <form> \
   <fieldset> \
@@ -176,8 +202,8 @@
  </fieldset> \
             </form> \
             </div>";
-            return templater(editEntryTemplate, entry);
-        }
+                return templater(editEntryTemplate, entry);
+            }
     </script>
 
 </head>

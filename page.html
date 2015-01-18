@@ -36,6 +36,19 @@
             spinner();
 
             ////////////////// get page
+            getPage();
+
+            // end get page
+
+            $('#editButton').click(function () {
+                window.location.href = window.location.href.replace("page.html", "edit.html");
+                return false;
+            });
+
+
+        });
+
+        function getPage() {
             var pageURI = queryString["uri"];
             pageURI = encodeURI(pageURI);
 
@@ -49,15 +62,15 @@
             var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
             var doneCallback = function (xml) {
-             //   var entry = xmlToEntry(xml, pageURI);
-                
-               //   var entryXmlNames = ["content", "date", "title", "nick"];
-                
+                //   var entry = xmlToEntry(xml, pageURI);
+
+                //   var entryXmlNames = ["content", "date", "title", "nick"];
+
                 var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
-                
-                 console.log("PJ=" + JSON.stringify(entry));
-                 console.log("PJ2=" + JSON.stringify(entryJSON));
-                
+
+                //  console.log("PJ=" + JSON.stringify(entry));
+                //  console.log("PJ2=" + JSON.stringify(entryJSON));
+
                 if (!entryJSON) {
                     entryJSON = {
                         content: "",
@@ -68,7 +81,7 @@
                     window.location.href = window.location.href.replace("page.html", "edit.html");
                 }
 
-                 // "uri": "page.html?uri=" + pageURI
+                // "uri": "page.html?uri=" + pageURI
                 var entry = entryJSON[0];
                 entry["uri"] = "page.html?uri=" + pageURI;
                 // check if it's code-like
@@ -94,43 +107,14 @@
                 $("#entry").replaceWith(entryHTML);
                 translateLocalLinks();
                 fixHeaderIDs(); // little workaround for odd marked.js behaviour
-                setupTags(pageMap);
+                setupTags(pageMap, true);
             };
 
             getDataForURL(doneCallback, getPageUrl);
-
-            // end get page
-
-            $('#editButton').click(function () {
-                window.location.href = window.location.href.replace("page.html", "edit.html");
-                return false;
-            });
-
-
-        });
-
-        function setupTags(pageMap) {
-            var getTagsSparql = templater(getTagsSparqlTemplate, pageMap);
-
-            console.log("getTagsSparql = " + getTagsSparql);
-            var getTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getTagsSparql) + "&output=xml";
-
-            var doneCallback = function (xml) {
-                var xmlString = (new XMLSerializer()).serializeToString(xml);
-                console.log("XML = " + xmlString);
-                 var tagsXmlNames = ["topicURI", "topicLabel"];
-                var tags = sparqlXMLtoJSON(xml, tagsXmlNames);
-                console.log("TAGS = " + JSON.stringify(tags));
-                $("#tags").tagit({
-                    availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
-                    readOnly: true
-                });
-            }
-
-            getDataForURL(doneCallback, getTagsUrl);
-
-
         }
+
+
+
 
         function formatEntry(entry) {
             //   console.log("J=" + JSON.stringify(entry));
@@ -144,8 +128,6 @@
             <div class='byline center'>latest edit by ${nick} on ${date}</div> \
       <label for='tags'>Tags</label> \
             <ul id='tags'> \
-                <li>Tag1</li> \
-                <li>Tag2</li> \
             </ul> \
             </div>";
             return templater(entryTemplate, entry);
