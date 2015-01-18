@@ -45,7 +45,7 @@
          var map = {};
          for (var i = 0; i < bindingNames.length; i++) {
              var name = bindingNames[i];
-             console.log("NAME=" + name);
+        //     console.log("NAME=" + name);
              $(this).find("binding[name='" + name + "']").each(function () {
                //  entry[name] = $(this).text().trim();
                 // console.log("entry[name]=" + entry[name]);

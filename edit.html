@@ -12,7 +12,7 @@
     <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
 
-
+   <script src="js/freemarker.js" type="text/javascript"></script>   
 
     <script src="js/marked.js"></script>
 
@@ -108,7 +108,7 @@
                 entry.title = $('#title').val();
                 entry.nick = $('#nick').val();
                 entry.content = $('#content').val();
-                entry.content = escape(entry.content);
+                entry.content = escapeXml(entry.content);
                 entry.format = $('#format').val();
                 console.log("CONTENT TYPE = " + entry.format);
 

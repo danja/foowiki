@@ -40,6 +40,7 @@
 
         }
 
+
         /* ultra-simple templating engine
          * replacementMap contains { "name": value, ... }
          * every instance of ${name} in template gets replaced with value
@@ -47,11 +48,20 @@
          * (it could be maybe done with map() and/or some kind of reflection, but I reckon this is clearer
          */
         function templater(template, replacementMap) {
+
+            /*
             for (var name in replacementMap) {
                 var reg = new RegExp("\\$\\{" + name + "\\}", "g");
                 template = template.replace(reg, replacementMap[name]);
             }
             return template;
+*/
+                  console.log("template = "+template);
+            //        console.log(" replacementMap = "+JSON.stringify( replacementMap));
+            //       console.log("freemarker.render(template, replacementMap) == "+freemarker.render(template, replacementMap));
+            //           console.log("B");
+            //     
+            return freemarker.render(template, replacementMap);
         }
 
         function escapeRegExp(string) {
@@ -128,7 +138,7 @@
             });
         }
 
-        function escape(markup) {
+        function escapeXml(markup) {
             markup = markup.replace(/&/g, "&amp;");
             markup = markup.replace(/</g, "&lt;");
             markup = markup.replace(/>/g, "&gt;");
