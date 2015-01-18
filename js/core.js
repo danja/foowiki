@@ -1,4 +1,4 @@
- function getPage(doneCallback, getPageURL) {
+ function getDataForURL(doneCallback, getPageURL) {
      $.ajax({
          url: getPageURL,
          accept: {
@@ -17,6 +17,47 @@
      });
  }
 
+
+
+ function sparqlXMLtoJSON(xml, bindingNames) {
+     
+
+     var xmlString = (new XMLSerializer()).serializeToString(xml);
+
+     // workaround for wrong interpretation of charset
+     xmlString = xmlString.replace(/[^\u0000-\u007F]/g, '');
+     // maybe force to ISO-8859-1, also known as Latin-1 instead?
+
+     var $xml = $(xmlString);
+   //  var entry = {
+   //      "uri": "page.html?uri=" + pageURI
+   //  };
+
+     var results = $xml.find("result");
+
+     if (results.length == 0) {
+         return false;
+     }
+
+     var jsonResults = [];
+
+     results.each(function () {
+         var map = {};
+         for (var i = 0; i < bindingNames.length; i++) {
+             var name = bindingNames[i];
+             console.log("NAME=" + name);
+             $(this).find("binding[name='" + name + "']").each(function () {
+               //  entry[name] = $(this).text().trim();
+                // console.log("entry[name]=" + entry[name]);
+                 map[name] = $(this).text().trim();
+             });
+         }
+         jsonResults.push(map);
+     });
+     return jsonResults;
+ }
+
+/*
  function xmlToEntry(xml, pageURI) {
 
      //  console.log("XML = " + xml);
@@ -28,9 +69,9 @@
      // maybe force to ISO-8859-1, also known as Latin-1 instead?
 
      var $xml = $(xmlString);
-     var entry = {
-         "uri": "page.html?uri=" + pageURI
-     };
+   var entry = {
+        "uri": "page.html?uri=" + pageURI
+  };
 
      var results = $xml.find("result");
 
@@ -59,7 +100,9 @@
 
      return entry;
  }
+ */
 
+/*
  function xmlToEntryArray(xml) {
      var xmlString = (new XMLSerializer()).serializeToString(xml);
 
@@ -93,3 +136,4 @@
      });
      return entryArray;
  }
+ */

@@ -35,23 +35,31 @@
             setupErrorHandling();
             spinner();
 
+            ////////////////// get page
             var pageURI = queryString["uri"];
             pageURI = encodeURI(pageURI);
 
-            var map = {
+            var pageMap = {
                 "pageURI": pageURI,
                 "graphURI": graphURI
             };
 
-            var getPageSparql = templater(getPageSparqlTemplate, map);
+            var getPageSparql = templater(getPageSparqlTemplate, pageMap);
 
             var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
             var doneCallback = function (xml) {
-                var entry = xmlToEntry(xml, pageURI);
-                //  console.log("PJ=" + JSON.stringify(entry));
-                if (!entry) {
-                    entry = {
+             //   var entry = xmlToEntry(xml, pageURI);
+                
+               //   var entryXmlNames = ["content", "date", "title", "nick"];
+                
+                var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
+                
+                 console.log("PJ=" + JSON.stringify(entry));
+                 console.log("PJ2=" + JSON.stringify(entryJSON));
+                
+                if (!entryJSON) {
+                    entryJSON = {
                         content: "",
                         date: "",
                         title: "",
@@ -60,17 +68,16 @@
                     window.location.href = window.location.href.replace("page.html", "edit.html");
                 }
 
-                
-                // check if it's 
-                if (preformatFormats.contains(entry.format)) { 
+                 // "uri": "page.html?uri=" + pageURI
+                var entry = entryJSON[0];
+                entry["uri"] = "page.html?uri=" + pageURI;
+                // check if it's code-like
+                if (preformatFormats.contains(entry.format)) {
                     entry.content = "<pre>" + entry.content + "</pre>";
                 }
-                
-                console.log("entry.format = "+entry.format);
-                  console.log("runnableFormats = "+JSON.stringify(runnableFormats));
-                  console.log("runnableFormats.contains(entry.format) = "+runnableFormats.contains(entry.format));
-                   // check if it's runnable
-                if (runnableFormats.contains(entry.format)) { 
+
+                // check if it's runnable
+                if (runnableFormats.contains(entry.format)) {
 
                     var runButton = $("<button>");
                     $("#buttons").append(runButton);
@@ -87,10 +94,12 @@
                 $("#entry").replaceWith(entryHTML);
                 translateLocalLinks();
                 fixHeaderIDs(); // little workaround for odd marked.js behaviour
-                setupTags();
+                setupTags(pageMap);
             };
 
-            getPage(doneCallback, getPageUrl);
+            getDataForURL(doneCallback, getPageUrl);
+
+            // end get page
 
             $('#editButton').click(function () {
                 window.location.href = window.location.href.replace("page.html", "edit.html");
@@ -100,11 +109,27 @@
 
         });
 
-        function setupTags() {
-            $("#tags").tagit({
-                availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
-                readOnly: true
-            });
+        function setupTags(pageMap) {
+            var getTagsSparql = templater(getTagsSparqlTemplate, pageMap);
+
+            console.log("getTagsSparql = " + getTagsSparql);
+            var getTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getTagsSparql) + "&output=xml";
+
+            var doneCallback = function (xml) {
+                var xmlString = (new XMLSerializer()).serializeToString(xml);
+                console.log("XML = " + xmlString);
+                 var tagsXmlNames = ["topicURI", "topicLabel"];
+                var tags = sparqlXMLtoJSON(xml, tagsXmlNames);
+                console.log("TAGS = " + JSON.stringify(tags));
+                $("#tags").tagit({
+                    availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
+                    readOnly: true
+                });
+            }
+
+            getDataForURL(doneCallback, getTagsUrl);
+
+
         }
 
         function formatEntry(entry) {

@@ -39,13 +39,14 @@
 
             var doneCallback = function (xml) {
                 var rows = "";
-                var entryArray = xmlToEntryArray(xml);
+                var entryArray = sparqlXMLtoJSON(xml, entryXmlNames);
+                    //xmlToEntryArray(xml);
                 for (var i = 0; i < entryArray.length; i++) {
                     rows += formatRow(entryArray[i]); // content, 
                 }
                 $("#pages").replaceWith(rows);
             };
-            getPage(doneCallback, getPagesUrl);
+            getDataForURL(doneCallback, getPagesUrl);
         });
 
 

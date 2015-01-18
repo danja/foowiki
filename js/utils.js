@@ -11,16 +11,16 @@
             });
         }
 
-// bit of a sledgehammer, but whatever works...
-Array.prototype.contains = function(obj) {
-    var i = this.length;
-    while (i--) {
-        if (this[i] == obj) {
-            return true;
+         // bit of a sledgehammer, but whatever works...
+        Array.prototype.contains = function (obj) {
+            var i = this.length;
+            while (i--) {
+                if (this[i] == obj) {
+                    return true;
+                }
+            }
+            return false;
         }
-    }
-    return false;
-}
 
         function setupErrorHandling() {
 
@@ -99,10 +99,10 @@ Array.prototype.contains = function(obj) {
                                 }, 250);
                             });
                         } else {
-                              console.log("old href = " + this.href);
+                            console.log("old href = " + this.href);
                             // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/FuWiki%20To%20Do
-                            var localRef = this.href.substring(this.href.indexOf(serverRootPath)+serverRootPath.length);
-                               console.log("new = " + this.href.substring(serverRootPath.length));
+                            var localRef = this.href.substring(this.href.indexOf(serverRootPath) + serverRootPath.length);
+                            console.log("new = " + this.href.substring(serverRootPath.length));
                             //  console.log("new href = " + this.href);
                             this.href = serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
                         }

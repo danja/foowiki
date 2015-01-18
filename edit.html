@@ -47,7 +47,10 @@
             spinner();
 
             var doneCallback = function (xml, pageURI) {
-                var entry = xmlToEntry(xml, pageURI);
+            //    var entry = xmlToEntry(xml, pageURI);
+                var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
+                    var entry = entryJSON[0];
+                entry["uri"] = "page.html?uri=" + pageURI;
                 var entryHTML = "";
                 uri = "page.html?uri=" + pageURI;
 
@@ -77,7 +80,7 @@
                 
                  setupTags();
             };
-            getPage(doneCallback, getPageUrl);
+            getDataForURL(doneCallback, getPageUrl);
             setupPosting();
         });
 

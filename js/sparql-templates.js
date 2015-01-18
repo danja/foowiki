@@ -41,6 +41,23 @@ var getPageSparqlTemplate = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-synta
 } \n\
 ";
 
+var getTagsSparqlTemplate = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n\
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  \n\
+PREFIX dc: <http://purl.org/dc/terms/>  \n\
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>  \n\
+PREFIX sioc: <http://rdfs.org/sioc/ns#>  \n\
+PREFIX wiki: <http://purl.org/stuff/wiki#>  \n\
+ \n\
+SELECT DISTINCT *  \n\
+ FROM NAMED <${graphURI}>  \n\
+WHERE {  \n\
+	<${pageURI}>  a wiki:Page ;  \n\
+	dc:topic ?topicURI .  \n\
+    ?topicURI rdfs:label ?topicLabel .  \n\
+}  \n\
+";
+
+
 var postPageSparqlTemplate = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  \n\
 PREFIX dc: <http://purl.org/dc/terms/> \n\
 PREFIX foaf: <http://xmlns.com/foaf/0.1/> \n\
