@@ -12,7 +12,7 @@
     <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
 
-   <script src="js/freemarker.js" type="text/javascript"></script>   
+    <script src="js/freemarker.js" type="text/javascript"></script>
 
     <script src="js/marked.js"></script>
 
@@ -110,7 +110,7 @@
                 entry.content = $('#content').val();
                 entry.content = escapeXml(entry.content);
                 entry.format = $('#format').val();
-                console.log("CONTENT TYPE = " + entry.format);
+           //     console.log("CONTENT TYPE = " + entry.format);
 
                 var data = templater(postPageSparqlTemplate, entry);
 
@@ -126,8 +126,8 @@
                         var callback = function () {
                             window.location.href = window.location.href.replace("edit.html", "page.html");
                         };
-                    //    submitTags(graphURI, pageURI, callback);
-                        callback();
+                        submitTags(graphURI, pageURI, callback);
+                     //   callback();
                     });
                 }
 
@@ -146,10 +146,28 @@
         function submitTags(graphURI, pageURI, callback) {
             // TAGS
             var tagsCommas = $("#tags").tagit("assignedTags");
-            // console.log("TAGS="+tags);
-            var tags = tagsCommas.split(",");
-            var data = templater(postTagsSparqlTemplate, tags);
+            console.log("tagsCommas=" + tagsCommas);
+            var tagStrings = tagsCommas; //.split(",");
+            var tags = [];
+            for (var i = 0; i < tagStrings.length; i++) {
+                var tag = {
+                    "topicURI": "http://hyperdata.it/tags/" + tagStrings[i],
+                    "topicLabel": tagStrings[i]
+                };
+                tags.push(tag);
+            }
+         
+            var templateMap = {
+                "graphURI": graphURI,
+                "pageURI": pageURI,
+                "tags": tags
+            };
+            
+               console.log("templateMap="+JSON.stringify(templateMap));
+            var data = templater(postTagsSparqlTemplate, templateMap);
 
+            console.log("DATA="+data);
+            test();
             $.ajax({
                 type: "POST",
                 url: sparqlUpdateEndpoint,
@@ -157,30 +175,42 @@
                     update: data
                 })
             }).done(function () {
-                
-                        callback();
-               
+
+                callback();
+
             });
-                    }
+        }
+        
+        function test() {
+          var   templateMap={"graphURI":"http://hyperdata.it/wiki","pageURI":"http://hyperdata.it/wiki/WooWoo","tags":[{"topicURI":"http://hyperdata.it/tags/sdf","topicLabel":"sdf"}]};
+            
+            var template = "<#list tags as t> \n\
+    <${pageURI}> dc:topic <${t.topicURI}> . \n\
+     <${t.topicURI}>  rdfs:label \"${t.topicLabel}\" \n\
+  </#list> \n\
+";
+            
+            console.log("TEST "+templater(template, templateMap));
+        }
 
-            function deletePage(graphURI, pageURI, callback) {
-                var data = replaceAll(deletePageSparqlTemplate, "${pageURI}", pageURI);
-                data = replaceAll(data, "${graphURI}", graphURI);
-                $.ajax({
-                    type: "POST",
-                    url: sparqlUpdateEndpoint,
-                    data: ({
-                        update: data
-                    })
-                }).done(function () {
-                    callback();
-                });
-                return false;
-            }
+        function deletePage(graphURI, pageURI, callback) {
+            var data = replaceAll(deletePageSparqlTemplate, "${pageURI}", pageURI);
+            data = replaceAll(data, "${graphURI}", graphURI);
+            $.ajax({
+                type: "POST",
+                url: sparqlUpdateEndpoint,
+                data: ({
+                    update: data
+                })
+            }).done(function () {
+                callback();
+            });
+            return false;
+        }
 
-            function formatEntry(entry) {
-                // console.log("editEntry = " + JSON.stringify(entry));
-                var editEntryTemplate = "<div class='entry'> \
+        function formatEntry(entry) {
+            // console.log("editEntry = " + JSON.stringify(entry));
+            var editEntryTemplate = "<div class='entry'> \
             <h1 class='center'><a href=\"${uri}\">${title}</a></h1> \
             <form> \
   <fieldset> \
@@ -202,8 +232,8 @@
  </fieldset> \
             </form> \
             </div>";
-                return templater(editEntryTemplate, entry);
-            }
+            return templater(editEntryTemplate, entry);
+        }
     </script>
 
 </head>

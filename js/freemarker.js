@@ -63,10 +63,12 @@ var freemarker = {
 			var match = cmd.match(/\s*(\S*)\s*as\s*(\S*)\s*/);
 			if (match) {
 				parts.push("for (var " + match[2] + "_index in " + freemarker._v(match[1]) + ")");
+                console.log("\n\n\nHERE="+"for (var " + match[2] + "_index in " + freemarker._v(match[1]) + ")");
 			}
 			parts.push("{");
-            if (match) {
-                parts.push(freemarker._v(match[2]) + "=" + freemarker._v(match[1]) + "[" + match[2] + "_index];");
+           if (match) {
+               parts.push(freemarker._v(match[2]) + "=" + freemarker._v(match[1]) + "[" + match[2] + "_index];");
+                          console.log("\n\n\nHERE2="+freemarker._v(match[2]) + "=" + freemarker._v(match[1]) + "[" + match[2] + "_index];");
             }
 		}},
 		'endlist': {start:'</#list', end:'>', process:function(parts, cmd) {			
@@ -135,6 +137,7 @@ var freemarker = {
 			compiled:parts.join(''),
 			template:template
 		};
+      //  console.log("coMPLIED="+engine.compiled);
 		//console.debug(parts.join('\n'));
 		return engine;
 	},

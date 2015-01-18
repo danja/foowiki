@@ -20,7 +20,7 @@
 
 
  function sparqlXMLtoJSON(xml, bindingNames) {
-     
+
 
      var xmlString = (new XMLSerializer()).serializeToString(xml);
 
@@ -29,9 +29,9 @@
      // maybe force to ISO-8859-1, also known as Latin-1 instead?
 
      var $xml = $(xmlString);
-   //  var entry = {
-   //      "uri": "page.html?uri=" + pageURI
-   //  };
+     //  var entry = {
+     //      "uri": "page.html?uri=" + pageURI
+     //  };
 
      var results = $xml.find("result");
 
@@ -45,10 +45,10 @@
          var map = {};
          for (var i = 0; i < bindingNames.length; i++) {
              var name = bindingNames[i];
-        //     console.log("NAME=" + name);
+             //     console.log("NAME=" + name);
              $(this).find("binding[name='" + name + "']").each(function () {
-               //  entry[name] = $(this).text().trim();
-                // console.log("entry[name]=" + entry[name]);
+                 //  entry[name] = $(this).text().trim();
+                 // console.log("entry[name]=" + entry[name]);
                  map[name] = $(this).text().trim();
              });
          }
@@ -57,7 +57,7 @@
      return jsonResults;
  }
 
-/*
+ /*
  function xmlToEntry(xml, pageURI) {
 
      //  console.log("XML = " + xml);
@@ -102,7 +102,7 @@
  }
  */
 
-/*
+ /*
  function xmlToEntryArray(xml) {
      var xmlString = (new XMLSerializer()).serializeToString(xml);
 
@@ -138,40 +138,40 @@
  }
  */
 
-        function setupTags(pageMap, readOnly) {
-            var getTagsSparql = templater(getTagsSparqlTemplate, pageMap);
+ function setupTags(pageMap, readOnly) {
+     var getTagsSparql = templater(getTagsSparqlTemplate, pageMap);
 
-            console.log("getTagsSparql = " + getTagsSparql);
-            var getTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getTagsSparql) + "&output=xml";
+   //  console.log("getTagsSparql = " + getTagsSparql);
+     var getTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getTagsSparql) + "&output=xml";
 
-            var doneCallback = function (xml) {
-                var xmlString = (new XMLSerializer()).serializeToString(xml);
-                //   console.log("XML = " + xmlString);
-                var tagsXmlNames = ["topicURI", "topicLabel"];
-                var tags = sparqlXMLtoJSON(xml, tagsXmlNames);
+     var doneCallback = function (xml) {
+         var xmlString = (new XMLSerializer()).serializeToString(xml);
+         //   console.log("XML = " + xmlString);
+         var tagsXmlNames = ["topicURI", "topicLabel"];
+         var tags = sparqlXMLtoJSON(xml, tagsXmlNames);
 
-                console.log("TAGS = " + JSON.stringify(tags));
+      //   console.log("TAGS = " + JSON.stringify(tags));
 
-                var tagitMap = {
-                    readOnly: readOnly
-                };
+         var tagitMap = {
+             readOnly: readOnly
+         };
 
-                $("#tags").tagit(tagitMap);
+         $("#tags").tagit(tagitMap);
 
-                for (var i = 0; i < tags.length; i++) {
-                    var uri = tags[i]["topicURI"];
-                    var label = tags[i]["topicLabel"];
-                    tagitMap[uri] = label;
-                    $("#tags").tagit('createTag', label);
+         for (var i = 0; i < tags.length; i++) {
+             var uri = tags[i]["topicURI"];
+             var label = tags[i]["topicLabel"];
+             tagitMap[uri] = label;
+             $("#tags").tagit('createTag', label);
 
-                    var selector = "#tags input[value='" + label + "']";
-                    $(selector).attr("name", uri);
-                    
-                    // <li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-read-only">
-                    //   <span class="tagit-label">Three</span>
-                    //   <input type="hidden" value="Three" name="http://hyperdata.it/tags/Three" class="tagit-hidden-field">
-                    // </li>
-                }
-            }
-            getDataForURL(doneCallback, getTagsUrl);
-        }
+             var selector = "#tags input[value='" + label + "']";
+             $(selector).attr("name", uri);
+
+             // <li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-read-only">
+             //   <span class="tagit-label">Three</span>
+             //   <input type="hidden" value="Three" name="http://hyperdata.it/tags/Three" class="tagit-hidden-field">
+             // </li>
+         }
+     }
+     getDataForURL(doneCallback, getTagsUrl);
+ }

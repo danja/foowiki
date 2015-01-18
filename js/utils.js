@@ -56,12 +56,17 @@
             }
             return template;
 */
-                  console.log("template = "+template);
+           //       console.log("template = "+template);
             //        console.log(" replacementMap = "+JSON.stringify( replacementMap));
             //       console.log("freemarker.render(template, replacementMap) == "+freemarker.render(template, replacementMap));
             //           console.log("B");
             //     
-            return freemarker.render(template, replacementMap);
+            var engine = freemarker.create(template);
+	// alert( freemarker.render(engine, {name:'Bob'}) );
+	// // or if don't plan to reuse the engine
+	// alert( freemarker.render("Hello ${name}", {name:'Bob'}); );
+            return freemarker.render(engine, replacementMap);
+           // return freemarker.render(template, replacementMap);
         }
 
         function escapeRegExp(string) {

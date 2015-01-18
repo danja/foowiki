@@ -1,9 +1,12 @@
-var getPageListSparqlTemplate = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n\
+var commonPrefixes = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n\
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  \n\
 PREFIX dc: <http://purl.org/dc/terms/>  \n\
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>  \n\
 PREFIX sioc: <http://rdfs.org/sioc/ns#>  \n\
 PREFIX wiki: <http://purl.org/stuff/wiki#>  \n\
-\n\
+";
+
+var getPageListSparqlTemplate = commonPrefixes+" \n\
 SELECT DISTINCT * \n\
 FROM NAMED <${graphURI}>  \n\
 WHERE { \n\
@@ -20,12 +23,7 @@ ORDER By DESC(?date)  \n\
 # LIMIT 10 \n\
 ";
 
-var getPageSparqlTemplate = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n\
-    PREFIX dc: <http://purl.org/dc/terms/>  \n\
-    PREFIX foaf: <http://xmlns.com/foaf/0.1/>  \n\
-    PREFIX sioc: <http://rdfs.org/sioc/ns#>  \n\
-    PREFIX wiki: <http://purl.org/stuff/wiki#>  \n\
-    \n\
+var getPageSparqlTemplate = commonPrefixes+"\n\
     SELECT DISTINCT * \n\
     FROM NAMED <${graphURI}>  \n\
     WHERE { \n\
@@ -41,13 +39,7 @@ var getPageSparqlTemplate = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-synta
 } \n\
 ";
 
-var getTagsSparqlTemplate = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n\
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  \n\
-PREFIX dc: <http://purl.org/dc/terms/>  \n\
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>  \n\
-PREFIX sioc: <http://rdfs.org/sioc/ns#>  \n\
-PREFIX wiki: <http://purl.org/stuff/wiki#>  \n\
- \n\
+var getTagsSparqlTemplate = commonPrefixes+"\n\
 SELECT DISTINCT *  \n\
  FROM NAMED <${graphURI}>  \n\
 WHERE {  \n\
@@ -58,12 +50,7 @@ WHERE {  \n\
 ";
 
 
-var postPageSparqlTemplate = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  \n\
-PREFIX dc: <http://purl.org/dc/terms/> \n\
-PREFIX foaf: <http://xmlns.com/foaf/0.1/> \n\
-PREFIX sioc: <http://rdfs.org/sioc/ns#> \n\
-PREFIX wiki: <http://purl.org/stuff/wiki#> \n\
-\n\
+var postPageSparqlTemplate = commonPrefixes+"\n\
 WITH <${graphURI}> \n\
 DELETE { <${pageURI}>  ?p ?o }  \n\
 WHERE { <${pageURI}>  ?p ?o } \n\
@@ -84,13 +71,18 @@ foaf:nick \"${nick}\" \n\
 }  \n\
 }";
 
-// could probably be tidier
-var deletePageSparqlTemplate = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  \n\
-PREFIX dc: <http://purl.org/dc/terms/> \n\
-PREFIX foaf: <http://xmlns.com/foaf/0.1/> \n\
-PREFIX sioc: <http://rdfs.org/sioc/ns#> \n\
-PREFIX wiki: <http://purl.org/stuff/wiki#> \n\
+var postTagsSparqlTemplate = commonPrefixes+"\n\
+INSERT DATA {  \n\
+GRAPH <${graphURI}> {  \n\
 \n\
+<#list tags as t> \n\
+    <${pageURI}> dc:topic <${t.topicURI}> . \n\
+     <${t.topicURI}>  rdfs:label \"${t.topicLabel}\" \n\
+  </#list> \n\
+}}";
+
+// could probably be tidier
+var deletePageSparqlTemplate = commonPrefixes+ "\n\
 WITH <${graphURI}> \n\
 DELETE {  \n\
 ?o sioc:topic ?topic . \n\
