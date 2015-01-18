@@ -77,7 +77,7 @@ GRAPH <${graphURI}> {  \n\
 \n\
 <#list tags as t> \n\
     <${pageURI}> dc:topic <${t.topicURI}> . \n\
-     <${t.topicURI}>  rdfs:label \"${t.topicLabel}\" \n\
+     <${t.topicURI}>  rdfs:label \"${t.topicLabel}\" . \n\
   </#list> \n\
 }}";
 

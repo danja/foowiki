@@ -70,6 +70,9 @@ var freemarker = {
                parts.push(freemarker._v(match[2]) + "=" + freemarker._v(match[1]) + "[" + match[2] + "_index];");
                           console.log("\n\n\nHERE2="+freemarker._v(match[2]) + "=" + freemarker._v(match[1]) + "[" + match[2] + "_index];");
             }
+            console.log("\n\n\nPARTS="+parts);
+          //  var ix = parts.indexOf("p.push(\"\");");
+          //    parts.splice(ix, 1);
 		}},
 		'endlist': {start:'</#list', end:'>', process:function(parts, cmd) {			
 			parts.push("}");

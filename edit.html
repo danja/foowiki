@@ -167,7 +167,12 @@
             var data = templater(postTagsSparqlTemplate, templateMap);
 
             console.log("DATA="+data);
-            test();
+      
+            // test(); // FOR BUG INFREEMARKER
+            
+            data = replaceAll(data, "<>", "<http://hyperdata.it/tags/bug>");
+             data = replaceAll(data, "\"\"", "\"bug\"");
+            
             $.ajax({
                 type: "POST",
                 url: sparqlUpdateEndpoint,
@@ -185,10 +190,13 @@
           var   templateMap={"graphURI":"http://hyperdata.it/wiki","pageURI":"http://hyperdata.it/wiki/WooWoo","tags":[{"topicURI":"http://hyperdata.it/tags/sdf","topicLabel":"sdf"}]};
             
             var template = "<#list tags as t> \n\
+TESTv \n\
     <${pageURI}> dc:topic <${t.topicURI}> . \n\
-     <${t.topicURI}>  rdfs:label \"${t.topicLabel}\" \n\
+    \n\
+TEST^ \n\
   </#list> \n\
 ";
+            //   <${t.topicURI}>  rdfs:label \"${t.topicLabel}\" \n\
             
             console.log("TEST "+templater(template, templateMap));
         }
