@@ -47,8 +47,16 @@
          *
          * (it could be maybe done with map() and/or some kind of reflection, but I reckon this is clearer
          */
-        function templater(template, replacementMap) {
+        function templater(raw, replacementMap) {
 
+           var template = Hogan.compile(raw, {delimiters: '${ }'});
+            
+            var result = template.render(replacementMap);
+            
+            console.log(result);
+            console.log(htmlUnescape(result));
+            
+            return htmlUnescape(result);
             /*
             for (var name in replacementMap) {
                 var reg = new RegExp("\\$\\{" + name + "\\}", "g");
@@ -61,21 +69,15 @@
             //       console.log("freemarker.render(template, replacementMap) == "+freemarker.render(template, replacementMap));
             //           console.log("B");
             //     
-            var engine = freemarker.create(template);
+         //   var engine = freemarker.create(template);
 	// alert( freemarker.render(engine, {name:'Bob'}) );
 	// // or if don't plan to reuse the engine
 	// alert( freemarker.render("Hello ${name}", {name:'Bob'}); );
-            return freemarker.render(engine, replacementMap);
+        //    return freemarker.render(engine, replacementMap);
            // return freemarker.render(template, replacementMap);
         }
 
-        function escapeRegExp(string) {
-            return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-        }
 
-        function replaceAll(string, find, replace) {
-            return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-        }
 
         /* parse URL */
         var queryString = (function (a) {
@@ -149,3 +151,18 @@
             markup = markup.replace(/>/g, "&gt;");
             return markup;
         }
+
+        function escapeRegExp(string) {
+            return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+        }
+
+        function replaceAll(string, find, replace) {
+            return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+        }
+
+function htmlUnescape(value){ 
+  value = value.replace(/&lt;/g, "<");
+    value = value.replace(/&gt;/g, ">");
+    value = value.replace(/&amp;/g, "&");
+    return value;
+}

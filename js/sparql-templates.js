@@ -71,15 +71,18 @@ foaf:nick \"${nick}\" \n\
 }  \n\
 }";
 
+// NB. "<" & ">" inserted in template map as freemarker.js buggy
 var postTagsSparqlTemplate = commonPrefixes+"\n\
 INSERT DATA {  \n\
 GRAPH <${graphURI}> {  \n\
 \n\
-<#list tags as t> \n\
-    <${pageURI}> dc:topic <${t.topicURI}> . \n\
-     <${t.topicURI}>  rdfs:label \"${t.topicLabel}\" . \n\
-  </#list> \n\
-}}";
+${#tags} \n\
+    <${pageURI}> dc:topic <${topicURI}> . \n\
+     <${topicURI}>  rdfs:label \"${topicLabel}\" . \n\
+  ${/tags} \n\
+ \n\
+} \n\
+}";
 
 // could probably be tidier
 var deletePageSparqlTemplate = commonPrefixes+ "\n\

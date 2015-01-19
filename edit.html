@@ -12,7 +12,8 @@
     <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
 
-    <script src="js/freemarker.js" type="text/javascript"></script>
+        <!-- mustache template compiler -->
+    <script src="js/hogan-3.0.2.js"></script>
 
     <script src="js/marked.js"></script>
 
@@ -108,9 +109,9 @@
                 entry.title = $('#title').val();
                 entry.nick = $('#nick').val();
                 entry.content = $('#content').val();
-                entry.content = escapeXml(entry.content);
+            entry.content = escapeXml(entry.content);
                 entry.format = $('#format').val();
-           //     console.log("CONTENT TYPE = " + entry.format);
+                //     console.log("CONTENT TYPE = " + entry.format);
 
                 var data = templater(postPageSparqlTemplate, entry);
 
@@ -127,7 +128,7 @@
                             window.location.href = window.location.href.replace("edit.html", "page.html");
                         };
                         submitTags(graphURI, pageURI, callback);
-                     //   callback();
+                        //   callback();
                     });
                 }
 
@@ -156,23 +157,18 @@
                 };
                 tags.push(tag);
             }
-         
+            
             var templateMap = {
                 "graphURI": graphURI,
                 "pageURI": pageURI,
                 "tags": tags
             };
-            
-               console.log("templateMap="+JSON.stringify(templateMap));
-            var data = templater(postTagsSparqlTemplate, templateMap);
 
-            console.log("DATA="+data);
-      
-            // test(); // FOR BUG INFREEMARKER
-            
-            data = replaceAll(data, "<>", "<http://hyperdata.it/tags/bug>");
-             data = replaceAll(data, "\"\"", "\"bug\"");
-            
+            console.log("templateMap=" + JSON.stringify(templateMap));
+            var data = templater(postTagsSparqlTemplate, templateMap);
+            console.log("postTagsSparqlTemplate=" + postTagsSparqlTemplate);
+            console.log("DATA=" + data);
+
             $.ajax({
                 type: "POST",
                 url: sparqlUpdateEndpoint,
@@ -185,21 +181,7 @@
 
             });
         }
-        
-        function test() {
-          var   templateMap={"graphURI":"http://hyperdata.it/wiki","pageURI":"http://hyperdata.it/wiki/WooWoo","tags":[{"topicURI":"http://hyperdata.it/tags/sdf","topicLabel":"sdf"}]};
-            
-            var template = "<#list tags as t> \n\
-TESTv \n\
-    <${pageURI}> dc:topic <${t.topicURI}> . \n\
-    \n\
-TEST^ \n\
-  </#list> \n\
-";
-            //   <${t.topicURI}>  rdfs:label \"${t.topicLabel}\" \n\
-            
-            console.log("TEST "+templater(template, templateMap));
-        }
+
 
         function deletePage(graphURI, pageURI, callback) {
             var data = replaceAll(deletePageSparqlTemplate, "${pageURI}", pageURI);
