@@ -39,7 +39,7 @@ Initially I called this thing FuWiki as it uses Fuseki as a back end. But then I
 ## How it works
 Most of the code appears as jQuery-flavoured Javascript inside the core HTML files (index.html, page.html and edit.html). Could do with refactoring :)
 
-Queries are composed using (ever-so-simple) templating on foowiki/js/sparql-templates.js. The XML results are (crudely) parsed out using jQuery. Interaction with the SPARQL server is done using jQuery Ajax. Markdown parsing is done by the marked.js lib.
+Queries are composed using simple templating on foowiki/js/sparql-templates.js. The XML results are (crudely) parsed out using jQuery. Interaction with the SPARQL server is done using jQuery Ajax. Markdown parsing is done by the marked.js lib. Rendering of HTML content blocks is done by more templating on foowiki/js/html-templates.js.
 
 There's some sample data etc. in the foowiki/examples/ directory.
 

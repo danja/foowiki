@@ -9,18 +9,19 @@
     <link rel="stylesheet" href="css/common.css">
 
     <script src="js/marked.js"></script>
-    
-       <!-- mustache template compiler -->
-    <script src="js/hogan-3.0.2.js"></script> 
+
+    <!-- mustache template compiler -->
+    <script src="js/hogan-3.0.2.js"></script>
 
     <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/jquery-migrate-1.2.1.js"></script>
 
     <!-- date formatting -->
     <script src="js/moment.js"></script>
 
+    <!-- FooWiki scripts -->
     <script src="js/config.js"></script>
     <script src="js/sparql-templates.js"></script>
+    <script src="js/html-templates.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/core.js"></script>
 
@@ -39,13 +40,15 @@
 
             var getPageSparql = templater(getPageSparqlTemplate, map);
 
-            var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
+            var getPageURL = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
             var doneCallback = function (xml) {
-                var entry = xmlToEntry(xml, pageURI);
-                console.log("PJ=" + JSON.stringify(entry));
-                if (!entry) {
-                    entry = {
+                //   var entry = xmlToEntry(xml, pageURI);
+
+                var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
+
+                if (!entryJSON) {
+                    entryJSON = {
                         content: "",
                         date: "",
                         title: "",
@@ -53,6 +56,11 @@
                     };
                     window.location.href = window.location.href.replace("page.html", "edit.html");
                 }
+
+                // "uri": "page.html?uri=" + pageURI
+                console.log("entryJSON[0] = " + JSON.stringify(entryJSON[0]));
+                var entry = entryJSON[0];
+
                 var params = "";
                 var script = document.createElement('script');
                 script.type = 'text/javascript';
@@ -67,7 +75,7 @@
                 eval(toRun);
             };
 
-            getPage(doneCallback, getPageUrl);
+            getDataForURL(doneCallback, getPageURL);
 
             $('#editButton').click(function () {
                 window.location.href = window.location.href.replace("run.html", "edit.html");
@@ -77,27 +85,12 @@
         });
 
         function formatEntry(entry) {
-            //   console.log("J=" + JSON.stringify(entry));
-
             entry.content = marked(entry.content);
             entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
 
-            var entryTemplate = "<div class='entry'> \
-            <h1 class='center'><a href=${uri}>${title}</a></h1> \
-            <div class='content'>${content}</div> \
-            <div class='byline center'>latest edit by ${nick} on ${date}</div> \
-            </div>";
-            return templater(entryTemplate, entry);
+            return templater(runEntryTemplate, entry);
         }
     </script>
-
-
-    <!-- script id="targetScript" type="text/javascript" language="javascript">
-function HelloWorld2() {
-   console.log("CALLED");
-    $("#target").html("<p>Hello World!</p>");
-}
-    </script -->
 </head>
 
 <body>

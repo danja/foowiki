@@ -37,44 +37,16 @@
                     // $("#errorbox").toggle(2000);
                 }
             });
-
         }
 
 
-        /* ultra-simple templating engine
-         * replacementMap contains { "name": value, ... }
-         * every instance of ${name} in template gets replaced with value
-         *
-         * (it could be maybe done with map() and/or some kind of reflection, but I reckon this is clearer
-         */
+        /*  */
         function templater(raw, replacementMap) {
 
-           var template = Hogan.compile(raw, {delimiters: '${ }'});
+           var template = Hogan.compile(raw, {delimiters: '~{ }~'});
             
             var result = template.render(replacementMap);
-            
-            console.log(result);
-            console.log(htmlUnescape(result));
-            
             return htmlUnescape(result);
-            /*
-            for (var name in replacementMap) {
-                var reg = new RegExp("\\$\\{" + name + "\\}", "g");
-                template = template.replace(reg, replacementMap[name]);
-            }
-            return template;
-*/
-           //       console.log("template = "+template);
-            //        console.log(" replacementMap = "+JSON.stringify( replacementMap));
-            //       console.log("freemarker.render(template, replacementMap) == "+freemarker.render(template, replacementMap));
-            //           console.log("B");
-            //     
-         //   var engine = freemarker.create(template);
-	// alert( freemarker.render(engine, {name:'Bob'}) );
-	// // or if don't plan to reuse the engine
-	// alert( freemarker.render("Hello ${name}", {name:'Bob'}); );
-        //    return freemarker.render(engine, replacementMap);
-           // return freemarker.render(template, replacementMap);
         }
 
 
@@ -164,5 +136,6 @@ function htmlUnescape(value){
   value = value.replace(/&lt;/g, "<");
     value = value.replace(/&gt;/g, ">");
     value = value.replace(/&amp;/g, "&");
+ //   value = value.replace(/&quot;/g, "\"");
     return value;
 }

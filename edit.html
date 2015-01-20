@@ -7,28 +7,27 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/common.css">
-    <!-- link rel="stylesheet" type="text/css" href="css/jquery-ui.css" -->
-    <!-- from https://github.com/aehlke/tag-it -->
     <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
 
-        <!-- mustache template compiler -->
+    <!-- mustache template compiler -->
     <script src="js/hogan-3.0.2.js"></script>
 
+    <!-- markdown converter -->
     <script src="js/marked.js"></script>
 
     <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/jquery-migrate-1.2.1.js"></script>
     <script src="js/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
 
     <!-- from https://github.com/aehlke/tag-it -->
     <script src="js/tag-it.js" type="text/javascript" charset="utf-8"></script>
 
+     <!-- FooWiki scripts -->
     <script src="js/config.js"></script>
     <script src="js/sparql-templates.js"></script>
+    <script src="js/html-templates.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/core.js"></script>
-
 
     <script type="text/javascript" language="javascript">
         var pageURI = queryString["uri"];
@@ -48,11 +47,10 @@
             spinner();
 
             var doneCallback = function (xml, pageURI) {
-                //    var entry = xmlToEntry(xml, pageURI);
                 var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
                 var entry = entryJSON[0];
                 entry["uri"] = "page.html?uri=" + pageURI;
-                var entryHTML = "";
+           //     var entryHTML = "";
                 uri = "page.html?uri=" + pageURI;
 
                 if (!entry) { // page doesn't exist, so create it
@@ -64,12 +62,7 @@
                     entry.nick = "danja";
                 }
 
-                //   console.log("done=" + JSON.stringify(entry));
-                entryHTML += formatEntry(entry);
-
-                //                console.log("FORMAT = " + entry.format);
-
-                //  $("#format").val(entry.format);
+               var entryHTML = templater(editEntryTemplate, entry);
 
                 $("#entry").replaceWith(entryHTML);
                 $("#format option").each(
@@ -109,12 +102,13 @@
                 entry.title = $('#title').val();
                 entry.nick = $('#nick').val();
                 entry.content = $('#content').val();
-            entry.content = escapeXml(entry.content);
+                entry.content = escapeXml(entry.content);
                 entry.format = $('#format').val();
                 //     console.log("CONTENT TYPE = " + entry.format);
 
                 var data = templater(postPageSparqlTemplate, entry);
 
+                 console.log("data = "+data);
                 // put current data in local storage here
                 var callback = function () {
                     $.ajax({
@@ -157,7 +151,7 @@
                 };
                 tags.push(tag);
             }
-            
+
             var templateMap = {
                 "graphURI": graphURI,
                 "pageURI": pageURI,
@@ -184,8 +178,11 @@
 
 
         function deletePage(graphURI, pageURI, callback) {
-            var data = replaceAll(deletePageSparqlTemplate, "${pageURI}", pageURI);
-            data = replaceAll(data, "${graphURI}", graphURI);
+            var map = {
+                "pageURI": pageURI,
+                "graphURI": graphURI
+            };
+            var data = templater(deletePageSparqlTemplate, map);
             $.ajax({
                 type: "POST",
                 url: sparqlUpdateEndpoint,
@@ -198,32 +195,6 @@
             return false;
         }
 
-        function formatEntry(entry) {
-            // console.log("editEntry = " + JSON.stringify(entry));
-            var editEntryTemplate = "<div class='entry'> \
-            <h1 class='center'><a href=\"${uri}\">${title}</a></h1> \
-            <form> \
-  <fieldset> \
-        <legend>Edit Post</legend>\
-            <label for='title'>Title</label> \
-            <input id='title' type='text' value='${title}'></input> \
-            <label for='content'>Content</label> \
-            <textarea class='content' id='content' rows='20'>${content}</textarea> \
-            <label for='tags'>Tags</label> \
-            <ul id='tags'  id='allowSpacesTags'> \
-            </ul> \
-            <label for='nick'>Nick</label> \
-            <input id='nick' type='text' value='${nick}'></input> \
-            <label for='format'>Format</label><!-- is Media Type URI --> \
-            <select id='format'> \
-               <option value='http://purl.org/NET/mediatypes/text/markdown'>Markdown</option> \
-               <option value='http://purl.org/NET/mediatypes/application/javascript'>Javascript</option> \
-            </select> \
- </fieldset> \
-            </form> \
-            </div>";
-            return templater(editEntryTemplate, entry);
-        }
     </script>
 
 </head>

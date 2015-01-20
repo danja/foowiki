@@ -26,4 +26,4 @@
            "http://purl.org/NET/mediatypes/text/html"
    ];
 
-     var entryXmlNames = ["uri", "content", "date", "title", "nick"];
+     var entryXmlNames = ["uri", "content", "date", "title", "nick", "format"];

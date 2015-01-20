@@ -13,12 +13,11 @@
     <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
 
     <script src="js/marked.js"></script>
-    
-      <!-- mustache template compiler -->
+
+    <!-- mustache template compiler -->
     <script src="js/hogan-3.0.2.js"></script>
 
     <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/jquery-migrate-1.2.1.js"></script>
     <script src="js/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
 
     <!-- from https://github.com/aehlke/tag-it -->
@@ -27,21 +26,19 @@
     <!-- date formatting -->
     <script src="js/moment.js"></script>
 
+    <!-- FooWiki scripts -->
     <script src="js/config.js"></script>
     <script src="js/sparql-templates.js"></script>
+    <script src="js/html-templates.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/core.js"></script>
 
     <script type="text/javascript" language="javascript">
         $(function () {
-
+            
             setupErrorHandling();
             spinner();
-
-            ////////////////// get page
             getPage();
-
-            // end get page
 
             $('#editButton').click(function () {
                 window.location.href = window.location.href.replace("page.html", "edit.html");
@@ -65,14 +62,8 @@
             var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
             var doneCallback = function (xml) {
-                //   var entry = xmlToEntry(xml, pageURI);
-
-                //   var entryXmlNames = ["content", "date", "title", "nick"];
 
                 var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
-
-                //  console.log("PJ=" + JSON.stringify(entry));
-                //  console.log("PJ2=" + JSON.stringify(entryJSON));
 
                 if (!entryJSON) {
                     entryJSON = {
@@ -85,13 +76,16 @@
                 }
 
                 // "uri": "page.html?uri=" + pageURI
+                console.log("entryJSON[0] = " + JSON.stringify(entryJSON[0]));
                 var entry = entryJSON[0];
                 entry["uri"] = "page.html?uri=" + pageURI;
                 // check if it's code-like
                 if (preformatFormats.contains(entry.format)) {
                     entry.content = "<pre>" + entry.content + "</pre>";
                 }
-
+                console.log(entry.content);
+                console.log("entry.format=" + entry.format);
+                console.log(entry.content);
                 // check if it's runnable
                 if (runnableFormats.contains(entry.format)) {
 
@@ -116,24 +110,10 @@
             getDataForURL(doneCallback, getPageUrl);
         }
 
-
-
-
         function formatEntry(entry) {
-            //   console.log("J=" + JSON.stringify(entry));
-
             entry.content = marked(entry.content);
             entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
-
-            var entryTemplate = "<div class='entry'> \
-            <h1 class='center' id='pagetitle'><a href=${uri}>${title}</a></h1> \
-            <div class='content'>${content}</div> \
-            <div class='byline center'>latest edit by ${nick} on ${date}</div> \
-      <label for='tags'>Tags</label> \
-            <ul id='tags'> \
-            </ul> \
-            </div>";
-            return templater(entryTemplate, entry);
+            return templater(pageEntryTemplate, entry);
         }
     </script>
 

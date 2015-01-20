@@ -8,7 +8,7 @@ PREFIX wiki: <http://purl.org/stuff/wiki#>  \n\
 
 var getPageListSparqlTemplate = commonPrefixes+" \n\
 SELECT DISTINCT * \n\
-FROM NAMED <${graphURI}>  \n\
+FROM NAMED <~{graphURI}~>  \n\
 WHERE { \n\
 ?uri \n\
 dc:format ?format ; \n\
@@ -25,9 +25,9 @@ ORDER By DESC(?date)  \n\
 
 var getPageSparqlTemplate = commonPrefixes+"\n\
     SELECT DISTINCT * \n\
-    FROM NAMED <${graphURI}>  \n\
+    FROM NAMED <~{graphURI}~>  \n\
     WHERE { \n\
-    <${pageURI}> \n\
+    <~{pageURI}~> \n\
     dc:format ?format ; \n\
     dc:date ?date ; \n\
     dc:title ?title ; \n\
@@ -41,9 +41,9 @@ var getPageSparqlTemplate = commonPrefixes+"\n\
 
 var getTagsSparqlTemplate = commonPrefixes+"\n\
 SELECT DISTINCT *  \n\
- FROM NAMED <${graphURI}>  \n\
+ FROM NAMED <~{graphURI}~>  \n\
 WHERE {  \n\
-	<${pageURI}>  a wiki:Page ;  \n\
+	<~{pageURI}~>  a wiki:Page ;  \n\
 	dc:topic ?topicURI .  \n\
     ?topicURI rdfs:label ?topicLabel .  \n\
 }  \n\
@@ -51,64 +51,64 @@ WHERE {  \n\
 
 
 var postPageSparqlTemplate = commonPrefixes+"\n\
-WITH <${graphURI}> \n\
-DELETE { <${pageURI}>  ?p ?o }  \n\
-WHERE { <${pageURI}>  ?p ?o } \n\
+WITH <~{graphURI}~> \n\
+DELETE { <~{pageURI}~>  ?p ?o }  \n\
+WHERE { <~{pageURI}~>  ?p ?o } \n\
 ; \n\
 INSERT DATA {  \n\
-GRAPH <${graphURI}> {  \n\
+GRAPH <~{graphURI}~> {  \n\
 \n\
-<${pageURI}> \n\
-dc:format <${format}> ; \n\
-dc:date \"${date}\" ; \n\
-dc:title \"\"\"${title}\"\"\" ; \n\
-sioc:content  \"\"\"${content}\"\"\" ; \n\
+<~{pageURI}~> \n\
+dc:format <~{format}~> ; \n\
+dc:date \"~{date}~\" ; \n\
+dc:title \"\"\"~{title}~\"\"\" ; \n\
+sioc:content  \"\"\"~{content}~\"\"\" ; \n\
 a sioc:Post ; \n\
 a wiki:Page ; \n\
 foaf:maker [ \n\
-foaf:nick \"${nick}\" \n\
+foaf:nick \"~{nick}~\" \n\
 ] . \n\
 }  \n\
 }";
 
-// NB. "<" & ">" inserted in template map as freemarker.js buggy
+
 var postTagsSparqlTemplate = commonPrefixes+"\n\
 INSERT DATA {  \n\
-GRAPH <${graphURI}> {  \n\
+GRAPH <~{graphURI}~> {  \n\
 \n\
-${#tags} \n\
-    <${pageURI}> dc:topic <${topicURI}> . \n\
-     <${topicURI}>  rdfs:label \"${topicLabel}\" . \n\
-  ${/tags} \n\
+~{#tags}~ \n\
+    <~{pageURI}~> dc:topic <~{topicURI}~> . \n\
+     <~{topicURI}~>  rdfs:label \"~{topicLabel}~\" . \n\
+  ~{/tags}~ \n\
  \n\
 } \n\
 }";
 
 // could probably be tidier
 var deletePageSparqlTemplate = commonPrefixes+ "\n\
-WITH <${graphURI}> \n\
+WITH <~{graphURI}~> \n\
 DELETE {  \n\
 ?o sioc:topic ?topic . \n\
 }  \n\
 WHERE {  \n\
-<${pageURI}>  ?p ?o  . \n\
+<~{pageURI}~>  ?p ?o  . \n\
 ?o sioc:topic ?topic . \n\
 } \n\
  ; \n\
-WITH <${graphURI}> \n\
+WITH <~{graphURI}~> \n\
 DELETE {  \n\
 ?maker foaf:nick ?nick . \n\
 }  \n\
 WHERE {  \n\
-<${pageURI}> foaf:maker ?maker . \n\
+<~{pageURI}~> foaf:maker ?maker . \n\
 ?maker foaf:nick ?nick . \n\
 } \n\
  ; \n\
-WITH <${graphURI}> \n\
+WITH <~{graphURI}~> \n\
 DELETE {  \n\
-<${pageURI}>  ?p ?o .   \n\
+<~{pageURI}~>  ?p ?o .   \n\
 }  \n\
-WHERE { <${pageURI}>  ?p ?o } \n";
+WHERE { <~{pageURI}~>  ?p ?o } \n";
 
 
 
