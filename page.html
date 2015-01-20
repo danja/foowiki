@@ -85,7 +85,7 @@
                 }
                 console.log(entry.content);
                 console.log("entry.format=" + entry.format);
-                console.log(entry.content);
+             //   console.log(entry.content);
                 // check if it's runnable
                 if (runnableFormats.contains(entry.format)) {
 
@@ -111,7 +111,9 @@
         }
 
         function formatEntry(entry) {
+              console.log("raw entry.content = "+entry.content);
             entry.content = marked(entry.content);
+            console.log("entry.content = "+entry.content);
             entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
             return templater(pageEntryTemplate, entry);
         }

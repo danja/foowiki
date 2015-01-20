@@ -69,7 +69,7 @@
         function translateLocalLinks() {
             $('div.content  a').each(
                 function () {
-                    console.log("this = " + this);
+                    console.log("this.href = " + this.href);
                     if (this.href.indexOf(serverRootPath) != -1) { // less than perfect
                         var hashPosition = this.href.indexOf("#");
                         if (hashPosition != -1) {
@@ -135,7 +135,8 @@
 function htmlUnescape(value){ 
   value = value.replace(/&lt;/g, "<");
     value = value.replace(/&gt;/g, ">");
-    value = value.replace(/&amp;/g, "&");
- //   value = value.replace(/&quot;/g, "\"");
+   
+    value = value.replace(/&quot;/g, "\"");
+     value = value.replace(/&amp;/g, "&");
     return value;
 }

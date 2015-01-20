@@ -49,7 +49,7 @@
             var doneCallback = function (xml, pageURI) {
                 var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
                 var entry = entryJSON[0];
-                entry["uri"] = "page.html?uri=" + pageURI;
+               
            //     var entryHTML = "";
                 uri = "page.html?uri=" + pageURI;
 
@@ -61,6 +61,8 @@
                     entry.content = "enter content here";
                     entry.nick = "danja";
                 }
+                
+                //  entry["uri"] = "page.html?uri=" + pageURI;
 
                var entryHTML = templater(editEntryTemplate, entry);
 

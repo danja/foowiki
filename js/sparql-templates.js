@@ -1,3 +1,13 @@
+/* Templates for SPARQL queries
+ *
+ * format is variant of Mustache
+ * using ~{ }~ instead of {{ }}
+ * (to avoid clashes in SPARQL)
+ *
+ * templating engine is Hogan
+ * http://twitter.github.io/hogan.js/
+ */
+
 var commonPrefixes = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n\
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  \n\
 PREFIX dc: <http://purl.org/dc/terms/>  \n\
@@ -6,7 +16,7 @@ PREFIX sioc: <http://rdfs.org/sioc/ns#>  \n\
 PREFIX wiki: <http://purl.org/stuff/wiki#>  \n\
 ";
 
-var getPageListSparqlTemplate = commonPrefixes+" \n\
+var getPageListSparqlTemplate = commonPrefixes + " \n\
 SELECT DISTINCT * \n\
 FROM NAMED <~{graphURI}~>  \n\
 WHERE { \n\
@@ -23,7 +33,7 @@ ORDER By DESC(?date)  \n\
 # LIMIT 10 \n\
 ";
 
-var getPageSparqlTemplate = commonPrefixes+"\n\
+var getPageSparqlTemplate = commonPrefixes + "\n\
     SELECT DISTINCT * \n\
     FROM NAMED <~{graphURI}~>  \n\
     WHERE { \n\
@@ -39,7 +49,7 @@ var getPageSparqlTemplate = commonPrefixes+"\n\
 } \n\
 ";
 
-var getTagsSparqlTemplate = commonPrefixes+"\n\
+var getTagsSparqlTemplate = commonPrefixes + "\n\
 SELECT DISTINCT *  \n\
  FROM NAMED <~{graphURI}~>  \n\
 WHERE {  \n\
@@ -50,7 +60,7 @@ WHERE {  \n\
 ";
 
 
-var postPageSparqlTemplate = commonPrefixes+"\n\
+var postPageSparqlTemplate = commonPrefixes + "\n\
 WITH <~{graphURI}~> \n\
 DELETE { <~{pageURI}~>  ?p ?o }  \n\
 WHERE { <~{pageURI}~>  ?p ?o } \n\
@@ -72,7 +82,7 @@ foaf:nick \"~{nick}~\" \n\
 }";
 
 
-var postTagsSparqlTemplate = commonPrefixes+"\n\
+var postTagsSparqlTemplate = commonPrefixes + "\n\
 INSERT DATA {  \n\
 GRAPH <~{graphURI}~> {  \n\
 \n\
@@ -85,7 +95,7 @@ GRAPH <~{graphURI}~> {  \n\
 }";
 
 // could probably be tidier
-var deletePageSparqlTemplate = commonPrefixes+ "\n\
+var deletePageSparqlTemplate = commonPrefixes + "\n\
 WITH <~{graphURI}~> \n\
 DELETE {  \n\
 ?o sioc:topic ?topic . \n\
@@ -109,7 +119,3 @@ DELETE {  \n\
 <~{pageURI}~>  ?p ?o .   \n\
 }  \n\
 WHERE { <~{pageURI}~>  ?p ?o } \n";
-
-
-
-

@@ -1,10 +1,20 @@
-  var rowTemplate = " <tr> \
+/* Templates for HTML blocks
+ *
+ * format is variant of Mustache
+ * using ~{ }~ instead of {{ }}
+ * (to avoid clashes in SPARQL)
+ *
+ * templating engine is Hogan
+ * http://twitter.github.io/hogan.js/
+ */
+
+var rowTemplate = " <tr> \
            <td><a href='~{uri}~'>~{title}~</a></td> \
            <td class='center'>~{date}~</td> \
             <td class='center'>~{nick}~</td> \
             </tr>";
 
-       var editEntryTemplate = "<div class='entry'> \
+var editEntryTemplate = "<div class='entry'> \
             <h1 class='center'><a href=\"~{uri}~\">~{title}~</a></h1> \
             <form> \
   <fieldset> \
@@ -27,7 +37,7 @@
             </form> \
             </div>";
 
-  var pageEntryTemplate = "<div class='entry'> \
+var pageEntryTemplate = "<div class='entry'> \
             <h1 class='center' id='pagetitle'><a href=~{uri}~>~{title}~</a></h1> \
             <div class='content'>~{content}~</div> \
             <div class='byline center'>latest edit by ~{nick}~ on ~{date}~</div> \
@@ -36,7 +46,7 @@
             </ul> \
             </div>";
 
-   var entryTemplate = "<div class='entry'> \
+var entryTemplate = "<div class='entry'> \
             <h1 class='center'><a href=~{uri}~>~{title}~</a></h1> \
             <div class='content'>~{content}~</div> \
             <div class='byline center'>latest edit by ~{nick}~ on ~{date}~</div> \
