@@ -8,6 +8,9 @@
 <http://hyperdata.it/tags/bug>
         rdfs:label  "bug" .
 
+<http://hyperdata.it/tags/ToDo>
+        rdfs:label  "ToDo" .
+
 <http://hyperdata.it/tags/FooWiki>
         rdfs:label  "FooWiki" .
 
@@ -68,10 +71,11 @@
 
 <http://hyperdata.it/wiki/FuWiki%20To%20Do>
         a             wiki:Page , sioc:Post ;
-        dc:date       "2015-01-14T19:02:02.034Z" ;
+        dc:date       "2015-01-20T11:24:26.113Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "FooWiki To Do" ;
-        sioc:content  "See also [To Investigate](To Investigate)\n\n[To Do 2015-01-12](To Do 2015-01-12)\n\n## [Home Page](Home Page)\n\n* [Core](#Core)\n* [Admin](#Admin)\n* [Foo](#Foo)\n\n## Core\n* new post button\n* **do some of these with [Foo](Foo)**\n* push everything to another store\n* ajaxian import http://www.nickdesteffen.com/blog/file-uploading-over-ajax-using-html5\n* support images \n* search - filter by tags\n* random page\n* tabs http://htmldog.com/techniques/tabs/\n* MD page import/export\n* view original MD\n* include related links in RDF - inlinks\n* tags\n* priority\n* all literal fields???\n* [WikiWhiteBoard](WikiWhiteBoard)\n* docs in code\n* showing whether an intended target page exists or not.\n* mobile, printable views\n* LaTex (for maths)\n* shove in local storage http://www.w3.org/wiki/IntegrityIsJobOne\n* bubble rename through pages' content (fix deadening links)\n\n## Admin\n* start proper docs - /projects on github\n* announce - Jena &amp; semweb lists\n\n## [Foo](Foo)\n* dropdown list for Run Script on this page\n* for most, render by wrapping in &lt;pre&gt;, courier font\n* foo = 'stored procedures' - resources with SPARQL/JS literal templates, pass parameters, return graphs, json... use jsonp?\n* support JS source extensions\n* support SPARQL source extensions\n* messaging via URLs\n* graph view [vis.js](http://visjs.org/docs/index.html)\n  * http://jsplumb.org/demo/flowchart/dom.html\n* install from URL\n* reduce whole app to a single bootstrap HTML file + RDF?\n* [Slide Show](Slide Show)\n\n* no! // not worth it right now...change model to include versioning (hasVersion) [Content Model](ContentModel)" ;
+        dc:topic      <http://hyperdata.it/tags/Bootstrap> , <http://hyperdata.it/tags/Bugs> , <http://hyperdata.it/tags/ToDo> , <http://hyperdata.it/tags/FooWiki> , <http://hyperdata.it/tags/Docs> ;
+        sioc:content  "See also [To Investigate](To Investigate)\n\n[To Do 2015-01-12](To Do 2015-01-12)\n\n## [Home Page](Home Page)\n\n* [Core](#Core)\n* [Admin](#Admin)\n* [Foo](#Foo)\n\n## Core\n* **do some of these with [Foo](Foo)**\n* **BUG** fix escaping, see [This Page](Content Model)\n* search - filter by tags\n* mobile, printable views CSS\n* push everything to another store\n* ajaxian import http://www.nickdesteffen.com/blog/file-uploading-over-ajax-using-html5\n* support images \n* random page\n* tabs http://htmldog.com/techniques/tabs/\n* MD page import/export\n* view original MD\n* include related links in RDF - inlinks\n* priority\n* all literal fields???\n* [WikiWhiteBoard](WikiWhiteBoard)\n* showing whether an intended target page exists or not.\n* LaTex (for maths)\n* shove in local storage http://www.w3.org/wiki/IntegrityIsJobOne\n* bubble rename through pages&#39; content (fix deadening links)\n\n## Admin\n* docs in code\n* start proper docs - /projects on github\n* announce - Jena &amp; semweb lists\n\n## [Foo](Foo)\n* dropdown list for Run Script on this page\n* for most, render by wrapping in &lt;pre&gt;, courier font\n* foo = &#39;stored procedures&#39; - resources with SPARQL/JS literal templates, pass parameters, return graphs, json... use jsonp?\n* support JS source extensions\n* support SPARQL source extensions\n* messaging via URLs\n* graph view [vis.js](http://visjs.org/docs/index.html)\n  * http://jsplumb.org/demo/flowchart/dom.html\n* install from URL\n* reduce whole app to a single bootstrap HTML file + RDF?\n* [Slide Show](Slide Show)\n\n* no! // not worth it right now...change model to include versioning (hasVersion) [Content Model](ContentModel)" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/Three>
@@ -100,10 +104,11 @@
 
 <http://hyperdata.it/wiki/Content%20Model>
         a             wiki:Page , sioc:Post ;
-        dc:date       "2015-01-07T09:46:23.885Z" ;
+        dc:date       "2015-01-20T11:19:20.736Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
-        dc:title      "Content Model" ;
-        sioc:content  "to support versioning, looks like [SPARQL 1.1 subqueries](http://www.w3.org/TR/sparql11-query/#subqueries) will be needed for rendering\n\nmay be useful :\n    http://rdfs.org/sioc/types#Wiki\n    http://rdfs.org/sioc/types#Weblog\n    http://rdfs.org/sioc/types#WikiArticle\n    http://rdfs.org/sioc/ns#topic\n\n```\nGRAPH <http://hyperdata.it/wiki> { \n\n<http://hyperdata.it/wiki/PageTwo>\n   dc:hasVersion [\n\tdc:format <http://purl.org/NET/mediatypes/text/markdown> ;\n    dc:date \"2012-04-02T07:24:54Z\" ;\n    dc:title \"Page Two!\" ;\n    sioc:content \"My second post.\" ;\n    a sioc:Post ;\n    a wiki:Page ;\n    foaf:maker [\n        foaf:nick \"danja\"\n    ] .\n\t} \n```" ;
+        dc:title      "FooWiki Content Model" ;
+        dc:topic      <http://hyperdata.it/tags/FooWiki> , <http://hyperdata.it/tags/Docs> , <http://hyperdata.it/tags/Bootstrap> ;
+        sioc:content  "to support versioning, looks like [SPARQL 1.1 subqueries](http://www.w3.org/TR/sparql11-query/#subqueries) will be needed for rendering\n\nmay be useful :\n    http://rdfs.org/sioc/types#Wiki\n    http://rdfs.org/sioc/types#Weblog\n    http://rdfs.org/sioc/types#WikiArticle\n    http://rdfs.org/sioc/ns#topic\n\n```\nGRAPH &lt;http://hyperdata.it/wiki&gt; { \n\n&lt;http://hyperdata.it/wiki/PageTwo&gt;\n    dc:format &lt;http://purl.org/NET/mediatypes/text/markdown&gt; ;\n    dc:date \"2012-04-02T07:24:54Z\" ;\n    dc:title \"Page Two!\" ;\n    sioc:content \"My second post.\" ;\n    a sioc:Post ;\n    a wiki:Page ;\n    dc:topic      &lt;http://hyperdata.it/tags/One&gt; , &lt;http://hyperdata.it/tags/Two&gt; ;\n    foaf:maker [\n        foaf:nick \"danja\"\n    ] .\n\t\n\n&lt;http://hyperdata.it/tags/One&gt;\n        rdfs:label  \"One\" .\n\n&lt;http://hyperdata.it/tags/Two&gt;\n        rdfs:label  \"Two\" .\n\n}\n\n```" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/script>
@@ -179,9 +184,12 @@
 
 <http://hyperdata.it/wiki/FooWiki%20Docs>
         a             sioc:Post , wiki:Page ;
-        dc:date       "2015-01-20T11:06:32.009Z" ;
+        dc:date       "2015-01-20T11:20:27.617Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "FooWiki Docs" ;
         dc:topic      <http://hyperdata.it/tags/FooWiki> , <http://hyperdata.it/tags/Bootstrap> , <http://hyperdata.it/tags/Docs> ;
-        sioc:content  "\n* [FooWiki Files](FooWiki Files)" ;
+        sioc:content  "* [FooWiki Files](FooWiki Files)\n* [FooWiki Content Model](Content Model)" ;
         foaf:maker    [ foaf:nick  "danja" ] .
+
+<http://hyperdata.it/tags/Bugs>
+        rdfs:label  "Bugs" .
