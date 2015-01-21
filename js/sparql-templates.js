@@ -104,6 +104,22 @@ GRAPH <~{graphURI}~> {  \n\
 } \n\
 }";
 
+var searchSparqlTemplate = commonPrefixes + "\n\
+SELECT DISTINCT *  \n\
+ FROM NAMED <~{graphURI}~>  \n\
+ WHERE { \n\
+?pageURI \n\
+a sioc:Post ; \n\
+a wiki:Page ; \n\
+sioc:content  ?content ; \n\
+\n\
+~{#tags}~ \n\
+    <~{pageURI}~> dc:topic <~{topicURI}~> . \n\
+     <~{topicURI}~>  rdfs:label \"~{topicLabel}~\" . \n\
+  ~{/tags}~ \n\
+         FILTER regex(?content, \"~{regex}~\", \"i\") } \n\
+}";
+ 
 // could probably be tidier
 var deletePageSparqlTemplate = commonPrefixes + "\n\
 WITH <~{graphURI}~> \n\

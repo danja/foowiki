@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/common.css">
     <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
 
     <!-- mustache template compiler -->
     <script src="js/hogan-3.0.2.js"></script>
@@ -110,7 +111,8 @@
 
                 var data = templater(postPageSparqlTemplate, entry);
 
-                 console.log("data = "+data);
+              //   console.log("data = "+data);
+                
                 // put current data in local storage here
                 var callback = function () {
                     $.ajax({
@@ -160,10 +162,10 @@
                 "tags": tags
             };
 
-            console.log("templateMap=" + JSON.stringify(templateMap));
+        //    console.log("templateMap=" + JSON.stringify(templateMap));
             var data = templater(postTagsSparqlTemplate, templateMap);
-            console.log("postTagsSparqlTemplate=" + postTagsSparqlTemplate);
-            console.log("DATA=" + data);
+       //     console.log("postTagsSparqlTemplate=" + postTagsSparqlTemplate);
+       //     console.log("DATA=" + data);
 
             $.ajax({
                 type: "POST",
@@ -172,9 +174,7 @@
                     update: data
                 })
             }).done(function () {
-
                 callback();
-
             });
         }
 

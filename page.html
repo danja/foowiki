@@ -11,6 +11,7 @@
     <!-- from https://github.com/aehlke/tag-it -->
     <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
 
     <script src="js/marked.js"></script>
 
@@ -35,7 +36,7 @@
 
     <script type="text/javascript" language="javascript">
         $(function () {
-            
+
             setupErrorHandling();
             spinner();
             getPage();
@@ -85,7 +86,7 @@
                 }
                 console.log(entry.content);
                 console.log("entry.format=" + entry.format);
-             //   console.log(entry.content);
+                //   console.log(entry.content);
                 // check if it's runnable
                 if (runnableFormats.contains(entry.format)) {
 
@@ -105,16 +106,16 @@
                 translateLocalLinks();
                 fixHeaderIDs(); // little workaround for odd marked.js behaviour
                 setupTags("#maintagscontainer", pageMap, true);
-                setupSearch("#searchtagscontainer");
+                setupSearch("#searchContainer");
             };
 
             getDataForURL(doneCallback, getPageUrl);
         }
 
         function formatEntry(entry) {
-              console.log("raw entry.content = "+entry.content);
+            console.log("raw entry.content = " + entry.content);
             entry.content = marked(entry.content);
-            console.log("entry.content = "+entry.content);
+            console.log("entry.content = " + entry.content);
             entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
             return templater(pageEntryTemplate, entry);
         }

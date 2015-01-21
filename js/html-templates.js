@@ -45,13 +45,11 @@ var pageEntryTemplate = "<div class='entry'> \
             <ul id='maintagscontainer'> \
             </ul> \
             </div> \
-            <div id='searchPanel'> \
+            <div id='searchContainer'> \
                 <h2>Search</h2> \
 <label for='searchText'>Search Text</label> \
             <input id='searchText' type='text' value=''></input> \
-               <label for='searchtagscontainer'>Tags</label> \
-            <ul id='searchtagscontainer'> \
-            </ul> \
+               <div id='tagButtons'> </div>\
             </div>  ";
 
 var entryTemplate = "<div class='entry'> \
