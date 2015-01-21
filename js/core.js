@@ -59,7 +59,57 @@
 
 
  function setupTags(containerId, pageMap, readOnly) {
-     var getTagsSparql = templater(getTagsSparqlTemplate, pageMap);
+     if(readOnly) {
+   createTags(containerId, pageMap, readOnly) ;
+     } else {
+         setupTagsAutocomplete(containerId, function(){
+           createTags(containerId, pageMap, readOnly) ;
+         });
+     }
+ }
+
+function setupSearch(tagsContainerId) {
+}
+
+ function setupTagsAutocomplete(tagsContainerId, callback) {
+     var doneCallback = function (xml) {
+         var xmlString = (new XMLSerializer()).serializeToString(xml); // refactor me - see below
+         //   console.log("XML = " + xmlString);
+         var tagsXmlNames = ["topicURI", "topicLabel"];
+         var tags = sparqlXMLtoJSON(xml, tagsXmlNames);
+
+
+
+         //   availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"]
+         var allTags = [];
+
+         for (var i = 0; i < tags.length; i++) {
+             //    var uri = tags[i]["topicURI"];
+             var label = tags[i]["topicLabel"];
+             //  $(tagsContainerId).tagit('createTag', label);
+             allTags.push(label);
+         }
+ //  $(tagsContainerId).tagit();
+         var tagitMap = {
+             
+             readOnly: false,
+              autocomplete: {
+                 delay: 0,
+                 minLength: 1
+             },
+             availableTags: allTags
+         };
+
+
+         console.log("tagitMap = " + JSON.stringify(tagitMap));
+         $(tagsContainerId).tagit(tagitMap);
+         callback();
+     }
+     getAllTags(doneCallback);
+ }
+
+function createTags(containerId, pageMap, readOnly) {
+      var getTagsSparql = templater(getTagsSparqlTemplate, pageMap);
 
      //  console.log("getTagsSparql = " + getTagsSparql);
      var getTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getTagsSparql) + "&output=xml";
@@ -72,46 +122,26 @@
 
          //   console.log("TAGS = " + JSON.stringify(tags));
 
-        var tagitMap = {
-           readOnly: readOnly
-     };
+         var tagitMap = {
+             readOnly: readOnly
+         };
 
          $(containerId).tagit(tagitMap);
 
          for (var i = 0; i < tags.length; i++) {
              var uri = tags[i]["topicURI"];
              var label = tags[i]["topicLabel"];
-           //  tagitMap[uri] = label;
+             //  tagitMap[uri] = label;
              $(containerId).tagit('createTag', label);
 
              var selector = containerId + " input[value='" + label + "']";
              $(selector).attr("name", uri);
-
-             // <li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-read-only">
-             //   <span class="tagit-label">Three</span>
-             //   <input type="hidden" value="Three" name="http://hyperdata.it/tags/Three" class="tagit-hidden-field">
-             // </li>
          }
      }
      getDataForURL(doneCallback, getTagsUrl);
- }
-
- function setupSearch(tagsContainerId) {
-     var tagitMap = {
-         readOnly: false
-     };
-     $(tagsContainerId).tagit(tagitMap);
- }
+}
 
  function setupTagsPanel(tagsContainerId) {
-     var map = {
-         "graphURI": graphURI
-     };
-     var getAllTagsSparql = templater(getAllTagsSparqlTemplate, map);
-
-     //  console.log("getTagsSparql = " + getTagsSparql);
-     var getAllTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getAllTagsSparql) + "&output=xml";
-
      var doneCallback = function (xml) {
          var xmlString = (new XMLSerializer()).serializeToString(xml);
          //   console.log("XML = " + xmlString);
@@ -128,7 +158,18 @@
              var uri = tags[i]["topicURI"];
              var label = tags[i]["topicLabel"];
              $(tagsContainerId).tagit('createTag', label);
-         } 
+         }
      }
+     getAllTags(doneCallback);
+ }
+
+ function getAllTags(doneCallback) {
+     var map = {
+         "graphURI": graphURI
+     };
+     var getAllTagsSparql = templater(getAllTagsSparqlTemplate, map);
+
+     //  console.log("getTagsSparql = " + getTagsSparql);
+     var getAllTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getAllTagsSparql) + "&output=xml";
      getDataForURL(doneCallback, getAllTagsUrl);
  }
