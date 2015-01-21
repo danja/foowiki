@@ -83,7 +83,7 @@
                 };
 
                 setupTags(pageMap, false);
-                //   $("#tags").tagit({
+                //   $("##foowikitagscontainer").tagit({
             };
             getDataForURL(doneCallback, getPageUrl);
             setupPosting();
@@ -142,14 +142,14 @@
 
         function submitTags(graphURI, pageURI, callback) {
             // TAGS
-            var tagsCommas = $("#tags").tagit("assignedTags");
+            var tagsCommas = $("#foowikitagscontainer").tagit("assignedTags");
             console.log("tagsCommas=" + tagsCommas);
             var tagStrings = tagsCommas; //.split(",");
             var tags = [];
             for (var i = 0; i < tagStrings.length; i++) {
                 var tag = {
-                    "topicURI": "http://hyperdata.it/tags/" + tagStrings[i],
-                    "topicLabel": tagStrings[i]
+                    "topicURI": "http://hyperdata.it/tags/" + tagStrings[i].toLowerCase(),
+                    "topicLabel": tagStrings[i].toLowerCase()
                 };
                 tags.push(tag);
             }
@@ -210,7 +210,7 @@
         <div id="entry"></div>
 
         <p class="center">
-            <button id="submit">Update</button>
+            <button id="submit">Save</button>
             <button id="cancel">Cancel</button>
             <button id="delete">Delete</button>
         </p>

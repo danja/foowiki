@@ -23,8 +23,8 @@ var editEntryTemplate = "<div class='entry'> \
             <input id='title' type='text' value='~{title}~'></input> \
             <label for='content'>Content</label> \
             <textarea class='content' id='content' rows='20'>~{content}~</textarea> \
-            <label for='tags'>Tags</label> \
-            <ul id='tags'  id='allowSpacesTags'> \
+            <label for='foowikitagscontainer'>Tags</label> \
+            <ul id='foowikitagscontainer'  id='allowSpacesTags'> \
             </ul> \
             <label for='nick'>Nick</label> \
             <input id='nick' type='text' value='~{nick}~'></input> \
@@ -41,8 +41,8 @@ var pageEntryTemplate = "<div class='entry'> \
             <h1 class='center' id='pagetitle'><a href=~{uri}~>~{title}~</a></h1> \
             <div class='content'>~{content}~</div> \
             <div class='byline center'>latest edit by ~{nick}~ on ~{date}~</div> \
-      <label for='tags'>Tags</label> \
-            <ul id='tags'> \
+      <label for='foowikitagscontainer'>Tags</label> \
+            <ul id='foowikitagscontainer'> \
             </ul> \
             </div>";
 
