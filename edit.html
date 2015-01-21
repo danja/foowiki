@@ -82,7 +82,7 @@
                     "graphURI": graphURI
                 };
 
-                setupTags(pageMap, false);
+                setupTags("#maintagscontainer", pageMap, false);
                 //   $("##foowikitagscontainer").tagit({
             };
             getDataForURL(doneCallback, getPageUrl);
@@ -142,7 +142,7 @@
 
         function submitTags(graphURI, pageURI, callback) {
             // TAGS
-            var tagsCommas = $("#foowikitagscontainer").tagit("assignedTags");
+            var tagsCommas = $("#maintagscontainer").tagit("assignedTags");
             console.log("tagsCommas=" + tagsCommas);
             var tagStrings = tagsCommas; //.split(",");
             var tags = [];

@@ -104,7 +104,8 @@
                 $("#entry").replaceWith(entryHTML);
                 translateLocalLinks();
                 fixHeaderIDs(); // little workaround for odd marked.js behaviour
-                setupTags(pageMap, true);
+                setupTags("#maintagscontainer", pageMap, true);
+                setupSearch("#searchtagscontainer");
             };
 
             getDataForURL(doneCallback, getPageUrl);

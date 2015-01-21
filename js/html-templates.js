@@ -23,8 +23,8 @@ var editEntryTemplate = "<div class='entry'> \
             <input id='title' type='text' value='~{title}~'></input> \
             <label for='content'>Content</label> \
             <textarea class='content' id='content' rows='20'>~{content}~</textarea> \
-            <label for='foowikitagscontainer'>Tags</label> \
-            <ul id='foowikitagscontainer'  id='allowSpacesTags'> \
+            <label for='maintagscontainer'>Tags</label> \
+            <ul id='maintagscontainer'  id='allowSpacesTags'> \
             </ul> \
             <label for='nick'>Nick</label> \
             <input id='nick' type='text' value='~{nick}~'></input> \
@@ -41,10 +41,18 @@ var pageEntryTemplate = "<div class='entry'> \
             <h1 class='center' id='pagetitle'><a href=~{uri}~>~{title}~</a></h1> \
             <div class='content'>~{content}~</div> \
             <div class='byline center'>latest edit by ~{nick}~ on ~{date}~</div> \
-      <label for='foowikitagscontainer'>Tags</label> \
-            <ul id='foowikitagscontainer'> \
+      <label for='maintagscontainer'>Tags</label> \
+            <ul id='maintagscontainer'> \
             </ul> \
-            </div>";
+            </div> \
+            <div id='searchPanel'> \
+                <h2>Search</h2> \
+<label for='searchText'>Search Text</label> \
+            <input id='searchText' type='text' value=''></input> \
+               <label for='searchtagscontainer'>Tags</label> \
+            <ul id='searchtagscontainer'> \
+            </ul> \
+            </div>  ";
 
 var entryTemplate = "<div class='entry'> \
             <h1 class='center'><a href=~{uri}~>~{title}~</a></h1> \

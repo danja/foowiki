@@ -58,10 +58,10 @@
  }
 
 
- function setupTags(pageMap, readOnly) {
+ function setupTags(containerId, pageMap, readOnly) {
      var getTagsSparql = templater(getTagsSparqlTemplate, pageMap);
 
-   //  console.log("getTagsSparql = " + getTagsSparql);
+     //  console.log("getTagsSparql = " + getTagsSparql);
      var getTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getTagsSparql) + "&output=xml";
 
      var doneCallback = function (xml) {
@@ -70,21 +70,21 @@
          var tagsXmlNames = ["topicURI", "topicLabel"];
          var tags = sparqlXMLtoJSON(xml, tagsXmlNames);
 
-      //   console.log("TAGS = " + JSON.stringify(tags));
+         //   console.log("TAGS = " + JSON.stringify(tags));
 
-         var tagitMap = {
-             readOnly: readOnly
-         };
+        var tagitMap = {
+           readOnly: readOnly
+     };
 
-         $("#foowikitagscontainer").tagit(tagitMap);
+         $(containerId).tagit(tagitMap);
 
          for (var i = 0; i < tags.length; i++) {
              var uri = tags[i]["topicURI"];
              var label = tags[i]["topicLabel"];
-             tagitMap[uri] = label;
-             $("#foowikitagscontainer").tagit('createTag', label);
+           //  tagitMap[uri] = label;
+             $(containerId).tagit('createTag', label);
 
-             var selector = "#foowikitagscontainer input[value='" + label + "']";
+             var selector = containerId + " input[value='" + label + "']";
              $(selector).attr("name", uri);
 
              // <li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-read-only">
@@ -94,4 +94,41 @@
          }
      }
      getDataForURL(doneCallback, getTagsUrl);
+ }
+
+ function setupSearch(tagsContainerId) {
+     var tagitMap = {
+         readOnly: false
+     };
+     $(tagsContainerId).tagit(tagitMap);
+ }
+
+ function setupTagsPanel(tagsContainerId) {
+     var map = {
+         "graphURI": graphURI
+     };
+     var getAllTagsSparql = templater(getAllTagsSparqlTemplate, map);
+
+     //  console.log("getTagsSparql = " + getTagsSparql);
+     var getAllTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getAllTagsSparql) + "&output=xml";
+
+     var doneCallback = function (xml) {
+         var xmlString = (new XMLSerializer()).serializeToString(xml);
+         //   console.log("XML = " + xmlString);
+         var tagsXmlNames = ["topicURI", "topicLabel"];
+         var tags = sparqlXMLtoJSON(xml, tagsXmlNames);
+
+         var tagitMap = {
+             readOnly: true
+         };
+
+         $(tagsContainerId).tagit(tagitMap);
+
+         for (var i = 0; i < tags.length; i++) {
+             var uri = tags[i]["topicURI"];
+             var label = tags[i]["topicLabel"];
+             $(tagsContainerId).tagit('createTag', label);
+         } 
+     }
+     getDataForURL(doneCallback, getAllTagsUrl);
  }

@@ -49,6 +49,16 @@ var getPageSparqlTemplate = commonPrefixes + "\n\
 } \n\
 ";
 
+// ?tag dc:topic ?topicURI .  \n\
+
+var getAllTagsSparqlTemplate = commonPrefixes + "\n\
+SELECT DISTINCT *  \n\
+ FROM NAMED <~{graphURI}~>  \n\
+WHERE {  \n\
+    ?topicURI rdfs:label ?topicLabel .  \n\
+}  \n\
+";
+
 var getTagsSparqlTemplate = commonPrefixes + "\n\
 SELECT DISTINCT *  \n\
  FROM NAMED <~{graphURI}~>  \n\

@@ -110,16 +110,17 @@
          // little workaround for odd marked.js behaviour, at least in part due to marked.js line 793 regex
          // if the header is a link, the id ends up as "-like-this-like-this-" 
         function fixHeaderIDs() {
-            $("h1, h2, h3, h4, h5, h6").each(function () {
+            $(".content h1, .content h2, .content h3, .content h4, .content h5, .content h6").each(function () {
                 var id = $(this).attr("id");
-                var length = id.length;
-                if (id[0] == "-" && id[length - 1] == "-") {
-                    //      console.log("need to fix");
-                    id = id.substring(1, length / 2);
-                    $(this).attr("id", id);
+                if (id) {
+                    var length = id.length;
+                    if (id[0] == "-" && id[length - 1] == "-") {
+                        //      console.log("need to fix");
+                        id = id.substring(1, length / 2);
+                        $(this).attr("id", id);
+                    }
+                    //    console.log("ID = " + id);
                 }
-                //    console.log("ID = " + id);
-
             });
         }
 
