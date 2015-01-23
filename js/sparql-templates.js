@@ -123,7 +123,8 @@ foaf:nick ?nick \n\
     <~{pageURI}~> dc:topic <~{topicURI}~> . \n\
      <~{topicURI}~>  rdfs:label \"~{topicLabel}~\" . \n\
   ~{/tags}~ \n\
-         FILTER regex(?content, \"~{regex}~\", \"i\")  \n\
+         FILTER regex(CONCAT(?content, ' ', ?title), \"~{regex}~\", \"i\")  \n\
+           \n\
 }";
  
 // could probably be tidier
