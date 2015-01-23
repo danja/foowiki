@@ -114,15 +114,15 @@ a wiki:Page ; \n\
 dc:format ?format ; \n\
 dc:date ?date ; \n\
 dc:title ?title ; \n\
-sioc:content  ?content ; \n\
 foaf:maker [ \n\
 foaf:nick ?nick \n\
-] . \n\
+] ; \n\
 \n\
 ~{#tags}~ \n\
-    <~{pageURI}~> dc:topic <~{topicURI}~> . \n\
-     <~{topicURI}~>  rdfs:label \"~{topicLabel}~\" . \n\
+    dc:topic [ \n\
+       rdfs:label \"~{topicLabel}~\" ] ; \n\
   ~{/tags}~ \n\
+sioc:content  ?content . \n\
          FILTER regex(CONCAT(?content, ' ', ?title), \"~{regex}~\", \"i\")  \n\
            \n\
 }";

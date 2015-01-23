@@ -102,11 +102,22 @@
 
      $.extend(searchMap, entryXmlNames); // merges maps
      
-     $("#tagButtons input:checkbox").each(function () {
-         if ($(this).attr('checked', false)) {
-             console.log("Checked = " + $(this).attr("name"));
+     var checkedTags = [];
+     
+     $("#tagButtons label").each(function () {
+         if($(this).hasClass("ui-state-active")){
+             console.log("Checked = " + $(this).text());
+            var checkedTag = {
+                "topicLabel": $(this).text()
+          };
+  checkedTags.push(checkedTag);
+           //  console.log("Checked = " + $(this).text());
          }
      });
+     
+     searchMap["tags"] = checkedTags;
+     
+     console.log("searchMap = "+JSON.stringify(searchMap));
 
      var searchSparql = templater(searchSparqlTemplate, searchMap);
      var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
@@ -114,6 +125,7 @@
      var doneCallback = function (xml) {
      //    console.log("entriesJSON = " + JSON.stringify(entriesJSON));
          var results = makeEntryListHTML(xml, false);
+         $("#entries").empty();
          $("#entries").append(results);
      }
      getDataForURL(doneCallback, searchUrl);
