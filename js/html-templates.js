@@ -8,6 +8,20 @@
  * http://twitter.github.io/hogan.js/
  */
 
+var entryTableTemplate = " \n\
+        <table id='pagesTable'> \n\
+            <tr> \n\
+                <th colspan='3'><a href='index.html'>FuWiki</a> Pages</th> \n\
+            </tr> \n\
+            <tr> \n\
+                <th class='center'>Page</th> \n\
+                <th class='center'>Date</th> \n\
+                <th class='center'>Creator</th> \n\
+            </tr> \n\
+            <tr id='entries'></tr> \n\
+        </table> \n\
+            ";
+
 var rowTemplate = " <tr> \
            <td><a href='~{uri}~'>~{title}~</a></td> \
            <td class='center'>~{date}~</td> \

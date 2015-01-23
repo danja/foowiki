@@ -108,16 +108,22 @@ var searchSparqlTemplate = commonPrefixes + "\n\
 SELECT DISTINCT *  \n\
  FROM NAMED <~{graphURI}~>  \n\
  WHERE { \n\
-?pageURI \n\
+?uri \n\
 a sioc:Post ; \n\
 a wiki:Page ; \n\
+dc:format ?format ; \n\
+dc:date ?date ; \n\
+dc:title ?title ; \n\
 sioc:content  ?content ; \n\
+foaf:maker [ \n\
+foaf:nick ?nick \n\
+] . \n\
 \n\
 ~{#tags}~ \n\
     <~{pageURI}~> dc:topic <~{topicURI}~> . \n\
      <~{topicURI}~>  rdfs:label \"~{topicLabel}~\" . \n\
   ~{/tags}~ \n\
-         FILTER regex(?content, \"~{regex}~\", \"i\") } \n\
+         FILTER regex(?content, \"~{regex}~\", \"i\")  \n\
 }";
  
 // could probably be tidier

@@ -113,9 +113,9 @@
         }
 
         function formatEntry(entry) {
-            console.log("raw entry.content = " + entry.content);
+           // console.log("raw entry.content = " + entry.content);
             entry.content = marked(entry.content);
-            console.log("entry.content = " + entry.content);
+           // console.log("entry.content = " + entry.content);
             entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
             return templater(pageEntryTemplate, entry);
         }

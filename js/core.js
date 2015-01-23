@@ -68,6 +68,8 @@
  function setupSearch(searchContainer) {
 
      $(searchContainer).append("<button id='searchButton'>Search</button>");
+     $(searchContainer).append(entryTableTemplate);
+     
      var doneCallback = function (xml) {
          var tags = tagsXmlToJson(xml);
          var tagButtons = $(searchContainer + " #tagButtons");
@@ -85,20 +87,24 @@
          });
      }
      getAllTags(doneCallback);
-
-     // searchSparqlTemplate
  }
 
  function doSearch() {
      console.log("doSearch");
-     
+     var regex = $("#searchText").val();
+
+     console.log("regex = " + regex);
+
      var searchMap = {
-         "graphURI": graphURI
+         "graphURI": graphURI,
+         "regex": regex
      };
 
-     $("#tagButtons input:checkbox").each( function() {
-         if (  $(this).attr('checked', false)  ) {
-             console.log("Checked = " + $(this).attr("name")   );
+     $.extend(searchMap, entryXmlNames); // merges maps
+     
+     $("#tagButtons input:checkbox").each(function () {
+         if ($(this).attr('checked', false)) {
+             console.log("Checked = " + $(this).attr("name"));
          }
      });
 
@@ -106,11 +112,30 @@
      var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
 
      var doneCallback = function (xml) {
-
+     //    console.log("entriesJSON = " + JSON.stringify(entriesJSON));
+         var results = makeEntryListHTML(xml, false);
+         $("#entries").append(results);
      }
-
-  //   getDataForURL(doneCallback, searchUrl);
+     getDataForURL(doneCallback, searchUrl);
  }
+
+ function makeEntryListHTML(xml, showContent) {
+     var rows = "";
+     var entryArray = sparqlXMLtoJSON(xml, entryXmlNames);
+     //xmlToEntryArray(xml);
+     for (var i = 0; i < entryArray.length; i++) {
+         rows += formatRow(entryArray[i]); // content, 
+     }
+     return rows;
+ }
+
+ function formatRow(entry) { // content, 
+     entry.uri = "page.html?uri=" + entry.uri;
+     entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
+     var row = templater(rowTemplate, entry);
+     return row;
+ }
+
 
  function setupTagsAutocomplete(tagsContainerId, callback) {
      var doneCallback = function (xml) {
@@ -137,7 +162,7 @@
  }
 
  function tagsXmlToJson(xml) {
-     var xmlString = (new XMLSerializer()).serializeToString(xml); // refactor me 
+     var xmlString = (new XMLSerializer()).serializeToString(xml);
      var tagsXmlNames = ["topicURI", "topicLabel"];
      return sparqlXMLtoJSON(xml, tagsXmlNames);
  }
