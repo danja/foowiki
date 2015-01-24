@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>FooWiki</title>
 
+    <link rel="stylesheet" href="css/columns.css" />
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/common.css">
     <!-- link rel="stylesheet" type="text/css" href="css/jquery-ui.css" -->
@@ -113,9 +114,9 @@
         }
 
         function formatEntry(entry) {
-           // console.log("raw entry.content = " + entry.content);
+            // console.log("raw entry.content = " + entry.content);
             entry.content = marked(entry.content);
-           // console.log("entry.content = " + entry.content);
+            // console.log("entry.content = " + entry.content);
             entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
             return templater(pageEntryTemplate, entry);
         }
@@ -124,18 +125,34 @@
 </head>
 
 <body>
-    <div id="container">
-        <div id="errorbox"></div>
-        <div class="tab"><a href="index.html">Page Index</a>
-        </div>
+    <!-- div id="container" -->
+    <div id="errorbox"></div>
 
+    <div id="middle" class="column">
         <div id="entry"></div>
 
         <p id="buttons" class="center">
             <button id="editButton">Edit</button>
         </p>
-        <div id="spinner" class="spinner"></div>
     </div>
+
+    <div id="left" class="column">
+        <div class="tab"><a href="index.html">Page Index</a>
+        </div>
+    </div>
+
+    <div id="right" class="column">
+        <div id='searchContainer'>
+            <button id='searchButton'>Search</button>
+            <!-- label for='searchText'>Search Text</label -->
+            <input id='searchText' type='text' value=''></input>
+            <div id='tagButtons'></div>
+        <ul id="results"></ul>
+        </div>
+    </div>
+
+    <div id="spinner" class="spinner"></div>
+    <!-- /div -->
 </body>
 
 </html>

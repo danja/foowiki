@@ -67,9 +67,9 @@
 
  function setupSearch(searchContainer) {
 
-     $(searchContainer).append("<button id='searchButton'>Search</button>");
-     $(searchContainer).append(entryTableTemplate);
-     
+   //  $(searchContainer).append("<button id='searchButton'>Search</button>");
+   //  $(searchContainer).append(entryTableTemplate);
+
      var doneCallback = function (xml) {
          var tags = tagsXmlToJson(xml);
          var tagButtons = $(searchContainer + " #tagButtons");
@@ -78,7 +78,7 @@
              var uri = tags[i]["topicURI"];
              var label = tags[i]["topicLabel"];
              //  <input type="checkbox" id="check1"><label for="check1">B</label>
-             $(tagButtons).append("<input type='checkbox' id='tagButton" + i + "' name='" + label + "'><label for='tagButton" + i + "'>" + label + "</label>");
+             $(tagButtons).append("<input type='checkbox' id='tagButton" + i + "' name='" + label + "'><label for='tagButton" + i + "'>" + label + "</label> ");
          }
          $(tagButtons).buttonset();
 
@@ -101,36 +101,50 @@
      };
 
      $.extend(searchMap, entryXmlNames); // merges maps
-     
+
      var checkedTags = [];
-     
+
      $("#tagButtons label").each(function () {
-         if($(this).hasClass("ui-state-active")){
+         if ($(this).hasClass("ui-state-active")) {
              console.log("Checked = " + $(this).text());
-            var checkedTag = {
-                "topicLabel": $(this).text()
-          };
-  checkedTags.push(checkedTag);
-           //  console.log("Checked = " + $(this).text());
+             var checkedTag = {
+                 "topicLabel": $(this).text()
+             };
+             checkedTags.push(checkedTag);
          }
      });
-     
+
      searchMap["tags"] = checkedTags;
-     
-     console.log("searchMap = "+JSON.stringify(searchMap));
+
+     console.log("searchMap = " + JSON.stringify(searchMap));
 
      var searchSparql = templater(searchSparqlTemplate, searchMap);
      var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
 
      var doneCallback = function (xml) {
-     //    console.log("entriesJSON = " + JSON.stringify(entriesJSON));
-         var results = makeEntryListHTML(xml, false);
-         $("#entries").empty();
-         $("#entries").append(results);
+         //    console.log("entriesJSON = " + JSON.stringify(entriesJSON));
+         var results = makeResultsHTML(xml);
+         $("results").empty();
+         $("#results").append(results);
      }
      getDataForURL(doneCallback, searchUrl);
  }
 
+ // for search results
+ function makeResultsHTML(xml) {
+     var links = "";
+     var entryArray = sparqlXMLtoJSON(xml, entryXmlNames);
+     //xmlToEntryArray(xml);
+     for (var i = 0; i < entryArray.length; i++) {
+         var entry = entryArray[i];
+         entry.uri = "page.html?uri=" + entry.uri;
+        
+         links += templater(linkTemplate, entry);
+     }
+     return links;
+ }
+
+ // for index page
  function makeEntryListHTML(xml, showContent) {
      var rows = "";
      var entryArray = sparqlXMLtoJSON(xml, entryXmlNames);

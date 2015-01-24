@@ -22,8 +22,13 @@ var entryTableTemplate = " \n\
         </table> \n\
             ";
 
+var resultTemplate = "<li><a href='~{uri}~'>~{title}~</a></li>";
+
+
+var linkTemplate = "<a href='~{uri}~'>~{title}~</a>";
+
 var rowTemplate = " <tr> \
-           <td><a href='~{uri}~'>~{title}~</a></td> \
+           <td>"+linkTemplate+"</td> \
            <td class='center'>~{date}~</td> \
             <td class='center'>~{nick}~</td> \
             </tr>";
@@ -58,13 +63,7 @@ var pageEntryTemplate = "<div class='entry'> \
       <label for='maintagscontainer'>Tags</label> \
             <ul id='maintagscontainer'> \
             </ul> \
-            </div> \
-            <div id='searchContainer'> \
-                <h2>Search</h2> \
-<label for='searchText'>Search Text</label> \
-            <input id='searchText' type='text' value=''></input> \
-               <div id='tagButtons'> </div>\
-            </div>  ";
+            </div>";
 
 var entryTemplate = "<div class='entry'> \
             <h1 class='center'><a href=~{uri}~>~{title}~</a></h1> \
