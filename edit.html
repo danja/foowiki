@@ -203,21 +203,37 @@
 </head>
 
 <body>
-    <div id="container">
-        <div id="errorbox"></div>
-        <div><a href="index.html">Page Index</a>
-        </div>
+      <!-- div id="container" -->
+    <div id="errorbox"></div>
 
+    <div id="middle" class="column">
         <div id="entry"></div>
 
-        <p class="center">
+        <p id="buttons" class="center">
+               <p class="center">
             <button id="submit">Save</button>
             <button id="cancel">Cancel</button>
             <button id="delete">Delete</button>
         </p>
-
-        <div id="spinner" class="spinner"></div>
+        </p>
     </div>
+
+    <div id="left" class="column">
+        <!-- div class="tab"><a href="index.html">Page Index</a>
+        </div -->
+    </div>
+
+    <div id="right" class="column">
+        <div id='searchContainer'>
+            <button id='searchButton'>Search</button>
+            <!-- label for='searchText'>Search Text</label -->
+            <input id='searchText' type='text' value=''></input>
+            <div id='tagButtons'></div>
+        <ul id="results"></ul>
+        </div>
+    </div>
+
+    <div id="spinner" class="spinner"></div>
 </body>
 
 </html>

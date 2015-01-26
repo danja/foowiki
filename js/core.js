@@ -124,8 +124,9 @@
      var doneCallback = function (xml) {
          //    console.log("entriesJSON = " + JSON.stringify(entriesJSON));
          var results = makeResultsHTML(xml);
-         $("results").empty();
+         $("#results").empty();
          $("#results").append(results);
+         console.log("HERE"+results);
      }
      getDataForURL(doneCallback, searchUrl);
  }
@@ -138,8 +139,9 @@
      for (var i = 0; i < entryArray.length; i++) {
          var entry = entryArray[i];
          entry.uri = "page.html?uri=" + entry.uri;
-        
-         links += templater(linkTemplate, entry);
+        var link = templater(linkTemplate, entry);
+         console.log("LINK "+link);
+         links += link;
      }
      return links;
  }

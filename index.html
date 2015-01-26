@@ -103,14 +103,18 @@
                 }
             });
             */
+            setupSearch("#searchContainer");
         }
     </script>
 </head>
 
 <body>
-    <div id="container">
-        <div id="errorbox"></div>
-        <table id="pagesTable"><!-- refactor to use entryTableTemplate -->
+    <!-- div id="container" -->
+    <div id="errorbox"></div>
+
+    <div id="middle" class="column">
+        <table id="pagesTable">
+            <!-- refactor to use entryTableTemplate -->
             <tr>
                 <th colspan="3"><a href="index.html">FuWiki</a> Pages</th>
             </tr>
@@ -122,40 +126,59 @@
             <tr id="entries"></tr>
         </table>
 
-        <p>
-            <label for='newPageName'>New Page</label>
-            <button id="newPageButton">Create New Page</button>
-            <input id="newPageName" type="text" size="40" />
-        </p>
-        <p>
 
-            <!-- form id="upload-form" enctype="multipart/form-data">
+
+    </div>
+
+    <div id="left" class="column">
+        <div class="tab"><a href="index.html">Page Index</a>
+            <p>
+                <label for='newPageName'>New Page</label>
+                <button id="newPageButton">Create New Page</button>
+                <input id="newPageName" type="text" size="40" />
+            </p>
+            <p>
+
+                <!-- form id="upload-form" enctype="multipart/form-data">
                 <input type="file" id="upload-file" name="upload" />
                 <button type="submit" id="upload-button">Upload Turtle</button>
             </form -->
-            <h3>Upload RDF</h3>
-            <form action="/foowiki/upload" enctype="multipart/form-data" method="post">
-                <!-- TODO move to config (bypass Fuseki) -->
-                <!-- onsubmit="window.location.href = 'index.html'; return false;" -->
-                <input id="filename" type="file" name="UNSET FILE NAME" size="40" multiple="">
-                <label for='graphName'>Graph</label>
-                <input name="graph" id="graphName" size="20" value="default" />
-                <br/>
-                <input type="submit" value="Upload">
-            </form>
-            <h3>Export Turtle</h3>
-            <button id="turtle">Export</button>
-        </p>
-        <div id="tagsPanel">
+                <h3>Upload RDF</h3>
+                <form action="/foowiki/upload" enctype="multipart/form-data" method="post">
+                    <!-- TODO move to config (bypass Fuseki) -->
+                    <!-- onsubmit="window.location.href = 'index.html'; return false;" -->
+                    <input id="filename" type="file" name="UNSET FILE NAME" size="40" multiple="">
+                    <label for='graphName'>Graph</label>
+                    <input name="graph" id="graphName" size="20" value="default" />
+                    <br/>
+                    <input type="submit" value="Upload">
+                </form>
+                <h3>Export Turtle</h3>
+                <button id="turtle">Export</button>
+            </p>
+        </div>
+    </div>
+
+    <div id="right" class="column">
+        <div id='searchContainer'>
+            <button id='searchButton'>Search</button>
+            <!-- label for='searchText'>Search Text</label -->
+            <input id='searchText' type='text' value=''></input>
+            <div id='tagButtons'></div>
+            <ul id="results"></ul>
+        </div>
+    </div>
+    <!-- div id="tagsPanel">
             <label for='tagsPanelTagsContainer'>Tags</label>
             <ul id='tagsPanelTagsContainer'>
             </ul>
-        </div>
+        </div -->
 
-        <!-- input id="fileupload" type="file" name="files[]" data-url="/foowiki/upload" multiple -->
+    <!-- input id="fileupload" type="file" name="files[]" data-url="/foowiki/upload" multiple -->
 
-        <div id="spinner" class="spinner"></div>
+
     </div>
+    <div id="spinner" class="spinner"></div>
 </body>
 
 </html>
