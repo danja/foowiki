@@ -75,10 +75,16 @@
     color: gray;
 }
 
-/* li {
-    margin: 0px 0px 0px 0px;
-    padding: 2px 0px 0px 0px;
-} */
+#results{
+    list-style-type: none;
+      /*  list-style-position:inside; */
+        margin:0;
+        padding:0px;
+}
+
+#results li {
+    padding-top: 8px;
+} 
 
 select {
    float: right;

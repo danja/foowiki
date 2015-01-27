@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding-left: 200px;
     /* LC fullwidth */
-    padding-right: 190px;
+    padding-right: 250px; /* was 190 */
     /* RC fullwidth + CC padding */
     min-width: 240px;
     /* LC fullwidth + CC padding */
@@ -33,7 +33,7 @@ body {
 
 #left {
     width: 180 px;
-    /* was*/
+    /* was 180 */
     /* LC width */
     padding: 0 10px;
     /* LC padding */

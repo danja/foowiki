@@ -83,7 +83,7 @@
 
                             this.href = this.href.substring(0, hashPosition) + anchor;
                             //.replace(/\w+/g, '-')
-                            console.log("anchor = " + anchor);
+                            //  console.log("anchor = " + anchor);
 
                             $(this).click(function () {
                                 console.log("CLICKED anchor = " + anchor);
@@ -94,12 +94,21 @@
                                 }, 250);
                             });
                         } else {
-                            //   console.log("old href = " + this.href);
-                            // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/FuWiki%20To%20Do
-                            var localRef = this.href.substring(this.href.indexOf(serverRootPath) + serverRootPath.length);
-                            //   console.log("new = " + this.href.substring(serverRootPath.length));
-                            //  console.log("new href = " + this.href);
-                            this.href = serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
+                            if (location.href == this.href) { // link href was blank
+                                var split = this.href.split("/");
+                                var slice = split.slice(0, split.length - 1);
+                                this.href = slice.join("/") + "/" + this.text; // need to encode?
+                                //     console.log("rel = "+rel);
+                            } else {
+                                //      console.log("location.href = " + location.href);
+                                //        console.log("old href = " + this.href);
+                                //      console.log("this.text = " + this.text);
+                                // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/FuWiki%20To%20Do
+                                var localRef = this.href.substring(this.href.indexOf(serverRootPath) + serverRootPath.length);
+                                //   console.log("new = " + this.href.substring(serverRootPath.length));
+                                //      console.log("new href = " + this.href);
+                                this.href = serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
+                            }
                         }
                     }
 
@@ -139,11 +148,29 @@
             return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
         }
 
+function tweakBlockquotes(content) {
+        var blockquoteSplit = content.split("```");
+            if (blockquoteSplit.length > 1) {
+                for (var i = 1; i < blockquoteSplit.length; i = i + 2) {
+                //    console.log("X=" + blockquoteSplit[i]);
+                    blockquoteSplit[i] = hUnescape(blockquoteSplit[i]);
+                }
+            }
+            return blockquoteSplit.join("````");
+}
+
         function htmlUnescape(value) {
+
             value = value.replace(/&lt;/g, "<");
             value = value.replace(/&gt;/g, ">");
 
             value = value.replace(/&quot;/g, "\"");
             value = value.replace(/&amp;/g, "&");
             return value;
+        }
+
+        function hUnescape(value) {
+            var d = $("<div>");
+            d.html(value);
+            return d.text();
         }

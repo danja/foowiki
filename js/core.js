@@ -139,8 +139,8 @@
      for (var i = 0; i < entryArray.length; i++) {
          var entry = entryArray[i];
          entry.uri = "page.html?uri=" + entry.uri;
-        var link = templater(linkTemplate, entry);
-         console.log("LINK "+link);
+        var link = templater(resultTemplate, entry);
+        /* console.log("LINK "+link); */
          links += link;
      }
      return links;
