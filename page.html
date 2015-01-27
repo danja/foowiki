@@ -46,13 +46,51 @@
                 window.location.href = window.location.href.replace("page.html", "edit.html");
                 return false;
             });
-
-
         });
+
+        function getImage(imageURI) {
+            var pageMap = {
+                "imageURI": imageURI,
+                "graphURI": graphURI
+            };
+
+            var getPageSparql = templater(getImageSparqlTemplate, pageMap);
+
+            var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
+
+            var doneCallback = function (xml) {
+
+                var entryXmlNames = ["base64"];
+                var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
+
+               console.log("entryJSON = "+JSON.stringify(entryJSON));
+                
+                 console.log("entryJSON[base64] = "+entryJSON[0]["base64"]);
+                
+                // <img src="http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/220px-SheelaWiki.jpg&amp;type=image" alt="Alt text">
+             
+              //  $('#testImage').html('<img src="data:image/png;base64,' + entryJSON[0]["base64"] + '" />');
+                var src = src="data:image/jpeg;base64," + entryJSON[0]["base64"];
+              //   window.location = entryJSON[0]["base64"];
+                
+                // needs browser to do the business
+                
+                window.location.href = src;
+            }
+            getDataForURL(doneCallback, getPageUrl);
+        }
 
         function getPage() {
             var pageURI = queryString["uri"];
+
+             console.log("queryString = "+JSON.stringify(queryString));
+            if (queryString["type"] == "image") {
+                console.log("GET IMAGE");
+                return getImage(pageURI);
+            }
             pageURI = encodeURI(pageURI);
+
+            // console.log("pageURI ="+pageURI );
 
             var pageMap = {
                 "pageURI": pageURI,
@@ -106,6 +144,7 @@
                 $("#entry").replaceWith(entryHTML);
                 translateLocalLinks();
                 fixHeaderIDs(); // little workaround for odd marked.js behaviour
+                fixImageLinks(pageMap);
                 setupTags("#maintagscontainer", pageMap, true);
                 setupSearch("#searchContainer");
             };
@@ -114,13 +153,23 @@
         }
 
         function formatEntry(entry) {
-             console.log("raw entry.content = " + entry.content);
-      entry.content =  tweakBlockquotes(entry.content);
+            //  console.log("raw entry.content = " + entry.content);
+            entry.content = tweakBlockquotes(entry.content);
             entry.content = marked(entry.content);
 
             // console.log("entry.content = " + entry.content);
             entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
             return templater(pageEntryTemplate, entry);
+        }
+
+        function fixImageLinks(pageMap) {
+
+            $("img").each(function () {
+                var split = window.location.href.split("/");
+                var path = split.slice(0, split.length - 1).join("/");
+                path = path + "/" + $(this).attr("src") + "&type=image";
+                $(this).attr("src", path);
+            });
         }
     </script>
 
@@ -155,6 +204,7 @@
 
     <div id="spinner" class="spinner"></div>
     <!-- /div -->
+<div id="testImage" />
 </body>
 
 </html>

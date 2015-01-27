@@ -174,3 +174,70 @@
             d.html(value);
             return d.text();
         }
+
+         // image uploading
+        function dataURLToBlob(dataURL) {
+            var BASE64_MARKER = ';base64,';
+            if (dataURL.indexOf(BASE64_MARKER) == -1) {
+                var parts = dataURL.split(',');
+                var contentType = parts[0].split(':')[1];
+                var raw = parts[1];
+
+                return new Blob([raw], {
+                    type: contentType
+                });
+            } else {
+                var parts = dataURL.split(BASE64_MARKER);
+                var contentType = parts[0].split(':')[1];
+                var raw = window.atob(parts[1]);
+                var rawLength = raw.length;
+
+                var uInt8Array = new Uint8Array(rawLength);
+
+                for (var i = 0; i < rawLength; ++i) {
+                    uInt8Array[i] = raw.charCodeAt(i);
+                }
+
+                return new Blob([uInt8Array], {
+                    type: contentType
+                });
+            }
+        }
+
+        function setupImageUploading() {
+            $('#fileSelector').change(function (event) {
+                var file = event.target.files[0];
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+
+                reader.onload = function (event) {
+                    var base64 = reader.result;
+
+                    var file = $('#fileSelector')[0].files[0]
+//if(file){
+ // console.log(file.name);
+// }
+                    var imageName =  file.name;
+                    
+                    //$('#base64').attr('value', base64);
+                    var blob = dataURLToBlob(base64);
+                    var formData = new FormData();
+                    formData.append('file', blob);
+
+                    $.ajax({
+                        url: '/echo/json/',
+                        type: 'POST',
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        dataType: 'text',
+                        success: function (response) {
+                            $('#result').text(response);
+                        }
+                    });
+                    $('#original_image').attr('src', base64);
+                    $('#original_image').attr('name', imageName);
+                }
+            });
+        }

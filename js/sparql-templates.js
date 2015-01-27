@@ -11,6 +11,7 @@
 var commonPrefixes = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n\
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  \n\
 PREFIX dc: <http://purl.org/dc/terms/>  \n\
+PREFIX dctype: <http://purl.org/dc/dcmitype/> \n\
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>  \n\
 PREFIX sioc: <http://rdfs.org/sioc/ns#>  \n\
 PREFIX wiki: <http://purl.org/stuff/wiki#>  \n\
@@ -46,6 +47,15 @@ var getPageSparqlTemplate = commonPrefixes + "\n\
     foaf:maker [ \n\
     foaf:nick ?nick \n\
     ] . \n\
+} \n\
+";
+
+var getImageSparqlTemplate = commonPrefixes + "\n\
+    SELECT DISTINCT * \n\
+    FROM NAMED <~{graphURI}~>  \n\
+    WHERE { \n\
+    <~{imageURI}~> a dctype:Image ; \n\
+    wiki:base64 ?base64 .\n\
 } \n\
 ";
 

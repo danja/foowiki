@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/common.css">
     <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
-      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
 
     <!-- mustache template compiler -->
     <script src="js/hogan-3.0.2.js"></script>
@@ -24,7 +24,7 @@
     <!-- from https://github.com/aehlke/tag-it -->
     <script src="js/tag-it.js" type="text/javascript" charset="utf-8"></script>
 
-     <!-- FooWiki scripts -->
+    <!-- FooWiki scripts -->
     <script src="js/config.js"></script>
     <script src="js/sparql-templates.js"></script>
     <script src="js/html-templates.js"></script>
@@ -46,13 +46,15 @@
 
         $(function () {
             setupErrorHandling();
+
             spinner();
+            setupImageUploading();
 
             var doneCallback = function (xml, pageURI) {
                 var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
                 var entry = entryJSON[0];
-               
-           //     var entryHTML = "";
+
+                //     var entryHTML = "";
                 uri = "page.html?uri=" + pageURI;
 
                 if (!entry) { // page doesn't exist, so create it
@@ -63,10 +65,10 @@
                     entry.content = "enter content here";
                     entry.nick = "danja";
                 }
-                
+
                 //  entry["uri"] = "page.html?uri=" + pageURI;
 
-               var entryHTML = templater(editEntryTemplate, entry);
+                var entryHTML = templater(editEntryTemplate, entry);
 
                 $("#entry").replaceWith(entryHTML);
                 $("#format option").each(
@@ -112,8 +114,8 @@
 
                 var data = templater(postPageSparqlTemplate, entry);
 
-              //   console.log("data = "+data);
-                
+                //   console.log("data = "+data);
+
                 // put current data in local storage here
                 var callback = function () {
                     $.ajax({
@@ -163,10 +165,10 @@
                 "tags": tags
             };
 
-        //    console.log("templateMap=" + JSON.stringify(templateMap));
+            //    console.log("templateMap=" + JSON.stringify(templateMap));
             var data = templater(postTagsSparqlTemplate, templateMap);
-       //     console.log("postTagsSparqlTemplate=" + postTagsSparqlTemplate);
-       //     console.log("DATA=" + data);
+            //     console.log("postTagsSparqlTemplate=" + postTagsSparqlTemplate);
+            //     console.log("DATA=" + data);
 
             $.ajax({
                 type: "POST",
@@ -197,24 +199,23 @@
             });
             return false;
         }
-
     </script>
 
 </head>
 
 <body>
-      <!-- div id="container" -->
+    <!-- div id="container" -->
     <div id="errorbox"></div>
 
     <div id="middle" class="column">
         <div id="entry"></div>
 
         <p id="buttons" class="center">
-               <p class="center">
-            <button id="submit">Save</button>
-            <button id="cancel">Cancel</button>
-            <button id="delete">Delete</button>
-        </p>
+            <p class="center">
+                <button id="submit">Save</button>
+                <button id="cancel">Cancel</button>
+                <button id="delete">Delete</button>
+            </p>
         </p>
     </div>
 
@@ -229,9 +230,17 @@
             <!-- label for='searchText'>Search Text</label -->
             <input id='searchText' type='text' value=''></input>
             <div id='tagButtons'></div>
-        <ul id="results"></ul>
+            <ul id="results"></ul>
         </div>
     </div>
+
+    <input type="file" name="fileSelector" id="fileSelector" />
+    <br/>
+    <!-- input type="text" name="imageName" id="imageName" / -->
+    <br/>
+    <img id="original_image" />
+
+    <pre><span id="result"></span></pre>
 
     <div id="spinner" class="spinner"></div>
 </body>
