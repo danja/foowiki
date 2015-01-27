@@ -148,16 +148,16 @@
             return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
         }
 
-function tweakBlockquotes(content) {
-        var blockquoteSplit = content.split("```");
+        function tweakBlockquotes(content) {
+            var blockquoteSplit = content.split("```");
             if (blockquoteSplit.length > 1) {
                 for (var i = 1; i < blockquoteSplit.length; i = i + 2) {
-                //    console.log("X=" + blockquoteSplit[i]);
+                    //    console.log("X=" + blockquoteSplit[i]);
                     blockquoteSplit[i] = hUnescape(blockquoteSplit[i]);
                 }
             }
             return blockquoteSplit.join("````");
-}
+        }
 
         function htmlUnescape(value) {
 

@@ -64,6 +64,7 @@
                 var entry = entryJSON[0];
 
                 var params = "";
+                // console.log(JSON.stringify(queryString));
                 var script = document.createElement('script');
                 script.type = 'text/javascript';
                 script.async = true;
@@ -71,9 +72,10 @@
                 var s = document.getElementsByTagName('script')[0];
                 s.parentNode.insertBefore(script, s);
 
-                var toRun = entry.title + "(" + params + ");"
+                var toRun = entry.title + "(" + JSON.stringify(queryString) + ");"
 
                 console.log(toRun);
+                
                 eval(toRun);
             };
 
