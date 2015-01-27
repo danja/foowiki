@@ -48,7 +48,7 @@
             });
         });
 
-        function getImage(imageURI) {
+        function getImage(imageURI, callback) {
             var pageMap = {
                 "imageURI": imageURI,
                 "graphURI": graphURI
@@ -62,20 +62,9 @@
 
                 var entryXmlNames = ["base64"];
                 var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
-
-               console.log("entryJSON = "+JSON.stringify(entryJSON));
+                var src ="data:image/jpeg;base64," + entryJSON[0]["base64"];
                 
-                 console.log("entryJSON[base64] = "+entryJSON[0]["base64"]);
-                
-                // <img src="http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/220px-SheelaWiki.jpg&amp;type=image" alt="Alt text">
-             
-              //  $('#testImage').html('<img src="data:image/png;base64,' + entryJSON[0]["base64"] + '" />');
-                var src = src="data:image/jpeg;base64," + entryJSON[0]["base64"];
-              //   window.location = entryJSON[0]["base64"];
-                
-                // needs browser to do the business
-                
-                window.location.href = src;
+                callback(src);
             }
             getDataForURL(doneCallback, getPageUrl);
         }
@@ -85,8 +74,11 @@
 
              console.log("queryString = "+JSON.stringify(queryString));
             if (queryString["type"] == "image") {
-                console.log("GET IMAGE");
-                return getImage(pageURI);
+            //    console.log("GET IMAGE");
+                var callback = function(src){
+                    window.location.href = src;
+                };
+                return getImage(pageURI, callback);
             }
             pageURI = encodeURI(pageURI);
 
@@ -165,10 +157,17 @@
         function fixImageLinks(pageMap) {
 
             $("img").each(function () {
-                var split = window.location.href.split("/");
-                var path = split.slice(0, split.length - 1).join("/");
-                path = path + "/" + $(this).attr("src") + "&type=image";
-                $(this).attr("src", path);
+              //  var split = window.location.href.split("/");
+            //    var path = split.slice(0, split.length - 1).join("/");
+        //     path = path + "/" + $(this).attr("src") + "&type=image";
+                // $(this).attr("src", path);
+                var path = pagesBaseURI + $(this).attr("src");
+                var me = this;
+                var callback = function(src) {
+                    console.log("SRC="+src);
+                    $(me).attr("src", src);
+                }
+                getImage(path, callback);
             });
         }
     </script>
