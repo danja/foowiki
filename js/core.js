@@ -54,21 +54,87 @@
      return jsonResults;
  }
 
+ // see similar examples around http://stackoverflow.com/questions/18550151/posting-base64-data-javascript-jquery
 
- function setupTags(containerId, pageMap, readOnly) {
-     if (readOnly) {
-         createTags(containerId, pageMap, readOnly);
+ function setupImageUploading() {
+     $('#fileSelector').change(function (event) {
+             var file = event.target.files[0];
+             var reader = new FileReader();
+             reader.readAsDataURL(file);
+
+             reader.onload = function (event) {
+                 var dataURL = reader.result;
+                 //    console.log("base64 = " + base64);
+                 var file = $('#fileSelector')[0].files[0]
+                     //if(file){
+                     // console.log(file.name);
+                     // }
+                 var imageLabel = file.name;
+
+                 var BASE64_MARKER = ';base64,';
+                 //    if (dataURL.indexOf(BASE64_MARKER) == -1) {
+                 var parts = dataURL.split(',');
+                 var contentType = parts[0].split(':')[1];
+                 var raw = parts[1];
+                 //     } ;
+
+                 // ADD MEDIA TYPE
+                 var map = {
+                     "graphURI": graphURI,
+                     "imageURI": pagesBaseURI+imageLabel,
+                     "imageLabel": imageLabel,
+                     "imageData": raw
+                 };
+                 var data = templater(postImageSparqlTemplate, map);
+                 $.ajax({
+                     type: "POST",
+                     url: sparqlUpdateEndpoint,
+                     data: ({
+                         update: data
+                     })
+                 }).done(function () {});
+                 $('#original_image').attr('src', dataURL);
+                 $('#original_image').attr('name', imageLabel);
+             }
+         
+     });
+ }
+
+ // image uploading
+ function dataURLToBlob(dataURL) {
+     var BASE64_MARKER = ';base64,';
+     if (dataURL.indexOf(BASE64_MARKER) == -1) {
+         var parts = dataURL.split(',');
+         var contentType = parts[0].split(':')[1];
+         var raw = parts[1];
+
+         return new Blob([raw], {
+             type: contentType
+         });
      } else {
-         setupTagsAutocomplete(containerId, function () {
-             createTags(containerId, pageMap, readOnly);
+         var parts = dataURL.split(BASE64_MARKER);
+         var contentType = parts[0].split(':')[1];
+         var raw = window.atob(parts[1]);
+         var rawLength = raw.length;
+
+         var uInt8Array = new Uint8Array(rawLength);
+
+         for (var i = 0; i < rawLength; ++i) {
+             uInt8Array[i] = raw.charCodeAt(i);
+         }
+
+         return new Blob([uInt8Array], {
+             type: contentType
          });
      }
  }
 
+ // SEARCH --------------------------
+
  function setupSearch(searchContainer) {
 
-   //  $(searchContainer).append("<button id='searchButton'>Search</button>");
-   //  $(searchContainer).append(entryTableTemplate);
+     //  $(searchContainer).append("<button id='searchButton'>Search</button>");
+     //  $(searchContainer).append(entryTableTemplate);
 
      var doneCallback = function (xml) {
          var tags = tagsXmlToJson(xml);
@@ -126,7 +192,7 @@
          var results = makeResultsHTML(xml);
          $("#results").empty();
          $("#results").append(results);
-         console.log("HERE"+results);
+         console.log("HERE" + results);
      }
      getDataForURL(doneCallback, searchUrl);
  }
@@ -139,8 +205,8 @@
      for (var i = 0; i < entryArray.length; i++) {
          var entry = entryArray[i];
          entry.uri = "page.html?uri=" + entry.uri;
-        var link = templater(resultTemplate, entry);
-        /* console.log("LINK "+link); */
+         var link = templater(resultTemplate, entry);
+         /* console.log("LINK "+link); */
          links += link;
      }
      return links;
@@ -164,6 +230,16 @@
      return row;
  }
 
+ // TAGS Stuff
+ function setupTags(containerId, pageMap, readOnly) {
+     if (readOnly) {
+         createTags(containerId, pageMap, readOnly);
+     } else {
+         setupTagsAutocomplete(containerId, function () {
+             createTags(containerId, pageMap, readOnly);
+         });
+     }
+ }
 
  function setupTagsAutocomplete(tagsContainerId, callback) {
      var doneCallback = function (xml) {

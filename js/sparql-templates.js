@@ -59,6 +59,20 @@ var getImageSparqlTemplate = commonPrefixes + "\n\
 } \n\
 ";
 
+var postImageSparqlTemplate = commonPrefixes + "\n\
+WITH <~{graphURI}~> \n\
+DELETE { <~{imageURI}~>  ?p ?o }  \n\
+WHERE { <~{imageURI}~>  ?p ?o } \n\
+; \n\
+INSERT DATA {  \n\
+GRAPH <~{graphURI}~> {  \n\
+\n\
+    <~{imageURI}~> a dctype:Image ; \n\
+    rdfs:label \"\"\"~{imageLabel}~\"\"\" ; \n\
+    wiki:base64 \"\"\"~{imageData}~\"\"\" .\n\
+}  \n\
+}";
+
 // ?tag dc:topic ?topicURI .  \n\
 
 var getAllTagsSparqlTemplate = commonPrefixes + "\n\
