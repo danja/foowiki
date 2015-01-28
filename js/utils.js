@@ -71,49 +71,36 @@
         function translateLocalLinks() {
             $('div.content  a').each(
                 function () {
-                    console.log("this.href = " + this.href);
                     if (this.href.indexOf(serverRootPath) != -1) { // less than perfect
                         var hashPosition = this.href.indexOf("#");
                         if (hashPosition != -1) {
                             var anchor = this.href.substring(hashPosition); // "#Something"
-
-                            //        anchor = anchor.toLowerCase().replace(/^\s+|\s+$/g, "-");
                             anchor = anchor.trim().toLowerCase();
                             anchor = anchor.replace(/\s+/g, "-");
-
                             this.href = this.href.substring(0, hashPosition) + anchor;
-                            //.replace(/\w+/g, '-')
-                            //  console.log("anchor = " + anchor);
 
                             $(this).click(function () {
-                                console.log("CLICKED anchor = " + anchor);
-                                //    window.scrollTo(0, $(anchor).offset());
-                                console.log("offset = " + $(anchor).offset());
                                 $('html, body').animate({
                                     scrollTop: $(anchor).offset().top
                                 }, 250);
                             });
                         } else {
-                            if (location.href == this.href) { // link href was blank
-                                var split = this.href.split("/");
-                                var slice = split.slice(0, split.length - 1);
-                                this.href = slice.join("/") + "/" + this.text; // need to encode?
-                                //     console.log("rel = "+rel);
-                            } else {
-                                //      console.log("location.href = " + location.href);
-                                //        console.log("old href = " + this.href);
-                                //      console.log("this.text = " + this.text);
-                                // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/FuWiki%20To%20Do
-                                var localRef = this.href.substring(this.href.indexOf(serverRootPath) + serverRootPath.length);
-                                //   console.log("new = " + this.href.substring(serverRootPath.length));
-                                //      console.log("new href = " + this.href);
-                                this.href = serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
-                            }
+                            // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/Home%20Page
+                            this.href = reviseHref(this.href, this.text);
                         }
                     }
 
                 });
-            //     console.log("edit link = "+$('#editLink').href);
+        }
+
+        function reviseHref(oldHref, linkText) {
+            if (location.href == oldHref) { // link href was blank
+                var before = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + serverRootPath + "page.html?uri=" + pagesBaseURI;
+                return oldHref.substring(0, before.length) + linkText;
+            } else {
+                var localRef = oldHref.substring(oldHref.indexOf(serverRootPath) + serverRootPath.length);
+                return serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
+            }
         }
 
          // little workaround for odd marked.js behaviour, at least in part due to marked.js line 793 regex
@@ -174,6 +161,3 @@
             d.html(value);
             return d.text();
         }
-
-  
-

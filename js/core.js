@@ -58,45 +58,45 @@
 
  function setupImageUploading() {
      $('#fileSelector').change(function (event) {
-             var file = event.target.files[0];
-             var reader = new FileReader();
-             reader.readAsDataURL(file);
+         var file = event.target.files[0];
+         var reader = new FileReader();
+         reader.readAsDataURL(file);
 
-             reader.onload = function (event) {
-                 var dataURL = reader.result;
-                 //    console.log("base64 = " + base64);
-                 var file = $('#fileSelector')[0].files[0]
-                     //if(file){
-                     // console.log(file.name);
-                     // }
-                 var imageLabel = file.name;
+         reader.onload = function (event) {
+             var dataURL = reader.result;
+             //    console.log("base64 = " + base64);
+             var file = $('#fileSelector')[0].files[0]
+                 //if(file){
+                 // console.log(file.name);
+                 // }
+             var imageLabel = file.name;
 
-                 var BASE64_MARKER = ';base64,';
-                 //    if (dataURL.indexOf(BASE64_MARKER) == -1) {
-                 var parts = dataURL.split(',');
-                 var contentType = parts[0].split(':')[1];
-                 var raw = parts[1];
-                 //     } ;
+             var BASE64_MARKER = ';base64,';
+             //    if (dataURL.indexOf(BASE64_MARKER) == -1) {
+             var parts = dataURL.split(',');
+             var contentType = parts[0].split(':')[1];
+             var raw = parts[1];
+             //     } ;
 
-                 // ADD MEDIA TYPE
-                 var map = {
-                     "graphURI": graphURI,
-                     "imageURI": pagesBaseURI+imageLabel,
-                     "imageLabel": imageLabel,
-                     "imageData": raw
-                 };
-                 var data = templater(postImageSparqlTemplate, map);
-                 $.ajax({
-                     type: "POST",
-                     url: sparqlUpdateEndpoint,
-                     data: ({
-                         update: data
-                     })
-                 }).done(function () {});
-                 $('#original_image').attr('src', dataURL);
-                 $('#original_image').attr('name', imageLabel);
-             }
-         
+             // ADD MEDIA TYPE
+             var map = {
+                 "graphURI": graphURI,
+                 "imageURI": pagesBaseURI + imageLabel,
+                 "imageLabel": imageLabel,
+                 "imageData": raw
+             };
+             var data = templater(postImageSparqlTemplate, map);
+             $.ajax({
+                 type: "POST",
+                 url: sparqlUpdateEndpoint,
+                 data: ({
+                     update: data
+                 })
+             }).done(function () {});
+             $('#original_image').attr('src', dataURL);
+             $('#original_image').attr('name', imageLabel);
+         }
+
      });
  }
 
@@ -156,10 +156,7 @@
  }
 
  function doSearch() {
-     console.log("doSearch");
      var regex = $("#searchText").val();
-
-     console.log("regex = " + regex);
 
      var searchMap = {
          "graphURI": graphURI,
@@ -189,7 +186,7 @@
 
      var doneCallback = function (xml) {
          //    console.log("entriesJSON = " + JSON.stringify(entriesJSON));
-         var results = makeResultsHTML(xml);
+         var results = makeLinkListHTML(xml);
          $("#results").empty();
          $("#results").append(results);
          console.log("HERE" + results);
@@ -197,16 +194,37 @@
      getDataForURL(doneCallback, searchUrl);
  }
 
+ function makeRecentChangesList() { // refactor with doSearch()
+     
+          var searchMap = {
+         "graphURI": graphURI,
+     };
+
+     $.extend(searchMap, entryXmlNames); // merges maps
+     
+     var searchSparql = templater(getRecentChangesSparqlTemplate, searchMap);
+      console.log("getRecentChangesSparqlTemplate = " + getRecentChangesSparqlTemplate);
+     var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
+     var doneCallback = function (xml) {
+ 
+         var results = makeLinkListHTML(xml);
+                  console.log("results = " + results);
+         //     $("#results").empty();
+         $("#recentChanges").append(results);
+         console.log("HERE" + results);
+     }
+     getDataForURL(doneCallback, searchUrl);
+ }
+
  // for search results
- function makeResultsHTML(xml) {
+ function makeLinkListHTML(xml) {
      var links = "";
      var entryArray = sparqlXMLtoJSON(xml, entryXmlNames);
-     //xmlToEntryArray(xml);
+
      for (var i = 0; i < entryArray.length; i++) {
          var entry = entryArray[i];
          entry.uri = "page.html?uri=" + entry.uri;
          var link = templater(resultTemplate, entry);
-         /* console.log("LINK "+link); */
          links += link;
      }
      return links;
@@ -216,9 +234,9 @@
  function makeEntryListHTML(xml, showContent) {
      var rows = "";
      var entryArray = sparqlXMLtoJSON(xml, entryXmlNames);
-     //xmlToEntryArray(xml);
+
      for (var i = 0; i < entryArray.length; i++) {
-         rows += formatRow(entryArray[i]); // content, 
+         rows += formatRow(entryArray[i]);
      }
      return rows;
  }

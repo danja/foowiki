@@ -34,6 +34,10 @@ ORDER By DESC(?date)  \n\
 # LIMIT 10 \n\
 ";
 
+var getRecentChangesSparqlTemplate = commonPrefixes + getPageListSparqlTemplate +" \n\
+LIMIT 10 \n\
+";
+
 var getPageSparqlTemplate = commonPrefixes + "\n\
     SELECT DISTINCT * \n\
     FROM NAMED <~{graphURI}~>  \n\
@@ -76,9 +80,10 @@ GRAPH <~{graphURI}~> {  \n\
 // ?tag dc:topic ?topicURI .  \n\
 
 var getAllTagsSparqlTemplate = commonPrefixes + "\n\
-SELECT DISTINCT *  \n\
+SELECT DISTINCT ?topicLabel   \n\
  FROM NAMED <~{graphURI}~>  \n\
 WHERE {  \n\
+    ?s dc:topic ?topicURI . \n\
     ?topicURI rdfs:label ?topicLabel .  \n\
 }  \n\
 ";

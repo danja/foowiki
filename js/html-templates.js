@@ -28,7 +28,7 @@ var resultTemplate = "<li><a href='~{uri}~'>~{title}~</a></li>";
 var linkTemplate = "<a href='~{uri}~'>~{title}~</a>";
 
 var rowTemplate = " <tr> \
-           <td>"+linkTemplate+"</td> \
+           <td>" + linkTemplate + "</td> \
            <td class='center'>~{date}~</td> \
             <td class='center'>~{nick}~</td> \
             </tr>";
@@ -56,13 +56,14 @@ var editEntryTemplate = "<div class='entry'> \
             </form> \
             </div>";
 
+//    <label for='maintagscontainer'>Tags</label> \
+
 var pageEntryTemplate = "<div class='entry'> \
             <h1 class='center' id='pagetitle'><a href=~{uri}~>~{title}~</a></h1> \
             <div class='content'>~{content}~</div> \
-            <div class='byline center'>latest edit by ~{nick}~ on ~{date}~</div> \
-      <label for='maintagscontainer'>Tags</label> \
             <ul id='maintagscontainer'> \
             </ul> \
+            <div class='byline center'>latest edit by ~{nick}~ on ~{date}~</div> \
             </div>";
 
 var entryTemplate = "<div class='entry'> \

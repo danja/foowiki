@@ -1,11 +1,57 @@
 /* FooWiki Common CSS */
 
+#header,
+#footer {
+    color: lightgray;
+    background-color: lightgray;
+}
+
+#left,
+#right {
+    background-color: lightgray;
+    padding: 20px;
+}
+
+body {
+    background-color: lightgray;
+}
+
+h4 {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+button {
+    color: white;
+    background-color: maroon;
+    font-size: 1em;
+    /*  padding: 10px; */
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.content {
+    background-color: white;
+    margin: 0px auto;
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid darkgray;
+    padding: 10px;
+}
+
+#recentChangesContainer,
+#searchContainer {
+    border: 1px solid darkgray;
+    border-radius: 10px;
+    padding: 4px;
+}
+
 #pagetitle {
     display: block;
     position: relative;
     margin: 2px;
     border-radius: 10px;
-  /*  width: 98%; */
+    /*  width: 98%; */
     background-color: #eef;
     padding: 4px;
     text-align: center;
@@ -22,18 +68,17 @@
 }
 
 .ui-button {
-        border-radius: 5px;
+    border-radius: 5px;
 }
 
-.ui-button .ui-button-text
-{
-/*  padding: 12px !important; */
-   font-size: .72em !important;
-        padding: .1em .6em .2em;
+.ui-button .ui-button-text {
+    /*  padding: 12px !important; */
+    font-size: .72em !important;
+    padding: .1em .6em .2em;
 }
 
 #maintagscontainer {
- /* border-width: 0px;   */
+    /* border-width: 0px;   */
 }
 
 #errorbox {
@@ -64,31 +109,33 @@
     text-align: center;
 }
 
-.content {
-    margin: 0px auto;
-    position: relative;
-}
-
 .byline {
     padding: 2em;
     /*  font-weight: bold; */
     color: gray;
 }
 
-#results{
-    list-style-type: none;
-      /*  list-style-position:inside; */
-        margin:0;
-        padding:0px;
+#recentChanges {
+    padding-top: 1em;
+    margin-top: 1em;
 }
 
-#results li {
-    padding-top: 8px;
-} 
+#results,
+#recentChanges {
+    list-style-type: none;
+    /*  list-style-position:inside; */
+    margin: 10px 0px 0px 0px;
+    padding: 10px 0px 0px 0px;
+}
+
+#results li,
+#recentChanges li {
+    padding-top: 6px;
+}
 
 select {
-   float: right;
-        margin: 2px 0px 0px 0px;
+    float: right;
+    margin: 2px 0px 0px 0px;
 }
 
 table {
