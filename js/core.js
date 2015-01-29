@@ -26,16 +26,11 @@
      // maybe force to ISO-8859-1, also known as Latin-1 instead?
 
      var $xml = $(xmlString);
-     //  var entry = {
-     //      "uri": "page.html?uri=" + pageURI
-     //  };
-
      var results = $xml.find("result");
 
      if (results.length == 0) {
          return false;
      }
-
      var jsonResults = [];
 
      results.each(function () {
@@ -101,6 +96,7 @@
  }
 
  // image uploading
+/*
  function dataURLToBlob(dataURL) {
      var BASE64_MARKER = ';base64,';
      if (dataURL.indexOf(BASE64_MARKER) == -1) {
@@ -128,7 +124,7 @@
          });
      }
  }
-
+*/
  // SEARCH --------------------------
 
  function setupSearch(searchContainer) {

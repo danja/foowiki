@@ -42,11 +42,9 @@
 
         /*  */
         function templater(raw, replacementMap) {
-
             var template = Hogan.compile(raw, {
                 delimiters: '~{ }~'
             });
-
             var result = template.render(replacementMap);
             return htmlUnescape(result);
         }
@@ -86,14 +84,17 @@
                             });
                         } else {
                             // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/Home%20Page
-                            this.href = reviseHref(this.href, this.text);
+                            this.href = reviseHref(this);
                         }
                     }
 
                 });
         }
 
-        function reviseHref(oldHref, linkText) {
+        function reviseHref(aElement) {
+            var oldHref = aElement.href;
+            var linkText = aElement.text;
+
             if (location.href == oldHref) { // link href was blank
                 var before = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + serverRootPath + "page.html?uri=" + pagesBaseURI;
                 return oldHref.substring(0, before.length) + linkText;
@@ -143,7 +144,7 @@
                     blockquoteSplit[i] = hUnescape(blockquoteSplit[i]);
                 }
             }
-            return blockquoteSplit.join("````");
+            return blockquoteSplit.join("```");
         }
 
         function htmlUnescape(value) {

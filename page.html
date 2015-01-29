@@ -54,7 +54,6 @@
 </head>
 
 <body>
-    <!-- div id="container" -->
     <div id="errorbox"></div>
 
     <div id="header">FooWiki</div>
@@ -70,7 +69,7 @@
         </div>
         <div>
             <div id="recentChangesContainer">
-                <h4>Recent Changes</h4>
+                <label for='recentChanges'>Recent Changes</label>
                 <ul id="recentChanges"></ul>
             </div>
         </div>
@@ -81,8 +80,9 @@
 
         <div id='searchContainer'>
             <button id='searchButton'>Search</button>
-            <!-- label for='searchText'>Search Text</label -->
+            <label for='searchText'>Search text</label>
             <input id='searchText' type='text' value=''></input>
+            <label for='tagButtons'>Filter by Tags</label>
             <div id='tagButtons'></div>
             <ul id="results"></ul>
         </div>

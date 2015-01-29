@@ -51,6 +51,24 @@ function setupPosting() {
     });
 }
 
+function deletePage(graphURI, pageURI, callback) {
+    var map = {
+        "pageURI": pageURI,
+        "graphURI": graphURI
+    };
+    var data = templater(deletePageSparqlTemplate, map);
+    $.ajax({
+        type: "POST",
+        url: sparqlUpdateEndpoint,
+        data: ({
+            update: data
+        })
+    }).done(function () {
+        callback();
+    });
+    return false;
+}
+
 // TAGS ----------------------------------------------
 function submitTags(graphURI, pageURI, callback) {
 
@@ -89,20 +107,3 @@ function submitTags(graphURI, pageURI, callback) {
 }
 
 
-function deletePage(graphURI, pageURI, callback) {
-    var map = {
-        "pageURI": pageURI,
-        "graphURI": graphURI
-    };
-    var data = templater(deletePageSparqlTemplate, map);
-    $.ajax({
-        type: "POST",
-        url: sparqlUpdateEndpoint,
-        data: ({
-            update: data
-        })
-    }).done(function () {
-        callback();
-    });
-    return false;
-}

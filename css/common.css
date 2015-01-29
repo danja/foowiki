@@ -3,7 +3,7 @@
 #header,
 #footer {
     color: lightgray;
-    background-color: lightgray;
+    background-color: darkgray;
 }
 
 #left,
@@ -21,14 +21,14 @@ h4 {
     padding: 0 0 0 0;
 }
 
-ul {
-        width:150px;
+#left ul,
+#right ul {
+    width: 150px;
 }
 
 li {
-       width: 180 px;
+    width: 180 px;
 }
-
 
 button {
     color: white;
@@ -50,7 +50,7 @@ button {
 
 #recentChangesContainer,
 #searchContainer {
-     width:100%;
+    width: 100%;
     border: 1px solid darkgray;
     border-radius: 10px;
     padding: 4px;
@@ -77,7 +77,7 @@ button {
     border-left: 1px solid lightgray;
 }
 
-#maintagscontainer{
+#maintagscontainer {
     width: 100%;
 }
 
@@ -90,7 +90,6 @@ button {
     font-size: .72em !important;
     padding: .1em .6em .2em;
 }
-
 
 #errorbox {
     display: block;
@@ -105,7 +104,6 @@ button {
     /*     font-size: 150%;
     font-weight: bold; */
 }
-
 /*
 .tab {
     display: block;
@@ -193,7 +191,7 @@ label {
 
 input {
     border: 2px solid pink;
-    width: 75%; 
+    width: 75%;
 }
 
 pre {
@@ -206,7 +204,7 @@ pre {
 
 label {
     display: block;
-        width: 100%; 
+    width: 100%;
     margin-top: 10px;
     font-weight: bold;
 }
