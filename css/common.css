@@ -21,6 +21,15 @@ h4 {
     padding: 0 0 0 0;
 }
 
+ul {
+        width:150px;
+}
+
+li {
+       width: 180 px;
+}
+
+
 button {
     color: white;
     background-color: maroon;
@@ -41,6 +50,7 @@ button {
 
 #recentChangesContainer,
 #searchContainer {
+     width:100%;
     border: 1px solid darkgray;
     border-radius: 10px;
     padding: 4px;
@@ -67,6 +77,10 @@ button {
     border-left: 1px solid lightgray;
 }
 
+#maintagscontainer{
+    width: 100%;
+}
+
 .ui-button {
     border-radius: 5px;
 }
@@ -77,9 +91,6 @@ button {
     padding: .1em .6em .2em;
 }
 
-#maintagscontainer {
-    /* border-width: 0px;   */
-}
 
 #errorbox {
     display: block;
@@ -95,6 +106,7 @@ button {
     font-weight: bold; */
 }
 
+/*
 .tab {
     display: block;
     position: relative;
@@ -104,6 +116,7 @@ button {
     border-radius: 2px;
     background-color: lightgray;
 }
+*/
 
 .center {
     text-align: center;
@@ -174,12 +187,13 @@ textarea {
 }
 
 label {
-    text-align: right;
+    text-align: left;
+    color: darkgray;
 }
 
 input {
     border: 2px solid pink;
-    width: 100%;
+    width: 75%; 
 }
 
 pre {
@@ -192,6 +206,7 @@ pre {
 
 label {
     display: block;
+        width: 100%; 
     margin-top: 10px;
     font-weight: bold;
 }
