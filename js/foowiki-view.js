@@ -8,7 +8,7 @@ function getImage(imageURI, callback) {
         "graphURI": graphURI
     };
 
-    var getPageSparql = templater(getImageSparqlTemplate, pageMap);
+    var getPageSparql = sparqlTemplater(getImageSparqlTemplate, pageMap);
     var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
     var doneCallback = function (xml) {
@@ -37,7 +37,7 @@ function getPage() {
         "graphURI": graphURI
     };
 
-    var getPageSparql = templater(getPageSparqlTemplate, pageMap);
+    var getPageSparql = sparqlTemplater(getPageSparqlTemplate, pageMap);
     var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
     var doneCallback = function (xml) {
@@ -88,7 +88,7 @@ function getPage() {
 }
 
 function formatEntry(entry) {
-       //      entry.content = unescapeLiterals(entry.content);
+             entry.content = unescapeLiterals(entry.content);
     
     entry.content = tweakBlockquotes(entry.content);
     entry.content = marked(entry.content);

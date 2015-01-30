@@ -43,7 +43,7 @@
             "graphURI": graphURI
         };
 
-        var getPageSparql = templater(getPageSparqlTemplate, map);
+        var getPageSparql = sparqlTemplater(getPageSparqlTemplate, map);
         var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
         $(function () {
@@ -63,7 +63,7 @@
                     var split = pageURI.split("/");
                     entry.title = split[split.length - 1];
                     entry.title = decodeURI(entry.title);
-                    entry.content = "enter content here";
+                    entry.content = "";
                     entry.nick = "danja";
                 }
 

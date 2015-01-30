@@ -42,7 +42,7 @@ var editEntryTemplate = "<div class='entry'> \
             <label for='title'>Title</label> \
             <input id='title' type='text' value='~{title}~'></input> \
             <label for='content'>Content</label> \
-            <textarea class='content' id='content' >~{content}~</textarea> \
+            <textarea class='content' id='content' placeholder='Enter content here...'>~{content}~</textarea> \
             <label for='maintagscontainer'>Tags</label> \
             <ul id='maintagscontainer'  id='allowSpacesTags'> \
             </ul> \

@@ -40,7 +40,7 @@
                 "graphURI": graphURI
             };
 
-            var getPageSparql = templater(getPageSparqlTemplate, map);
+            var getPageSparql = sparqlTemplater(getPageSparqlTemplate, map);
 
             var getPageURL = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 

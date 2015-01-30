@@ -20,7 +20,7 @@ function setupPosting() {
         entry.content = escapeXml(entry.content);
         entry.format = $('#format').val();
 
-        var data = templater(postPageSparqlTemplate, entry);
+        var data = sparqlTemplater(postPageSparqlTemplate, entry, true);
 
         // put current data in local storage here
         var callback = function () {
@@ -56,7 +56,7 @@ function deletePage(graphURI, pageURI, callback) {
         "pageURI": pageURI,
         "graphURI": graphURI
     };
-    var data = templater(deletePageSparqlTemplate, map);
+    var data = sparqlTemplater(deletePageSparqlTemplate, map, true);
     $.ajax({
         type: "POST",
         url: sparqlUpdateEndpoint,
@@ -91,7 +91,7 @@ function submitTags(graphURI, pageURI, callback) {
     };
 
     //    console.log("templateMap=" + JSON.stringify(templateMap));
-    var data = templater(postTagsSparqlTemplate, templateMap);
+    var data = sparqlTemplater(postTagsSparqlTemplate, templateMap, true);
     //     console.log("postTagsSparqlTemplate=" + postTagsSparqlTemplate);
     //     console.log("DATA=" + data);
 

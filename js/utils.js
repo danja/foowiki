@@ -39,6 +39,31 @@
             });
         }
 
+        /* TODO escaping triple-quotes not really tested */
+        function sparqlTemplater(raw, replacementMap, isWrite) {
+       //     console.log(JSON.stringify(replacementMap));
+      //      console.log(JSON.stringify(replacementMap));
+            if (isWrite && replacementMap["content"]) {
+                replacementMap["content"] = escapeLiterals(replacementMap["content"]);
+             
+            }
+               return templater(raw, replacementMap);
+        }
+
+        function unescapeLiterals(text) {
+            var data = text.replace(/&#34&#34&#34/g, '"""');
+            return  data;
+        }
+
+        function escapeLiterals(text) {
+            return text.replace(/"""/g, "&#34&#34&#34");
+        }
+
+
+//        function htmlTemplater(raw, replacementMap) {
+  //          return templater(raw, replacementMap);
+    //    }
+
 
         /*  */
         function templater(raw, replacementMap) {
@@ -126,16 +151,8 @@
             markup = markup.replace(/&/g, "&amp;");
             markup = markup.replace(/</g, "&lt;");
             markup = markup.replace(/>/g, "&gt;");
-          //  markup = escapeLiterals(markup);
+            //  markup = escapeLiterals(markup);
             return markup;
-        }
-
-        function unescapeLiterals(text) {
-            return text.replace(/&#34&#34&#34/g, '"""');
-        }
-
-        function escapeLiterals(text) {
-            text.replace(/"""/g, "&#34&#34&#34");
         }
 
         function escapeRegExp(string) {

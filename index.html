@@ -42,8 +42,7 @@
 
 
     <script type="text/javascript" language="javascript">
-        //  var getPageListSparql = replaceAll(getPageListSparqlTemplate, "${graphURI}", graphURI);
-        var getPageListSparql = templater(getPageListSparqlTemplate, {
+        var getPageListSparql = sparqlTemplater(getPageListSparqlTemplate, {
             "graphURI": graphURI
         });
         var getPagesUrl = sparqlQueryEndpoint + encodeURIComponent(getPageListSparql) + "&output=xml";

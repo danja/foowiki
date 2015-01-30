@@ -80,7 +80,7 @@
                  "imageLabel": imageLabel,
                  "imageData": raw
              };
-             var data = templater(postImageSparqlTemplate, map);
+             var data = sparqlTemplater(postImageSparqlTemplate, map, true);
              $.ajax({
                  type: "POST",
                  url: sparqlUpdateEndpoint,
@@ -177,7 +177,7 @@
 
      console.log("searchMap = " + JSON.stringify(searchMap));
 
-     var searchSparql = templater(searchSparqlTemplate, searchMap);
+     var searchSparql = sparqlTemplater(searchSparqlTemplate, searchMap);
      var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
 
      var doneCallback = function (xml) {
@@ -198,7 +198,7 @@
 
      $.extend(searchMap, entryXmlNames); // merges maps
      
-     var searchSparql = templater(getRecentChangesSparqlTemplate, searchMap);
+     var searchSparql = sparqlTemplater(getRecentChangesSparqlTemplate, searchMap);
       console.log("getRecentChangesSparqlTemplate = " + getRecentChangesSparqlTemplate);
      var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
      var doneCallback = function (xml) {
@@ -286,7 +286,7 @@
  }
 
  function createTags(containerId, pageMap, readOnly) {
-     var getTagsSparql = templater(getTagsSparqlTemplate, pageMap);
+     var getTagsSparql = sparqlTemplater(getTagsSparqlTemplate, pageMap);
      var getTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getTagsSparql) + "&output=xml";
 
      var doneCallback = function (xml) {
@@ -335,7 +335,7 @@
      var map = {
          "graphURI": graphURI
      };
-     var getAllTagsSparql = templater(getAllTagsSparqlTemplate, map);
+     var getAllTagsSparql = sparqlTemplater(getAllTagsSparqlTemplate, map);
 
      var getAllTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getAllTagsSparql) + "&output=xml";
      getDataForURL(doneCallback, getAllTagsUrl);
