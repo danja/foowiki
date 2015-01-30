@@ -180,6 +180,7 @@ legend {
 textarea {
     display: block;
     width: 100%;
+    height:auto ;
     border: 2px solid pink;
     font-size: 75%;
 }

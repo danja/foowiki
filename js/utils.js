@@ -45,6 +45,7 @@
             var template = Hogan.compile(raw, {
                 delimiters: '~{ }~'
             });
+
             var result = template.render(replacementMap);
             return htmlUnescape(result);
         }
@@ -125,7 +126,16 @@
             markup = markup.replace(/&/g, "&amp;");
             markup = markup.replace(/</g, "&lt;");
             markup = markup.replace(/>/g, "&gt;");
+          //  markup = escapeLiterals(markup);
             return markup;
+        }
+
+        function unescapeLiterals(text) {
+            return text.replace(/&#34&#34&#34/g, '"""');
+        }
+
+        function escapeLiterals(text) {
+            text.replace(/"""/g, "&#34&#34&#34");
         }
 
         function escapeRegExp(string) {
@@ -151,13 +161,14 @@
 
             value = value.replace(/&lt;/g, "<");
             value = value.replace(/&gt;/g, ">");
-
             value = value.replace(/&quot;/g, "\"");
             value = value.replace(/&amp;/g, "&");
+
             return value;
         }
 
         function hUnescape(value) {
+
             var d = $("<div>");
             d.html(value);
             return d.text();

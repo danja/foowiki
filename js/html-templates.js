@@ -33,6 +33,7 @@ var rowTemplate = " <tr> \
             <td class='center'>~{nick}~</td> \
             </tr>";
 
+/* rows='20' */
 var editEntryTemplate = "<div class='entry'> \
             <h1 class='center'><a href=\"~{uri}~\">~{title}~</a></h1> \
             <form> \
@@ -41,7 +42,7 @@ var editEntryTemplate = "<div class='entry'> \
             <label for='title'>Title</label> \
             <input id='title' type='text' value='~{title}~'></input> \
             <label for='content'>Content</label> \
-            <textarea class='content' id='content' rows='20'>~{content}~</textarea> \
+            <textarea class='content' id='content' >~{content}~</textarea> \
             <label for='maintagscontainer'>Tags</label> \
             <ul id='maintagscontainer'  id='allowSpacesTags'> \
             </ul> \

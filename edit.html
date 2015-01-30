@@ -20,6 +20,7 @@
 
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery.autogrowtextarea.js"></script>
 
     <!-- from https://github.com/aehlke/tag-it -->
     <script src="js/tag-it.js" type="text/javascript" charset="utf-8"></script>
@@ -83,6 +84,8 @@
 
                 setupTags("#maintagscontainer", pageMap, false);
                 //   $("##foowikitagscontainer").tagit({
+                
+                 $("textarea").autoGrow();
             };
             getDataForURL(doneCallback, getPageUrl);
             setupPosting();

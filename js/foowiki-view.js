@@ -88,6 +88,8 @@ function getPage() {
 }
 
 function formatEntry(entry) {
+       //      entry.content = unescapeLiterals(entry.content);
+    
     entry.content = tweakBlockquotes(entry.content);
     entry.content = marked(entry.content);
 
