@@ -20,10 +20,9 @@ function getImage(imageURI, callback) {
     getDataForURL(doneCallback, getPageUrl);
 }
 
-function getPage() {
-    var pageURI = queryString["uri"];
+function getPage(pageURI, entryHandler) {
 
-    console.log("queryString = " + JSON.stringify(queryString));
+    //  console.log("queryString = " + JSON.stringify(queryString));
     if (queryString["type"] == "image") {
         var callback = function (src) {
             window.location.href = src;
@@ -43,59 +42,74 @@ function getPage() {
     var doneCallback = function (xml) {
 
         var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
-
-        if (!entryJSON) {
-            entryJSON = {
-                content: "",
-                date: "",
-                title: "",
-                nick: ""
-            };
-            window.location.href = window.location.href.replace("page.html", "edit.html");
-        }
-
-        var entry = entryJSON[0];
-        entry["uri"] = "page.html?uri=" + pageURI;
-        // check if it's code-like
-        if (preformatFormats.contains(entry.format)) {
-            entry.content = "<pre>" + entry.content + "</pre>";
-        }
-
-        // check if it's runnable
-        if (runnableFormats.contains(entry.format)) {
-
-            var runButton = $("<button>");
-            $("#buttons").append(runButton);
-            runButton.attr("id", "runButton");
-            runButton.text("Run");
-            $("#runButton").click(function () {
-                window.location.href = window.location.href.replace("page.html", "run.html");
-                return false;
-            });
-        };
-
-        var entryHTML = formatEntry(entry);
-
-        $("#entry").replaceWith(entryHTML);
-        translateLocalLinks();
-        fixHeaderIDs(); // little workaround for odd marked.js behaviour
-        fixImageLinks(pageMap);
-        setupTags("#maintagscontainer", pageMap, true);
-        setupSearch("#searchContainer");
+        //   $.extend(entryJSON, pageMap); // merges maps, values may be needed by callback
+        console.log("PAGE " + JSON.stringify(entryJSON));
+        entryHandler(pageMap, entryJSON);
     };
 
     getDataForURL(doneCallback, getPageUrl);
 }
 
+function buildPage(pageMap, entryJSON) {
+    if (!entryJSON) {
+        entryJSON = {
+            content: "",
+            date: "",
+            title: "",
+            nick: ""
+        };
+        window.location.href = window.location.href.replace("page.html", "edit.html");
+    }
+
+    var entry = entryJSON[0];
+    // console.log("entryJSON[0] = " + JSON.stringify(entryJSON[0]));
+    entry["uri"] = "page.html?uri=" + entry["pageURI"];
+    // check if it's code-like
+    if (preformatFormats.contains(entry.format)) {
+        entry.content = "<pre>" + entry.content + "</pre>";
+    }
+
+    // check if it's runnable
+    if (runnableFormats.contains(entry.format)) {
+
+        var runButton = $("<button>");
+        $("#buttons").append(runButton);
+        runButton.attr("id", "runButton");
+        runButton.text("Run");
+        $("#runButton").click(function () {
+            window.location.href = window.location.href.replace("page.html", "run.html");
+            return false;
+        });
+    };
+
+    var entryHTML = formatEntry(entry);
+
+    $("#entry").replaceWith(entryHTML);
+    translateLinks();
+    fixHeaderIDs(); // little workaround for odd marked.js behaviour
+    fixImageLinks(pageMap);
+    setupTags("#maintagscontainer", pageMap, true);
+    setupSearch("#searchContainer");
+}
+
 function formatEntry(entry) {
-             entry.content = unescapeLiterals(entry.content);
-    
-    entry.content = tweakBlockquotes(entry.content);
-    entry.content = marked(entry.content);
+    //  entry.content = unescapeLiterals(entry.content);
+
+    //   entry.content = tweakBlockquotes(entry.content);
+    //  entry.content = marked(entry.content);
+
+    entry.content = formatContent(entry.content);
 
     // console.log("entry.content = " + entry.content);
     entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
     return templater(pageEntryTemplate, entry);
+}
+
+function formatContent(content) {
+    content = unescapeLiterals(content);
+    content = tweakBlockquotes(content);
+    content = marked(content);
+    return content;
 }
 
 function fixImageLinks(pageMap) {

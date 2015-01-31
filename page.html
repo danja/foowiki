@@ -41,7 +41,9 @@
 
             setupErrorHandling();
             spinner();
-            getPage();
+            var pageURI = queryString["uri"];
+            console.log("URI="+pageURI);
+            getPage(pageURI, buildPage);
             makeRecentChangesList();
 
             $('#editButton').click(function () {

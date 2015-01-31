@@ -165,7 +165,7 @@
 
      $("#tagButtons label").each(function () {
          if ($(this).hasClass("ui-state-active")) {
-             console.log("Checked = " + $(this).text());
+        //     console.log("Checked = " + $(this).text());
              var checkedTag = {
                  "topicLabel": $(this).text()
              };
@@ -175,7 +175,7 @@
 
      searchMap["tags"] = checkedTags;
 
-     console.log("searchMap = " + JSON.stringify(searchMap));
+   //  console.log("searchMap = " + JSON.stringify(searchMap));
 
      var searchSparql = sparqlTemplater(searchSparqlTemplate, searchMap);
      var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
@@ -185,7 +185,7 @@
          var results = makeLinkListHTML(xml);
          $("#results").empty();
          $("#results").append(results);
-         console.log("HERE" + results);
+      //   console.log("HERE" + results);
      }
      getDataForURL(doneCallback, searchUrl);
  }
@@ -199,15 +199,15 @@
      $.extend(searchMap, entryXmlNames); // merges maps
      
      var searchSparql = sparqlTemplater(getRecentChangesSparqlTemplate, searchMap);
-      console.log("getRecentChangesSparqlTemplate = " + getRecentChangesSparqlTemplate);
+   //   console.log("getRecentChangesSparqlTemplate = " + getRecentChangesSparqlTemplate);
      var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
      var doneCallback = function (xml) {
  
          var results = makeLinkListHTML(xml);
-                  console.log("results = " + results);
+               //   console.log("results = " + results);
          //     $("#results").empty();
          $("#recentChanges").append(results);
-         console.log("HERE" + results);
+       //  console.log("HERE" + results);
      }
      getDataForURL(doneCallback, searchUrl);
  }

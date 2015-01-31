@@ -41,18 +41,18 @@
 
         /* TODO escaping triple-quotes not really tested */
         function sparqlTemplater(raw, replacementMap, isWrite) {
-       //     console.log(JSON.stringify(replacementMap));
-      //      console.log(JSON.stringify(replacementMap));
+            //     console.log(JSON.stringify(replacementMap));
+            //      console.log(JSON.stringify(replacementMap));
             if (isWrite && replacementMap["content"]) {
                 replacementMap["content"] = escapeLiterals(replacementMap["content"]);
-             
+
             }
-               return templater(raw, replacementMap);
+            return templater(raw, replacementMap);
         }
 
         function unescapeLiterals(text) {
             var data = text.replace(/&#34&#34&#34/g, '"""');
-            return  data;
+            return data;
         }
 
         function escapeLiterals(text) {
@@ -60,9 +60,9 @@
         }
 
 
-//        function htmlTemplater(raw, replacementMap) {
-  //          return templater(raw, replacementMap);
-    //    }
+         //        function htmlTemplater(raw, replacementMap) {
+         //          return templater(raw, replacementMap);
+         //    }
 
 
         /*  */
@@ -92,10 +92,11 @@
         })(window.location.search.substr(1).split('&'));
 
 
-        function translateLocalLinks() {
+        function translateLinks() {
             $('div.content  a').each(
                 function () {
-                    if (this.href.indexOf(serverRootPath) != -1) { // less than perfect
+
+                    if (this.href.indexOf(serverRootPath) != -1) { // less than perfect, in-page links
                         var hashPosition = this.href.indexOf("#");
                         if (hashPosition != -1) {
                             var anchor = this.href.substring(hashPosition); // "#Something"
@@ -112,15 +113,18 @@
                             // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/Home%20Page
                             this.href = reviseHref(this);
                         }
+                        return;
                     }
-
                 });
         }
 
         function reviseHref(aElement) {
             var oldHref = aElement.href;
             var linkText = aElement.text;
-
+            if (!linkText) {
+                includeContent(aElement);
+                return;
+            }
             if (location.href == oldHref) { // link href was blank
                 var before = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + serverRootPath + "page.html?uri=" + pagesBaseURI;
                 return oldHref.substring(0, before.length) + linkText;
@@ -128,6 +132,34 @@
                 var localRef = oldHref.substring(oldHref.indexOf(serverRootPath) + serverRootPath.length);
                 return serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
             }
+        }
+
+        function includeContent(aElement) {
+            if (location.href == aElement.href) { // both blank, insert index link BROKEN
+                $(aElement).attr("href", serverRootPath);
+                $(aElement).append("Index Page");
+                return;
+            }
+            if (aElement.href.indexOf(serverRootPath) == -1) { // off site, less than perfect BROKEN
+                $(aElement).append(aElement.href); // use link as label
+                return;
+            }
+
+            //  $(aElement).append("filler");
+            console.log("REF=" + aElement.href);
+            var oldHref = aElement.href;
+            var handler = function (pageMap, entryJSON) { // entryHandler(pageMap, entryJSON);
+        //        console.log("pageMap=" + JSON.stringify(pageMap));
+        //        console.log("CONTEN=" + JSON.stringify(entryJSON));
+                var content = formatContent(entryJSON[0]["content"]);
+                $(aElement).replaceWith(content);
+            }
+            var localRef = oldHref.substring(oldHref.indexOf(serverRootPath) + serverRootPath.length);
+            //   var pageURI = serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
+            var pageURI = pagesBaseURI + localRef;
+         //   console.log("pageURI=" + pageURI);
+            getPage(pageURI, handler);
+
         }
 
          // little workaround for odd marked.js behaviour, at least in part due to marked.js line 793 regex
