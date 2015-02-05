@@ -29,7 +29,7 @@ function getPage(pageURI, entryHandler) {
         };
         return getImage(pageURI, callback);
     }
-    pageURI = encodeURI(pageURI);
+ //   pageURI = encodeURI(pageURI);
 
     var pageMap = {
         "pageURI": pageURI,

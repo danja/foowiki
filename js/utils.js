@@ -120,44 +120,58 @@
 
         function reviseHref(aElement) {
             var oldHref = aElement.href;
-            var linkText = aElement.text;
-            if (!linkText) {
-                includeContent(aElement);
-                return;
-            }
-            if (location.href == oldHref) { // link href was blank
-                var before = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + serverRootPath + "page.html?uri=" + pagesBaseURI;
-                return oldHref.substring(0, before.length) + linkText;
-            } else {
-                var localRef = oldHref.substring(oldHref.indexOf(serverRootPath) + serverRootPath.length);
-                return serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
-            }
-        }
 
-        function includeContent(aElement) {
-            if (location.href == aElement.href) { // both blank, insert index link BROKEN
-                $(aElement).attr("href", serverRootPath);
-                $(aElement).append("Index Page");
-                return;
-            }
-            if (aElement.href.indexOf(serverRootPath) == -1) { // off site, less than perfect BROKEN
+              //   if (!aElement.text && (location.href == aElement.href)) { // both blank, insert index link   
+              //        aElement.text = "Home Page";
+              //   }
+            
+                 var linkText = aElement.text;
+             console.log("OFFSITEx"+linkText);
+            if (linkText) {
+                  console.log("OFFSITEx"+linkText);
+                 if (aElement.href.indexOf(serverRootPath) == -1) { // off site, less than perfect BROKEN
+                     console.log("OFFSITE");
                 $(aElement).append(aElement.href); // use link as label
                 return;
             }
-
-            //  $(aElement).append("filler");
-            console.log("REF=" + aElement.href);
-            var oldHref = aElement.href;
-            var handler = function (pageMap, entryJSON) { // entryHandler(pageMap, entryJSON);
-        //        console.log("pageMap=" + JSON.stringify(pageMap));
-        //        console.log("CONTEN=" + JSON.stringify(entryJSON));
-                var content = formatContent(entryJSON[0]["content"]);
-                $(aElement).replaceWith(content);
+                if (location.href == oldHref) { // link href was blank
+                    var before = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + serverRootPath + "page.html?uri=" + pagesBaseURI;
+                    return oldHref.substring(0, before.length) + linkText;
+                } else {
+                    var localRef = oldHref.substring(oldHref.indexOf(serverRootPath) + serverRootPath.length);
+                    return serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
+                }
             }
+            includeContent(aElement);
+            return;
+
+           
+        }
+
+        function includeContent(aElement) {
+
+            var oldHref = aElement.href;
             var localRef = oldHref.substring(oldHref.indexOf(serverRootPath) + serverRootPath.length);
             //   var pageURI = serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
             var pageURI = pagesBaseURI + localRef;
-         //   console.log("pageURI=" + pageURI);
+
+
+            //  $(aElement).append("filler");
+            console.log("REF=" + aElement.href);
+
+            var handler = function (pageMap, entryJSON) { // entryHandler(pageMap, entryJSON);
+                //        console.log("pageMap=" + JSON.stringify(pageMap));
+                //        console.log("CONTEN=" + JSON.stringify(entryJSON));
+                if(entryJSON && entryJSON[0] && entryJSON[0]["content"]) {
+                var content = formatContent(entryJSON[0]["content"]);
+                } else {
+                    content = "<em>**undefined link**</em>";
+                }
+                
+                $(aElement).replaceWith(content);
+            }
+
+            console.log("pageURI=" + pageURI);
             getPage(pageURI, handler);
 
         }

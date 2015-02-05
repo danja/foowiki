@@ -43,6 +43,7 @@
             spinner();
             var pageURI = queryString["uri"];
             console.log("URI="+pageURI);
+             pageURI = encodeURI(pageURI);
             getPage(pageURI, buildPage);
             makeRecentChangesList();
 
