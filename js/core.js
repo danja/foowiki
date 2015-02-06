@@ -17,7 +17,9 @@
      });
  }
 
- function sparqlXMLtoJSON(xml, bindingNames) {
+
+
+ function sparqlXMLtoJSON(xml) {
 
      var xmlString = (new XMLSerializer()).serializeToString(xml);
 
@@ -26,6 +28,24 @@
      // maybe force to ISO-8859-1, also known as Latin-1 instead?
 
      var $xml = $(xmlString);
+     
+     ////////////////////////////////
+     
+     var variables = $xml.find("variable");
+     
+          if (variables.length == 0) {
+         return false;
+     }
+     var jsonVariables = [];
+     
+     variables.each(function () {
+         jsonVariables.push($(this).attr("name"));
+     });
+     
+     //console.log("bindingNames = "+JSON.stringify(bindingNames));
+     console.log("VARIABLES = "+JSON.stringify(jsonVariables));
+     ////////////////////////////
+     
      var results = $xml.find("result");
 
      if (results.length == 0) {
@@ -35,8 +55,8 @@
 
      results.each(function () {
          var map = {};
-         for (var i = 0; i < bindingNames.length; i++) {
-             var name = bindingNames[i];
+         for (var i = 0; i < jsonVariables.length; i++) {
+             var name = jsonVariables[i];
              //     console.log("NAME=" + name);
              $(this).find("binding[name='" + name + "']").each(function () {
                  //  entry[name] = $(this).text().trim();
@@ -46,6 +66,8 @@
          }
          jsonResults.push(map);
      });
+     
+     console.log("RESULTS = "+JSON.stringify(jsonResults));
      return jsonResults;
  }
 
@@ -159,7 +181,7 @@
          "regex": regex
      };
 
-     $.extend(searchMap, entryXmlNames); // merges maps
+    // $.extend(searchMap, entryXmlNames); // merges maps
 
      var checkedTags = [];
 
@@ -196,7 +218,7 @@
          "graphURI": graphURI,
      };
 
-     $.extend(searchMap, entryXmlNames); // merges maps
+    // $.extend(searchMap, entryXmlNames); // merges maps
      
      var searchSparql = sparqlTemplater(getRecentChangesSparqlTemplate, searchMap);
    //   console.log("getRecentChangesSparqlTemplate = " + getRecentChangesSparqlTemplate);
@@ -215,7 +237,7 @@
  // for search results
  function makeLinkListHTML(xml) {
      var links = "";
-     var entryArray = sparqlXMLtoJSON(xml, entryXmlNames);
+     var entryArray = sparqlXMLtoJSON(xml);
 
      for (var i = 0; i < entryArray.length; i++) {
          var entry = entryArray[i];
@@ -229,7 +251,7 @@
  // for index page
  function makeEntryListHTML(xml, showContent) {
      var rows = "";
-     var entryArray = sparqlXMLtoJSON(xml, entryXmlNames);
+     var entryArray = sparqlXMLtoJSON(xml);
 
      for (var i = 0; i < entryArray.length; i++) {
          rows += formatRow(entryArray[i]);
@@ -281,8 +303,8 @@
 
  function tagsXmlToJson(xml) {
      var xmlString = (new XMLSerializer()).serializeToString(xml);
-     var tagsXmlNames = ["topicURI", "topicLabel"];
-     return sparqlXMLtoJSON(xml, tagsXmlNames);
+   //  var tagsXmlNames = ["topicURI", "topicLabel"];
+     return sparqlXMLtoJSON(xml);
  }
 
  function createTags(containerId, pageMap, readOnly) {

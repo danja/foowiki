@@ -53,7 +53,7 @@
             setupImageUploading();
 
             var doneCallback = function (xml, pageURI) {
-                var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
+                var entryJSON = sparqlXMLtoJSON(xml);
                 var entry = entryJSON[0];
 
                 uri = "page.html?uri=" + pageURI;

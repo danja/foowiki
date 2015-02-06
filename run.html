@@ -47,7 +47,7 @@
             var doneCallback = function (xml) {
                 //   var entry = xmlToEntry(xml, pageURI);
 
-                var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
+                var entryJSON = sparqlXMLtoJSON(xml);
 
                 if (!entryJSON) {
                     entryJSON = {
