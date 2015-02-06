@@ -11,9 +11,9 @@ function getImage(imageURI, callback) {
     var getPageSparql = sparqlTemplater(getImageSparqlTemplate, pageMap);
     var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
-    var doneCallback = function (xml) {
+    var doneCallback = function (entryJSON) {
         var entryXmlNames = ["base64"];
-        var entryJSON = sparqlXMLtoJSON(xml);
+       // var entryJSON = sparqlXMLtoJSON(xml);
         var src = "data:image/jpeg;base64," + entryJSON[0]["base64"];
         callback(src);
     }
@@ -39,13 +39,13 @@ function getPage(pageURI, entryHandler) {
     var getPageSparql = sparqlTemplater(getPageSparqlTemplate, pageMap);
     var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
-    var doneCallback = function (xml) {
+    var doneCallback = function (entryJSON) {
 
        // var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
-        var entryJSON = sparqlXMLtoJSON(xml);
+     //   var entryJSON = sparqlXMLtoJSON(xml);
         
         //   $.extend(entryJSON, pageMap); // merges maps, values may be needed by callback
-        console.log("PAGE " + JSON.stringify(entryJSON));
+      //  console.log("PAGE " + JSON.stringify(entryJSON));
         entryHandler(pageMap, entryJSON);
     };
 

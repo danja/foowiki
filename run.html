@@ -44,10 +44,10 @@
 
             var getPageURL = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
-            var doneCallback = function (xml) {
+            var doneCallback = function (entryJSON) {
                 //   var entry = xmlToEntry(xml, pageURI);
 
-                var entryJSON = sparqlXMLtoJSON(xml);
+            //    var entryJSON = sparqlXMLtoJSON(xml);
 
                 if (!entryJSON) {
                     entryJSON = {

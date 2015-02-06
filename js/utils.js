@@ -107,7 +107,7 @@
                             $(this).click(function () {
                                 $('html, body').animate({
                                     scrollTop: $(anchor).offset().top
-                                }, 250);
+                                }, 250); // milliseconds
                             });
                         } else {
                             // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/Home%20Page

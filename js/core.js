@@ -13,7 +13,8 @@
      }).done(function (xml) {
          var pageURI = queryString["uri"];
          pageURI = encodeURI(pageURI);
-         doneCallback(xml, pageURI);
+         var json = sparqlXMLtoJSON(xml);
+         doneCallback(json, pageURI);
      });
  }
 
@@ -43,7 +44,7 @@
      });
      
      //console.log("bindingNames = "+JSON.stringify(bindingNames));
-     console.log("VARIABLES = "+JSON.stringify(jsonVariables));
+   //  console.log("VARIABLES = "+JSON.stringify(jsonVariables));
      ////////////////////////////
      
      var results = $xml.find("result");
@@ -67,7 +68,7 @@
          jsonResults.push(map);
      });
      
-     console.log("RESULTS = "+JSON.stringify(jsonResults));
+ //    console.log("RESULTS = "+JSON.stringify(jsonResults));
      return jsonResults;
  }
 
@@ -154,8 +155,8 @@
      //  $(searchContainer).append("<button id='searchButton'>Search</button>");
      //  $(searchContainer).append(entryTableTemplate);
 
-     var doneCallback = function (xml) {
-         var tags = tagsXmlToJson(xml);
+     var doneCallback = function (tags) {
+       //  var tags = tagsXmlToJson(xml);
          var tagButtons = $(searchContainer + " #tagButtons");
 
          for (var i = 0; i < tags.length; i++) {
@@ -202,12 +203,15 @@
      var searchSparql = sparqlTemplater(searchSparqlTemplate, searchMap);
      var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
 
-     var doneCallback = function (xml) {
+     var doneCallback = function (json) {
          //    console.log("entriesJSON = " + JSON.stringify(entriesJSON));
-         var results = makeLinkListHTML(xml);
+         var results = makeLinkListHTML(json);
          $("#results").empty();
          $("#results").append(results);
       //   console.log("HERE" + results);
+          $('html, body').animate({
+                                    scrollTop: $("#results").offset().top
+                                }, 250); // milliseconds
      }
      getDataForURL(doneCallback, searchUrl);
  }
@@ -235,9 +239,9 @@
  }
 
  // for search results
- function makeLinkListHTML(xml) {
+ function makeLinkListHTML(entryArray) {
      var links = "";
-     var entryArray = sparqlXMLtoJSON(xml);
+   //  var entryArray = sparqlXMLtoJSON(xml);
 
      for (var i = 0; i < entryArray.length; i++) {
          var entry = entryArray[i];
@@ -249,9 +253,9 @@
  }
 
  // for index page
- function makeEntryListHTML(xml, showContent) {
+ function makeEntryListHTML(entryArray, showContent) {
      var rows = "";
-     var entryArray = sparqlXMLtoJSON(xml);
+   //  var entryArray = sparqlXMLtoJSON(xml);
 
      for (var i = 0; i < entryArray.length; i++) {
          rows += formatRow(entryArray[i]);
@@ -278,8 +282,8 @@
  }
 
  function setupTagsAutocomplete(tagsContainerId, callback) {
-     var doneCallback = function (xml) {
-         var tags = tagsXmlToJson(xml);
+     var doneCallback = function (tags) {
+       //  var tags = tagsXmlToJson(xml);
          var allTags = [];
 
          for (var i = 0; i < tags.length; i++) {
@@ -301,19 +305,22 @@
      getAllTags(doneCallback);
  }
 
- function tagsXmlToJson(xml) {
-     var xmlString = (new XMLSerializer()).serializeToString(xml);
+ //function tagsXmlToJson(xml) {
+   //  var xmlString = (new XMLSerializer()).serializeToString(xml);
    //  var tagsXmlNames = ["topicURI", "topicLabel"];
-     return sparqlXMLtoJSON(xml);
- }
+   //  return sparqlXMLtoJSON(xml);
+ //}
 
  function createTags(containerId, pageMap, readOnly) {
      var getTagsSparql = sparqlTemplater(getTagsSparqlTemplate, pageMap);
      var getTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getTagsSparql) + "&output=xml";
 
-     var doneCallback = function (xml) {
+     var doneCallback = function (tags) {
 
-         var tags = tagsXmlToJson(xml);
+       //  var tags = tagsXmlToJson(xml);
+        //    var xmlString = (new XMLSerializer()).serializeToString(xml);
+   //  var tagsXmlNames = ["topicURI", "topicLabel"];
+  //   return sparqlXMLtoJSON(xml);
 
          var tagitMap = {
              readOnly: readOnly
@@ -335,8 +342,8 @@
  }
 
  function setupTagsPanel(tagsContainerId) {
-     var doneCallback = function (xml) {
-         var tags = tagsXmlToJson(xml);
+     var doneCallback = function (tags) {
+         // var tags = tagsXmlToJson(xml);
 
          var tagitMap = {
              readOnly: true

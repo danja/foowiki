@@ -54,8 +54,8 @@
             $("#graphName").attr("value", graphURI);
             setupButtons();
 
-            var doneCallback = function (xml) {
-                var rows = makeEntryListHTML(xml, false);
+            var doneCallback = function (json) {
+                var rows = makeEntryListHTML(json, false);
                 $("#entries").replaceWith(rows);
                 setupTagsPanel("#tagsPanelTagsContainer");
             };
