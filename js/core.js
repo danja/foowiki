@@ -9,7 +9,6 @@
              'Accept': 'sparql-results+xml;charset=UTF-8'
              //   'Accept-Charset': 'UTF-8' unsafe
          }
-
      }).done(function (xml) {
          var pageURI = queryString["uri"];
          pageURI = encodeURI(pageURI);
@@ -30,8 +29,6 @@
 
      var $xml = $(xmlString);
      
-     ////////////////////////////////
-     
      var variables = $xml.find("variable");
      
           if (variables.length == 0) {
@@ -42,10 +39,6 @@
      variables.each(function () {
          jsonVariables.push($(this).attr("name"));
      });
-     
-     //console.log("bindingNames = "+JSON.stringify(bindingNames));
-   //  console.log("VARIABLES = "+JSON.stringify(jsonVariables));
-     ////////////////////////////
      
      var results = $xml.find("result");
 
@@ -68,7 +61,7 @@
          jsonResults.push(map);
      });
      
- //    console.log("RESULTS = "+JSON.stringify(jsonResults));
+    // console.log("RESULTS = "+JSON.stringify(jsonResults));
      return jsonResults;
  }
 

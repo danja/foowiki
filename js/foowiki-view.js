@@ -3,6 +3,7 @@
  */
 
 function getImage(imageURI, callback) {
+    console.log("AAA imageURI=" + imageURI);
     var pageMap = {
         "imageURI": imageURI,
         "graphURI": graphURI
@@ -12,24 +13,28 @@ function getImage(imageURI, callback) {
     var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
     var doneCallback = function (entryJSON) {
-        var entryXmlNames = ["base64"];
-       // var entryJSON = sparqlXMLtoJSON(xml);
+        console.log("BBB");
+     //   var entryXmlNames = ["base64"];
+        // var entryJSON = sparqlXMLtoJSON(xml);
         var src = "data:image/jpeg;base64," + entryJSON[0]["base64"];
         callback(src);
     }
+    console.log("getPageUrl=" + getPageUrl);
     getDataForURL(doneCallback, getPageUrl);
 }
 
 function getPage(pageURI, entryHandler) {
 
-    //  console.log("queryString = " + JSON.stringify(queryString));
+    // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image
     if (queryString["type"] == "image") {
         var callback = function (src) {
             window.location.href = src;
         };
-        return getImage(pageURI, callback);
+        getImage(pageURI, callback);
+        return;
     }
- //   pageURI = encodeURI(pageURI);
+    //   pageURI = encodeURI(pageURI);
+    console.log("CCCimageURI=" + pageURI);
 
     var pageMap = {
         "pageURI": pageURI,
@@ -40,12 +45,6 @@ function getPage(pageURI, entryHandler) {
     var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
     var doneCallback = function (entryJSON) {
-
-       // var entryJSON = sparqlXMLtoJSON(xml, entryXmlNames);
-     //   var entryJSON = sparqlXMLtoJSON(xml);
-        
-        //   $.extend(entryJSON, pageMap); // merges maps, values may be needed by callback
-      //  console.log("PAGE " + JSON.stringify(entryJSON));
         entryHandler(pageMap, entryJSON);
     };
 
@@ -66,6 +65,7 @@ function buildPage(pageMap, entryJSON) {
     var entry = entryJSON[0];
     // console.log("entryJSON[0] = " + JSON.stringify(entryJSON[0]));
     entry["uri"] = "page.html?uri=" + entry["pageURI"];
+    
     // check if it's code-like
     if (preformatFormats.contains(entry.format)) {
         entry.content = "<pre>" + entry.content + "</pre>";
@@ -84,10 +84,11 @@ function buildPage(pageMap, entryJSON) {
         });
     };
 
-    var entryHTML = formatEntry(entry);
-
-    $("#entry").replaceWith(entryHTML);
-    translateLinks();
+    var entryObject = $(formatEntry(entry));
+    translateLinks(entryObject);
+    //  $("#entry").replaceWith(entryHTML);
+    $("#entry").replaceWith(entryObject);
+    //  translateLinks();
     fixHeaderIDs(); // little workaround for odd marked.js behaviour
     fixImageLinks(pageMap);
     setupTags("#maintagscontainer", pageMap, true);

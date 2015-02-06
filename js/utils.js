@@ -60,11 +60,6 @@
         }
 
 
-         //        function htmlTemplater(raw, replacementMap) {
-         //          return templater(raw, replacementMap);
-         //    }
-
-
         /*  */
         function templater(raw, replacementMap) {
             var template = Hogan.compile(raw, {
@@ -92,8 +87,8 @@
         })(window.location.search.substr(1).split('&'));
 
 
-        function translateLinks() {
-            $('div.content  a').each(
+        function translateLinks(object) {
+            $('div.content  a', object).each(
                 function () {
 
                     if (this.href.indexOf(serverRootPath) != -1) { // less than perfect, in-page links
@@ -116,24 +111,37 @@
                         return;
                     }
                 });
+
+            // somethin similar for handlin img 404s
+            // 1unnamed.jpg =>
+            //  http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image
+            /*
+              $('div.content  img', object).each(
+                function () {
+                    var src = $(this).attr("src");
+                //    console.log("this.src="+$(this).attr("src"));
+                    var newSrc = serverRootPath+"page.html?uri="+pagesBaseURI+src+"&type=image";
+                  $(this).attr("src",newSrc);
+                });
+                */
         }
 
         function reviseHref(aElement) {
             var oldHref = aElement.href;
 
-              //   if (!aElement.text && (location.href == aElement.href)) { // both blank, insert index link   
-              //        aElement.text = "Home Page";
-              //   }
-            
-                 var linkText = aElement.text;
-             console.log("OFFSITEx"+linkText);
+            //   if (!aElement.text && (location.href == aElement.href)) { // both blank, insert index link   
+            //        aElement.text = "Home Page";
+            //   }
+
+            var linkText = aElement.text;
+            //    console.log("OFFSITEx"+linkText);
             if (linkText) {
-                  console.log("OFFSITEx"+linkText);
-                 if (aElement.href.indexOf(serverRootPath) == -1) { // off site, less than perfect BROKEN
-                     console.log("OFFSITE");
-                $(aElement).append(aElement.href); // use link as label
-                return;
-            }
+                //   console.log("OFFSITEx"+linkText);
+                if (aElement.href.indexOf(serverRootPath) == -1) { // off site, less than perfect BROKEN
+                    //      console.log("OFFSITE");
+                    $(aElement).append(aElement.href); // use link as label
+                    return;
+                }
                 if (location.href == oldHref) { // link href was blank
                     var before = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + serverRootPath + "page.html?uri=" + pagesBaseURI;
                     return oldHref.substring(0, before.length) + linkText;
@@ -145,7 +153,7 @@
             includeContent(aElement);
             return;
 
-           
+
         }
 
         function includeContent(aElement) {
@@ -162,12 +170,12 @@
             var handler = function (pageMap, entryJSON) { // entryHandler(pageMap, entryJSON);
                 //        console.log("pageMap=" + JSON.stringify(pageMap));
                 //        console.log("CONTEN=" + JSON.stringify(entryJSON));
-                if(entryJSON && entryJSON[0] && entryJSON[0]["content"]) {
-                var content = formatContent(entryJSON[0]["content"]);
+                if (entryJSON && entryJSON[0] && entryJSON[0]["content"]) {
+                    var content = formatContent(entryJSON[0]["content"]);
                 } else {
                     content = "<em>**undefined link**</em>";
                 }
-                
+
                 $(aElement).replaceWith(content);
             }
 
