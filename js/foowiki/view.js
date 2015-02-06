@@ -85,12 +85,13 @@ function buildPage(pageMap, entryJSON) {
     };
 
     var entryObject = $(formatEntry(entry));
+  //  fixImageLinks(entryObject);
     translateLinks(entryObject);
     //  $("#entry").replaceWith(entryHTML);
     $("#entry").replaceWith(entryObject);
     //  translateLinks();
     fixHeaderIDs(); // little workaround for odd marked.js behaviour
-    fixImageLinks(pageMap);
+    
     setupTags("#maintagscontainer", pageMap, true);
     setupSearch("#searchContainer");
 }
@@ -115,9 +116,10 @@ function formatContent(content) {
     return content;
 }
 
-function fixImageLinks(pageMap) {
+/*
+function fixImageLinks(object) {
 
-    $("img").each(function () {
+    $("img", object).each(function () {
         //  var split = window.location.href.split("/");
         //    var path = split.slice(0, split.length - 1).join("/");
         //     path = path + "/" + $(this).attr("src") + "&type=image";
@@ -131,3 +133,4 @@ function fixImageLinks(pageMap) {
         getImage(path, callback);
     });
 }
+*/

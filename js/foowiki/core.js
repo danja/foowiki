@@ -17,8 +17,6 @@
      });
  }
 
-
-
  function sparqlXMLtoJSON(xml) {
 
      var xmlString = (new XMLSerializer()).serializeToString(xml);

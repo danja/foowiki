@@ -23,7 +23,6 @@
         }
 
         function setupErrorHandling() {
-
             $("#errorbox").hide();
             $("#errorbox").click(function () {
                 // $("#errorbox").toggle(500);
@@ -39,10 +38,7 @@
             });
         }
 
-        /* TODO escaping triple-quotes not really tested */
         function sparqlTemplater(raw, replacementMap, isWrite) {
-            //     console.log(JSON.stringify(replacementMap));
-            //      console.log(JSON.stringify(replacementMap));
             if (isWrite && replacementMap["content"]) {
                 replacementMap["content"] = escapeLiterals(replacementMap["content"]);
 
@@ -69,8 +65,6 @@
             var result = template.render(replacementMap);
             return htmlUnescape(result);
         }
-
-
 
         /* parse URL */
         var queryString = (function (a) {
@@ -112,6 +106,22 @@
                     }
                 });
 
+            $("img", object).each(function () {
+                //  var split = window.location.href.split("/");
+                //    var path = split.slice(0, split.length - 1).join("/");
+                //     path = path + "/" + $(this).attr("src") + "&type=image";
+                // $(this).attr("src", path);
+                
+                
+                var path = pagesBaseURI + $(this).attr("src");
+                var me = this;
+                var callback = function (src) {
+                     console.log("SRC="+src);
+                    $(me).attr("src", src);
+                }
+              getImage(path, callback);
+            });
+            
             // somethin similar for handlin img 404s
             // 1unnamed.jpg =>
             //  http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image
