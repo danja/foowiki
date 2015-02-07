@@ -84,14 +84,14 @@
         function translateLinks(object) {
             $('div.content  a', object).each(
                 function () {
-
-                    if (this.href.indexOf(serverRootPath) != -1) { // less than perfect, in-page links
-                        var hashPosition = this.href.indexOf("#");
+                    var href = this.href;
+                    if (href.indexOf(serverRootPath) != -1) { // less than perfect, in-page links
+                        var hashPosition = href.indexOf("#");
                         if (hashPosition != -1) {
-                            var anchor = this.href.substring(hashPosition); // "#Something"
+                            var anchor = href.substring(hashPosition); // "#Something"
                             anchor = anchor.trim().toLowerCase();
                             anchor = anchor.replace(/\s+/g, "-");
-                            this.href = this.href.substring(0, hashPosition) + anchor;
+                            this.href = href.substring(0, hashPosition) + anchor;
 
                             $(this).click(function () {
                                 $('html, body').animate({

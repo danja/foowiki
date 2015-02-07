@@ -20,15 +20,24 @@
 
 <http://hyperdata.it/wiki/>
         a             wiki:Page , sioc:Post ;
-        dc:date       "2015-02-05T18:19:46.983Z" ;
+        dc:date       "2015-02-07T10:27:05.080Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
-        dc:title      "Creative Ideas ......" ;
-        dc:topic      <http://hyperdata.it/tags/handmade> , <http://hyperdata.it/tags/todo> , <http://hyperdata.it/tags/mish> , <http://hyperdata.it/tags/danny> , <http://hyperdata.it/tags/money> ;
-        sioc:content  "* &#39;Marriage Equality&#39; pendants... = on wooden disks\n* &#39;Put Log&#39; kits.... \n* &#39;Make Your Own Mondrian&#39;\n* &#39;Talking Disk&#39;\n* wooden coasters....\n* &#39;novelty&#39; pen/pencil holders...wooden shaped animals painted Mexican style...holes for pens" ;
+        dc:title      "Home Page" ;
+        dc:topic      <http://hyperdata.it/tags/manual> , <http://hyperdata.it/tags/bootstrap> ;
+        sioc:content  "A minimal [SPARQL](http://www.w3.org/TR/sparql11-overview/) [Wiki](http://en.wikipedia.org/wiki/Wiki)\n\nAs it stands it&#39;s suitable for use as a personal wiki. It uses [Markdown](http://en.wikipedia.org/wiki/Markdown) editing syntax. It doesn&#39;t contain features like page locking or authentication (feel free to add these!).\n\nIt&#39;s very much a work-in-progress, definitely a bit of fun, but I&#39;m already using it for note taking.\n\nAll FooWiki needs is a (static file) HTTP server and a SPARQL 1.1 server, i.e. **no server-side code**. It&#39;s being developed against [Fuseki](http://jena.apache.org/documentation/serving_data/), the Jena SPARQL server (which has a built-in HTTP server) and the instructions below follow this setup. (Please let me know if you get it running against a different SPARQL server, I&#39;ll include notes here).\n\n* [FooWiki Manual]()\n* [FooWiki To Do]()\n* [FooWiki Bugs]()" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/handmade>
         rdfs:label  "handmade" .
+
+<http://hyperdata.it/wiki/Creative%20Ideas>
+        a             sioc:Post , wiki:Page ;
+        dc:date       "2015-02-07T10:27:55.705Z" ;
+        dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
+        dc:title      "Creative Ideas" ;
+        dc:topic      <http://hyperdata.it/tags/danny> , <http://hyperdata.it/tags/craft> , <http://hyperdata.it/tags/mish> , <http://hyperdata.it/tags/todo> , <http://hyperdata.it/tags/money> ;
+        sioc:content  "* &#39;Marriage Equality&#39; pendants... = on wooden disks\n* &#39;Put Log&#39; kits.... \n* &#39;Make Your Own Mondrian&#39;\n* &#39;Talking Disk&#39;\n* wooden coasters....\n* &#39;novelty&#39; pen/pencil holders...wooden shaped animals painted Mexican style...holes for pens" ;
+        foaf:maker    [ foaf:nick  "mish" ] .
 
 <http://hyperdata.it/wiki/To%20Do%202015-01-31>
         a             wiki:Page , sioc:Post ;
@@ -40,11 +49,11 @@
 
 <http://hyperdata.it/wiki/FooWiki%20Bugs>
         a             wiki:Page , sioc:Post ;
-        dc:date       "2015-01-31T11:38:05.730Z" ;
+        dc:date       "2015-02-07T10:44:27.724Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "FooWiki Bugs" ;
         dc:topic      <http://hyperdata.it/tags/manual> , <http://hyperdata.it/tags/docs> , <http://hyperdata.it/tags/bugs> , <http://hyperdata.it/tags/foowiki> ;
-        sioc:content  "* back button on new page from content\n* fix Search on Edit page\n* ~~escape triple-quotes~~\n* includes need tidying up, see [Test]()\n  * external links\n  * space in title\n  * both blank" ;
+        sioc:content  "* back button on new page from content\n* fix Search on Edit page\n* image loading tries to GET image as local src (404)\n* dots in title broken\n* there are still some escaping issues, check [FooWiki To Do]()" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/newplace>
@@ -70,11 +79,19 @@
 
 <http://hyperdata.it/wiki/FooWiki%20To%20Do>
         a             sioc:Post , wiki:Page ;
-        dc:date       "2015-02-06T11:19:29.853Z" ;
+        dc:date       "2015-02-06T12:42:35.676Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "FooWiki To Do" ;
         dc:topic      <http://hyperdata.it/tags/manual> , <http://hyperdata.it/tags/foowiki> , <http://hyperdata.it/tags/todo> ;
         sioc:content  "See also [To Investigate](To Investigate)\n\n[To Do 2015-01-12](To Do 2015-01-12)\n\n### [Home Page](Home Page)\n\n* [FooWiki Bugs]()\n* [Core](#Core)\n* [Admin](#Admin)\n* [Foo](Foo)\n* [Foo Apps](#Foo Apps)\n\n\n## Core\n* **do some of these with [Foo](Foo)**\n* pull out core methods into lib wrapping: get(URI, accept type) etc\n* add markup for image after uploading ``` ![alt text](imagename.jpg) ```\n* add created date\n* filter by tags (with Export)\n* RDF media types, GET/POST\n* versioning\n* mobile, printable views CSS\n* integrate http://codemirror.net/ \n* precompile templates\n* push everything to another store\n* edit conflict handling\n* ajaxian import http://www.nickdesteffen.com/blog/file-uploading-over-ajax-using-html5\n* support images \n* MD page import/export\n* make Epub book\n  * https://github.com/ukyo/jsziptools\n  * https://github.com/ukyo/js-epub-builder\n  * https://github.com/ukyo/js-epub-editor\n  * http://stackoverflow.com/questions/12092532/how-to-convert-html-to-valid-xhtml\n  * https://github.com/ukyo/jsziptools#zip\n* view original MD\n* combined pages\n  ** e.g. prioritized todo items\n* include related links in RDF - inlinks/outlinks\n* priority\n  * pick a to do item\n* all literal fields???\n* [WikiWhiteBoard](WikiWhiteBoard)\n* showing whether an intended target page exists or not.\n* LaTex (for maths)\n* shove in local storage http://www.w3.org/wiki/IntegrityIsJobOne\n* bubble rename through pages&amp;#39; content (fix deadening links)\n* Atom feed\n\n## Admin\n* docs in code\n* start proper docs - /projects on github\n* announce - Jena &amp;amp; semweb lists\n\n\n\n## Foo Apps\n* [Slide Show](Slide Show)\n* random page\n* tabs http://htmldog.com/techniques/tabs/\n\n* no! // not worth it right now...change model to include versioning (hasVersion) [Content Model](ContentModel)" ;
+        foaf:maker    [ foaf:nick  "danja" ] .
+
+<http://hyperdata.it/wiki/Basic%20Features>
+        a             wiki:Page , sioc:Post ;
+        dc:date       "2015-02-07T10:35:48.009Z" ;
+        dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
+        dc:title      "Basic Features" ;
+        sioc:content  "## Basic Features\n\n### Editing\n* pages are editable (by anyone), Markdown syntax is used\n* new pages can be created either from the [Index Page](http://localhost:3030/foowiki/) or using Markdown syntyax in an existing page\n* existing pages can be included (transcluded) into other pages using a local link with no title [](Page To Include)\n\n### Tags\n* pages may be tagged (single word, lower case), simply type the word into the Tags box when editing a page\n\n### Search\n* search by keywords and/or selected tags (clicking on the tags in the column toggles them)\n\n### Data Operations\nThe system is backed by a Fuseki SPARQL store, check the index page" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/test>
@@ -261,21 +278,13 @@
 <http://hyperdata.it/tags/painting>
         rdfs:label  "painting" .
 
-<http://hyperdata.it/wiki/Home%20Page>
-        a             wiki:Page , sioc:Post ;
-        dc:date       "2015-01-30T18:13:29.172Z" ;
-        dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
-        dc:title      "Home Page" ;
-        sioc:content  "[New]()\n\n[To Do]()\n\n" ;
-        foaf:maker    [ foaf:nick  "danja" ] .
-
 <http://hyperdata.it/wiki/FooWiki%20Manual>
         a             sioc:Post , wiki:Page ;
-        dc:date       "2015-02-05T12:22:08.185Z" ;
+        dc:date       "2015-02-07T10:45:53.309Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "FooWiki Manual" ;
         dc:topic      <http://hyperdata.it/tags/manual> , <http://hyperdata.it/tags/foowiki> , <http://hyperdata.it/tags/bootstrap> , <http://hyperdata.it/tags/docs> ;
-        sioc:content  "## Overview\n\n## Contents\n* [Basic Features](Basic Features)\n  * [Tags](#Tags)\n\n\n* [Text Formatting](Text Formatting)\n  * [Links](#Links)\n\n## Text Formatting\n[](FooWiki Links)\n\n\n\n\n## Tags\nTags are converted to lower case." ;
+        sioc:content  "## Overview\nthis doc is a work in progress...\n\n## Contents\n* [Basic Features](#Basic Features)\n  * [Tags](#Tags)\n\n\n* [Text Formatting](Text Formatting)\n  * [Links](#Links)\n  * [Markdown Cheatsheet]()\n\n[](Basic Features)\n\n## Text Formatting\n[](FooWiki Links)\n\n\n\n\n## Tags\nTags are converted to lower case." ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/docs>
@@ -331,6 +340,9 @@
         sioc:content  "enter content here\n\n![baz.jpg](baz.jpg)\n\n![anglo-saxon-raven.png](anglo-saxon-raven.png)" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
+<http://hyperdata.it/tags/craft>
+        rdfs:label  "craft" .
+
 <http://hyperdata.it/wiki/semweb.jpeg>
         a            dctype:Image ;
         rdfs:label   "semweb.jpeg" ;
@@ -349,11 +361,11 @@
 
 <http://hyperdata.it/wiki/Test>
         a             wiki:Page , sioc:Post ;
-        dc:date       "2015-02-06T11:37:17.051Z" ;
+        dc:date       "2015-02-06T13:52:19.788Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "Test" ;
-        dc:topic      <http://hyperdata.it/tags/test> ;
-        sioc:content  "a page for testing stuff is here\n\n![alt text](1unnamed.jpg)\n\nmore stuff" ;
+        dc:topic      <http://hyperdata.it/tags/todo> , <http://hyperdata.it/tags/test> ;
+        sioc:content  "a page for testing stuff is here\n\n![alt text](1unnamed.jpg)\n\nmore stuff\n\n[Home Page]()\n\n[Mish]()" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/FooWiki%20Docs>

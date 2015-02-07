@@ -34,6 +34,7 @@ function setupPosting() {
                 var callback = function () {
                     window.location.href = window.location.href.replace("edit.html", "page.html");
                 };
+                submitOutlinks(graphURI, pageURI, entry.content);
                 submitTags(graphURI, pageURI, callback);
                 //   callback();
             });
@@ -67,6 +68,11 @@ function deletePage(graphURI, pageURI, callback) {
         callback();
     });
     return false;
+}
+
+function submitOutlinks(graphURI, pageURI, content) {
+    var matches = content.match(/\[([^\[]*)\]\(([^\)]*)\)/g);
+    console.log("MATCHESreg="+JSON.stringify(matches));
 }
 
 // TAGS ----------------------------------------------
