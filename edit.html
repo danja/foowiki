@@ -34,6 +34,7 @@
     <script src="js/foowiki/edit.js"></script>
 
     <script type="text/javascript" language="javascript">
+         
         var pageURI = queryString["uri"];
 
         pageURI = encodeURI(pageURI);
@@ -82,10 +83,13 @@
                     "graphURI": graphURI
                 };
 
+                   
                 setupTags("#maintagscontainer", pageMap, false);
                 //   $("##foowikitagscontainer").tagit({
+           
                 
                  $("textarea").autoGrow();
+                 $("#maintagscontainer").addClass("editable"); // not working 
             };
             getDataForURL(doneCallback, getPageUrl);
             setupPosting();

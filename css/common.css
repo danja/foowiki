@@ -6,6 +6,15 @@
     background-color: darkgray;
 }
 
+#maintagscontainer {
+    width: 100%;
+}
+
+.editable, ul.tagit {
+    background-color: white;
+    border: 2px solid pink;
+}
+
 #left,
 #right {
     background-color: lightgray;
@@ -21,7 +30,7 @@ h4 {
     padding: 0 0 0 0;
 }
 
-#left ul,
+#left ul,  $("#maintagscontainer").addClass("editable");
 #right ul {
     width: 150px;
 }
@@ -75,10 +84,6 @@ button {
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     border-right: 1px solid lightgray;
     border-left: 1px solid lightgray;
-}
-
-#maintagscontainer {
-    width: 100%;
 }
 
 .ui-button {
@@ -180,7 +185,7 @@ legend {
 textarea {
     display: block;
     width: 100%;
-    height:auto ;
+    height: auto;
     border: 2px solid pink;
     font-size: 75%;
 }

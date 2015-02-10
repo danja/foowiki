@@ -340,6 +340,15 @@
         sioc:content  "enter content here\n\n![baz.jpg](baz.jpg)\n\n![anglo-saxon-raven.png](anglo-saxon-raven.png)" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
+<http://hyperdata.it/wiki/FooWiki%20on%20Heroku>
+        a             wiki:Page , sioc:Post ;
+        dc:date       "2015-02-10T10:59:08.236Z" ;
+        dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
+        dc:title      "FooWiki on Heroku" ;
+        dc:topic      <http://hyperdata.it/tags/docs> , <http://hyperdata.it/tags/bootstrap> , <http://hyperdata.it/tags/manual> ;
+        sioc:content  "Heroku&#39;s instructions essentially work for running Fuseki_FooWiki there but note : \n\n* a dummy pom.xml is needed to tell it it was Java.\n* the free service will idle if it&#39;s not been accessed for an hour (?) - this appears to lead to the **loss of all data**\n  * trying http://kaffeine.herokuapp.com/ to periodically ping the thing\n**BEWARE** when updating, current data gets overwritten.\n\nHave made a script to update (foowiki/p)" ;
+        foaf:maker    [ foaf:nick  "danja" ] .
+
 <http://hyperdata.it/tags/craft>
         rdfs:label  "craft" .
 
