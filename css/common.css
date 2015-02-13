@@ -10,7 +10,7 @@
     width: 100%;
 }
 
-.editable, ul.tagit {
+.editable, ul.tagit { /* not working */
     background-color: white;
     border: 2px solid pink;
 }

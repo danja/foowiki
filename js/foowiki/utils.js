@@ -85,7 +85,8 @@
             $('div.content  a', object).each(
                 function () {
                     var href = this.href;
-                    if (href.indexOf(pagesBaseURI) != -1) { // less than perfect, in-page links was serverRootPath
+                    console.log("HREF="+href);
+                    if (href.indexOf(serverRootPath) != -1) { // less than perfect, in-page links maybe involve pagesBaseURI
                         var hashPosition = href.indexOf("#");
                         if (hashPosition != -1) {
                             var anchor = href.substring(hashPosition); // "#Something"
