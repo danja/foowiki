@@ -1,4 +1,4 @@
-// TODO 
+// TODO use this (add timer) in edit.tml
 
 $(document).ready(function () {
 
