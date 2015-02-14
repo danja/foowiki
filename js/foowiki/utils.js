@@ -116,11 +116,11 @@
                 
                 var path = pagesBaseURI + $(this).attr("src");
                 var me = this;
-                var callback = function (src) {
+                var setImgSrc = function (src) {
                      console.log("SRC="+src);
                     $(me).attr("src", src);
                 }
-              getImage(path, callback);
+              getImage(path, setImgSrc);
             });
             
             // somethin similar for handlin img 404s

@@ -12,25 +12,25 @@ function getImage(imageURI, callback) {
     var getPageSparql = sparqlTemplater(getImageSparqlTemplate, pageMap);
     var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
-    var doneCallback = function (entryJSON) {
-        console.log("BBB");
+    var makeDataURL = function (entryJSON) {
+     //   console.log("BBB");
      //   var entryXmlNames = ["base64"];
         // var entryJSON = sparqlXMLtoJSON(xml);
         var src = "data:image/jpeg;base64," + entryJSON[0]["base64"];
         callback(src);
     }
     console.log("getPageUrl=" + getPageUrl);
-    getDataForURL(doneCallback, getPageUrl);
+    getDataForURL(makeDataURL, getPageUrl);
 }
 
 function getPage(pageURI, entryHandler) {
 
     // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image
     if (queryString["type"] == "image") {
-        var callback = function (src) {
+        var fliptoImage = function (src) {
             window.location.href = src;
         };
-        getImage(pageURI, callback);
+        getImage(pageURI, fliptoImage);
         return;
     }
     //   pageURI = encodeURI(pageURI);
@@ -44,11 +44,11 @@ function getPage(pageURI, entryHandler) {
     var getPageSparql = sparqlTemplater(getPageSparqlTemplate, pageMap);
     var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
-    var doneCallback = function (entryJSON) {
+    var handleEntry = function (entryJSON) {
         entryHandler(pageMap, entryJSON);
     };
 
-    getDataForURL(doneCallback, getPageUrl);
+    getDataForURL(handleEntry, getPageUrl);
 }
 
 function buildPage(pageMap, entryJSON) {

@@ -26,7 +26,7 @@ $(document).ready(function () {
     // Autosave on keystroke works in offline mode
     $("textarea#inputTextArea").change(function () {
 
-        // pulls the value from the textarea
+        // pulls the value from the textaream/.j
         var file = $('textarea#inputTextArea').val();
 
         // sets the file string to hold the data

@@ -23,7 +23,7 @@ function setupPosting() {
         var data = sparqlTemplater(postPageSparqlTemplate, entry, true);
 
         // put current data in local storage here
-        var callback = function () {
+        var postNewData = function () {
             $.ajax({
                 type: "POST",
                 url: sparqlUpdateEndpoint,
@@ -31,24 +31,24 @@ function setupPosting() {
                     update: data
                 })
             }).done(function () {
-                var callback = function () {
+                var fliptoViewPage = function () {
                     window.location.href = window.location.href.replace("edit.html", "page.html");
                 };
                 submitOutlinks(graphURI, pageURI, entry.content);
-                submitTags(graphURI, pageURI, callback);
+                submitTags(graphURI, pageURI, fliptoViewPage);
                 //   callback();
             });
         }
 
-        deletePage(graphURI, pageURI, callback);
+        deletePage(graphURI, pageURI, postNewData);
         return false;
     });
 
     $('#delete').click(function () {
-        var callback = function () {
+        var fliptoIndexPage = function () {
             window.location.href = "index.html";
         }
-        return deletePage(graphURI, pageURI, callback);
+        return deletePage(graphURI, pageURI, fliptoIndexPage);
     });
 }
 

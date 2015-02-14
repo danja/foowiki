@@ -146,7 +146,7 @@
      //  $(searchContainer).append("<button id='searchButton'>Search</button>");
      //  $(searchContainer).append(entryTableTemplate);
 
-     var doneCallback = function (tags) {
+     var renderTags = function (tags) {
        //  var tags = tagsXmlToJson(xml);
          var tagButtons = $(searchContainer + " #tagButtons");
 
@@ -162,7 +162,7 @@
              doSearch();
          });
      }
-     getAllTags(doneCallback);
+     getAllTags(renderTags);
  }
 
  function doSearch() {
@@ -194,7 +194,7 @@
      var searchSparql = sparqlTemplater(searchSparqlTemplate, searchMap);
      var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
 
-     var doneCallback = function (json) {
+     var renderSearchResults = function (json) {
          //    console.log("entriesJSON = " + JSON.stringify(entriesJSON));
          var results = makeLinkListHTML(json);
          $("#results").empty();
@@ -204,7 +204,7 @@
                                     scrollTop: $("#results").offset().top
                                 }, 250); // milliseconds
      }
-     getDataForURL(doneCallback, searchUrl);
+     getDataForURL(renderSearchResults, searchUrl);
  }
 
  function makeRecentChangesList() { // refactor with doSearch()
@@ -218,7 +218,7 @@
      var searchSparql = sparqlTemplater(getRecentChangesSparqlTemplate, searchMap);
    //   console.log("getRecentChangesSparqlTemplate = " + getRecentChangesSparqlTemplate);
      var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
-     var doneCallback = function (xml) {
+     var renderRecentChanges = function (xml) {
  
          var results = makeLinkListHTML(xml);
                //   console.log("results = " + results);
@@ -226,7 +226,7 @@
          $("#recentChanges").append(results);
        //  console.log("HERE" + results);
      }
-     getDataForURL(doneCallback, searchUrl);
+     getDataForURL(renderRecentChanges, searchUrl);
  }
 
  // for search results
@@ -273,7 +273,7 @@
  }
 
  function setupTagsAutocomplete(tagsContainerId, callback) {
-     var doneCallback = function (tags) {
+     var insertTagsAutocomplete = function (tags) {
        //  var tags = tagsXmlToJson(xml);
          var allTags = [];
 
@@ -293,7 +293,7 @@
          $(tagsContainerId).tagit(tagitMap);
          callback();
      }
-     getAllTags(doneCallback);
+     getAllTags(insertTagsAutocomplete);
  }
 
  //function tagsXmlToJson(xml) {
@@ -306,12 +306,7 @@
      var getTagsSparql = sparqlTemplater(getTagsSparqlTemplate, pageMap);
      var getTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getTagsSparql) + "&output=xml";
 
-     var doneCallback = function (tags) {
-
-       //  var tags = tagsXmlToJson(xml);
-        //    var xmlString = (new XMLSerializer()).serializeToString(xml);
-   //  var tagsXmlNames = ["topicURI", "topicLabel"];
-  //   return sparqlXMLtoJSON(xml);
+     var renderTags = function (tags) {
 
          var tagitMap = {
              readOnly: readOnly
@@ -329,12 +324,12 @@
              $(selector).attr("name", uri);
          }
      }
-     getDataForURL(doneCallback, getTagsUrl);
+     getDataForURL(renderTags, getTagsUrl);
  }
 
- function setupTagsPanel(tagsContainerId) {
+ function setupTagsPanel(tagsContainerId) { // is only used by index.html, nothing yet displayed -  for tag management, what's needed? is very similar to createTags
+     console.log("setupTagsPanel CALLED on "+tagsContainerId);
      var doneCallback = function (tags) {
-         // var tags = tagsXmlToJson(xml);
 
          var tagitMap = {
              readOnly: true
