@@ -13,6 +13,7 @@
         dc:title      "To Do 2015-01-24" ;
         dc:topic      <http://hyperdata.it/tags/todo> ;
         sioc:content  "* gas\n* Barry work\n\n\n* sort immediate bills\n\n\n* paintbrushes\n* lap guitar\n* fix speaker hum\n* small jacks lead\n* parcels\n* sweep workshop\n* mish thing\n\n\n* wash\n\n\n* FooWiki - new page everywhere\n* FooWiki search template/UI" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/manual>
@@ -20,11 +21,19 @@
 
 <http://hyperdata.it/wiki/>
         a             wiki:Page , sioc:Post ;
-        dc:date       "2015-02-07T10:27:05.080Z" ;
+        dc:date       "2015-02-16T13:32:44.167Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "Home Page" ;
         dc:topic      <http://hyperdata.it/tags/manual> , <http://hyperdata.it/tags/bootstrap> ;
-        sioc:content  "A minimal [SPARQL](http://www.w3.org/TR/sparql11-overview/) [Wiki](http://en.wikipedia.org/wiki/Wiki)\n\nAs it stands it&#39;s suitable for use as a personal wiki. It uses [Markdown](http://en.wikipedia.org/wiki/Markdown) editing syntax. It doesn&#39;t contain features like page locking or authentication (feel free to add these!).\n\nIt&#39;s very much a work-in-progress, definitely a bit of fun, but I&#39;m already using it for note taking.\n\nAll FooWiki needs is a (static file) HTTP server and a SPARQL 1.1 server, i.e. **no server-side code**. It&#39;s being developed against [Fuseki](http://jena.apache.org/documentation/serving_data/), the Jena SPARQL server (which has a built-in HTTP server) and the instructions below follow this setup. (Please let me know if you get it running against a different SPARQL server, I&#39;ll include notes here).\n\n* [FooWiki Manual]()\n* [FooWiki To Do]()\n* [FooWiki Bugs]()" ;
+        sioc:content  "A minimal [SPARQL](http://www.w3.org/TR/sparql11-overview/) [Wiki](http://en.wikipedia.org/wiki/Wiki)\n\nAs it stands it&#39;s suitable for use as a personal wiki. It uses [Markdown](http://en.wikipedia.org/wiki/Markdown) editing syntax. It doesn&#39;t contain features like page locking or authentication (feel free to add these!).\n\nIt&#39;s very much a work-in-progress, definitely a bit of fun, but I&#39;m already using it for note taking.\n\nAll FooWiki needs is a (static file) HTTP server and a SPARQL 1.1 server, i.e. **no server-side code**. It&#39;s being developed against [Fuseki](http://jena.apache.org/documentation/serving_data/), the Jena SPARQL server (which has a built-in HTTP server) and the instructions below follow this setup. (Please let me know if you get it running against a different SPARQL server, I&#39;ll include notes here).\n\n* [Source on GitHub](https://github.com/danja/foowiki)\n* [FooWiki Manual]()\n* [FooWiki To Do]()\n* [FooWiki Bugs]()" ;
+        foaf:maker    [ foaf:nick  "danja" ] .
+
+<http://hyperdata.it/wiki/Misc%20To%20Do>
+        a             wiki:Page , sioc:Post ;
+        dc:date       "2015-02-16T13:19:03.274Z" ;
+        dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
+        dc:title      "Misc To Do" ;
+        sioc:content  "\n* FOLDOC to Turtle\n  * some notes at http://sydney.edu.au/engineering/it/~alum/blog/2004/09/mecureo_how_to.html" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/handmade>
@@ -37,6 +46,7 @@
         dc:title      "Creative Ideas" ;
         dc:topic      <http://hyperdata.it/tags/danny> , <http://hyperdata.it/tags/craft> , <http://hyperdata.it/tags/mish> , <http://hyperdata.it/tags/todo> , <http://hyperdata.it/tags/money> ;
         sioc:content  "* &#39;Marriage Equality&#39; pendants... = on wooden disks\n* &#39;Put Log&#39; kits.... \n* &#39;Make Your Own Mondrian&#39;\n* &#39;Talking Disk&#39;\n* wooden coasters....\n* &#39;novelty&#39; pen/pencil holders...wooden shaped animals painted Mexican style...holes for pens" ;
+        foaf:maker    [ foaf:nick  "mish" ] ;
         foaf:maker    [ foaf:nick  "mish" ] .
 
 <http://hyperdata.it/wiki/To%20Do%202015-01-31>
@@ -45,15 +55,16 @@
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "To Do 2015-01-31" ;
         sioc:content  "* 1 our Barry\n* Castiglione\n* Sort android parcel\n* pension form\n* fridge back" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/FooWiki%20Bugs>
         a             wiki:Page , sioc:Post ;
-        dc:date       "2015-02-07T10:44:27.724Z" ;
+        dc:date       "2015-02-12T12:33:43.671Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "FooWiki Bugs" ;
         dc:topic      <http://hyperdata.it/tags/manual> , <http://hyperdata.it/tags/docs> , <http://hyperdata.it/tags/bugs> , <http://hyperdata.it/tags/foowiki> ;
-        sioc:content  "* back button on new page from content\n* fix Search on Edit page\n* image loading tries to GET image as local src (404)\n* dots in title broken\n* there are still some escaping issues, check [FooWiki To Do]()" ;
+        sioc:content  "* **Includes broken** (translateLinks, check for local links..?)\n* back button on new page from content\n* fix Search on Edit page\n* image loading tries to GET image as local src (404)\n* dots in title broken\n* there are still some escaping issues, check [FooWiki To Do]()" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/newplace>
@@ -70,20 +81,20 @@
 
 <http://hyperdata.it/wiki/To%20Investigate>
         a             wiki:Page , sioc:Post ;
-        dc:date       "2015-02-04T12:58:55.966Z" ;
+        dc:date       "2015-02-16T08:25:09.526Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "To Investigate" ;
         dc:topic      <http://hyperdata.it/tags/todo> ;
-        sioc:content  "* for mobile http://ionicframework.com/ is supported in Brackets\n* http://en.wikipedia.org/wiki/Responsive_web_design\n* https://www.npmjs.com/package/http-template\n* https://trello.com\n\ndanbri : stand https://github.com/overtone/overtone (except am now lost in http://mitpress.mit.edu/sicp/ and http://community.schemewiki.org/?little-schemer ...)\n\nhttp://tobyschachman.com/Shadershop/\n\ntiddlywiki\n\n## Tonewood\n\nhttp://www.csudh.edu/oliver/chemdata/woods.htm" ;
+        sioc:content  "https://www.youtube.com/watch?v=0go-MrsR_PI\n\nhttp://terminal.jcubic.pl/\n\n* turns node.is into apps\n  * *https://www.npmjs.com/package/atom-shell\n* for mobile http://ionicframework.com/ is supported in Brackets\n* http://en.wikipedia.org/wiki/Responsive_web_design\n* https://www.npmjs.com/package/http-template\n* https://trello.com\n* Scraper for node https://github.com/lapwinglabs/x-ray\n* http://visop-dev.com/Project+jQuery.sheet\n\nfor node.js : http://senecajs.org/\n\nhttps://github.com/js-data/js-data/blob/master/README.md\n\ndanbri : stand https://github.com/overtone/overtone (except am now lost in http://mitpress.mit.edu/sicp/ and http://community.schemewiki.org/?little-schemer ...)\n\nhttp://tobyschachman.com/Shadershop/\n\ntiddlywiki\n\nhttp://the-paper-trail.org/blog/the-elephant-was-a-trojan-horse-on-the-death-of-map-reduce-at-google/#more-604\n\nhttp://codeutopia.net/blog/2015/01/30/how-to-unit-test-nodejs-http-requests/\n\n## Tonewood\n\nhttp://www.csudh.edu/oliver/chemdata/woods.htm" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/FooWiki%20To%20Do>
         a             sioc:Post , wiki:Page ;
-        dc:date       "2015-02-12T12:09:18.432Z" ;
+        dc:date       "2015-02-16T22:05:19.690Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "FooWiki To Do" ;
-        dc:topic      <http://hyperdata.it/tags/manual> , <http://hyperdata.it/tags/foowiki> , <http://hyperdata.it/tags/todo> ;
-        sioc:content  "See also [To Investigate](To Investigate)\n\n[To Do 2015-01-12](To Do 2015-01-12)\n\n### [Home Page](Home Page)\n\n* [FooWiki Bugs]()\n* [Core](#Core)\n* [Admin](#Admin)\n* [Foo](Foo)\n* [Foo Apps](#Foo Apps)\n\n## Architecture\n* make more OO see http://en.wikipedia.org/wiki/Class-responsibility-collaboration_card\n* pull out core methods into lib wrapping: get(URI, accept type) etc\n\n## Small Jobs\n* add markup for image after uploading ``` ![alt text](imagename.jpg) ```\n* add created date\n* search\n  * filter by tag exclusion \n  * results as full content\n  * export results\n* mobile, printable views CSS\n* precompile templates\n* view original MD\n\n\n## Bigger Bits\n* **do some of these with [Foo](Foo)**\n* include related links in RDF - inlinks/outlinks\n* bubble rename through pages&amp;#39; content (fix deadening links)\n* RDF media types, GET/POST\n* versioning\n* integrate http://codemirror.net/ \n* push everything to another store\n* edit conflict handling\n* ajaxian import http://www.nickdesteffen.com/blog/file-uploading-over-ajax-using-html5\n* MD page import/export\n* make Epub book\n  * https://github.com/ukyo/jsziptools\n  * https://github.com/ukyo/js-epub-builder\n  * https://github.com/ukyo/js-epub-editor\n  * http://stackoverflow.com/questions/12092532/how-to-convert-html-to-valid-xhtml\n  * https://github.com/ukyo/jsziptools#zip\n* priority\n  * pick a to do item\n* all literal fields???\n* [WikiWhiteBoard](WikiWhiteBoard)\n* showing whether an intended target page exists or not.\n* LaTex (for maths)\n* shove in local storage http://www.w3.org/wiki/IntegrityIsJobOne\n* Atom feed\n\n## Admin\n* docs in code\n* start proper docs - /projects on github\n* announce - Jena &amp; semweb lists\n\n## Foo Apps\n* [Slide Show](Slide Show)\n* random page\n* tabs http://htmldog.com/techniques/tabs/\n\n* no! // not worth it right now...change model to include versioning (hasVersion) [Content Model](ContentModel)" ;
+        dc:topic      <http://hyperdata.it/tags/manual> , <http://hyperdata.it/tags/danny> , <http://hyperdata.it/tags/foowiki> , <http://hyperdata.it/tags/todo> , <http://hyperdata.it/tags/code> ;
+        sioc:content  "\nhttps://shanetomlinson.com/2013/writing-testable-javascript-part-2-refactor-away-anti-patterns/\n\n. Choose slow enough tempo you can double or quadruple in your head. Going up gradually fucks up the time development. Once you&#39;re comfortable with one tempo and its multiples, then up the basic tempo by 5 bpm or so. Rinse and repeat.\n\nSee also [To Investigate]() [Danny To Do]()\n\nWhat was Mish idea, irc like for quick notes..?\n\nhttps://github.com/jribble/Java-Websockify\n\n[To Do 2015-01-12](To Do 2015-01-12)\n\n### [Home Page](Home Page)\n\n* [FooWiki Bugs]()\n* [Core](#Core)\n* [Admin](#Admin)\n* [Foo]()\n* [Foo Apps](#Foo Apps)\n\n## Architecture\n* refactoring \n  * jslint\n  * http://www.crockford.com/\n  * break apart methods (rename callbacks)\n  * http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript\n  * https://shanetomlinson.com/2013/testing-javascript-frontend-part-1-anti-patterns-and-fixes\n\n* make more OO see http://en.wikipedia.org/wiki/Class-responsibility-collaboration_card\n* pull out core methods into lib wrapping: get(URI, accept type) etc\n\n## Small Jobs\n* add markup for image after uploading ``` ![alt text](imagename.jpg) ```\n* add created date\n* search\n  * filter by tag exclusion \n  * results as full content\n  * export results\n* mobile, printable views CSS\n  * http://www.sitepoint.com/build-a-responsive-mobile-friendly-website-from-scratch-css-stylesheet/* precompile templates\n* view original MD\n* node script to auto backup\n* show warning if content is above a certain length\n\nPull out bookmarking bookmarklet from semi, integrate here\n\n## Bigger Bits\n* **do some of these with [Foo](Foo)**\n* include related links in RDF - inlinks/outlinks\n* cleanup script (duplicate dates etc)\n* bubble rename through pages&amp;#39; content (fix deadening links)\n* RDF media types, GET/POST\n* versioning\n* integrate http://codemirror.net/ \n* push everything to another store\n* edit conflict handling\n* ajaxian import http://www.nickdesteffen.com/blog/file-uploading-over-ajax-using-html5\n* MD page import/export\n* make Epub book\n  * https://github.com/ukyo/jsziptools\n  * https://github.com/ukyo/js-epub-builder\n  * https://github.com/ukyo/js-epub-editor\n  * http://stackoverflow.com/questions/12092532/how-to-convert-html-to-valid-xhtml\n  * https://github.com/ukyo/jsziptools#zip\n* priority\n  * pick a to do item\n* all literal fields???\n* [WikiWhiteBoard](WikiWhiteBoard)\n* showing whether an intended target page exists or not.\n* LaTex (for maths)\n* shove in local storage http://www.w3.org/wiki/IntegrityIsJobOne\n* Atom feed\n\n## Admin\n* docs in code\n* start proper docs - /projects on github\n* announce - Jena &amp; semweb lists\n\n## Foo Apps\n* [Slide Show](Slide Show)\n* random page\n* tabs http://htmldog.com/techniques/tabs/\n\n* no! // not worth it right now...change model to include versioning (hasVersion) [Content Model](ContentModel)" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/Basic%20Features>
@@ -92,18 +103,27 @@
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "Basic Features" ;
         sioc:content  "## Basic Features\n\n### Editing\n* pages are editable (by anyone), Markdown syntax is used\n* new pages can be created either from the [Index Page](http://localhost:3030/foowiki/) or using Markdown syntyax in an existing page\n* existing pages can be included (transcluded) into other pages using a local link with no title [](Page To Include)\n\n### Tags\n* pages may be tagged (single word, lower case), simply type the word into the Tags box when editing a page\n\n### Search\n* search by keywords and/or selected tags (clicking on the tags in the column toggles them)\n\n### Data Operations\nThe system is backed by a Fuseki SPARQL store, check the index page" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/test>
         rdfs:label  "test" .
 
+<http://hyperdata.it/wiki/Fooplespace>
+        a             wiki:Page , sioc:Post ;
+        dc:date       "2015-02-12T23:13:42.614Z" ;
+        dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
+        dc:title      "Fooplespace" ;
+        sioc:content  "CRC Cards-like things (wiki pages) that also cover processesj\nUse a flow-based kinda model, a URL has ins and outs (GETS POSTS?)\nCode generator for this?\n\nClass responsibly collaborators http://agilemodeling.com/artifacts/crcModel.htm\nGraphs as linda-stype tuplespace, associative thing by accessing via SPARQL patterns..?" ;
+        foaf:maker    [ foaf:nick  "danja" ] .
+
 <http://hyperdata.it/wiki/Foo%20To%20Do>
         a             wiki:Page , sioc:Post ;
-        dc:date       "2015-01-30T13:26:25.439Z" ;
+        dc:date       "2015-02-13T18:16:06.761Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "Foo To Do" ;
         dc:topic      <http://hyperdata.it/tags/todo> , <http://hyperdata.it/tags/foowiki> ;
-        sioc:content  "[Foo]()\n\n### Minimal bootstrap prog\n* load HTML+CSS+JS\n\n* check http://perfectionkills.com/global-eval-what-are-the-options/#eval_context_in_webkit\n## [Foo](Foo)\n* handle parameters\n* use WebWorkers? http://www.html5rocks.com/en/tutorials/workers/basics\n* globalEval \n  * see http://www.2ality.com/2014/01/eval.html\n  * http://perfectionkills.com/global-eval-what-are-the-options/\n* generic sparqlXMLToJSON\n* dropdown list for Apply Script to this page\n* foo = &amp;#39;stored procedures&amp;#39; - resources with SPARQL/JS literal templates, pass parameters, return graphs, json... use jsonp?\n* support JS source extensions\n* support SPARQL source extensions\n* messaging via URLs\n* graph view [vis.js](http://visjs.org/docs/index.html)\n  * http://jsplumb.org/demo/flowchart/dom.html\n* install from URL\n* reduce whole app to a single bootstrap HTML file + RDF?\n* handle parameters\n* generic sparqlXMLToJSON\n* dropdown list for Apply Script to this page\n* foo = &#39;stored procedures&#39; - resources with SPARQL/JS literal templates, pass parameters, return graphs, json... use jsonp?\n* support JS source extensions\n* support SPARQL source extensions\n* messaging via URLs\n* graph view [vis.js](http://visjs.org/docs/index.html)\n  * http://jsplumb.org/demo/flowchart/dom.html\n* install from URL\n* reduce whole app to a single bootstrap HTML file + RDF?" ;
+        sioc:content  "[Foo]()\n\nhttp://stackoverflow.com/questions/18313770/can-i-store-javascript-in-a-local-storage-object-and-run-it\n\n### Minimal bootstrap prog\n* load HTML+CSS+JS\n\nUse a flow-based kinda model, a URL has ins and outs (GETS POSTS?)\n\nGraphs as linda-stype tuplespace, associative thing by accessing via SPARQL patterns..? [Fooplespace]()\n\n* check http://perfectionkills.com/global-eval-what-are-the-options/#eval_context_in_webkit\n## [Foo](Foo)\n* handle parameters\n* use WebWorkers? http://www.html5rocks.com/en/tutorials/workers/basics\n* globalEval \n  * see http://www.2ality.com/2014/01/eval.html\n  * http://perfectionkills.com/global-eval-what-are-the-options/\n* generic sparqlXMLToJSON\n* dropdown list for Apply Script to this page\n* foo = &amp;#39;stored procedures&amp;#39; - resources with SPARQL/JS literal templates, pass parameters, return graphs, json... use jsonp?\n* support JS source extensions\n* support SPARQL source extensions\n* messaging via URLs\n* graph view [vis.js](http://visjs.org/docs/index.html)\n  * http://jsplumb.org/demo/flowchart/dom.html\n* install from URL\n* reduce whole app to a single bootstrap HTML file + RDF?\n* handle parameters\n* generic sparqlXMLToJSON\n* dropdown list for Apply Script to this page\n* foo = &#39;stored procedures&#39; - resources with SPARQL/JS literal templates, pass parameters, return graphs, json... use jsonp?\n* support JS source extensions\n* support SPARQL source extensions\n* messaging via URLs\n* graph view [vis.js](http://visjs.org/docs/index.html)\n  * http://jsplumb.org/demo/flowchart/dom.html\n* install from URL\n* reduce whole app to a single bootstrap HTML file + RDF?" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/Image%20Testing>
@@ -112,6 +132,7 @@
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "Image Testing" ;
         sioc:content  "Image: ![Alt text](220px-SheelaWiki.jpg)\n\n[Another Image Test]()" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/To%20Do%202015-01-23>
@@ -121,15 +142,24 @@
         dc:title      "To Do 2015-01-23" ;
         dc:topic      <http://hyperdata.it/tags/todo> ;
         sioc:content  "* Barry work\n\n* sort immediate bills\n\n\n* ~~outside light~~\n* ~~coathanger in bedroom~~\n* paintbrushes\n* lap guitar\n* fix speaker hum\n* small jacks lead\n* parcels\n* sweep workshop\n* mish thing\n\n\n* ~~FooWiki search~~\n* FooWiki search template/UI" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/Test%20Two>
         a             wiki:Page , sioc:Post ;
-        dc:date       "2015-01-31T10:55:53.785Z" ;
+        dc:date       "2015-02-13T13:18:24.172Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "Test Two" ;
         dc:topic      <http://hyperdata.it/tags/foowiki> , <http://hyperdata.it/tags/test> ;
-        sioc:content  "some dummy content" ;
+        sioc:content  "some dummy content\n\n[](Test Three)" ;
+        foaf:maker    [ foaf:nick  "danja" ] .
+
+<http://hyperdata.it/wiki/Danny%20To%20Do>
+        a             wiki:Page , sioc:Post ;
+        dc:date       "2015-02-16T22:07:03.213Z" ;
+        dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
+        dc:title      "Danny To Do" ;
+        sioc:content  "## Immediate\n* phone gas\n* water overflow\n\n\n## Worky Tech\n* Barry stuff\n* NewsMonitor\n  * [Feed List]()\n\n## Danny Tech\n### Misc\n* Hosting\n* Seki\n* [ThikiWiki To Do]()\n* [Misc To Do]()\n\n\n[](FooWiki To Do)" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/Foo>
@@ -139,6 +169,7 @@
         dc:title      "Foo" ;
         dc:topic      <http://hyperdata.it/tags/manual> , <http://hyperdata.it/tags/bootstrap> , <http://hyperdata.it/tags/foowiki> ;
         sioc:content  "Foo is the working name of the extension/reflection parts of FooWiki\n\nsimple IDE a la Smalltalk (RDF browser)\n\n* Javascript as content\n* SPARQL queries as content\n\n\n* [Hello World 1](Hello World 1)\n* [HelloWorld2](HelloWorld2&amp;first=one&amp;second=two)\n* [Hello World 3](Hello World 3?p1=one&amp;p2=2)\n\n[Foo To Do]()\n\nFor each standard page have an associated _plugins page which lists js files (stored as RDF literals) that should be inserted\n\n\n## See Also\n* http://www.slideshare.net/ldodds/creating-apis-over-rdf" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/Markdown%20Cheatsheet>
@@ -146,8 +177,9 @@
         dc:date       "2015-02-05T11:12:54.374Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "Markdown Cheatsheet" ;
-        dc:topic      <http://hyperdata.it/tags/foowiki> , <http://hyperdata.it/tags/bootstrap> , <http://hyperdata.it/tags/docs> , <http://hyperdata.it/tags/manual> ;
+        dc:topic      <http://hyperdata.it/tags/foowiki> , <http://hyperdata.it/tags/bootstrap> , <http://hyperdata.it/tags/manual> , <http://hyperdata.it/tags/docs> ;
         sioc:content  "This is intended as a quick reference and showcase. For more complete info, see [John Gruber&#39;s original spec](http://daringfireball.net/projects/markdown/) and the [Github-flavored Markdown info page](http://github.github.com/github-flavored-markdown/).\n\nNote that there is also a [Cheatsheet specific to Markdown Here](./Markdown-Here-Cheatsheet) if that&#39;s what you&#39;re looking for. You can also check out [more Markdown tools](./Other-Markdown-Tools).\n\n##### Table of Contents  \n[Headers](#headers)  \n[Emphasis](#emphasis)  \n[Lists](#lists)  \n[Links](FooWiki Links)  \n[Images](#images)  \n[Code and Syntax Highlighting](#code)  \n[Tables](#tables)  \n[Blockquotes](#blockquotes)  \n[Inline HTML](#html)  \n[Horizontal Rule](#hr)  \n[Line Breaks](#lines)  \n[Youtube videos](#videos)  \n\n&lt;a name=\"headers\"/&gt;\n## Headers\n\n```no-highlight\n# H1\n## H2\n### H3\n#### H4\n##### H5\n###### H6\n\nAlternatively, for H1 and H2, an underline-ish style:\n\nAlt-H1\n======\n\nAlt-H2\n------\n```\n\n# H1\n## H2\n### H3\n#### H4\n##### H5\n###### H6\n\nAlternatively, for H1 and H2, an underline-ish style:\n\nAlt-H1\n======\n\nAlt-H2\n------\n\n&lt;a name=\"emphasis\"/&gt;\n## Emphasis\n\n```no-highlight\nEmphasis, aka italics, with *asterisks* or _underscores_.\n\nStrong emphasis, aka bold, with **asterisks** or __underscores__.\n\nCombined emphasis with **asterisks and _underscores_**.\n\nStrikethrough uses two tildes. ~~Scratch this.~~\n```\n\nEmphasis, aka italics, with *asterisks* or _underscores_.\n\nStrong emphasis, aka bold, with **asterisks** or __underscores__.\n\nCombined emphasis with **asterisks and _underscores_**.\n\nStrikethrough uses two tildes. ~~Scratch this.~~\n\n\n&lt;a name=\"lists\"/&gt;\n## Lists\n\n(In this example, leading and trailing spaces are shown with with dots: )\n\n```no-highlight\n1. First ordered list item\n2. Another item\n* Unordered sub-list. \n1. Actual numbers don&#39;t matter, just that it&#39;s a number\n1. Ordered sub-list\n4. And another item.\n\nYou can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we&#39;ll use three here to also align the raw Markdown).\n\nTo have a line break without a paragraph, you will need to use two trailing spaces.\nNote that this line is separate, but within the same paragraph.\n(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)\n\n* Unordered list can use asterisks\n- Or minuses\n+ Or pluses\n```\n\n1. First ordered list item\n2. Another item\n  * Unordered sub-list. \n1. Actual numbers don&#39;t matter, just that it&#39;s a number\n  1. Ordered sub-list\n4. And another item.\n\n   You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we&#39;ll use three here to also align the raw Markdown).\n\n   To have a line break without a paragraph, you will need to use two trailing spaces.  \n   Note that this line is separate, but within the same paragraph.  \n   (This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)\n\n* Unordered list can use asterisks\n- Or minuses\n+ Or pluses\n\n&lt;a name=\"links\"/&gt;\n## Links\n\n\n\n```\nFooWiki\n\n[Title]() - willcreate page Title\n\n[](Link) - will include content of page Link\n\n[I&#39;m an inline-style link](https://www.google.com)\n\n[I&#39;m an inline-style link with title](https://www.google.com \"Google&#39;s Homepage\")\n\n[I&#39;m a reference-style link][Arbitrary case-insensitive reference text]\n\n[I&#39;m a relative reference to a repository file](../blob/master/LICENSE)\n\n[You can use numbers for reference-style link definitions][1]\n\nOr leave it empty and use the [link text itself]\n\nSome text to show that the reference links can follow later.\n\n[arbitrary case-insensitive reference text]: https://www.mozilla.org\n[1]: http://slashdot.org\n[link text itself]: http://www.reddit.com\n\n````\n\n[I&#39;m an inline-style link](https://www.google.com)\n\n[I&#39;m an inline-style link with title](https://www.google.com \"Google&#39;s Homepage\")\n\n[I&#39;m a reference-style link][Arbitrary case-insensitive reference text]\n\n[I&#39;m a relative reference to a repository file](../blob/master/LICENSE)\n\n[You can use numbers for reference-style link definitions][1]\n\nOr leave it empty and use the [link text itself]\n\nSome text to show that the reference links can follow later.\n\n[arbitrary case-insensitive reference text]: https://www.mozilla.org\n[1]: http://slashdot.org\n[link text itself]: http://www.reddit.com\n\n&lt;a name=\"images\"/&gt;\n## Images\n\n```no-highlight\nHere&#39;s our logo (hover to see the title text):\n\nInline-style: \n![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png \"Logo Title Text 1\")\n\nReference-style: \n![alt text][logo]\n\n[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png \"Logo Title Text 2\"\n```\n\nHere&#39;s our logo (hover to see the title text):\n\nInline-style: \n![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png \"Logo Title Text 1\")\n\nReference-style: \n![alt text][logo]\n\n[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png \"Logo Title Text 2\"\n\n&lt;a name=\"code\"/&gt;\n## Code and Syntax Highlighting\n\nCode blocks are part of the Markdown spec, but syntax highlighting isn&#39;t. However, many renderers -- like Github&#39;s and *Markdown Here* -- support syntax highlighting. Which languages are supported and how those language names should be written will vary from renderer to renderer. *Markdown Here* supports highlighting for dozens of languages (and not-really-languages, like diffs and HTTP headers); to see the complete list, and how to write the language names, see the [highlight.js demo page](http://softwaremaniacs.org/media/soft/highlight/test.html).\n\n```no-highlight\nInline `code` has `back-ticks around` it.\n```\n\nInline `code` has `back-ticks around` it.\n\nBlocks of code are either fenced by lines with three back-ticks &lt;code&gt;```&lt;/code&gt;, or are indented with four spaces. I recommend only using the fenced code blocks -- they&#39;re easier and only they support syntax highlighting.\n\n&lt;pre lang=\"no-highlight\"&gt;&lt;code&gt;```javascript\nvar s = \"JavaScript syntax highlighting\";\nalert(s);\n```\n \n```python\ns = \"Python syntax highlighting\"\nprint s\n```\n \n```\nNo language indicated, so no syntax highlighting. \nBut let&#39;s throw in a &amp;lt;b&amp;gt;tag&amp;lt;/b&amp;gt;.\n```\n&lt;/code&gt;&lt;/pre&gt;\n\n\n\n```javascript\nvar s = \"JavaScript syntax highlighting\";\nalert(s);\n```\n\n```python\ns = \"Python syntax highlighting\"\nprint s\n```\n\n```\nNo language indicated, so no syntax highlighting in Markdown Here (varies on Github). \nBut let&#39;s throw in a &lt;b&gt;tag&lt;/b&gt;.\n```\n\n\n&lt;a name=\"tables\"/&gt;\n## Tables\n\nTables aren&#39;t part of the core Markdown spec, but they are part of GFM and *Markdown Here* supports them. They are an easy way of adding tables to your email -- a task that would otherwise require copy-pasting from another application.\n\n```no-highlight\nColons can be used to align columns.\n\n| Tables        | Are           | Cool  |\n| ------------- |:-------------:| -----:|\n| col 3 is      | right-aligned | $1600 |\n| col 2 is      | centered      |   $12 |\n| zebra stripes | are neat      |    $1 |\n\nThe outer pipes (|) are optional, and you don&#39;t need to make the raw Markdown line up prettily. You can also use inline Markdown.\n\nMarkdown | Less | Pretty\n--- | --- | ---\n*Still* | `renders` | **nicely**\n1 | 2 | 3\n```\n\nColons can be used to align columns.\n\n| Tables        | Are           | Cool |\n| ------------- |:-------------:| -----:|\n| col 3 is      | right-aligned | $1600 |\n| col 2 is      | centered      |   $12 |\n| zebra stripes | are neat      |    $1 |\n\nThe outer pipes (|) are optional, and you don&#39;t need to make the raw Markdown line up prettily. You can also use inline Markdown.\n\nMarkdown | Less | Pretty\n--- | --- | ---\n*Still* | `renders` | **nicely**\n1 | 2 | 3\n\n&lt;a name=\"blockquotes\"/&gt;\n## Blockquotes\n\n```no-highlight\n&gt; Blockquotes are very handy in email to emulate reply text.\n&gt; This line is part of the same quote.\n\nQuote break.\n\n&gt; This is a very long line that will still be quoted properly when it wraps. Oh boy let&#39;s keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. \n```\n\n&gt; Blockquotes are very handy in email to emulate reply text.\n&gt; This line is part of the same quote.\n\nQuote break.\n\n&gt; This is a very long line that will still be quoted properly when it wraps. Oh boy let&#39;s keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. \n\n&lt;a name=\"html\"/&gt;\n## Inline HTML\n\nYou can also use raw HTML in your Markdown, and it&#39;ll mostly work pretty well. \n\n```no-highlight\n&lt;dl&gt;\n  &lt;dt&gt;Definition list&lt;/dt&gt;\n  &lt;dd&gt;Is something people use sometimes.&lt;/dd&gt;\n\n  &lt;dt&gt;Markdown in HTML&lt;/dt&gt;\n  &lt;dd&gt;Does *not* work **very** well. Use HTML &lt;em&gt;tags&lt;/em&gt;.&lt;/dd&gt;\n&lt;/dl&gt;\n```\n\n&lt;dl&gt;\n  &lt;dt&gt;Definition list&lt;/dt&gt;\n  &lt;dd&gt;Is something people use sometimes.&lt;/dd&gt;\n\n  &lt;dt&gt;Markdown in HTML&lt;/dt&gt;\n  &lt;dd&gt;Does *not* work **very** well. Use HTML &lt;em&gt;tags&lt;/em&gt;.&lt;/dd&gt;\n&lt;/dl&gt;\n\n&lt;a name=\"hr\"/&gt;\n## Horizontal Rule\n\n```\nThree or more...\n\n---\n\nHyphens\n\n***\n\nAsterisks\n\n___\n\nUnderscores\n```\n\nThree or more...\n\n---\n\nHyphens\n\n***\n\nAsterisks\n\n___\n\nUnderscores\n\n&lt;a name=\"lines\"/&gt;\n## Line Breaks\n\nMy basic recommendation for learning how line breaks work is to experiment and discover -- hit &amp;lt;Enter&amp;gt; once (i.e., insert one newline), then hit it twice (i.e., insert two newlines), see what happens. You&#39;ll soon learn to get what you want. \"Markdown Toggle\" is your friend. \n\nHere are some things to try out:\n\n```\nHere&#39;s a line for us to start with.\n\nThis line is separated from the one above by two newlines, so it will be a *separate paragraph*.\n\nThis line is also a separate paragraph, but...\nThis line is only separated by a single newline, so it&#39;s a separate line in the *same paragraph*.\n```\n\nHere&#39;s a line for us to start with.\n\nThis line is separated from the one above by two newlines, so it will be a *separate paragraph*.\n\nThis line is also begins a separate paragraph, but...  \nThis line is only separated by a single newline, so it&#39;s a separate line in the *same paragraph*.\n\n(Technical note: *Markdown Here* uses GFM line breaks, so there&#39;s no need to use MD&#39;s two-space line breaks.)\n\n&lt;a name=\"videos\"/&gt;\n## Youtube videos\n\nThey can&#39;t be added directly but you can add an image with a link to the video like this:\n\n```no-highlight\n&lt;a href=\"http://www.youtube.com/watch?feature=player_embedded&amp;v=YOUTUBE_VIDEO_ID_HERE\n\" target=\"_blank\"&gt;&lt;img src=\"http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg\" \nalt=\"IMAGE ALT TEXT HERE\" width=\"240\" height=\"180\" border=\"10\" /&gt;&lt;/a&gt;\n```\n\nOr, in pure Markdown, but losing the image sizing and border:\n\n```no-highlight\n[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)\n```\n\nReferencing a bug by #bugID in your git commit links it to the slip. For example #1." ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/money>
@@ -159,6 +191,7 @@
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "Mish" ;
         sioc:content  "I love Mishy!\n\nlots and lots and lots\n\nnew place outside dig irises\n-&gt; push into np outside list" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/Content%20Model>
@@ -168,6 +201,7 @@
         dc:title      "FooWiki Content Model" ;
         dc:topic      <http://hyperdata.it/tags/foowiki> , <http://hyperdata.it/tags/bootstrap> , <http://hyperdata.it/tags/docs> ;
         sioc:content  "* [FooWiki Manual]() \n* [FooWiki Docs]()\n\nto support versioning, looks like [SPARQL 1.1 subqueries](http://www.w3.org/TR/sparql11-query/#subqueries) will be needed for rendering\n\nmay be useful :\n    http://rdfs.org/sioc/types#Wiki\n    http://rdfs.org/sioc/types#Weblog\n    http://rdfs.org/sioc/types#WikiArticle\n    http://rdfs.org/sioc/ns#topic\n\n```\nGRAPH &lt;http://hyperdata.it/wiki&gt; { \n\n&lt;http://hyperdata.it/wiki/PageTwo&gt;\n    dc:format &lt;http://purl.org/NET/mediatypes/text/markdown&gt; ;\n    dc:date \"2012-04-02T07:24:54Z\" ;\n    dc:title \"Page Two!\" ;\n    sioc:content \"My second post.\" ;\n    a sioc:Post ;\n    a wiki:Page ;\n    dc:topic      &lt;http://hyperdata.it/tags/One&gt; , &lt;http://hyperdata.it/tags/Two&gt; ;\n    foaf:maker [\n        foaf:nick \"danja\"\n    ] .\n\t\n\n&lt;http://hyperdata.it/tags/One&gt;\n        rdfs:label  \"One\" .\n\n&lt;http://hyperdata.it/tags/Two&gt;\n        rdfs:label  \"Two\" .\n\n}\n\n```" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/New%20Place%20To%20Do%20Inside>
@@ -175,8 +209,17 @@
         dc:date       "2015-01-29T12:55:05.915Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "New Place To Do Inside" ;
-        dc:topic      <http://hyperdata.it/tags/newplace> , <http://hyperdata.it/tags/todo> ;
+        dc:topic      <http://hyperdata.it/tags/todo> , <http://hyperdata.it/tags/newplace> ;
         sioc:content  "[New Place To Do Outside]()\n\n### Kitchen\n* seal space above mantelpiece" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
+        foaf:maker    [ foaf:nick  "danja" ] .
+
+<http://hyperdata.it/wiki/Feed%20List>
+        a             wiki:Page , sioc:Post ;
+        dc:date       "2015-02-13T20:17:56.565Z" ;
+        dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
+        dc:title      "Feed List" ;
+        sioc:content  "\n* http://feeds.feedburner.com/dailyjs" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/script>
@@ -189,6 +232,7 @@
         dc:title      "Mish To Do" ;
         dc:topic      <http://hyperdata.it/tags/todo> ;
         sioc:content  "1. remember it&#39;s there\n2. DO the to do list!\n\n[Mish To Do 2015-01-24](Mish To Do 2015-01-24)\n\n[Google](http://google.com)\n\n[Title](Local Page)" ;
+        foaf:maker    [ foaf:nick  "mish" ] ;
         foaf:maker    [ foaf:nick  "mish" ] .
 
 <http://hyperdata.it/wiki/TestTest>
@@ -197,6 +241,7 @@
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "TestTest" ;
         sioc:content  "[HelloWorld2](HelloWorld2&amp;x=one&amp;y=two)" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/todo>
@@ -210,12 +255,21 @@
 <http://hyperdata.it/tags/www>
         rdfs:label  "www" .
 
+<http://hyperdata.it/wiki/ThikiWiki%20To%20Do>
+        a             wiki:Page , sioc:Post ;
+        dc:date       "2015-02-12T20:13:14.061Z" ;
+        dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
+        dc:title      "ThikiWiki To Do" ;
+        sioc:content  "* get dropbox working again" ;
+        foaf:maker    [ foaf:nick  "danja" ] .
+
 <http://hyperdata.it/wiki/Local%20Page>
         a             wiki:Page , sioc:Post ;
         dc:date       "2015-01-24T09:42:40.279Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "Local Page" ;
         sioc:content  "enter content here" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/foowiki>
@@ -227,6 +281,7 @@
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "To Do" ;
         sioc:content  "\n* [To Do 2015-01-31]()\n\n* [Misc to Do]()" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/Mish%20To%20Do%202015-01-24>
@@ -236,6 +291,7 @@
         dc:title      "Mish To Do 2015-01-24" ;
         dc:topic      <http://hyperdata.it/tags/todo> ;
         sioc:content  "today" ;
+        foaf:maker    [ foaf:nick  "mish" ] ;
         foaf:maker    [ foaf:nick  "mish" ] .
 
 <http://hyperdata.it/wiki/HelloWorld2>
@@ -244,6 +300,7 @@
         dc:format     <http://purl.org/NET/mediatypes/application/javascript> ;
         dc:title      "HelloWorld2" ;
         sioc:content  "function HelloWorld2(parameters){\n   console.log(\"param 1=\"+parameters[\"first\"]);\n   console.log(\"param 1=\"+parameters[\"second\"]);\n}" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/lab>
@@ -256,6 +313,7 @@
         dc:title      "FooWiki Files" ;
         dc:topic      <http://hyperdata.it/tags/foowiki> , <http://hyperdata.it/tags/docs> , <http://hyperdata.it/tags/bootstrap> ;
         sioc:content  "## HTML (foowiki/)\n* edit.html - page with form for editing pages\n* index.html - index of all pages, plus admin tools\n* page.html - page view\n* run.html - script runner\n\n## Javascript (foowiki/js/)\n\n### FooWiki Application\n* config.js - configuration/constants\n* core.js - core code\n* html-templates.js\n* sparql-templates.js\n* utils.js - misc. utilities\n\n### 3rd Party Libraries\n* ~ charset.js - UTF-8 encoding utils\n* ~ hinclude.js\n* hogan-3.0.2.js - (mustache) templating engine\n* jquery-1.10.2.js\n* jquery.fileupload.js\n* jquery.iframe-transport.js\n* jquery-ui.js\n* jquery-ui.min.js\n* marked.js - Markdown processor\n* moment.js - date/time utils\n* store.js\n* tag-it.js - jQuery plugin for tags\n\n~ not currently in use" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/baz.jpg>
@@ -273,10 +331,19 @@
         dc:title      "Misc to Do" ;
         dc:topic      <http://hyperdata.it/tags/todo> ;
         sioc:content  "* post back tablet" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/painting>
         rdfs:label  "painting" .
+
+<http://hyperdata.it/wiki/Test%20Three>
+        a             wiki:Page , sioc:Post ;
+        dc:date       "2015-02-13T13:17:31.348Z" ;
+        dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
+        dc:title      "Test Three" ;
+        sioc:content  "Test Three include me" ;
+        foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/FooWiki%20Manual>
         a             sioc:Post , wiki:Page ;
@@ -285,6 +352,7 @@
         dc:title      "FooWiki Manual" ;
         dc:topic      <http://hyperdata.it/tags/manual> , <http://hyperdata.it/tags/foowiki> , <http://hyperdata.it/tags/bootstrap> , <http://hyperdata.it/tags/docs> ;
         sioc:content  "## Overview\nthis doc is a work in progress...\n\n## Contents\n* [Basic Features](#Basic Features)\n  * [Tags](#Tags)\n\n\n* [Text Formatting](Text Formatting)\n  * [Links](#Links)\n  * [Markdown Cheatsheet]()\n\n[](Basic Features)\n\n## Text Formatting\n[](FooWiki Links)\n\n\n\n\n## Tags\nTags are converted to lower case." ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/docs>
@@ -296,6 +364,7 @@
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "FooWiki Links" ;
         sioc:content  "## Links\n\nLinks more or less follow [Markdown](http://en.wikipedia.org/wiki/Markdown) conventions.\n\nHeaders in the text (#, ## etc.) will automatically become anchors, they may be addressed by using the title as the link target, prepended with a # symbol, e.g. ```` [Overview](#Overview) ````\n\n\n```\n\n[Title]() - will link to (possibly new) page Title in FooWiki\n\n[](Link) - will include (transclude) content of page Link\n\n[I&#39;m an inline-style link](https://www.google.com)\n\n[I&#39;m an inline-style link with title](https://www.google.com \"Google&#39;s Homepage\")\n\n[I&#39;m a reference-style link][Arbitrary case-insensitive reference text]\n\n[I&#39;m a relative reference to a repository file](../blob/master/LICENSE)\n\n[You can use numbers for reference-style link definitions][1]\n\nOr leave it empty and use the [link text itself]\n\nSome text to show that the reference links can follow later.\n\n[arbitrary case-insensitive reference text]: https://www.mozilla.org\n[1]: http://slashdot.org\n[link text itself]: http://www.reddit.com\n\n````\n\n[I&#39;m an inline-style link](https://www.google.com)\n\n[I&#39;m an inline-style link with title](https://www.google.com \"Google&#39;s Homepage\")\n\n[I&#39;m a reference-style link][Arbitrary case-insensitive reference text]\n\n[I&#39;m a relative reference to a repository file](../blob/master/LICENSE)\n\n[You can use numbers for reference-style link definitions][1]\n\nOr leave it empty and use the [link text itself]\n\nSome text to show that the reference links can follow later.\n\n[arbitrary case-insensitive reference text]: https://www.mozilla.org\n[1]: http://slashdot.org\n[link text itself]: http://www.reddit.com" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/2.168.0.77:3030/foowiki/Mish>
@@ -305,6 +374,7 @@
         dc:title      "Mish... To Do LAB" ;
         dc:topic      <http://hyperdata.it/tags/newplace> , <http://hyperdata.it/tags/mish> , <http://hyperdata.it/tags/lab> , <http://hyperdata.it/tags/painting> , <http://hyperdata.it/tags/danny> ;
         sioc:content  "* Move table and other &#39;junk&#39;- (Danny)\n* finish painting walls with white\n* paint end wall in pale lilac\n* organize storage for paints etc..." ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/To%20Do%202015-01-12>
@@ -313,6 +383,7 @@
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "To Do 2015-01-12" ;
         sioc:content  "* ~~email~~\n* 1 hr Barry\n\n\n* setup music room machine - Android Studio\n* FooWiki install - doc\n* ~~add media type select~~\n  * formatting\n  * hide/show run button\n* support params &amp; return value\n\n* ~~lab window catch~~\n* find wood for steel guitar &amp; plan\n* Mish thing prep panels\n\n\n* yellow shelves?\n\n\n* ~~wash!~~" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/Hello%20World%201>
@@ -321,15 +392,17 @@
         dc:format     <http://purl.org/NET/mediatypes/application/javascript> ;
         dc:title      "HelloWorld1" ;
         sioc:content  "function HelloWorld1(){\n   console.log(\"Hello World!\");\n}" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/New%20Place%20To%20Do%20Outside>
-        a             wiki:Page , sioc:Post ;
+        a             sioc:Post , wiki:Page ;
         dc:date       "2015-01-30T11:08:53.329Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "New Place To Do Outside" ;
-        dc:topic      <http://hyperdata.it/tags/newplace> , <http://hyperdata.it/tags/todo> ;
+        dc:topic      <http://hyperdata.it/tags/todo> , <http://hyperdata.it/tags/newplace> ;
         sioc:content  "[New Place To Do Inside]()\n\n* fairy path\n* prune taller trees\n* STRIM along field side\n* de-bramble\n* STRIM chook garden\n" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/Another%20Image%20Test>
@@ -338,15 +411,19 @@
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "Another Image Test" ;
         sioc:content  "enter content here\n\n![baz.jpg](baz.jpg)\n\n![anglo-saxon-raven.png](anglo-saxon-raven.png)" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
+
+<http://hyperdata.it/tags/code>
+        rdfs:label  "code" .
 
 <http://hyperdata.it/wiki/FooWiki%20on%20Heroku>
         a             wiki:Page , sioc:Post ;
-        dc:date       "2015-02-10T10:59:08.236Z" ;
+        dc:date       "2015-02-13T22:31:09.139Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "FooWiki on Heroku" ;
         dc:topic      <http://hyperdata.it/tags/docs> , <http://hyperdata.it/tags/bootstrap> , <http://hyperdata.it/tags/manual> ;
-        sioc:content  "Heroku&#39;s instructions essentially work for running Fuseki_FooWiki there but note : \n\n* a dummy pom.xml is needed to tell it it was Java.\n* the free service will idle if it&#39;s not been accessed for an hour (?) - this appears to lead to the **loss of all data**\n  * trying http://kaffeine.herokuapp.com/ to periodically ping the thing\n**BEWARE** when updating, current data gets overwritten.\n\nHave made a script to update (foowiki/p)" ;
+        sioc:content  "needs more checking/testing...\n\nHeroku&#39;s instructions essentially work for running Fuseki_FooWiki there but note : \n\n* a dummy pom.xml is needed to tell it it was Java.\n* the free service will idle if it&#39;s not been accessed for an hour (?) - this appears to lead to the **loss of all data**\n  * trying http://kaffeine.herokuapp.com/ to periodically ping the thing\n**BEWARE** when updating, current data gets overwritten.\n\n**BOO!** looks like the pinger doesn&#39;t stop data loss. This may offer a solution :\nhttps://addons.heroku.com/scheduler?utm_campaign=category&amp;utm_medium=dashboard&amp;utm_source=addons\n\n\nHave made a script to update (foowiki/p)" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/craft>
@@ -363,6 +440,7 @@
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "Today" ;
         sioc:content  "A blog post." ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/mish>
@@ -370,11 +448,11 @@
 
 <http://hyperdata.it/wiki/Test>
         a             wiki:Page , sioc:Post ;
-        dc:date       "2015-02-06T13:52:19.788Z" ;
+        dc:date       "2015-02-12T12:31:57.799Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:title      "Test" ;
         dc:topic      <http://hyperdata.it/tags/todo> , <http://hyperdata.it/tags/test> ;
-        sioc:content  "a page for testing stuff is here\n\n![alt text](1unnamed.jpg)\n\nmore stuff\n\n[Home Page]()\n\n[Mish]()" ;
+        sioc:content  "[Test Two]()\n\na page for testing stuff is here\n\n![alt text](1unnamed.jpg)\n\nmore stuff\n\n[](Test Two)" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/FooWiki%20Docs>
@@ -384,6 +462,7 @@
         dc:title      "FooWiki Docs" ;
         dc:topic      <http://hyperdata.it/tags/foowiki> , <http://hyperdata.it/tags/bootstrap> , <http://hyperdata.it/tags/docs> ;
         sioc:content  "* [FooWiki Files](FooWiki Files)\n* [FooWiki Content Model](Content Model)\n* [FooWiki Manual]()" ;
+        foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/tags/bugs>

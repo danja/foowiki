@@ -66,6 +66,7 @@
                     entry.title = decodeURI(entry.title);
                     entry.content = "";
                     entry.nick = "danja";
+                    entry.created = (new Date()).toISOString();
                 }
 
                 var entryHTML = templater(editEntryTemplate, entry);

@@ -29,7 +29,7 @@ var linkTemplate = "<a href='~{uri}~'>~{title}~</a>";
 
 var rowTemplate = " <tr> \
            <td>" + linkTemplate + "</td> \
-           <td class='center'>~{date}~</td> \
+           <td class='center'>~{modified}~</td> \
             <td class='center'>~{nick}~</td> \
             </tr>";
 
@@ -48,6 +48,7 @@ var editEntryTemplate = "<div class='entry'> \
             </ul> \
             <label for='nick'>Nick</label> \
             <input id='nick' type='text' value='~{nick}~'></input> \
+    <div id='created'>Created : ~{created}~</div> \
             <label for='format'>Format</label><!-- is Media Type URI --> \
             <select id='format'> \
                <option value='http://purl.org/NET/mediatypes/text/markdown'>Markdown</option> \
@@ -64,11 +65,12 @@ var pageEntryTemplate = "<div class='entry'> \
             <div class='content'>~{content}~</div> \
             <ul id='maintagscontainer'> \
             </ul> \
-            <div class='byline center'>latest edit by ~{nick}~ on ~{date}~</div> \
+            <div class='byline center'>latest edit by ~{nick}~ on ~{modified}~</div> \
             </div>";
 
+//?same as above?
 var entryTemplate = "<div class='entry'> \
             <h1 class='center'><a href=~{uri}~>~{title}~</a></h1> \
             <div class='content'>~{content}~</div> \
-            <div class='byline center'>latest edit by ~{nick}~ on ~{date}~</div> \
+            <div class='byline center'>latest edit by ~{nick}~ on ~{modified}~</div> \
             </div>";

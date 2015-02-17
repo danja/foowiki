@@ -69,6 +69,11 @@
     <div id="header">FooWiki</div>
 
     <div id="middle" class="column">
+        <p>
+            <button id="newPageButton">Create New Page</button>
+            <label for='newPageName'>New Page Title</label>
+            <input id="newPageName" type="text" size="40" />
+        </p>
         <table id="pagesTable">
             <!-- refactor to use entryTableTemplate -->
             <tr>
@@ -81,12 +86,6 @@
             </tr>
             <tr id="entries"></tr>
         </table>
-
-        <p>
-            <label for='newPageName'>New Page</label>
-            <button id="newPageButton">Create New Page</button>
-            <input id="newPageName" type="text" size="40" />
-        </p>
         <p>
 
             <!-- form id="upload-form" enctype="multipart/form-data">
@@ -110,9 +109,10 @@
     </div>
 
     <div id="left" class="column">
-        <div class="tab"><a href="index.html">Page Index</a>     </div>
-            <div class="tab"><a href="page.html?uri=http://hyperdata.it/wiki/">Home Page</a>
-            </div>
+        <div class="tab"><a href="index.html">Page Index</a> 
+        </div>
+        <div class="tab"><a href="page.html?uri=http://hyperdata.it/wiki/">Home Page</a>
+        </div>
     </div>
 
     <div id="right" class="column">

@@ -9,15 +9,18 @@ function setupPosting() {
     });
 
     $('#submit').click(function () {
+        console.log("ENTRY = "+JSON.stringify(entry));
         var entry = {
             "graphURI": graphURI,
             "pageURI": pageURI,
-            "date": (new Date()).toISOString()
+            "date": (new Date()).toISOString(),
+            "modified": (new Date()).toISOString()
         };
         entry.title = $('#title').val();
         entry.nick = $('#nick').val();
+         entry.created = $('#created').text();
         entry.content = $('#content').val();
-        entry.content = escapeXml(entry.content);
+        entry.content = escapeXml(entry.content); 
         entry.format = $('#format').val();
 
         var data = sparqlTemplater(postPageSparqlTemplate, entry, true);

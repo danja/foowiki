@@ -23,19 +23,20 @@ FROM NAMED <~{graphURI}~>  \n\
 WHERE { \n\
 ?uri \n\
 dc:format ?format ; \n\
-dc:date ?date ; \n\
+dc:created ?created ; \n\
+dc:modified ?modified ; \n\
 dc:title ?title ; \n\
 a wiki:Page ; \n\
 foaf:maker [ \n\
 foaf:nick ?nick \n\
 ] . \n\
 } \n\
-ORDER By DESC(?date)  \n\
+ORDER By DESC(?modified)  \n\
 # LIMIT 10 \n\
 ";
 
 var getRecentChangesSparqlTemplate = commonPrefixes + getPageListSparqlTemplate +" \n\
-LIMIT 10 \n\
+LIMIT 15 \n\
 ";
 
 var getPageSparqlTemplate = commonPrefixes + "\n\
@@ -44,7 +45,8 @@ var getPageSparqlTemplate = commonPrefixes + "\n\
     WHERE { \n\
     <~{pageURI}~> \n\
     dc:format ?format ; \n\
-    dc:date ?date ; \n\
+    dc:created ?created ; \n\
+    dc:modified ?modified ; \n\
     dc:title ?title ; \n\
     sioc:content ?content ; \n\
     a wiki:Page ; \n\
@@ -109,7 +111,8 @@ GRAPH <~{graphURI}~> {  \n\
 \n\
 <~{pageURI}~> \n\
 dc:format <~{format}~> ; \n\
-dc:date \"~{date}~\" ; \n\
+dc:created \"~{created}~\" ; \n\
+dc:modified \"~{modified}~\" ; \n\
 dc:title \"\"\"~{title}~\"\"\" ; \n\
 sioc:content  \"\"\"~{content}~\"\"\" ; \n\
 a sioc:Post ; \n\
@@ -141,7 +144,8 @@ SELECT DISTINCT *  \n\
 a sioc:Post ; \n\
 a wiki:Page ; \n\
 dc:format ?format ; \n\
-dc:date ?date ; \n\
+dc:created ?created ; \n\
+dc:modified ?modified ; \n\
 dc:title ?title ; \n\
 sioc:content  ?content ; \n\
 foaf:maker [ \n\

@@ -53,9 +53,10 @@ function getPage(pageURI, entryHandler) {
 
 function buildPage(pageMap, entryJSON) {
     if (!entryJSON) {
-        entryJSON = {
+        entryJSON = { // is needed?
             content: "",
-            date: "",
+            created: "",
+            modified: "",
             title: "",
             nick: ""
         };

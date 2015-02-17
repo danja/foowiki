@@ -256,7 +256,7 @@
 
  function formatRow(entry) { // content, 
      entry.uri = "page.html?uri=" + entry.uri;
-     entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
+     entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
      var row = templater(rowTemplate, entry);
      return row;
  }
