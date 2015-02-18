@@ -155,9 +155,9 @@
      var searchSparql = sparqlTemplater(getRecentChangesSparqlTemplate, searchMap);
    //   console.log("getRecentChangesSparqlTemplate = " + getRecentChangesSparqlTemplate);
      var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
-     var renderRecentChanges = function (xml) {
+     var renderRecentChanges = function (json) {
  
-         var results = makeLinkListHTML(xml);
+         var results = makeLinkListHTML(json);
                //   console.log("results = " + results);
          //     $("#results").empty();
          $("#recentChanges").append(results);

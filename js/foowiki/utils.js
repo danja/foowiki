@@ -80,12 +80,15 @@
             return b;
         })(window.location.search.substr(1).split('&'));
 
+        function getCurrentPageURI() {
+            return encodeURI(queryString["uri"]);
+        }
 
         function translateLinks(object) {
             $('div.content  a', object).each(
                 function () {
                     var href = this.href;
-                    console.log("HREF="+href);
+                    console.log("HREF=" + href);
                     if (href.indexOf(serverRootPath) != -1) { // less than perfect, in-page links maybe involve pagesBaseURI
                         var hashPosition = href.indexOf("#");
                         if (hashPosition != -1) {
@@ -112,17 +115,17 @@
                 //    var path = split.slice(0, split.length - 1).join("/");
                 //     path = path + "/" + $(this).attr("src") + "&type=image";
                 // $(this).attr("src", path);
-                
-                
+
+
                 var path = pagesBaseURI + $(this).attr("src");
                 var me = this;
                 var setImgSrc = function (src) {
-                     console.log("SRC="+src);
+                    console.log("SRC=" + src);
                     $(me).attr("src", src);
                 }
-              getImage(path, setImgSrc);
+                getImage(path, setImgSrc);
             });
-            
+
             // somethin similar for handlin img 404s
             // 1unnamed.jpg =>
             //  http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image

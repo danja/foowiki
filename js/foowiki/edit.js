@@ -56,7 +56,7 @@ function extractEntry(graphURI, pageURI) {
         "date": (new Date()).toISOString(),
         "modified": (new Date()).toISOString()
     };
-    entry.title = $('#title').val();
+    entry.title = $('#title').val(); /// can this lot use a convention, HTML id = entry field name??? idHtmlToJSON??
     entry.nick = $('#nick').val();
     entry.created = $('#created').text();
     entry.content = $('#content').val();
@@ -65,8 +65,6 @@ function extractEntry(graphURI, pageURI) {
 
     return entry;
 }
-
-
 
 function deletePage(graphURI, pageURI, callback) {
     var map = {
