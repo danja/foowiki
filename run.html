@@ -79,8 +79,8 @@
 
                 eval(toRun);
             };
-
-            getDataForURL(doneCallback, getPageURL);
+getJsonForSparqlURL(getPageUrl, doneCallback);
+          //  getDataForURL(doneCallback, getPageURL);
 
             $('#editButton').click(function () {
                 window.location.href = window.location.href.replace("run.html", "edit.html");

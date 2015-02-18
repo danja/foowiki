@@ -13,14 +13,15 @@ function getImage(imageURI, callback) {
     var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
     var makeDataURL = function (entryJSON) {
-     //   console.log("BBB");
-     //   var entryXmlNames = ["base64"];
+        //   console.log("BBB");
+        //   var entryXmlNames = ["base64"];
         // var entryJSON = sparqlXMLtoJSON(xml);
         var src = "data:image/jpeg;base64," + entryJSON[0]["base64"];
         callback(src);
     }
     console.log("getPageUrl=" + getPageUrl);
-    getDataForURL(makeDataURL, getPageUrl);
+    //  getDataForURL(makeDataURL, getPageUrl);
+    getJsonForSparqlURL(getPageUrl, makeDataURL);
 }
 
 function getPage(pageURI, entryHandler) {
@@ -47,8 +48,8 @@ function getPage(pageURI, entryHandler) {
     var handleEntry = function (entryJSON) {
         entryHandler(pageMap, entryJSON);
     };
-
-    getDataForURL(handleEntry, getPageUrl);
+    getJsonForSparqlURL(getPageUrl, handleEntry);
+    // getDataForURL(handleEntry, getPageUrl);
 }
 
 function buildPage(pageMap, entryJSON) {
@@ -66,7 +67,7 @@ function buildPage(pageMap, entryJSON) {
     var entry = entryJSON[0];
     // console.log("entryJSON[0] = " + JSON.stringify(entryJSON[0]));
     entry["uri"] = "page.html?uri=" + entry["pageURI"];
-    
+
     // check if it's code-like
     if (preformatFormats.contains(entry.format)) {
         entry.content = "<pre>" + entry.content + "</pre>";
@@ -86,13 +87,13 @@ function buildPage(pageMap, entryJSON) {
     };
 
     var entryObject = $(formatEntry(entry));
-  //  fixImageLinks(entryObject);
+    //  fixImageLinks(entryObject);
     translateLinks(entryObject);
     //  $("#entry").replaceWith(entryHTML);
     $("#entry").replaceWith(entryObject);
     //  translateLinks();
     fixHeaderIDs(); // little workaround for odd marked.js behaviour
-    
+
     setupTags("#maintagscontainer", pageMap, true);
     setupSearch("#searchContainer");
 }

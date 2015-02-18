@@ -1,6 +1,7 @@
- function getDataForURL(doneCallback, getPageURL) {
+ // function getDataForURL(doneCallback, getPageURL) {
+function getJsonForSparqlURL(pageURL, callback) {
      $.ajax({
-         url: getPageURL,
+         url: pageURL,
          accept: {
              xml: 'application/xml;charset=UTF-8',
              sparql: 'sparql-results+xml;charset=UTF-8'
@@ -16,7 +17,7 @@
          
          var json = sparqlXMLtoJSON(xml);
   //       doneCallback(json, getCurrentPageURI());
-         doneCallback(json);
+         callback(json);
      });
  }
 

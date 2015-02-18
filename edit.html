@@ -92,7 +92,8 @@
                 $("textarea").autoGrow();
                 $("#maintagscontainer").addClass("editable"); // not working 
             };
-            getDataForURL(doneCallback, getPageUrl);
+      //      getDataForURL(doneCallback, getPageUrl);
+            getJsonForSparqlURL(getPageUrl, doneCallback);
             setupPosting();
         });
     </script>

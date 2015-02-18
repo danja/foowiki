@@ -58,7 +58,8 @@
                 $("#entries").replaceWith(rows);
                 setupTagsPanel("#tagsPanelTagsContainer");
             };
-            getDataForURL(doneCallback, getPagesUrl);
+            getJsonForSparqlURL(getPagesUrl, doneCallback);
+      //      getDataForURL(doneCallback, getPagesUrl);
         });
     </script>
 </head>
