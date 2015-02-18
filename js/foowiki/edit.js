@@ -1,6 +1,8 @@
 /**
- * Functions associated with edit.html  
+ * Functions associated with edit.html
  */
+
+
 
 function setupPosting() {
     $('#cancel').click(function () {
@@ -9,23 +11,13 @@ function setupPosting() {
     });
 
     $('#submit').click(function () {
-        console.log("ENTRY = "+JSON.stringify(entry));
-        var entry = {
-            "graphURI": graphURI,
-            "pageURI": pageURI,
-            "date": (new Date()).toISOString(),
-            "modified": (new Date()).toISOString()
-        };
-        entry.title = $('#title').val();
-        entry.nick = $('#nick').val();
-         entry.created = $('#created').text();
-        entry.content = $('#content').val();
-        entry.content = escapeXml(entry.content); 
-        entry.format = $('#format').val();
-
+        var entry = extractEntry(graphURI, pageURI);
         var data = sparqlTemplater(postPageSparqlTemplate, entry, true);
 
-        // put current data in local storage here
+        //     var afterPostEntry = function () {
+
+        //   }
+
         var postNewData = function () {
             $.ajax({
                 type: "POST",
@@ -42,18 +34,39 @@ function setupPosting() {
                 //   callback();
             });
         }
-
         deletePage(graphURI, pageURI, postNewData);
         return false;
     });
 
-    $('#delete').click(function () {
-        var fliptoIndexPage = function () {
+     var fliptoIndexPage = function () {
             window.location.href = "index.html";
-        }
+        };
+     
+    $('#delete').click(function () {
+       
         return deletePage(graphURI, pageURI, fliptoIndexPage);
     });
 }
+
+function extractEntry(graphURI, pageURI) {
+    console.log("ENTRY = " + JSON.stringify(entry));
+    var entry = {
+        "graphURI": graphURI,
+        "pageURI": pageURI,
+        "date": (new Date()).toISOString(),
+        "modified": (new Date()).toISOString()
+    };
+    entry.title = $('#title').val();
+    entry.nick = $('#nick').val();
+    entry.created = $('#created').text();
+    entry.content = $('#content').val();
+    entry.content = escapeXml(entry.content);
+    entry.format = $('#format').val();
+
+    return entry;
+}
+
+
 
 function deletePage(graphURI, pageURI, callback) {
     var map = {
@@ -75,7 +88,7 @@ function deletePage(graphURI, pageURI, callback) {
 
 function submitOutlinks(graphURI, pageURI, content) {
     var matches = content.match(/\[([^\[]*)\]\(([^\)]*)\)/g);
-    console.log("MATCHESreg="+JSON.stringify(matches));
+    console.log("MATCHESreg=" + JSON.stringify(matches));
 }
 
 // TAGS ----------------------------------------------
@@ -114,5 +127,3 @@ function submitTags(graphURI, pageURI, callback) {
         callback();
     });
 }
-
-

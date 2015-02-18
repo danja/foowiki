@@ -26,7 +26,8 @@
     <script src="js/foowiki/html-templates.js"></script>
     <script src="js/foowiki/utils.js"></script>
     <script src="js/foowiki/core.js"></script>
-
+    <script src="js/foowiki/sparql-connector.js"></script>
+    
     <script type="text/javascript" language="javascript">
         $(function () {
             setupErrorHandling();
@@ -47,7 +48,7 @@
             var doneCallback = function (entryJSON) {
                 //   var entry = xmlToEntry(xml, pageURI);
 
-            //    var entryJSON = sparqlXMLtoJSON(xml);
+                //    var entryJSON = sparqlXMLtoJSON(xml);
 
                 if (!entryJSON) {
                     entryJSON = {
@@ -75,7 +76,7 @@
                 var toRun = entry.title + "(" + JSON.stringify(queryString) + ");"
 
                 console.log(toRun);
-                
+
                 eval(toRun);
             };
 

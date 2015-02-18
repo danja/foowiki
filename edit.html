@@ -32,9 +32,9 @@
     <script src="js/foowiki/utils.js"></script>
     <script src="js/foowiki/core.js"></script>
     <script src="js/foowiki/edit.js"></script>
-
+    <script src="js/foowiki/sparql-connector.js"></script>
+    
     <script type="text/javascript" language="javascript">
-         
         var pageURI = queryString["uri"];
 
         pageURI = encodeURI(pageURI);
@@ -54,7 +54,7 @@
             setupImageUploading();
 
             var doneCallback = function (entryJSON, pageURI) {
-           //     var entryJSON = sparqlXMLtoJSON(xml);
+                //     var entryJSON = sparqlXMLtoJSON(xml);
                 var entry = entryJSON[0];
 
                 uri = "page.html?uri=" + pageURI;
@@ -84,13 +84,13 @@
                     "graphURI": graphURI
                 };
 
-                   
+
                 setupTags("#maintagscontainer", pageMap, false);
                 //   $("##foowikitagscontainer").tagit({
-           
-                
-                 $("textarea").autoGrow();
-                 $("#maintagscontainer").addClass("editable"); // not working 
+
+
+                $("textarea").autoGrow();
+                $("#maintagscontainer").addClass("editable"); // not working 
             };
             getDataForURL(doneCallback, getPageUrl);
             setupPosting();
@@ -117,9 +117,10 @@
     </div>
 
     <div id="left" class="column">
-            <div class="tab"><a href="index.html">Page Index</a>     </div>
-            <div class="tab"><a href="page.html?uri=http://hyperdata.it/wiki/">Home Page</a>
-            </div>
+        <div class="tab"><a href="index.html">Page Index</a> 
+        </div>
+        <div class="tab"><a href="page.html?uri=http://hyperdata.it/wiki/">Home Page</a>
+        </div>
     </div>
 
     <div id="right" class="column">
