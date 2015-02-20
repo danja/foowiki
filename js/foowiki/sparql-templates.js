@@ -43,7 +43,7 @@ var getPageSparqlTemplate = commonPrefixes + "\n\
     SELECT DISTINCT * \n\
     FROM NAMED <~{graphURI}~>  \n\
     WHERE { \n\
-    <~{pageURI}~> \n\
+    <~{uri}~> \n\
     dc:format ?format ; \n\
     dc:created ?created ; \n\
     dc:modified ?modified ; \n\
@@ -94,7 +94,7 @@ var getTagsSparqlTemplate = commonPrefixes + "\n\
 SELECT DISTINCT *  \n\
  FROM NAMED <~{graphURI}~>  \n\
 WHERE {  \n\
-	<~{pageURI}~>  a wiki:Page ;  \n\
+	<~{uri}~>  a wiki:Page ;  \n\
 	dc:topic ?topicURI .  \n\
     ?topicURI rdfs:label ?topicLabel .  \n\
 }  \n\
@@ -103,13 +103,13 @@ WHERE {  \n\
 
 var postPageSparqlTemplate = commonPrefixes + "\n\
 WITH <~{graphURI}~> \n\
-DELETE { <~{pageURI}~>  ?p ?o }  \n\
-WHERE { <~{pageURI}~>  ?p ?o } \n\
+DELETE { <~{uri}~>  ?p ?o }  \n\
+WHERE { <~{uri}~>  ?p ?o } \n\
 ; \n\
 INSERT DATA {  \n\
 GRAPH <~{graphURI}~> {  \n\
 \n\
-<~{pageURI}~> \n\
+<~{uri}~> \n\
 dc:format <~{format}~> ; \n\
 dc:created \"~{created}~\" ; \n\
 dc:modified \"~{modified}~\" ; \n\
@@ -129,7 +129,7 @@ INSERT DATA {  \n\
 GRAPH <~{graphURI}~> {  \n\
 \n\
 ~{#tags}~ \n\
-    <~{pageURI}~> dc:topic <~{topicURI}~> . \n\
+    <~{uri}~> dc:topic <~{topicURI}~> . \n\
      <~{topicURI}~>  rdfs:label \"~{topicLabel}~\" . \n\
   ~{/tags}~ \n\
  \n\
@@ -168,7 +168,7 @@ DELETE {  \n\
 ?o sioc:topic ?topic . \n\
 }  \n\
 WHERE {  \n\
-<~{pageURI}~>  ?p ?o  . \n\
+<~{uri}~>  ?p ?o  . \n\
 ?o sioc:topic ?topic . \n\
 } \n\
  ; \n\
@@ -177,12 +177,12 @@ DELETE {  \n\
 ?maker foaf:nick ?nick . \n\
 }  \n\
 WHERE {  \n\
-<~{pageURI}~> foaf:maker ?maker . \n\
+<~{uri}~> foaf:maker ?maker . \n\
 ?maker foaf:nick ?nick . \n\
 } \n\
  ; \n\
 WITH <~{graphURI}~> \n\
 DELETE {  \n\
-<~{pageURI}~>  ?p ?o .   \n\
+<~{uri}~>  ?p ?o .   \n\
 }  \n\
-WHERE { <~{pageURI}~>  ?p ?o } \n";
+WHERE { <~{uri}~>  ?p ?o } \n";

@@ -42,10 +42,10 @@
 
             setupErrorHandling();
             spinner();
-            var pageURI = queryString["uri"];
-            // console.log("URI="+pageURI);
-            pageURI = encodeURI(pageURI);
-            getPage(pageURI, buildPage);
+            var uri = queryString["uri"];
+            // console.log("URI="+uri);
+            uri = encodeURI(uri);
+            getPage(uri, buildPage);
             makeRecentChangesList();
 
             $('#editButton').click(function () {

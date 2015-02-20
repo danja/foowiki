@@ -24,21 +24,21 @@ function getImage(imageURI, callback) {
     getJsonForSparqlURL(getPageUrl, makeDataURL);
 }
 
-function getPage(pageURI, entryHandler) {
+function getPage(uri, entryHandler) {
 
     // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image
     if (queryString["type"] == "image") {
         var fliptoImage = function (src) {
             window.location.href = src;
         };
-        getImage(pageURI, fliptoImage);
+        getImage(uri, fliptoImage);
         return;
     }
-    //   pageURI = encodeURI(pageURI);
-    console.log("CCCimageURI=" + pageURI);
+    //   uri = encodeURI(uri);
+    console.log("CCCimageURI=" + uri);
 
     var pageMap = {
-        "pageURI": pageURI,
+        "uri": uri,
         "graphURI": graphURI
     };
 
@@ -66,7 +66,7 @@ function buildPage(pageMap, entryJSON) {
 
     var entry = entryJSON[0];
     // console.log("entryJSON[0] = " + JSON.stringify(entryJSON[0]));
-    entry["uri"] = "page.html?uri=" + entry["pageURI"];
+    entry["uri"] = "page.html?uri=" + entry["uri"];
 
     // check if it's code-like
     if (preformatFormats.contains(entry.format)) {

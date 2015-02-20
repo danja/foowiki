@@ -14,7 +14,7 @@ function setupPosting() {
     });
     
     var storeEntry = function() {
-            var entry = extractEntry(graphURI, pageURI);
+            var entry = extractEntry(graphURI, uri);
         var data = sparqlTemplater(postPageSparqlTemplate, entry, true);
 
         //     var afterPostEntry = function () {
@@ -32,12 +32,12 @@ function setupPosting() {
                 var fliptoViewPage = function () {
                     window.location.href = window.location.href.replace("edit.html", "page.html");
                 };
-                submitOutlinks(graphURI, pageURI, entry.content);
-                submitTags(graphURI, pageURI, fliptoViewPage);
+                submitOutlinks(graphURI, uri, entry.content);
+                submitTags(graphURI, uri, fliptoViewPage);
                 //   callback();
             });
         }
-        deletePage(graphURI, pageURI, postNewData);
+        deletePage(graphURI, uri, postNewData);
         return false;
     }
     
@@ -52,15 +52,15 @@ function setupPosting() {
      
     $('#delete').click(function () {
        
-        return deletePage(graphURI, pageURI, fliptoIndexPage);
+        return deletePage(graphURI, uri, fliptoIndexPage);
     });
 }
 
-function extractEntry(graphURI, pageURI) {
+function extractEntry(graphURI, uri) {
     console.log("ENTRY = " + JSON.stringify(entry));
     var entry = {
         "graphURI": graphURI,
-        "pageURI": pageURI,
+        "uri": uri,
         "date": (new Date()).toISOString(),
         "modified": (new Date()).toISOString()
     };
@@ -74,9 +74,9 @@ function extractEntry(graphURI, pageURI) {
     return entry;
 }
 
-function deletePage(graphURI, pageURI, callback) {
+function deletePage(graphURI, uri, callback) {
     var map = {
-        "pageURI": pageURI,
+        "uri": uri,
         "graphURI": graphURI
     };
     var data = sparqlTemplater(deletePageSparqlTemplate, map, true);
@@ -92,13 +92,13 @@ function deletePage(graphURI, pageURI, callback) {
     return false;
 }
 
-function submitOutlinks(graphURI, pageURI, content) {
+function submitOutlinks(graphURI, uri, content) {
     var matches = content.match(/\[([^\[]*)\]\(([^\)]*)\)/g);
     console.log("MATCHESreg=" + JSON.stringify(matches));
 }
 
 // TAGS ----------------------------------------------
-function submitTags(graphURI, pageURI, callback) {
+function submitTags(graphURI, uri, callback) {
 
     var tagsCommas = $("#maintagscontainer").tagit("assignedTags");
     console.log("tagsCommas=" + tagsCommas);
@@ -114,7 +114,7 @@ function submitTags(graphURI, pageURI, callback) {
 
     var templateMap = {
         "graphURI": graphURI,
-        "pageURI": pageURI,
+        "uri": uri,
         "tags": tags
     };
 

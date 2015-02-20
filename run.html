@@ -33,11 +33,11 @@
             setupErrorHandling();
             spinner();
 
-            var pageURI = queryString["uri"];
-            pageURI = encodeURI(pageURI);
+            var uri = queryString["uri"];
+            uri = encodeURI(uri);
 
             var map = {
-                "pageURI": pageURI,
+                "uri": uri,
                 "graphURI": graphURI
             };
 
@@ -46,7 +46,7 @@
             var getPageURL = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
             var doneCallback = function (entryJSON) {
-                //   var entry = xmlToEntry(xml, pageURI);
+                //   var entry = xmlToEntry(xml, uri);
 
                 //    var entryJSON = sparqlXMLtoJSON(xml);
 
@@ -60,7 +60,7 @@
                     window.location.href = window.location.href.replace("page.html", "edit.html");
                 }
 
-                // "uri": "page.html?uri=" + pageURI
+                // "uri": "page.html?uri=" + uri
                 console.log("entryJSON[0] = " + JSON.stringify(entryJSON[0]));
                 var entry = entryJSON[0];
 

@@ -11,10 +11,6 @@ function getJsonForSparqlURL(pageURL, callback) {
              //   'Accept-Charset': 'UTF-8' unsafe
          }
      }).done(function (xml) {
-      //   var pageURI = queryString["uri"];
-     //    pageURI = encodeURI(pageURI);
-         
-         
          var json = sparqlXMLtoJSON(xml);
   //       doneCallback(json, getCurrentPageURI());
          callback(json);

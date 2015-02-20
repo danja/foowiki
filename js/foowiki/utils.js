@@ -174,8 +174,8 @@
 
             var oldHref = aElement.href;
             var localRef = oldHref.substring(oldHref.indexOf(serverRootPath) + serverRootPath.length);
-            //   var pageURI = serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
-            var pageURI = pagesBaseURI + localRef;
+            //   var uri = serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
+            var uri = pagesBaseURI + localRef;
 
 
             //  $(aElement).append("filler");
@@ -193,8 +193,8 @@
                 $(aElement).replaceWith(content);
             }
 
-            console.log("pageURI=" + pageURI);
-            getPage(pageURI, handler);
+            console.log("uri=" + uri);
+            getPage(uri, handler);
 
         }
 
