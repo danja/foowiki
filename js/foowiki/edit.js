@@ -6,12 +6,15 @@
 
 function setupPosting() {
     $('#cancel').click(function () {
-        window.location.href = window.location.href.replace("edit.html", "page.html");
-        return false;
+        return flipToViewPage();
     });
 
     $('#submit').click(function () {
-        var entry = extractEntry(graphURI, pageURI);
+    storeEntry();
+    });
+    
+    var storeEntry = function() {
+            var entry = extractEntry(graphURI, pageURI);
         var data = sparqlTemplater(postPageSparqlTemplate, entry, true);
 
         //     var afterPostEntry = function () {
@@ -36,7 +39,12 @@ function setupPosting() {
         }
         deletePage(graphURI, pageURI, postNewData);
         return false;
-    });
+    }
+    
+    var flipToViewPage = function() {
+        window.location.href = window.location.href.replace("edit.html", "page.html");
+        return false;
+    }
 
      var fliptoIndexPage = function () {
             window.location.href = "index.html";

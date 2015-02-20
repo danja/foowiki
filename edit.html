@@ -53,13 +53,16 @@
             spinner();
             setupImageUploading();
 
-            var doneCallback = function (entryJSON, pageURI) {
+            var doneCallback = function (entryJSON) {
                 //     var entryJSON = sparqlXMLtoJSON(xml);
-                var entry = entryJSON[0];
+                var pageURI = getCurrentPageURI();
+          //      var entry = entryJSON[0];
 
                 uri = "page.html?uri=" + pageURI;
 
-                if (!entry) { // page doesn't exist, so create it
+                if (!entryJSON[0]) { // page doesn't exist, so create it
+                    
+                    /*
                     var entry = {};
                     var split = pageURI.split("/");
                     entry.title = split[split.length - 1];
@@ -67,6 +70,12 @@
                     entry.content = "";
                     entry.nick = "danja";
                     entry.created = (new Date()).toISOString();
+                    */
+                    var split = pageURI.split("/");
+                    var rawTitle = split[split.length - 1];
+                    var entry = Entry.create(rawTitle);
+                } else {
+                    var entry = Entry.populate(entryJSON[0]);
                 }
 
                 var entryHTML = templater(editEntryTemplate, entry);
@@ -134,6 +143,7 @@
         </div>
     </div>
 
+   <label for='fileSelector'>Upload Image</label>
     <input type="file" name="fileSelector" id="fileSelector" />
     <br/>
     <!-- input type="text" name="imageName" id="imageName" / -->

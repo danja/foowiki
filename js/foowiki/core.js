@@ -1,3 +1,29 @@
+var Entry = {
+
+    populate: function (json) {
+        this.title = json.title;
+        this.content = json.content;
+        this.nick = json.nick;
+        this.created = json.created;
+        this.modified = json.modified;
+        return this;
+    },
+
+    create: function (title) {
+        this.title = decodeURI(title);
+        this.content = "";
+        this.nick = "danja";
+        this.created = (new Date()).toISOString();
+        this.modified = this.created;
+        return this;
+    }
+};
+
+
+
+
+
+
 // see similar examples around http://stackoverflow.com/questions/18550151/posting-base64-data-javascript-jquery
 
 function setupImageUploading() {
@@ -7,41 +33,45 @@ function setupImageUploading() {
         reader.readAsDataURL(file);
 
         reader.onload = function (event) {
-            var dataURL = reader.result;
-            //    console.log("base64 = " + base64);
-            var file = $('#fileSelector')[0].files[0]
-                //if(file){
-                // console.log(file.name);
-                // }
-            var imageLabel = file.name;
-
-            var BASE64_MARKER = ';base64,';
-            //    if (dataURL.indexOf(BASE64_MARKER) == -1) {
-            var parts = dataURL.split(',');
-            var contentType = parts[0].split(':')[1];
-            var raw = parts[1];
-            //     } ;
-
-            // ADD MEDIA TYPE
-            var map = {
-                "graphURI": graphURI,
-                "imageURI": pagesBaseURI + imageLabel,
-                "imageLabel": imageLabel,
-                "imageData": raw
-            };
-            var data = sparqlTemplater(postImageSparqlTemplate, map, true);
-            $.ajax({
-                type: "POST",
-                url: sparqlUpdateEndpoint,
-                data: ({
-                    update: data
-                })
-            }).done(function () {});
-            $('#original_image').attr('src', dataURL);
-            $('#original_image').attr('name', imageLabel);
+            storeImage(reader.result);
         }
 
     });
+}
+
+function storeImage(dataURL) {
+
+    //    console.log("base64 = " + base64);
+    var file = $('#fileSelector')[0].files[0]
+        //if(file){
+        // console.log(file.name);
+        // }
+    var imageLabel = file.name;
+
+    var BASE64_MARKER = ';base64,';
+    //    if (dataURL.indexOf(BASE64_MARKER) == -1) {
+    var parts = dataURL.split(',');
+    var contentType = parts[0].split(':')[1];
+    var raw = parts[1];
+    //     } ;
+
+    // ADD MEDIA TYPE
+    var map = {
+        "graphURI": graphURI,
+        "imageURI": pagesBaseURI + imageLabel,
+        "imageLabel": imageLabel,
+        "imageData": raw
+    };
+    var data = sparqlTemplater(postImageSparqlTemplate, map, true);
+    $.ajax({
+        type: "POST",
+        url: sparqlUpdateEndpoint,
+        data: ({
+            update: data
+        })
+    }).done(function () {});
+    $('#original_image').attr('src', dataURL);
+    $('#original_image').attr('name', imageLabel);
 }
 
 // image uploading
