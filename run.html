@@ -27,7 +27,7 @@
     <script src="js/foowiki/utils.js"></script>
     <script src="js/foowiki/core.js"></script>
     <script src="js/foowiki/sparql-connector.js"></script>
-    
+
     <script type="text/javascript" language="javascript">
         $(function () {
             setupErrorHandling();
@@ -51,13 +51,16 @@
                 //    var entryJSON = sparqlXMLtoJSON(xml);
 
                 if (!entryJSON) {
+                    /*
                     entryJSON = {
                         content: "",
                         date: "",
                         title: "",
                         nick: ""
                     };
+                    */
                     window.location.href = window.location.href.replace("page.html", "edit.html");
+                    return;
                 }
 
                 // "uri": "page.html?uri=" + uri
@@ -79,8 +82,8 @@
 
                 eval(toRun);
             };
-getJsonForSparqlURL(getPageUrl, doneCallback);
-          //  getDataForURL(doneCallback, getPageURL);
+            getJsonForSparqlURL(getPageUrl, doneCallback);
+            //  getDataForURL(doneCallback, getPageURL);
 
             $('#editButton').click(function () {
                 window.location.href = window.location.href.replace("run.html", "edit.html");
@@ -92,7 +95,6 @@ getJsonForSparqlURL(getPageUrl, doneCallback);
         function formatEntry(entry) {
             entry.content = marked(entry.content);
             entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
-
             return templater(runEntryTemplate, entry);
         }
     </script>

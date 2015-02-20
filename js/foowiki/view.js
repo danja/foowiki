@@ -34,19 +34,14 @@ function getPage(uri, entryHandler) {
         getImage(uri, fliptoImage);
         return;
     }
-    //   uri = encodeURI(uri);
-    console.log("CCCimageURI=" + uri);
+    
+    var entry = Entry.setId(graphURI, uri);
 
-    var pageMap = {
-        "uri": uri,
-        "graphURI": graphURI
-    };
-
-    var getPageSparql = sparqlTemplater(getPageSparqlTemplate, pageMap);
+    var getPageSparql = sparqlTemplater(getPageSparqlTemplate, entry);
     var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
     var handleEntry = function (entryJSON) {
-        entryHandler(pageMap, entryJSON);
+        entryHandler(entry, entryJSON);
     };
     getJsonForSparqlURL(getPageUrl, handleEntry);
     // getDataForURL(handleEntry, getPageUrl);

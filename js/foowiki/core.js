@@ -1,4 +1,20 @@
 var Entry = {
+    /*
+    function () {
+        return this;
+    },
+
+    function (graphURI, uri) {
+        this.setId(graphURI, uri)
+        return this;
+    },
+    */
+
+    setId: function (graphURI, uri) {
+        this.graphURI = graphURI;
+        this.uri = uri;
+        return this;
+    },
 
     populate: function (json) {
         this.title = json.title;
@@ -9,19 +25,19 @@ var Entry = {
         return this;
     },
 
-    create: function (title) {
-        this.title = decodeURI(title);
+    create: function () {
+        //this.title = decodeURI(title);
+        this.title = "";
         this.content = "";
         this.nick = "danja";
-        this.created = (new Date()).toISOString();
-        this.modified = this.created;
+        var now = (new Date()).toISOString();
+        this.created = now;
+        this.modified = now;
         return this;
     }
+
+
 };
-
-
-
-
 
 
 // see similar examples around http://stackoverflow.com/questions/18550151/posting-base64-data-javascript-jquery

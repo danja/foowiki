@@ -73,7 +73,8 @@
                     */
                     var split = uri.split("/");
                     var rawTitle = split[split.length - 1];
-                    var entry = Entry.create(rawTitle);
+                    var entry = Entry.create();
+                    entry.title = decodeURI(rawTitle);
                 } else {
                     var entry = Entry.populate(entryJSON[0]);
                 }

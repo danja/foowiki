@@ -10,11 +10,13 @@ function setupPosting() {
     });
 
     $('#submit').click(function () {
-    storeEntry();
+        storeEntry();
     });
-    
-    var storeEntry = function() {
-            var entry = extractEntry(graphURI, uri);
+
+    var storeEntry = function () {
+   //     var entry = extractEntry(graphURI, uri);
+        var entry = Entry.setId(graphURI, uri);
+        entry = populateEntryFromHTML(entry);
         var data = sparqlTemplater(postPageSparqlTemplate, entry, true);
 
         //     var afterPostEntry = function () {
@@ -37,33 +39,38 @@ function setupPosting() {
                 //   callback();
             });
         }
-        deletePage(graphURI, uri, postNewData);
+        deleteEntry(graphURI, uri, postNewData);
         return false;
     }
-    
-    var flipToViewPage = function() {
+
+    var flipToViewPage = function () {
         window.location.href = window.location.href.replace("edit.html", "page.html");
         return false;
     }
 
-     var fliptoIndexPage = function () {
-            window.location.href = "index.html";
-        };
-     
+    var fliptoIndexPage = function () {
+        window.location.href = "index.html";
+    };
+
     $('#delete').click(function () {
-       
-        return deletePage(graphURI, uri, fliptoIndexPage);
+      //   console.log("HERW"+JSON.stringify(entry)); NOT DEFINED
+        return deleteEntry(graphURI, uri, fliptoIndexPage);
     });
 }
 
-function extractEntry(graphURI, uri) {
+function populateEntryFromHTML(entry) {
     console.log("ENTRY = " + JSON.stringify(entry));
+    /*
     var entry = {
         "graphURI": graphURI,
         "uri": uri,
         "date": (new Date()).toISOString(),
         "modified": (new Date()).toISOString()
     };
+    */
+  //  var entry = Entry.create();
+  //  entry.setId(graphURI, uri);
+    
     entry.title = $('#title').val(); /// can this lot use a convention, HTML id = entry field name??? idHtmlToJSON??
     entry.nick = $('#nick').val();
     entry.created = $('#created').text();
@@ -74,12 +81,9 @@ function extractEntry(graphURI, uri) {
     return entry;
 }
 
-function deletePage(graphURI, uri, callback) {
-    var map = {
-        "uri": uri,
-        "graphURI": graphURI
-    };
-    var data = sparqlTemplater(deletePageSparqlTemplate, map, true);
+function deleteEntry(graphURI, uri, callback) {
+    var entry = Entry.setId(graphURI, uri);
+    var data = sparqlTemplater(deletePageSparqlTemplate, entry, true);
     $.ajax({
         type: "POST",
         url: sparqlUpdateEndpoint,
