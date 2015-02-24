@@ -26,7 +26,7 @@ body {
 }
 
 #middle {
-    padding: 0 20px;
+    padding: 0 20px; 
     width: 100%;
     /* was 100% */
 }
@@ -37,7 +37,7 @@ body {
     /* LC width */
     padding: 0 10px;
     /* LC padding */
-    right: 240px;
+    right: 250px;
     /* was 240 */
     /* LC fullwidth + CC padding */
     margin-left: -100%;

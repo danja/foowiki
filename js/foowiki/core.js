@@ -55,6 +55,7 @@ function setupImageUploading() {
     });
 }
 
+// pushes image data to SPARQL store
 function storeImage(dataURL) {
 
     //    console.log("base64 = " + base64);

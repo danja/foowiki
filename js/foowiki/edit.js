@@ -10,13 +10,14 @@ function setupPosting() {
     });
 
     $('#submit').click(function () {
-        storeEntry();
-    });
-
-    var storeEntry = function () {
-   //     var entry = extractEntry(graphURI, uri);
         var entry = Entry.setId(graphURI, uri);
         entry = populateEntryFromHTML(entry);
+        storeEntry(entry);
+    });
+
+    var storeEntry = function (entry) {
+        //     var entry = extractEntry(graphURI, uri);
+
         var data = sparqlTemplater(postPageSparqlTemplate, entry, true);
 
         //     var afterPostEntry = function () {
@@ -53,7 +54,7 @@ function setupPosting() {
     };
 
     $('#delete').click(function () {
-      //   console.log("HERW"+JSON.stringify(entry)); NOT DEFINED
+        //   console.log("HERW"+JSON.stringify(entry)); NOT DEFINED
         return deleteEntry(graphURI, uri, fliptoIndexPage);
     });
 }
@@ -68,9 +69,9 @@ function populateEntryFromHTML(entry) {
         "modified": (new Date()).toISOString()
     };
     */
-  //  var entry = Entry.create();
-  //  entry.setId(graphURI, uri);
-    
+    //  var entry = Entry.create();
+    //  entry.setId(graphURI, uri);
+
     entry.title = $('#title').val(); /// can this lot use a convention, HTML id = entry field name??? idHtmlToJSON??
     entry.nick = $('#nick').val();
     entry.created = $('#created').text();

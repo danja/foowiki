@@ -30,13 +30,15 @@ h4 {
     padding: 0 0 0 0;
 }
 
-#left ul,  $("#maintagscontainer").addClass("editable");
+/*  $("#maintagscontainer").addClass("editable"); */
+
+#left ul, 
 #right ul {
     width: 150px;
 }
 
 li {
-    width: 180 px;
+  /*  width: 180 px; */
 }
 
 button {
@@ -59,7 +61,14 @@ button {
 
 #recentChangesContainer,
 #searchContainer {
-    width: 100%;
+   /* width: 100%; */
+    width:180px;
+    /* Be VERY careful with this, breaks normal words wh_erever */
+    word-break: break-all;
+
+    /* Non standard for webkit */
+    word-break: break-word;
+    
     border: 1px solid darkgray;
     border-radius: 10px;
     padding: 4px;
