@@ -2,63 +2,9 @@
  * Functions associated with page.html
  */
 
-/**
- * Comment template.
- * @param {string} foo This is a param with a description too long to fit in
- *     one line.
- * @return {number} This returns something that has a description too long to
- *     fit in one line.
- */
-function getImage(imageURI, callback) {
-    var pageMap = {
-        "imageURI": imageURI,
-        "graphURI": graphURI
-    };
 
-    var getPageSparql = sparqlTemplater(getImageSparqlTemplate, pageMap);
-    var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
-    var makeDataURL = function (entryJSON) {
-        //   console.log("BBB");
-        //   var entryXmlNames = ["base64"];
-        // var entryJSON = sparqlXMLtoJSON(xml);
-        var src = "data:image/jpeg;base64," + entryJSON[0]["base64"];
-        callback(src);
-    }
- //   console.log("getPageUrl=" + getPageUrl);
-    //  getDataForURL(makeDataURL, getPageUrl);
-    getJsonForSparqlURL(getPageUrl, makeDataURL);
-}
 
-/**
- * Comment template.
- * @param {string} foo This is a param with a description too long to fit in
- *     one line.
- * @return {number} This returns something that has a description too long to
- *     fit in one line.
- */
-function getPage(uri, entryHandler) {
-
-    // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image
-    if (queryString["type"] == "image") {
-        var fliptoImage = function (src) {
-            window.location.href = src;
-        };
-        getImage(uri, fliptoImage);
-        return;
-    }
-    
-    var entry = Entry.setId(graphURI, uri);
-
-    var getPageSparql = sparqlTemplater(getPageSparqlTemplate, entry);
-    var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
-
-    var handleEntry = function (entryJSON) {
-        entryHandler(entry, entryJSON);
-    };
-    getJsonForSparqlURL(getPageUrl, handleEntry);
-    // getDataForURL(handleEntry, getPageUrl);
-}
 
 /**
  * Comment template.

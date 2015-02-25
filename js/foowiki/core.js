@@ -39,6 +39,79 @@ var Entry = {
 
 };
 
+/**
+ * Comment template.
+ * @param {string} uri URI of target page.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
+function getResource(uri, entryHandler) {
+    console.log("getresource " + uri);
+    var type = queryString["type"];
+    // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image
+    if (type == "image") {
+        handleImageRequest(uri);
+    }
+
+    if (type == "markdown") {
+        handleMarkdownRequest(uri);
+    }
+
+    var entry = Entry.setId(graphURI, uri);
+
+    var getPageSparql = sparqlTemplater(getPageSparqlTemplate, entry);
+    var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
+
+    var handleEntry = function (entryJSON) {
+        console.log("handleEntry " + JSON.stringify(entryJSON));
+        entryHandler(entry, entryJSON);
+    };
+    console.log("getPageUrl = "+getPageUrl);
+    getJsonForSparqlURL(getPageUrl, handleEntry);
+    // getDataForURL(handleEntry, getPageUrl);
+}
+
+
+
+function handleImageRequest(uri) {
+    var fliptoImage = function (src) {
+        window.location.href = src;
+    };
+    getImage(uri, fliptoImage);
+    return;
+}
+
+function handleMarkdownRequest(uri) {
+
+}
+
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
+function getImage(imageURI, callback) {
+    var pageMap = {
+        "imageURI": imageURI,
+        "graphURI": graphURI
+    };
+
+    var getPageSparql = sparqlTemplater(getImageSparqlTemplate, pageMap);
+    var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
+
+    var makeDataURL = function (entryJSON) {
+            //   console.log("BBB");
+            //   var entryXmlNames = ["base64"];
+            // var entryJSON = sparqlXMLtoJSON(xml);
+            var src = "data:image/jpeg;base64," + entryJSON[0]["base64"];
+            callback(src);
+        }
+        //   console.log("getPageUrl=" + getPageUrl);
+        //  getDataForURL(makeDataURL, getPageUrl);
+    getJsonForSparqlURL(getPageUrl, makeDataURL);
+}
 
 // see similar examples around http://stackoverflow.com/questions/18550151/posting-base64-data-javascript-jquery
 

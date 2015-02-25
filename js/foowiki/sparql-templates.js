@@ -64,6 +64,7 @@ var getPageSparqlTemplate = commonPrefixes + "\n\
 } \n\
 ";
 
+
 var getImageSparqlTemplate = commonPrefixes + "\n\
     SELECT DISTINCT * \n\
     FROM NAMED <~{graphURI}~>  \n\

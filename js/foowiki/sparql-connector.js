@@ -20,9 +20,12 @@ function getJsonForSparqlURL(pageURL, callback) {
          }
      }).done(function (xml) {
          var json = sparqlXMLtoJSON(xml);
+         console.log("JSON = "+JSON.stringify(json));
   //       doneCallback(json, getCurrentPageURI());
          callback(json);
-     });
+     })  .fail(function() {
+    alert( "error" );
+  });
  }
 
 /**

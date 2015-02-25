@@ -2,6 +2,44 @@
  * Functions associated with edit.html
  */
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
+var populateEditPage = function (entry, entryJSON) {
+
+    console.log("populateEditPage " + JSON.stringify(entryJSON));
+    var uri = getCurrentPageURI();
+    if (!entryJSON[0]) {
+        var split = uri.split("/");
+        var rawTitle = split[split.length - 1];
+        var entry = Entry.create();
+        entry.title = decodeURI(rawTitle);
+    } else {
+        var entry = Entry.populate(entryJSON[0]);
+    }
+
+    var entryHTML = templater(editEntryTemplate, entry);
+
+    $("#entry").replaceWith(entryHTML);
+    $("#format option").each(
+        function () {
+            this.selected = ($(this).attr("value") == entry.format);
+
+        });
+    // put data in versioned here
+
+    var pageMap = {
+        "uri": uri,
+        "graphURI": graphURI
+    };
+    setupTags("#maintagscontainer", pageMap, false);
+    $("textarea").autoGrow();
+    $("#maintagscontainer").addClass("editable"); // not working 
+};
 
 /**
  * Comment template.
@@ -16,6 +54,7 @@ function setupPosting() {
     });
 
     $('#submit').click(function () {
+        var uri = getCurrentPageURI();
         var entry = Entry.setId(graphURI, uri);
         entry = populateEntryFromHTML(entry);
         storeEntry(entry);
@@ -49,6 +88,7 @@ function setupPosting() {
                 alert("error"); // use error banner
             });
         }
+        var uri = getCurrentPageURI();
         deleteEntry(graphURI, uri, postNewData);
         return false;
     }

@@ -45,7 +45,8 @@
             var uri = queryString["uri"];
             // console.log("URI="+uri);
             uri = encodeURI(uri);
-            getPage(uri, buildPage);
+            getResource(uri, buildPage);
+            
             makeRecentChangesList();
 
             $('#editButton').click(function () {

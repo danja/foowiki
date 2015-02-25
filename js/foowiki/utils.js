@@ -264,7 +264,7 @@ function spinner() {
             }
 
             console.log("uri=" + uri);
-            getPage(uri, handler);
+            getResource(uri, handler);
 
         }
 
