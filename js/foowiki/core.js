@@ -367,10 +367,42 @@ function makeEntryListHTML(entryArray, showContent) {
  * @return {number} This returns something that has a description too long to
  *     fit in one line.
  */
+// for makeResourceListHTML page
+function makeResourceListHTML(entryArray, showContent) {
+    var rows = "";
+    //  var entryArray = sparqlXMLtoJSON(xml);
+
+    for (var i = 0; i < entryArray.length; i++) {
+        rows += formatResourceRow(entryArray[i]);
+    }
+    return rows;
+}
+
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function formatRow(entry) { // content, 
     entry.uri = "page.html?uri=" + entry.uri;
     entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
     var row = templater(rowTemplate, entry);
+    return row;
+}
+
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
+function formatResourceRow(entry) { // content, 
+    entry.uri = "page.html?uri=" + entry.uri;
+    entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
+    var row = templater(resourceTemplate, entry);
     return row;
 }
 

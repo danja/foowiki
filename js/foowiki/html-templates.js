@@ -32,9 +32,23 @@ var entryTableTemplate = " \n\
 var resultTemplate = "<li><a href='~{uri}~'>~{title}~</a></li>";
 
 
-var linkTemplate = "<a href='~{uri}~'>~{title}~</a>";
+// var linkTemplate = "<a href='~{uri}~'>~{title}~</a>";
+
+var linkTemplate = "~{#title}~ \
+<a href='~{uri}~'>~{title}~</a> \
+~{/title}~ \
+~{^title}~ \
+<a href='~{uri}~'>~{uri}~</a> \
+  ~{/title}~ ";
+
 
 var rowTemplate = " <tr> \
+           <td>" + linkTemplate + "</td> \
+           <td class='center'>~{modified}~</td> \
+            <td class='center'>~{nick}~</td> \
+            </tr>";
+
+var resourceTemplate = " <tr> \
            <td>" + linkTemplate + "</td> \
            <td class='center'>~{modified}~</td> \
             <td class='center'>~{nick}~</td> \

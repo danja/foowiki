@@ -43,7 +43,7 @@ ORDER By DESC(?modified)  \n\
 # LIMIT 10 \n\
 ";
 
-var getRecentChangesSparqlTemplate = commonPrefixes + getPageListSparqlTemplate +" \n\
+var getRecentChangesSparqlTemplate = commonPrefixes + getPageListSparqlTemplate + " \n\
 LIMIT 15 \n\
 ";
 
@@ -62,6 +62,20 @@ var getPageSparqlTemplate = commonPrefixes + "\n\
     foaf:nick ?nick \n\
     ] . \n\
 } \n\
+";
+
+//     ?p ?o \n\
+
+var getResourcesSparqlTemplate = commonPrefixes + "\n\
+    SELECT DISTINCT * \n\
+    FROM NAMED <~{graphURI}~>  \n\
+    WHERE { \n\
+    ?uri a ?type; \n\
+OPTIONAL { \n\
+     ?uri   dc:title ?title  \n\
+} \n\
+} \n\
+ORDER BY ?title \n\
 ";
 
 
@@ -169,7 +183,7 @@ foaf:nick ?nick \n\
          FILTER regex(CONCAT(?content, ' ', ?title), \"~{regex}~\", \"i\")  \n\
            \n\
 }";
- 
+
 // could probably be tidier
 var deletePageSparqlTemplate = commonPrefixes + "\n\
 WITH <~{graphURI}~> \n\
