@@ -1,4 +1,12 @@
-        function spinner() {
+
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
+function spinner() {
             var $loading = $('#spinner').hide();
             $.ajaxSetup({
                 beforeSend: function () {
@@ -22,6 +30,13 @@
             return false;
         }
 
+        /**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function setupErrorHandling() {
             $("#errorbox").hide();
             $("#errorbox").click(function () {
@@ -38,6 +53,13 @@
             });
         }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function sparqlTemplater(raw, replacementMap, isWrite) {
             if (isWrite && replacementMap["content"]) {
                 replacementMap["content"] = escapeLiterals(replacementMap["content"]);
@@ -46,17 +68,37 @@
             return templater(raw, replacementMap);
         }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function unescapeLiterals(text) {
             var data = text.replace(/&#34&#34&#34/g, '"""');
             return data;
         }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function escapeLiterals(text) {
             return text.replace(/"""/g, "&#34&#34&#34");
         }
 
 
-        /*  */
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function templater(raw, replacementMap) {
             var template = Hogan.compile(raw, {
                 delimiters: '~{ }~'
@@ -80,10 +122,24 @@
             return b;
         })(window.location.search.substr(1).split('&'));
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function getCurrentPageURI() {
             return encodeURI(queryString["uri"]);
         }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function translateLinks(object) {
             $('div.content  a', object).each(
                 function () {
@@ -140,6 +196,13 @@
                 */
         }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function reviseHref(aElement) {
             var oldHref = aElement.href;
 
@@ -170,6 +233,13 @@
 
         }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function includeContent(aElement) {
 
             var oldHref = aElement.href;
@@ -198,6 +268,13 @@
 
         }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
          // little workaround for odd marked.js behaviour, at least in part due to marked.js line 793 regex
          // if the header is a link, the id ends up as "-like-this-like-this-" 
         function fixHeaderIDs() {
@@ -215,6 +292,13 @@
             });
         }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function escapeXml(markup) {
             markup = markup.replace(/&/g, "&amp;");
             markup = markup.replace(/</g, "&lt;");
@@ -223,14 +307,35 @@
             return markup;
         }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function escapeRegExp(string) {
             return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
         }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function replaceAll(string, find, replace) {
             return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
         }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function tweakBlockquotes(content) {
             var blockquoteSplit = content.split("```");
             if (blockquoteSplit.length > 1) {
@@ -242,6 +347,13 @@
             return blockquoteSplit.join("```");
         }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function htmlUnescape(value) {
 
             value = value.replace(/&lt;/g, "<");
@@ -252,6 +364,13 @@
             return value;
         }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
         function hUnescape(value) {
 
             var d = $("<div>");

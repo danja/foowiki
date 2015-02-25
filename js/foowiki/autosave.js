@@ -1,5 +1,13 @@
 // TODO use this (add timer) in edit.tml
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
+
 $(document).ready(function () {
 
     ///////////////////////

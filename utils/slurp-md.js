@@ -3,7 +3,13 @@ npm install findit
 npm install mustache
 */
 
-// var moment = require('moment');
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 
 var fs = require('fs');
 var path = require('path');
@@ -27,16 +33,22 @@ finder.on('directory', function (dir, stat, stop) {
 var fileHandler = function (file, stat) {
     console.log(file);
     var mtime = new Date(stat["mtime"]);
-    console.log(mtime.toISOString());
+    var modified = mtime.toISOString();
+    console.log(modified);
 
-    fs.readFile(file, 'utf8', function (err, data) {
+    fs.readFile(file, 'utf8', function (err, content) {
         if (err) {
             return console.log(err);
         }
-        console.log(data);
-        
-       var lines = data.split(/\r\n|\r|\n/g);
-        for(linei
+        console.log(content);
+
+        var lines = content.split(/\r\n|\r|\n/g);
+        var title = "Title";
+        for (var line in lines) { // title is first non-blank line
+            var title = lines[line].trim();
+            if (title != "") break;
+        }
+        console.log("TITLE=" + title);
     });
 };
 

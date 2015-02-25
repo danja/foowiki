@@ -2,8 +2,14 @@
  * Functions associated with page.html
  */
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function getImage(imageURI, callback) {
-    console.log("AAA imageURI=" + imageURI);
     var pageMap = {
         "imageURI": imageURI,
         "graphURI": graphURI
@@ -19,11 +25,18 @@ function getImage(imageURI, callback) {
         var src = "data:image/jpeg;base64," + entryJSON[0]["base64"];
         callback(src);
     }
-    console.log("getPageUrl=" + getPageUrl);
+ //   console.log("getPageUrl=" + getPageUrl);
     //  getDataForURL(makeDataURL, getPageUrl);
     getJsonForSparqlURL(getPageUrl, makeDataURL);
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function getPage(uri, entryHandler) {
 
     // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image
@@ -47,6 +60,13 @@ function getPage(uri, entryHandler) {
     // getDataForURL(handleEntry, getPageUrl);
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function buildPage(pageMap, entryJSON) {
     if (!entryJSON) {
         entryJSON = { // is needed?
@@ -93,6 +113,13 @@ function buildPage(pageMap, entryJSON) {
     setupSearch("#searchContainer");
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function formatEntry(entry) {
     //  entry.content = unescapeLiterals(entry.content);
 
@@ -106,6 +133,13 @@ function formatEntry(entry) {
     return templater(pageEntryTemplate, entry);
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function formatContent(content) {
     content = unescapeLiterals(content);
     content = tweakBlockquotes(content);

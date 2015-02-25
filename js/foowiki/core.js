@@ -42,6 +42,13 @@ var Entry = {
 
 // see similar examples around http://stackoverflow.com/questions/18550151/posting-base64-data-javascript-jquery
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function setupImageUploading() {
     $('#fileSelector').change(function (event) {
         var file = event.target.files[0];
@@ -55,6 +62,13 @@ function setupImageUploading() {
     });
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 // pushes image data to SPARQL store
 function storeImage(dataURL) {
 
@@ -123,6 +137,13 @@ function storeImage(dataURL) {
 */
 // SEARCH --------------------------
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function setupSearch(searchContainer) {
 
     //  $(searchContainer).append("<button id='searchButton'>Search</button>");
@@ -147,6 +168,13 @@ function setupSearch(searchContainer) {
     getAllTags(renderTags);
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function doSearch() {
     var regex = $("#searchText").val();
 
@@ -190,6 +218,13 @@ function doSearch() {
     getJsonForSparqlURL(searchUrl, renderSearchResults);
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function makeRecentChangesList() { // refactor with doSearch()
 
     var searchMap = {
@@ -213,6 +248,13 @@ function makeRecentChangesList() { // refactor with doSearch()
     getJsonForSparqlURL(searchUrl, renderRecentChanges);
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 // for search results
 function makeLinkListHTML(entryArray) {
     var links = "";
@@ -227,6 +269,13 @@ function makeLinkListHTML(entryArray) {
     return links;
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 // for index page
 function makeEntryListHTML(entryArray, showContent) {
     var rows = "";
@@ -238,6 +287,13 @@ function makeEntryListHTML(entryArray, showContent) {
     return rows;
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function formatRow(entry) { // content, 
     entry.uri = "page.html?uri=" + entry.uri;
     entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -246,6 +302,13 @@ function formatRow(entry) { // content,
 }
 
 // TAGS Stuff
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function setupTags(containerId, pageMap, readOnly) {
     if (readOnly) {
         createTags(containerId, pageMap, readOnly);
@@ -256,6 +319,13 @@ function setupTags(containerId, pageMap, readOnly) {
     }
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function setupTagsAutocomplete(tagsContainerId, callback) {
     var insertTagsAutocomplete = function (tags) {
         //  var tags = tagsXmlToJson(xml);
@@ -286,6 +356,13 @@ function setupTagsAutocomplete(tagsContainerId, callback) {
 //  return sparqlXMLtoJSON(xml);
 //}
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function createTags(containerId, pageMap, readOnly) {
     var getTagsSparql = sparqlTemplater(getTagsSparqlTemplate, pageMap);
     var getTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getTagsSparql) + "&output=xml";
@@ -312,6 +389,13 @@ function createTags(containerId, pageMap, readOnly) {
     getJsonForSparqlURL(getTagsUrl, renderTags);
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function setupTagsPanel(tagsContainerId) { // is only used by index.html, nothing yet displayed -  for tag management, what's needed? is very similar to createTags
     console.log("setupTagsPanel CALLED on " + tagsContainerId);
     var doneCallback = function (tags) {
@@ -331,6 +415,13 @@ function setupTagsPanel(tagsContainerId) { // is only used by index.html, nothin
     getAllTags(doneCallback);
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function getAllTags(doneCallback) {
     var map = {
         "graphURI": graphURI

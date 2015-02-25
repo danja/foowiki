@@ -2,6 +2,14 @@
     *    System constants (URLs/URIs/IRIs)
     */
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
+
    var pagesBaseURI = "http://hyperdata.it/wiki/";
    var graphURI = "http://hyperdata.it/wiki";
    /*

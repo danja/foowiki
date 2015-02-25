@@ -1,4 +1,12 @@
- // function getDataForURL(doneCallback, getPageURL) {
+
+
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function getJsonForSparqlURL(pageURL, callback) {
      $.ajax({
          url: pageURL,
@@ -17,6 +25,13 @@ function getJsonForSparqlURL(pageURL, callback) {
      });
  }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
  function sparqlXMLtoJSON(xml) {
 
      var xmlString = (new XMLSerializer()).serializeToString(xml);

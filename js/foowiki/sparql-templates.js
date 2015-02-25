@@ -8,6 +8,14 @@
  * http://twitter.github.io/hogan.js/
  */
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
+
 var commonPrefixes = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n\
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  \n\
 PREFIX dc: <http://purl.org/dc/terms/>  \n\

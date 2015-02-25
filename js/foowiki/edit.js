@@ -3,7 +3,13 @@
  */
 
 
-
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function setupPosting() {
     $('#cancel').click(function () {
         return flipToViewPage();
@@ -37,7 +43,10 @@ function setupPosting() {
                 };
                 submitOutlinks(graphURI, uri, entry.content);
                 submitTags(graphURI, uri, fliptoViewPage);
-                //   callback();
+
+
+            }).fail(function () {
+                alert("error"); // use error banner
             });
         }
         deleteEntry(graphURI, uri, postNewData);
@@ -59,6 +68,13 @@ function setupPosting() {
     });
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function populateEntryFromHTML(entry) {
     console.log("ENTRY = " + JSON.stringify(entry));
     /*
@@ -82,6 +98,13 @@ function populateEntryFromHTML(entry) {
     return entry;
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function deleteEntry(graphURI, uri, callback) {
     var entry = Entry.setId(graphURI, uri);
     var data = sparqlTemplater(deletePageSparqlTemplate, entry, true);
@@ -93,16 +116,32 @@ function deleteEntry(graphURI, uri, callback) {
         })
     }).done(function () {
         callback();
+    }).fail(function () {
+        alert("error");
     });
     return false;
 }
 
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function submitOutlinks(graphURI, uri, content) {
     var matches = content.match(/\[([^\[]*)\]\(([^\)]*)\)/g);
     console.log("MATCHESreg=" + JSON.stringify(matches));
 }
 
 // TAGS ----------------------------------------------
+/**
+ * Comment template.
+ * @param {string} foo This is a param with a description too long to fit in
+ *     one line.
+ * @return {number} This returns something that has a description too long to
+ *     fit in one line.
+ */
 function submitTags(graphURI, uri, callback) {
 
     var tagsCommas = $("#maintagscontainer").tagit("assignedTags");
