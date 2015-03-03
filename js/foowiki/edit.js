@@ -110,10 +110,6 @@ function setupPosting() {
 }
 
 
-function redirectTo(target) {
-    window.location.href = target;
-    return false;
-}
 
 /**
  * Comment template.

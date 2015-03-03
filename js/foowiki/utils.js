@@ -233,6 +233,12 @@ function spinner() {
 
         }
 
+function redirectTo(target) {
+    window.location.href = target;
+    return false;
+}
+
+
 /**
  * Comment template.
  * @param {string} foo This is a param with a description too long to fit in

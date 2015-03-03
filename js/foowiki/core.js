@@ -48,6 +48,7 @@ var Entry = {
 function getResource(uri, entryHandler) {
     // console.log("getresource " + uri);
     var type = queryString["type"];
+            console.log("TYPE="+type);
     // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image
 
     var entry = Entry.setId(graphURI, uri);
@@ -59,17 +60,17 @@ function getResource(uri, entryHandler) {
 
     if (type == "markdown") {
         handleMarkdownRequest(uri);
-          return;
+        return;
     }
 
     if (type == "turtle") {
         handleTurtleRequest(entry);
-          return;
+        return;
     }
 
-    
+
     var getPageUrl = generateGetUrl(getPageSparqlTemplate, entry);
-    
+
     var handleEntry = function (entryJSON) {
         console.log("handleEntry " + JSON.stringify(entryJSON));
         entryHandler(entry, entryJSON);
@@ -79,16 +80,21 @@ function getResource(uri, entryHandler) {
     // getDataForURL(handleEntry, getPageUrl);
 }
 
-function generateGetUrl(sparqlTemplate, entry){
+//function generateGetUrl(sparqlTemplate, entry) {
+    
+//}
+
+function generateGetUrl(sparqlTemplate, entry, typeHint) {
+    typeHint = typeHint ? typeHint :  "xml"; // Fuseki convention
     var sparql = sparqlTemplater(sparqlTemplate, entry);
-    return sparqlQueryEndpoint + encodeURIComponent(sparql) + "&output=xml";
+    return sparqlQueryEndpoint + encodeURIComponent(sparql) + "&output="+typeHint;
 }
 
 function handleImageRequest(uri) {
-    var fliptoImage = function (src) {
-        window.location.href = src;
-    };
-    getImage(uri, fliptoImage);
+  //  var fliptoImage = function (src) {
+   //     window.location.href = src;
+  //  };
+    getImage(uri, redirectTo(target));
     return;
 }
 
@@ -97,7 +103,8 @@ function handleMarkdownRequest(uri) {
 }
 
 function handleTurtleRequest(entry) {
-    // TODO
+    var getPageUrl = generateGetUrl(getTurtleSparqlTemplate, entry,"text"); // hopefully will return text/turtle
+     redirectTo(getPageUrl);
 }
 
 /**
@@ -401,7 +408,7 @@ function makeResourceListHTML(entryArray, showContent) {
  *     fit in one line.
  */
 function formatRow(entry) { // content, 
-  //  entry.uri = "page.html?uri=" + entry.uri;
+    //  entry.uri = "page.html?uri=" + entry.uri;
     entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
     var row = templater(rowTemplate, entry);
     return row;
