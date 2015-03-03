@@ -85,6 +85,11 @@ OPTIONAL { \n\
 ORDER BY ?title \n\
 ";
 
+var getTurtleSparqlTemplate = commonPrefixes + "\n\
+    CONSTRUCT { <~{uri}~>  ?p ?o } \n\
+    FROM NAMED <~{graphURI}~>  \n\
+    WHERE { <~{uri}~>  ?p ?o } \n\
+";
 
 var getImageSparqlTemplate = commonPrefixes + "\n\
     SELECT DISTINCT * \n\

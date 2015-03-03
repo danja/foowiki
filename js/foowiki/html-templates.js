@@ -38,9 +38,10 @@ var linkTemplate = "~{#title}~ \
 <a href='page.html?uri=~{uri}~'>~{title}~</a> \
 ~{/title}~ \
 ~{^title}~ \
-<a href='~{uri}~'>~{uri}~</a> \
+<a href='page.html?uri=~{uri}~'>~{uri}~</a> \
   ~{/title}~ ";
 
+var turtleLinkTemplate = "<a href='page.html?uri=~{uri}~&type=turtle'>Turtle</a>";
 
 var rowTemplate = " <tr> \
            <td>" + linkTemplate + "</td> \
@@ -50,6 +51,7 @@ var rowTemplate = " <tr> \
 
 var resourceTemplate = " <tr> \
            <td>" + linkTemplate + "</td> \
+      <td>" + turtleLinkTemplate + "</td> \
            <td class='center'>~{modified}~</td> \
             <td class='center'>~{nick}~</td> \
             <td> \

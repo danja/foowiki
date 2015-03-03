@@ -46,32 +46,43 @@ var Entry = {
  *     fit in one line.
  */
 function getResource(uri, entryHandler) {
-    console.log("getresource " + uri);
+    // console.log("getresource " + uri);
     var type = queryString["type"];
     // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image
+
+    var entry = Entry.setId(graphURI, uri);
+
     if (type == "image") {
         handleImageRequest(uri);
+        return;
     }
 
     if (type == "markdown") {
         handleMarkdownRequest(uri);
+          return;
     }
 
-    var entry = Entry.setId(graphURI, uri);
+    if (type == "turtle") {
+        handleTurtleRequest(entry);
+          return;
+    }
 
-    var getPageSparql = sparqlTemplater(getPageSparqlTemplate, entry);
-    var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
-
+    
+    var getPageUrl = generateGetUrl(getPageSparqlTemplate, entry);
+    
     var handleEntry = function (entryJSON) {
         console.log("handleEntry " + JSON.stringify(entryJSON));
         entryHandler(entry, entryJSON);
     };
-    console.log("getPageUrl = "+getPageUrl);
+    console.log("getPageUrl = " + getPageUrl);
     getJsonForSparqlURL(getPageUrl, handleEntry);
     // getDataForURL(handleEntry, getPageUrl);
 }
 
-
+function generateGetUrl(sparqlTemplate, entry){
+    var sparql = sparqlTemplater(sparqlTemplate, entry);
+    return sparqlQueryEndpoint + encodeURIComponent(sparql) + "&output=xml";
+}
 
 function handleImageRequest(uri) {
     var fliptoImage = function (src) {
@@ -82,7 +93,11 @@ function handleImageRequest(uri) {
 }
 
 function handleMarkdownRequest(uri) {
+    // TODO
+}
 
+function handleTurtleRequest(entry) {
+    // TODO
 }
 
 /**
@@ -386,7 +401,7 @@ function makeResourceListHTML(entryArray, showContent) {
  *     fit in one line.
  */
 function formatRow(entry) { // content, 
-    entry.uri = "page.html?uri=" + entry.uri;
+  //  entry.uri = "page.html?uri=" + entry.uri;
     entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
     var row = templater(rowTemplate, entry);
     return row;
@@ -400,9 +415,9 @@ function formatRow(entry) { // content,
  *     fit in one line.
  */
 function formatResourceRow(entry) { // content, 
-  //  entry.link = "page.html?uri=" + entry.uri;
-   // console.log("MODIFIED ="+entry.modified);
- //   entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
+    //  entry.link = "page.html?uri=" + entry.uri;
+    // console.log("MODIFIED ="+entry.modified);
+    //   entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
     var row = templater(resourceTemplate, entry);
     return row;
 }
