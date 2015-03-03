@@ -74,6 +74,13 @@ var getResourcesSparqlTemplate = commonPrefixes + "\n\
 OPTIONAL { \n\
      ?uri   dc:title ?title  \n\
 } \n\
+OPTIONAL { \n\
+     ?uri   dc:created ?created  \n\
+} \n\
+OPTIONAL { \n\
+     ?uri   dc:modified ?modified  \n\
+} \n\
+   VALUES ?graphURI { <~{graphURI}~> } \n\
 } \n\
 ORDER BY ?title \n\
 ";
@@ -185,7 +192,7 @@ foaf:nick ?nick \n\
 }";
 
 // could probably be tidier
-var deletePageSparqlTemplate = commonPrefixes + "\n\
+var deleteResourceSparqlTemplate = commonPrefixes + "\n\
 WITH <~{graphURI}~> \n\
 DELETE {  \n\
 ?o sioc:topic ?topic . \n\

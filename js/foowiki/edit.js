@@ -89,7 +89,7 @@ function setupPosting() {
             });
         }
         var uri = getCurrentPageURI();
-        deleteEntry(graphURI, uri, postNewData);
+        deleteResource(graphURI, uri, postNewData);
         return false;
     }
 
@@ -98,14 +98,21 @@ function setupPosting() {
         return false;
     }
 
-    var fliptoIndexPage = function () {
-        window.location.href = "index.html";
-    };
+  //  var fliptoIndexPage = function () {
+   //     window.location.href = "index.html";
+  //  };
 
     $('#delete').click(function () {
         //   console.log("HERW"+JSON.stringify(entry)); NOT DEFINED
-        return deleteEntry(graphURI, uri, fliptoIndexPage);
+           var uri = getCurrentPageURI();
+        return deleteResource(graphURI, uri, redirectTo("index.html"));
     });
+}
+
+
+function redirectTo(target) {
+    window.location.href = target;
+    return false;
 }
 
 /**
@@ -139,15 +146,16 @@ function populateEntryFromHTML(entry) {
 }
 
 /**
- * Comment template.
+ * Deletes references to a resource
+ * see sparql-templates.deleteResourceSparqlTemplate
  * @param {string} foo This is a param with a description too long to fit in
  *     one line.
  * @return {number} This returns something that has a description too long to
  *     fit in one line.
  */
-function deleteEntry(graphURI, uri, callback) {
+function deleteResource(graphURI, uri, callback) {
     var entry = Entry.setId(graphURI, uri);
-    var data = sparqlTemplater(deletePageSparqlTemplate, entry, true);
+    var data = sparqlTemplater(deleteResourceSparqlTemplate, entry, true);
     $.ajax({
         type: "POST",
         url: sparqlUpdateEndpoint,
@@ -156,8 +164,8 @@ function deleteEntry(graphURI, uri, callback) {
         })
     }).done(function () {
         callback();
-    }).fail(function () {
-        alert("error");
+    }).fail(function (jqXHR, textStatus) {
+        alert("Error "+textStatus); // function( jqXHR, textStatus )
     });
     return false;
 }

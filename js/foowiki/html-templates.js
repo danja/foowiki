@@ -35,7 +35,7 @@ var resultTemplate = "<li><a href='~{uri}~'>~{title}~</a></li>";
 // var linkTemplate = "<a href='~{uri}~'>~{title}~</a>";
 
 var linkTemplate = "~{#title}~ \
-<a href='~{uri}~'>~{title}~</a> \
+<a href='page.html?uri=~{uri}~'>~{title}~</a> \
 ~{/title}~ \
 ~{^title}~ \
 <a href='~{uri}~'>~{uri}~</a> \
@@ -52,6 +52,11 @@ var resourceTemplate = " <tr> \
            <td>" + linkTemplate + "</td> \
            <td class='center'>~{modified}~</td> \
             <td class='center'>~{nick}~</td> \
+            <td> \
+            <form onSubmit='return deleteResource(\"~{graphURI}~\",\"~{uri}~\", redirectTo(\"resources.html\")); return false;'> \
+               <input type='submit' value='Delete' />\
+            </form> \
+            </td> \
             </tr>";
 
 /* rows='20' */

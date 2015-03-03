@@ -23,6 +23,7 @@ function buildPage(pageMap, entryJSON) {
             nick: ""
         };
         window.location.href = window.location.href.replace("page.html", "edit.html");
+        return;
     }
 
     var entry = entryJSON[0];

@@ -38,8 +38,9 @@
     <script src="js/foowiki/utils.js"></script>
     <script src="js/foowiki/core.js"></script>
     <script src="js/foowiki/index.js"></script>
+    <script src="js/foowiki/edit.js"></script>
     <script src="js/foowiki/sparql-connector.js"></script>
-    
+
     <script type="text/javascript" language="javascript">
         var getResourcesSparql = sparqlTemplater(getResourcesSparqlTemplate, {
             "graphURI": graphURI
@@ -54,14 +55,15 @@
             setupButtons();
 
             var doneCallback = function (json) {
-                console.log("RESOURCES = "+JSON.stringify(json));
-                var rows = makeResourceListHTML(json, false);
+                   console.log("RESOURCES = " + JSON.stringify(json));
                 
+                var rows = makeResourceListHTML(json, false);
+
                 $("#resources").replaceWith(rows);
-             //   setupTagsPanel("#tagsPanelTagsContainer");
+                //   setupTagsPanel("#tagsPanelTagsContainer");
             };
             getJsonForSparqlURL(getPagesUrl, doneCallback);
-      //      getDataForURL(doneCallback, getPagesUrl);
+            //      getDataForURL(doneCallback, getPagesUrl);
         });
     </script>
 </head>
@@ -73,7 +75,7 @@
     <div id="header">FooWiki</div>
 
     <div id="middle" class="column">
-     
+
         <table id="resourcesTable">
             <!-- refactor to use entryTableTemplate -->
             <tr>
@@ -86,7 +88,7 @@
             </tr>
             <tr id="resources"></tr>
         </table>
-        
+
     </div>
 
     <div id="left" class="column">
