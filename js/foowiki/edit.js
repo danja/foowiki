@@ -57,12 +57,14 @@ function setupPosting() {
         var uri = getCurrentPageURI();
         var entry = Entry.setId(graphURI, uri);
         entry = populateEntryFromHTML(entry);
+        entry.modified = (new Date()).toISOString();
+
         storeEntry(entry);
     });
 
     var storeEntry = function (entry) {
         //     var entry = extractEntry(graphURI, uri);
-
+        // console.log("ENTRY = "+JSON.stringify(entry));
         var data = sparqlTemplater(postPageSparqlTemplate, entry, true);
 
         //     var afterPostEntry = function () {
@@ -98,13 +100,13 @@ function setupPosting() {
         return false;
     }
 
-  //  var fliptoIndexPage = function () {
-   //     window.location.href = "index.html";
-  //  };
+    //  var fliptoIndexPage = function () {
+    //     window.location.href = "index.html";
+    //  };
 
     $('#delete').click(function () {
         //   console.log("HERW"+JSON.stringify(entry)); NOT DEFINED
-           var uri = getCurrentPageURI();
+        var uri = getCurrentPageURI();
         return deleteResource(graphURI, uri, redirectTo("index.html"));
     });
 }
@@ -133,11 +135,10 @@ function populateEntryFromHTML(entry) {
 
     entry.title = $('#title').val(); /// can this lot use a convention, HTML id = entry field name??? idHtmlToJSON??
     entry.nick = $('#nick').val();
-    entry.created = $('#created').text();
+    entry.created = $('#createdISO').val();
     entry.content = $('#content').val();
     entry.content = escapeXml(entry.content);
     entry.format = $('#format').val();
-
     return entry;
 }
 
@@ -161,7 +162,7 @@ function deleteResource(graphURI, uri, callback) {
     }).done(function () {
         callback();
     }).fail(function (jqXHR, textStatus) {
-        alert("Error "+textStatus); // function( jqXHR, textStatus )
+        alert("Error " + textStatus); // function( jqXHR, textStatus )
     });
     return false;
 }

@@ -76,6 +76,7 @@ var editEntryTemplate = "<div class='entry'> \
             </ul> \
             <label for='nick'>Nick</label> \
             <input id='nick' type='text' value='~{nick}~'></input> \
+     <input id='createdISO' type='hidden' value='~{created}~'></input> \
     <div id='created'>Created : ~{created}~</div> \
             <label for='format'>Format</label><!-- is Media Type URI --> \
             <select id='format'> \
