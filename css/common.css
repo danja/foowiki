@@ -10,7 +10,9 @@
     width: 100%;
 }
 
-.editable, ul.tagit { /* not working */
+.editable,
+ul.tagit {
+    /* not working */
     background-color: white;
     border: 2px solid pink;
 }
@@ -21,6 +23,14 @@
     padding: 20px;
 }
 
+#newPage {
+    width: 180px;
+    border: 1px solid darkgray;
+    border-radius: 10px;
+    padding: 4px;
+      margin: 5px;
+}
+
 body {
     background-color: lightgray;
 }
@@ -29,16 +39,15 @@ h4 {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
-
 /*  $("#maintagscontainer").addClass("editable"); */
 
-#left ul, 
+#left ul,
 #right ul {
     width: 150px;
 }
 
 li {
-  /*  width: 180 px; */
+    /*  width: 180 px; */
 }
 
 button {
@@ -61,14 +70,12 @@ button {
 
 #recentChangesContainer,
 #searchContainer {
-    width: 100%; 
- /*   width:180px; */
+    width: 100%;
+    /*   width:180px; */
     /* Be VERY careful with this, breaks normal words wh_erever */
-   /* word-break: break-all; */
-
+    /* word-break: break-all; */
     /* Non standard for webkit */
     word-break: break-word;
-    
     border: 1px solid darkgray;
     border-radius: 10px;
     padding: 4px;

@@ -71,11 +71,7 @@
     <div id="header">FooWiki</div>
 
     <div id="middle" class="column">
-        <p>
-            <button id="newPageButton">Create New Page</button>
-            <label for='newPageName'>New Page Title</label>
-            <input id="newPageName" type="text" size="40" />
-        </p>
+       
         <table id="pagesTable">
             <!-- refactor to use entryTableTemplate -->
             <tr>
@@ -114,6 +110,11 @@
         <div class="tab"><a href="index.html">Page Index</a> 
         </div>
         <div class="tab"><a href="page.html?uri=http://hyperdata.it/wiki/">Home Page</a>
+        </div>
+         <div id="newPage">
+            <button id="newPageButton">Create New Page</button>
+            <label for='newPageName'>New Page Title</label>
+            <input id="newPageName" type="text" />
         </div>
     </div>
 
