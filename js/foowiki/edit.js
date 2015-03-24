@@ -34,7 +34,7 @@ var populateEditPage = function (entry, entryJSON) {
 
     var pageMap = {
         "uri": uri,
-        "graphURI": graphURI
+        "graphURI": FooWiki.graphURI
     };
     setupTags("#maintagscontainer", pageMap, false);
     $("textarea").autoGrow();
@@ -55,15 +55,15 @@ function setupPosting() {
 
     $('#submit').click(function () {
         var uri = getCurrentPageURI();
-        var entry = Entry.setId(graphURI, uri);
+        var entry = Entry.setId(FooWiki.graphURI, uri);
         entry = populateEntryFromHTML(entry);
         entry.modified = (new Date()).toISOString();
-        entry.maker = graphURI+"/people/"+entry.nick; // mint a uri
+        entry.maker = FooWiki.graphURI+"/people/"+entry.nick; // mint a uri
         storeEntry(entry);
     });
 
     var storeEntry = function (entry) {
-        //     var entry = extractEntry(graphURI, uri);
+        //     var entry = extractEntry(FooWiki.graphURI, uri);
         // console.log("ENTRY = "+JSON.stringify(entry));
         var data = sparqlTemplater(postPageSparqlTemplate, entry, true);
 
@@ -74,7 +74,7 @@ function setupPosting() {
         var postNewData = function () {
             $.ajax({
                 type: "POST",
-                url: sparqlUpdateEndpoint,
+                url: FooWiki.sparqlUpdateEndpoint,
                 data: ({
                     update: data
                 })
@@ -82,8 +82,8 @@ function setupPosting() {
                 var fliptoViewPage = function () {
                     window.location.href = window.location.href.replace("edit.html", "page.html");
                 };
-                submitOutlinks(graphURI, uri, entry.content);
-                submitTags(graphURI, uri, fliptoViewPage);
+                submitOutlinks(FooWiki.graphURI, uri, entry.content);
+                submitTags(FooWiki.graphURI, uri, fliptoViewPage);
 
 
             }).fail(function () {
@@ -91,7 +91,7 @@ function setupPosting() {
             });
         }
         var uri = getCurrentPageURI();
-        deleteResource(graphURI, uri, postNewData);
+        deleteResource(FooWiki.graphURI, uri, postNewData);
         return false;
     }
 
@@ -107,7 +107,7 @@ function setupPosting() {
     $('#delete').click(function () {
         //   console.log("HERW"+JSON.stringify(entry)); NOT DEFINED
         var uri = getCurrentPageURI();
-        return deleteResource(graphURI, uri, redirectTo("index.html"));
+        return deleteResource(FooWiki.graphURI, uri, redirectTo("index.html"));
     });
 }
 
@@ -124,14 +124,14 @@ function populateEntryFromHTML(entry) {
     console.log("ENTRY = " + JSON.stringify(entry));
     /*
     var entry = {
-        "graphURI": graphURI,
+        "FooWiki.graphURI": FooWiki.graphURI,
         "uri": uri,
         "date": (new Date()).toISOString(),
         "modified": (new Date()).toISOString()
     };
     */
     //  var entry = Entry.create();
-    //  entry.setId(graphURI, uri);
+    //  entry.setId(FooWiki.graphURI, uri);
 
     entry.title = $('#title').val(); /// can this lot use a convention, HTML id = entry field name??? idHtmlToJSON??
     entry.nick = $('#nick').val();
@@ -155,7 +155,7 @@ function deleteResource(graphURI, uri, callback) {
     var data = sparqlTemplater(deleteResourceSparqlTemplate, entry, true);
     $.ajax({
         type: "POST",
-        url: sparqlUpdateEndpoint,
+        url: FooWiki.sparqlUpdateEndpoint,
         data: ({
             update: data
         })
@@ -214,7 +214,7 @@ function submitTags(graphURI, uri, callback) {
 
     $.ajax({
         type: "POST",
-        url: sparqlUpdateEndpoint,
+        url: FooWiki.sparqlUpdateEndpoint,
         data: ({
             update: data
         })

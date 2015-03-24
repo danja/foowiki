@@ -42,15 +42,15 @@
 
     <script type="text/javascript" language="javascript">
         var getPageListSparql = sparqlTemplater(getPageListSparqlTemplate, {
-            "graphURI": graphURI
+            "graphURI": FooWiki.graphURI
         });
-        var getPagesUrl = sparqlQueryEndpoint + encodeURIComponent(getPageListSparql) + "&output=xml";
+        var getPagesUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getPageListSparql) + "&output=xml";
 
         $(function () {
             setupErrorHandling();
             spinner();
 
-            $("#graphName").attr("value", graphURI);
+            $("#graphName").attr("value", FooWiki.graphURI);
             setupButtons();
 
             var doneCallback = function (json) {

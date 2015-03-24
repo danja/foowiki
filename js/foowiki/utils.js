@@ -145,7 +145,7 @@ function spinner() {
                 function () {
                     var href = this.href;
                     console.log("HREF=" + href);
-                    if (href.indexOf(serverRootPath) != -1) { // less than perfect, in-page links maybe involve pagesBaseURI
+                    if (href.indexOf(FooWiki.serverRootPath) != -1) { // less than perfect, in-page links maybe involve FooWiki.pagesBaseURI
                         var hashPosition = href.indexOf("#");
                         if (hashPosition != -1) {
                             var anchor = href.substring(hashPosition); // "#Something"
@@ -173,7 +173,7 @@ function spinner() {
                 // $(this).attr("src", path);
 
 
-                var path = pagesBaseURI + $(this).attr("src");
+                var path = FooWiki.pagesBaseURI + $(this).attr("src");
                 var me = this;
                 var setImgSrc = function (src) {
                     console.log("SRC=" + src);
@@ -190,7 +190,7 @@ function spinner() {
                 function () {
                     var src = $(this).attr("src");
                 //    console.log("this.src="+$(this).attr("src"));
-                    var newSrc = serverRootPath+"page.html?uri="+pagesBaseURI+src+"&type=image";
+                    var newSrc = FooWiki.serverRootPath+"page.html?uri="+FooWiki.pagesBaseURI+src+"&type=image";
                   $(this).attr("src",newSrc);
                 });
                 */
@@ -214,17 +214,17 @@ function spinner() {
             //    console.log("OFFSITEx"+linkText);
             if (linkText) {
                 //   console.log("OFFSITEx"+linkText);
-                if (aElement.href.indexOf(serverRootPath) == -1) { // off site, less than perfect BROKEN
+                if (aElement.href.indexOf(FooWiki.serverRootPath) == -1) { // off site, less than perfect BROKEN
                     //      console.log("OFFSITE");
                     $(aElement).append(aElement.href); // use link as label
                     return;
                 }
                 if (location.href == oldHref) { // link href was blank
-                    var before = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + serverRootPath + "page.html?uri=" + pagesBaseURI;
+                    var before = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + FooWiki.serverRootPath + "page.html?uri=" + FooWiki.pagesBaseURI;
                     return oldHref.substring(0, before.length) + linkText;
                 } else {
-                    var localRef = oldHref.substring(oldHref.indexOf(serverRootPath) + serverRootPath.length);
-                    return serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
+                    var localRef = oldHref.substring(oldHref.indexOf(FooWiki.serverRootPath) + FooWiki.serverRootPath.length);
+                    return FooWiki.serverRootPath + "page.html?uri=" + FooWiki.pagesBaseURI + localRef;
                 }
             }
             includeContent(aElement);
@@ -249,9 +249,9 @@ function redirectTo(target) {
         function includeContent(aElement) {
 
             var oldHref = aElement.href;
-            var localRef = oldHref.substring(oldHref.indexOf(serverRootPath) + serverRootPath.length);
-            //   var uri = serverRootPath + "page.html?uri=" + pagesBaseURI + localRef;
-            var uri = pagesBaseURI + localRef;
+            var localRef = oldHref.substring(oldHref.indexOf(FooWiki.serverRootPath) + FooWiki.serverRootPath.length);
+            //   var uri = FooWiki.serverRootPath + "page.html?uri=" + FooWiki.pagesBaseURI + localRef;
+            var uri = FooWiki.pagesBaseURI + localRef;
 
 
             //  $(aElement).append("filler");

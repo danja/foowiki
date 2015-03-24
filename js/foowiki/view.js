@@ -31,12 +31,12 @@ function buildPage(pageMap, entryJSON) {
     entry["uri"] = "page.html?uri=" + entry["uri"];
 
     // check if it's code-like
-    if (preformatFormats.contains(entry.format)) {
+    if (FooWiki.preformatFormats.contains(entry.format)) {
         entry.content = "<pre>" + entry.content + "</pre>";
     }
 
     // check if it's runnable
-    if (runnableFormats.contains(entry.format)) {
+    if (FooWiki.runnableFormats.contains(entry.format)) {
 
         var runButton = $("<button>");
         $("#buttons").append(runButton);
@@ -102,7 +102,7 @@ function fixImageLinks(object) {
         //    var path = split.slice(0, split.length - 1).join("/");
         //     path = path + "/" + $(this).attr("src") + "&type=image";
         // $(this).attr("src", path);
-        var path = pagesBaseURI + $(this).attr("src");
+        var path = FooWiki.FooWiki.pagesBaseURI + $(this).attr("src");
         var me = this;
         var callback = function (src) {
             //   console.log("SRC="+src);

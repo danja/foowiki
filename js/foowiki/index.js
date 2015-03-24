@@ -11,14 +11,14 @@
  */
 function setupButtons() {
     $("#turtle").click(function () {
-        var turtleURL = sparqlQueryEndpoint + "CONSTRUCT+%7B+%3Fs+%3Fp+%3Fo+%7D++WHERE+%7B%0D%0A+++GRAPH+%3Chttp%3A%2F%2Fhyperdata.it%2Fwiki%3E+%7B%0D%0A++++++%3Fs+%3Fp+%3Fo%0D%0A+++%7D%0D%0A%7D&output=text";
+        var turtleURL = FooWiki.sparqlQueryEndpoint + "CONSTRUCT+%7B+%3Fs+%3Fp+%3Fo+%7D++WHERE+%7B%0D%0A+++GRAPH+%3Chttp%3A%2F%2Fhyperdata.it%2Fwiki%3E+%7B%0D%0A++++++%3Fs+%3Fp+%3Fo%0D%0A+++%7D%0D%0A%7D&output=text";
         location.href = turtleURL;
     });
 
     $("#newPageButton").click(function () {
         var newPageName = $("#newPageName").val();
 
-        window.location.href = window.location.href = serverRootPath + "edit.html?uri=" + graphURI + "/" + newPageName;
+        window.location.href = window.location.href = FooWiki.serverRootPath + "edit.html?uri=" + FooWiki.graphURI + "/" + newPageName;
     });
 
     // OLD
@@ -26,7 +26,7 @@ function setupButtons() {
         var data = new FormData($("#upload-file").val());
         console.log("DATA = " + data);
         $.ajax({
-            url: sparqlUpdateEndpoint,
+            url: FooWiki.sparqlUpdateEndpoint,
             type: 'POST',
             data: ({
                 update: data

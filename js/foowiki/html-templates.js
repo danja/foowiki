@@ -94,7 +94,7 @@ var pageEntryTemplate = "<div class='entry'> \
             <div class='content'>~{content}~</div> \
             <ul id='maintagscontainer'> \
             </ul> \
-            <div class='byline center'>latest edit by ~{nick}~ on ~{modified}~</div> \
+            <div class='byline center'>latest edit by ~{nick}~ on ~{date}~</div> \
             </div>";
 
 //?same as above?

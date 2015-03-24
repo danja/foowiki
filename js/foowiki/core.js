@@ -4,8 +4,8 @@ var Entry = {
         return this;
     },
 
-    function (graphURI, uri) {
-        this.setId(graphURI, uri)
+    function (FooWiki.graphURI, uri) {
+        this.setId(FooWiki.graphURI, uri)
         return this;
     },
     */
@@ -51,8 +51,10 @@ function getResource(uri, entryHandler) {
             console.log("TYPE="+type);
     // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image
 
-    var entry = Entry.setId(graphURI, uri);
+    var entry = Entry.setId(FooWiki.graphURI, uri);
 
+    
+    
     if (type == "image") {
         handleImageRequest(uri);
         return;
@@ -87,7 +89,7 @@ function getResource(uri, entryHandler) {
 function generateGetUrl(sparqlTemplate, entry, typeHint) {
     typeHint = typeHint ? typeHint :  "xml"; // Fuseki convention
     var sparql = sparqlTemplater(sparqlTemplate, entry);
-    return sparqlQueryEndpoint + encodeURIComponent(sparql) + "&output="+typeHint;
+    return FooWiki.sparqlQueryEndpoint + encodeURIComponent(sparql) + "&output="+typeHint;
 }
 
 function handleImageRequest(uri) {
@@ -117,11 +119,11 @@ function handleTurtleRequest(entry) {
 function getImage(imageURI, callback) {
     var pageMap = {
         "imageURI": imageURI,
-        "graphURI": graphURI
+        "graphURI": FooWiki.graphURI
     };
 
     var getPageSparql = sparqlTemplater(getImageSparqlTemplate, pageMap);
-    var getPageUrl = sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
+    var getPageUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
     var makeDataURL = function (entryJSON) {
             //   console.log("BBB");
@@ -183,15 +185,15 @@ function storeImage(dataURL) {
 
     // ADD MEDIA TYPE
     var map = {
-        "graphURI": graphURI,
-        "imageURI": pagesBaseURI + imageLabel,
+        "graphURI": FooWiki.graphURI,
+        "imageURI": FooWiki.pagesBaseURI + imageLabel,
         "imageLabel": imageLabel,
         "imageData": raw
     };
     var data = sparqlTemplater(postImageSparqlTemplate, map, true);
     $.ajax({
         type: "POST",
-        url: sparqlUpdateEndpoint,
+        url: FooWiki.sparqlUpdateEndpoint,
         data: ({
             update: data
         })
@@ -274,7 +276,7 @@ function doSearch() {
     var regex = $("#searchText").val();
 
     var searchMap = {
-        "graphURI": graphURI,
+        "graphURI": FooWiki.graphURI,
         "regex": regex
     };
 
@@ -297,7 +299,7 @@ function doSearch() {
     //  console.log("searchMap = " + JSON.stringify(searchMap));
 
     var searchSparql = sparqlTemplater(searchSparqlTemplate, searchMap);
-    var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
+    var searchUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
 
     var renderSearchResults = function (json) {
             //    console.log("entriesJSON = " + JSON.stringify(entriesJSON));
@@ -323,14 +325,14 @@ function doSearch() {
 function makeRecentChangesList() { // refactor with doSearch()
 
     var searchMap = {
-        "graphURI": graphURI,
+        "graphURI": FooWiki.graphURI,
     };
 
     // $.extend(searchMap, entryXmlNames); // merges maps
 
     var searchSparql = sparqlTemplater(getRecentChangesSparqlTemplate, searchMap);
     //   console.log("getRecentChangesSparqlTemplate = " + getRecentChangesSparqlTemplate);
-    var searchUrl = sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
+    var searchUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
     var renderRecentChanges = function (json) {
 
             var results = makeLinkListHTML(json);
@@ -422,7 +424,7 @@ function formatRow(entry) { // content,
  *     fit in one line.
  */
 function formatResourceRow(entry) { // content, 
-    console.log("ENTRY/RESOURCE= "+JSON.stringify(entry));
+    // console.log("ENTRY/RESOURCE= "+JSON.stringify(entry));
     var row = templater(resourceTemplate, entry);
     return row;
 }
@@ -491,7 +493,7 @@ function setupTagsAutocomplete(tagsContainerId, callback) {
  */
 function createTags(containerId, pageMap, readOnly) {
     var getTagsSparql = sparqlTemplater(getTagsSparqlTemplate, pageMap);
-    var getTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getTagsSparql) + "&output=xml";
+    var getTagsUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getTagsSparql) + "&output=xml";
 
     var renderTags = function (tags) {
 
@@ -550,11 +552,11 @@ function setupTagsPanel(tagsContainerId) { // is only used by index.html, nothin
  */
 function getAllTags(doneCallback) {
     var map = {
-        "graphURI": graphURI
+        "graphURI": FooWiki.graphURI
     };
     var getAllTagsSparql = sparqlTemplater(getAllTagsSparqlTemplate, map);
 
-    var getAllTagsUrl = sparqlQueryEndpoint + encodeURIComponent(getAllTagsSparql) + "&output=xml";
+    var getAllTagsUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getAllTagsSparql) + "&output=xml";
     //  getDataForURL(doneCallback, getAllTagsUrl);
     getJsonForSparqlURL(getAllTagsUrl, doneCallback);
 }

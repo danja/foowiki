@@ -2,36 +2,33 @@
     *    System constants (URLs/URIs/IRIs)
     */
 
-/**
- * Comment template.
- * @param {string} foo This is a param with a description too long to fit in
- *     one line.
- * @return {number} This returns something that has a description too long to
- *     fit in one line.
- */
+   /**
+    * Comment template.
+    * @param {string} foo This is a param with a description too long to fit in
+    *     one line.
+    * @return {number} This returns something that has a description too long to
+    *     fit in one line.
+    */
 
-   var pagesBaseURI = "http://hyperdata.it/wiki/";
-   var graphURI = "http://hyperdata.it/wiki";
-   /*
-   var serverBaseURI = "http://localhost:3030/foowiki/";
-   var sparqlQueryEndpoint = "http://localhost:3030/foowiki/sparql?query=";
+// recursive
+// find ./ -type f -readable -writable -exec sed -i "s/FooWiki.preformatFormats/FooWiki.FooWiki.preformatFormats/g" {} \;
 
-   var sparqlQueryEndpoint = "http://localhost:3030/foowiki/sparql?query=";
-   var sparqlUpdateEndpoint = "http://localhost:3030/foowiki/update";
-*/
-   var serverRootPath = "/foowiki/";
-   var sparqlQueryEndpoint = "/foowiki/sparql?query=";
 
-   var sparqlQueryEndpoint = "/foowiki/sparql?query=";
-   var sparqlUpdateEndpoint = "/foowiki/update";
+   var FooWiki = {
+       pagesBaseURI: "http://hyperdata.it/wiki/",
+       graphURI: "http://hyperdata.it/wiki",
 
-   var runnableFormats = [
+       serverRootPath: "/foowiki/",
+       sparqlQueryEndpoint: "/foowiki/sparql?query=", // move ? part ??
+       sparqlUpdateEndpoint: "/foowiki/update",
+
+       runnableFormats: [
        "http://purl.org/NET/mediatypes/application/javascript"
-   ];
+   ],
 
-   var preformatFormats = [
+       preformatFormats: [
        "http://purl.org/NET/mediatypes/application/javascript",
            "http://purl.org/NET/mediatypes/text/html"
-   ];
+   ]
 
-   //  var entryXmlNames = ["uri", "content", "date", "title", "nick", "format"];
+   }
