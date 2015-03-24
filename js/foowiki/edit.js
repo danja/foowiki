@@ -58,7 +58,7 @@ function setupPosting() {
         var entry = Entry.setId(graphURI, uri);
         entry = populateEntryFromHTML(entry);
         entry.modified = (new Date()).toISOString();
-
+        entry.maker = graphURI+"/people/"+entry.nick; // mint a uri
         storeEntry(entry);
     });
 

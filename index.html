@@ -39,7 +39,7 @@
     <script src="js/foowiki/core.js"></script>
     <script src="js/foowiki/index.js"></script>
     <script src="js/foowiki/sparql-connector.js"></script>
-    
+
     <script type="text/javascript" language="javascript">
         var getPageListSparql = sparqlTemplater(getPageListSparqlTemplate, {
             "graphURI": graphURI
@@ -59,7 +59,7 @@
                 setupTagsPanel("#tagsPanelTagsContainer");
             };
             getJsonForSparqlURL(getPagesUrl, doneCallback);
-      //      getDataForURL(doneCallback, getPagesUrl);
+            //      getDataForURL(doneCallback, getPagesUrl);
         });
     </script>
 </head>
@@ -71,7 +71,7 @@
     <div id="header">FooWiki</div>
 
     <div id="middle" class="column">
-       
+
         <table id="pagesTable">
             <!-- refactor to use entryTableTemplate -->
             <tr>
@@ -107,11 +107,15 @@
     </div>
 
     <div id="left" class="column">
-        <div class="tab"><a href="index.html">Page Index</a> 
-        </div>
+
         <div class="tab"><a href="page.html?uri=http://hyperdata.it/wiki/">Home Page</a>
         </div>
-         <div id="newPage">
+        <div class="tab"><a href="resources.html">Resource List</a>
+        </div>
+        <div class="tab"><a href="yasgui.html">SPARQL</a>
+        </div>
+
+        <div id="newPage">
             <button id="newPageButton">Create New Page</button>
             <label for='newPageName'>New Page Title</label>
             <input id="newPageName" type="text" />

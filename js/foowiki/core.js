@@ -422,9 +422,7 @@ function formatRow(entry) { // content,
  *     fit in one line.
  */
 function formatResourceRow(entry) { // content, 
-    //  entry.link = "page.html?uri=" + entry.uri;
-    // console.log("MODIFIED ="+entry.modified);
-    //   entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
+    console.log("ENTRY/RESOURCE= "+JSON.stringify(entry));
     var row = templater(resourceTemplate, entry);
     return row;
 }

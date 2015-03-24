@@ -64,13 +64,12 @@ var getPageSparqlTemplate = commonPrefixes + "\n\
 } \n\
 ";
 
-//     ?p ?o \n\
+//      ?uri a ?type; \n\
 
 var getResourcesSparqlTemplate = commonPrefixes + "\n\
     SELECT DISTINCT * \n\
     FROM NAMED <~{graphURI}~>  \n\
     WHERE { \n\
-    ?uri a ?type; \n\
 OPTIONAL { \n\
      ?uri   dc:title ?title  \n\
 } \n\
@@ -152,9 +151,8 @@ dc:title \"\"\"~{title}~\"\"\" ; \n\
 sioc:content  \"\"\"~{content}~\"\"\" ; \n\
 a sioc:Post ; \n\
 a wiki:Page ; \n\
-foaf:maker [ \n\
-foaf:nick \"~{nick}~\" \n\
-] . \n\
+foaf:maker <~{maker}~> . \n\
+ <~{maker}~> foaf:nick \"~{nick}~\" . \n\
 }  \n\
 }";
 
