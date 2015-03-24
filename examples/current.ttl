@@ -8,7 +8,7 @@
 
 <http://hyperdata.it/wiki/To%20File>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : 2015-02-25T12:40:33.258Z" ;
+        dc:created    "2015-02-25T12:40:33.258Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-25T12:40:33.258Z" ;
         dc:title      "To File" ;
@@ -33,12 +33,12 @@
 
 <http://hyperdata.it/wiki/Test>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : Created : Created : Created : Created : Created : 2015-02-20T10:09:45.410Z" ;
+        dc:created    "2015-02-20T10:09:45.410Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
-        dc:modified   "2015-02-20T10:09:45.410Z" ;
+        dc:modified   "2015-03-24T07:38:21.543Z" ;
         dc:title      "Test" ;
-        sioc:content  "sdsdfsfs x [New]()" ;
-        foaf:maker    [ foaf:nick  "danja" ] .
+        sioc:content  "sdsdfsfs x [New]()\n\n" ;
+        foaf:maker    <http://hyperdata.it/wiki/people/danja> .
 
 <http://hyperdata.it/tags/www>
         rdfs:label  "www" .
@@ -77,7 +77,7 @@
 
 <http://hyperdata.it/wiki/To%20Do>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : 2015-01-30T18:14:24.921Z" ;
+        dc:created    "2015-01-30T18:14:24.921Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-01-30T18:14:24.921Z" ;
         dc:title      "To Do" ;
@@ -89,7 +89,7 @@
 
 <http://hyperdata.it/wiki/Another%20Image%20Test>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : 2015-01-27T12:44:02.570Z" ;
+        dc:created    "2015-01-27T12:44:02.570Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-01-27T12:44:02.570Z" ;
         dc:title      "Another Image Test" ;
@@ -110,7 +110,7 @@
 
 <http://hyperdata.it/wiki/Danny%20To%20Do>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : Created : Created : Created : Created : 2015-02-16T22:07:03.213Z" ;
+        dc:created    "2015-02-16T22:07:03.213Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-18T18:45:02.851Z" ;
         dc:title      "Danny To Do" ;
@@ -120,7 +120,7 @@
 
 <http://hyperdata.it/wiki/Refactoring%20Procedure>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : Created : Created : 2015-02-20T09:34:31.234Z" ;
+        dc:created    "2015-02-20T09:34:31.234Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-20T09:39:08.200Z" ;
         dc:title      "Refactoring Procedure" ;
@@ -188,7 +188,7 @@
 
 <http://hyperdata.it/wiki/Mish&#39;s%20Random%20Writing>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : " ;
+        dc:created    "" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-17T16:23:16.220Z" ;
         dc:title      "Mish&#39;s Random Writing" ;
@@ -197,7 +197,7 @@
 
 <http://hyperdata.it/wiki/Hobby%20Notes>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : Created : 2015-02-26T19:42:48.110Z" ;
+        dc:created    "2015-02-26T19:42:48.110Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-26T19:42:48.110Z" ;
         dc:title      "Hobby Notes" ;
@@ -228,6 +228,9 @@
 <http://hyperdata.it/tags/code>
         rdfs:label  "code" .
 
+<http://hyperdata.it/wiki/people/danja>
+        foaf:nick  "danja" .
+
 <http://hyperdata.it/wiki/FooWiki%20Docs>
         a             sioc:Post , wiki:Page ;
         dc:created    "2015-01-28T11:28:07.345Z" ;
@@ -255,15 +258,6 @@
 <http://hyperdata.it/tags/foowiki>
         rdfs:label  "foowiki" .
 
-<http://example/update-base/page.html?uri=http://hyperdata.it/wiki/New>
-        a             wiki:Page , sioc:Post ;
-        dc:created    "Created : 2015-02-25T09:42:29.541Z" ;
-        dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
-        dc:modified   "2015-02-25T09:42:29.541Z" ;
-        dc:title      "New" ;
-        sioc:content  "sdf" ;
-        foaf:maker    [ foaf:nick  "danja" ] .
-
 <http://hyperdata.it/wiki/To%20Do%202015-01-12>
         a             wiki:Page , sioc:Post ;
         dc:created    "2015-01-13T13:03:33.875Z" ;
@@ -289,7 +283,7 @@
 
 <http://hyperdata.it/wiki/>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : Created : Created : 2015-02-17T16:00:24.276Z" ;
+        dc:created    "2015-02-17T16:00:24.276Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-20T08:12:58.212Z" ;
         dc:title      "Home Page" ;
@@ -308,7 +302,7 @@
 
 <http://hyperdata.it/wiki/Creative%20Ideas>
         a             sioc:Post , wiki:Page ;
-        dc:created    "Created : 2015-02-07T10:27:55.705Z" ;
+        dc:created    "2015-02-07T10:27:55.705Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-07T10:27:55.705Z" ;
         dc:title      "Thought Catchers - Creative Ideas" ;
@@ -318,7 +312,7 @@
 
 <http://hyperdata.it/wiki/FooWiki%20Bugs>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : Created : 2015-02-12T12:33:43.671Z" ;
+        dc:created    "2015-02-12T12:33:43.671Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-12T12:33:43.671Z" ;
         dc:title      "FooWiki Bugs" ;
@@ -350,7 +344,7 @@
 
 <http://hyperdata.it/wiki/New>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : Created : 2015-02-25T09:54:02.538Z" ;
+        dc:created    "2015-02-25T09:54:02.538Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-25T09:54:02.538Z" ;
         dc:title      "New" ;
@@ -385,9 +379,9 @@
         a             wiki:Page , sioc:Post ;
         dc:created    "2015-02-13T20:17:56.565Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
-        dc:modified   "2015-03-23T07:40:08.697Z" ;
+        dc:modified   "2015-03-24T07:02:48.693Z" ;
         dc:title      "Feed List" ;
-        sioc:content  "* http://feeds.feedburner.com/dailyjs\n* http://amundsen.com/blog/feed\n\ngreeny stuff:\nhttp://www.notechmagazine.com/2010/03/blogroll.html\n\n* http://feeds2.feedburner.com/typepad/krisdedecker/lowtechmagazineenglish\n\nsdf" ;
+        sioc:content  "* http://feeds.feedburner.com/dailyjs\n* http://amundsen.com/blog/feed\n\ngreeny stuff:\nhttp://www.notechmagazine.com/2010/03/blogroll.html\n\n* http://feeds2.feedburner.com/typepad/krisdedecker/lowtechmagazineenglish\n\nmaths\n\n* http://scienceblogs.com/goodmath/feed/atom/" ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
 <http://hyperdata.it/wiki/Image%20Testing>
@@ -416,7 +410,7 @@
 
 <http://hyperdata.it/wiki/Online%20Presence>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : Created : Created : Created : Created : Created : Created : 2015-02-26T10:06:04.011Z" ;
+        dc:created    "2015-02-26T10:06:04.011Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-26T10:06:04.011Z" ;
         dc:title      "Online Presence" ;
@@ -434,6 +428,18 @@
         foaf:maker    [ foaf:nick  "danja" ] ;
         foaf:maker    [ foaf:nick  "danja" ] .
 
+<http://hyperdata.it/tags/bugs>
+        rdfs:label  "bugs" .
+
+<http://hyperdata.it/wiki/To%20Investigate>
+        a             wiki:Page , sioc:Post ;
+        dc:created    "2015-02-16T08:25:09.526Z" ;
+        dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
+        dc:modified   "2015-02-18T21:34:39.638Z" ;
+        dc:title      "To Investigate" ;
+        sioc:content  "http://en.m.wikipedia.org/wiki/OntoClean\n\nhttp://www.insightin.com/esl/\n\nJsmaker\n\nhttp://stackoverflow.com/questions/13466600/how-would-i-go-about-implementing-a-simple-stack-based-programming-language\n\nhttp://www.bayfronttechnologies.com/mc_tutorial.html\n\n\nhttp://cs.gmu.edu/~sean/book/metaheuristics/Essentials.pdf\n\nHRTF plots\n\n\n\nhttps://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers\n\nhttps://www.youtube.com/watch?v=0go-MrsR_PI\n\nhttp://terminal.jcubic.pl/\n\n* turns node.is into apps\n  * *https://www.npmjs.com/package/atom-shell\n* for mobile http://ionicframework.com/ is supported in Brackets\n* http://en.wikipedia.org/wiki/Responsive_web_design\n* https://www.npmjs.com/package/http-template\n* https://trello.com\n* Scraper for node https://github.com/lapwinglabs/x-ray\n* http://visop-dev.com/Project+jQuery.sheet\n\nfor node.js : http://senecajs.org/\n\nhttps://github.com/js-data/js-data/blob/master/README.md\n\ndanbri : stand https://github.com/overtone/overtone (except am now lost in http://mitpress.mit.edu/sicp/ and http://community.schemewiki.org/?little-schemer ...)\n\nhttp://tobyschachman.com/Shadershop/\n\ntiddlywiki\n\nhttp://the-paper-trail.org/blog/the-elephant-was-a-trojan-horse-on-the-death-of-map-reduce-at-google/#more-604\n\nhttp://codeutopia.net/blog/2015/01/30/how-to-unit-test-nodejs-http-requests/\n\n## Tonewood\n\nhttp://www.csudh.edu/oliver/chemdata/woods.htm" ;
+        foaf:maker    [ foaf:nick  "danja" ] .
+
 <http://hyperdata.it/wiki/Shopping%202015-03>
         a             sioc:Post , wiki:Page ;
         dc:created    "2015-03-10T06:04:09.255Z" ;
@@ -443,18 +449,6 @@
         dc:topic      <http://hyperdata.it/tags/todo> , <http://hyperdata.it/tags/shopping> ;
         sioc:content  "\n\nrooting compound\n\nhttps://www.thomann.de/gb/basket.html?sid=699f3635852c6fdf2171862882aafe18\n\n135\n\nhttp://www.amazon.it/gp/cart/view.html/ref=nav_cart\nbeer kit?\n60\n\nhttp://swansoneurope.com/cart.html\n\n20\n\nhttp://www.rapidonline.com/Basket.aspx\n\n80\n\nhttp://www.amazon.co.uk/gp/cart/view.html/ref=ox_page_ac_1?ie=UTF8&amp;activePage=1&amp;dc=df&amp;flcExpanded=0&amp;fromAUI=1#sc-anchor-active-cart\n\n390\n\nhttp://www.thonk.co.uk/cart/\n\n5" ;
         foaf:maker    [ foaf:nick  "danja" ] .
-
-<http://hyperdata.it/wiki/To%20Investigate>
-        a             wiki:Page , sioc:Post ;
-        dc:created    "Created : Created : Created : Created : Created : Created : Created : 2015-02-16T08:25:09.526Z" ;
-        dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
-        dc:modified   "2015-02-18T21:34:39.638Z" ;
-        dc:title      "To Investigate" ;
-        sioc:content  "http://en.m.wikipedia.org/wiki/OntoClean\n\nhttp://www.insightin.com/esl/\n\nJsmaker\n\nhttp://stackoverflow.com/questions/13466600/how-would-i-go-about-implementing-a-simple-stack-based-programming-language\n\nhttp://www.bayfronttechnologies.com/mc_tutorial.html\n\n\nhttp://cs.gmu.edu/~sean/book/metaheuristics/Essentials.pdf\n\nHRTF plots\n\n\n\nhttps://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers\n\nhttps://www.youtube.com/watch?v=0go-MrsR_PI\n\nhttp://terminal.jcubic.pl/\n\n* turns node.is into apps\n  * *https://www.npmjs.com/package/atom-shell\n* for mobile http://ionicframework.com/ is supported in Brackets\n* http://en.wikipedia.org/wiki/Responsive_web_design\n* https://www.npmjs.com/package/http-template\n* https://trello.com\n* Scraper for node https://github.com/lapwinglabs/x-ray\n* http://visop-dev.com/Project+jQuery.sheet\n\nfor node.js : http://senecajs.org/\n\nhttps://github.com/js-data/js-data/blob/master/README.md\n\ndanbri : stand https://github.com/overtone/overtone (except am now lost in http://mitpress.mit.edu/sicp/ and http://community.schemewiki.org/?little-schemer ...)\n\nhttp://tobyschachman.com/Shadershop/\n\ntiddlywiki\n\nhttp://the-paper-trail.org/blog/the-elephant-was-a-trojan-horse-on-the-death-of-map-reduce-at-google/#more-604\n\nhttp://codeutopia.net/blog/2015/01/30/how-to-unit-test-nodejs-http-requests/\n\n## Tonewood\n\nhttp://www.csudh.edu/oliver/chemdata/woods.htm" ;
-        foaf:maker    [ foaf:nick  "danja" ] .
-
-<http://hyperdata.it/tags/bugs>
-        rdfs:label  "bugs" .
 
 <http://hyperdata.it/wiki/To%20Do%202015-01-23>
         a             wiki:Page , sioc:Post ;
@@ -489,7 +483,7 @@
 
 <http://hyperdata.it/wiki/New%20Place%20To%20Do%20Outside>
         a             sioc:Post , wiki:Page ;
-        dc:created    "Created : 2015-02-24T15:52:14.217Z" ;
+        dc:created    "2015-02-24T15:52:14.217Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-24T15:52:14.217Z" ;
         dc:title      "New Place To Do Outside" ;
@@ -556,7 +550,7 @@
 
 <http://hyperdata.it/wiki/Recording%20Tricks>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : Created : Created : Created : Created : 2015-02-26T19:44:24.322Z" ;
+        dc:created    "2015-02-26T19:44:24.322Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-26T19:44:24.322Z" ;
         dc:title      "Recording Tricks" ;
@@ -565,7 +559,7 @@
 
 <http://hyperdata.it/wiki/What%20Danny%20Wants%20To%20Do>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : Created : Created : Created : Created : Created : Created : 2015-02-25T11:55:40.635Z" ;
+        dc:created    "2015-02-25T11:55:40.635Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-25T11:55:40.635Z" ;
         dc:title      "What Danny Wants To Do" ;
@@ -615,7 +609,7 @@
 
 <http://hyperdata.it/wiki/Dev%20Tools>
         a             wiki:Page , sioc:Post ;
-        dc:created    "Created : Created : Created : Created : 2015-02-24T08:14:02.879Z" ;
+        dc:created    "2015-02-24T08:14:02.879Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
         dc:modified   "2015-02-24T08:14:02.879Z" ;
         dc:title      "Dev Tools" ;
@@ -642,13 +636,14 @@
         rdfs:label  "handmade" .
 
 <http://hyperdata.it/wiki/FooWiki%20To%20Do>
-        a             wiki:Page , sioc:Post ;
-        dc:created    "Created : Created : 2015-02-16T22:05:19.690Z" ;
+        a             sioc:Post , wiki:Page ;
+        dc:created    "2015-02-16T22:05:19.690Z" ;
         dc:format     <http://purl.org/NET/mediatypes/text/markdown> ;
-        dc:modified   "2015-02-16T22:05:19.690Z" ;
+        dc:modified   "2015-03-24T07:51:20.350Z" ;
         dc:title      "FooWiki To Do" ;
+        dc:topic      <http://hyperdata.it/tags/foowiki> , <http://hyperdata.it/tags/todo> ;
         sioc:content  "save &amp; continue button\n\nhttps://shanetomlinson.com/2013/writing-testable-javascript-part-2-refactor-away-anti-patterns/\n\n. Choose slow enough tempo you can double or quadruple in your head. Going up gradually fucks up the time development. Once you&#39;re comfortable with one tempo and its multiples, then up the basic tempo by 5 bpm or so. Rinse and repeat.\n\nSee also [To Investigate]() [Danny To Do]()\n\nWhat was Mish idea, irc like for quick notes..?\n\nhttps://github.com/jribble/Java-Websockify\n\n[To Do 2015-01-12](To Do 2015-01-12)\n\n### [Home Page](Home Page)\n\n* [FooWiki Bugs]()\n* [Core](#Core)\n* [Admin](#Admin)\n* [Foo]()\n* [Foo Apps](#Foo Apps)\n\n## Architecture\n* refactoring \n  * jslint\n  * http://www.crockford.com/\n  * break apart methods (rename callbacks)\n  * http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript\n  * https://shanetomlinson.com/2013/testing-javascript-frontend-part-1-anti-patterns-and-fixes\n\n* make more OO see http://en.wikipedia.org/wiki/Class-responsibility-collaboration_card\n* pull out core methods into lib wrapping: get(URI, accept type) etc\n\n## Small Jobs\n* add markup for image after uploading ``` ![alt text](imagename.jpg) ```\n* linkto md versionof files (will allow wget backup)\n* search\n  * filter by tag exclusion \n  * results as full content\n  * export results\n* mobile, printable views CSS\n  * http://www.sitepoint.com/build-a-responsive-mobile-friendly-website-from-scratch-css-stylesheet/* precompile templates\n* view original MD\n* node script to auto backup\n* show warning if content is above a certain length\n\nPull out bookmarking bookmarklet from semi, integrate here\n\n## Bigger Bits\n* **do some of these with [Foo](Foo)**\n* include related links in RDF - inlinks/outlinks\n* cleanup script (duplicate dates etc)\n* bubble rename through pages&amp;#39; content (fix deadening links)\n* RDF media types, GET/POST\n* versioning\n* integrate http://codemirror.net/ \n* push everything to another store\n* edit conflict handling\n* ajaxian import http://www.nickdesteffen.com/blog/file-uploading-over-ajax-using-html5\n* MD page import/export\n* make Epub book\n  * https://github.com/ukyo/jsziptools\n  * https://github.com/ukyo/js-epub-builder\n  * https://github.com/ukyo/js-epub-editor\n  * http://stackoverflow.com/questions/12092532/how-to-convert-html-to-valid-xhtml\n  * https://github.com/ukyo/jsziptools#zip\n* priority\n  * pick a to do item\n* all literal fields???\n* [WikiWhiteBoard](WikiWhiteBoard)\n* showing whether an intended target page exists or not.\n* LaTex (for maths)\n* shove in local storage http://www.w3.org/wiki/IntegrityIsJobOne\n* Atom feed\n\n## Admin\n* docs in code\n* start proper docs - /projects on github\n* announce - Jena &amp; semweb lists\n\n## Foo Apps\n* [Slide Show](Slide Show)\n* random page\n* tabs http://htmldog.com/techniques/tabs/\n\n* no! // not worth it right now...change model to include versioning (hasVersion) [Content Model](ContentModel)" ;
-        foaf:maker    [ foaf:nick  "danja" ] .
+        foaf:maker    <http://hyperdata.it/wiki/people/danja> .
 
 <http://hyperdata.it/wiki/To%20Do%202015-01-24>
         a             sioc:Post , wiki:Page ;
