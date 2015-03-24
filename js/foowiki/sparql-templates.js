@@ -25,7 +25,7 @@ PREFIX sioc: <http://rdfs.org/sioc/ns#>  \n\
 PREFIX wiki: <http://purl.org/stuff/wiki#>  \n\
 ";
 
-var getPageListSparqlTemplate = commonPrefixes + " \n\
+var getListSparqlTemplate = commonPrefixes + " \n\
 SELECT DISTINCT * \n\
 FROM NAMED <~{graphURI}~>  \n\
 WHERE { \n\
@@ -39,11 +39,15 @@ foaf:maker [ \n\
 foaf:nick ?nick \n\
 ] . \n\
 } \n\
-ORDER By DESC(?modified)  \n\
+";
+
+var getPageListSparqlTemplate = getListSparqlTemplate + " \n\
+ORDER By ?title  \n\
 # LIMIT 10 \n\
 ";
 
-var getRecentChangesSparqlTemplate = commonPrefixes + getPageListSparqlTemplate + " \n\
+var getRecentChangesSparqlTemplate = getListSparqlTemplate+ " \n\
+ORDER By DESC(?modified)  \n\
 LIMIT 15 \n\
 ";
 
@@ -203,15 +207,6 @@ DELETE {  \n\
 WHERE {  \n\
 <~{uri}~>  ?p ?o  . \n\
 ?o sioc:topic ?topic . \n\
-} \n\
- ; \n\
-WITH <~{graphURI}~> \n\
-DELETE {  \n\
-?maker foaf:nick ?nick . \n\
-}  \n\
-WHERE {  \n\
-<~{uri}~> foaf:maker ?maker . \n\
-?maker foaf:nick ?nick . \n\
 } \n\
  ; \n\
 WITH <~{graphURI}~> \n\
