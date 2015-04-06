@@ -16,7 +16,7 @@ Next download Fuseki according to the [instructions](http://jena.apache.org/docu
 
 1. the Fuseki config file - the one provided as foowiki/etc/seki-config.ttl includes a suitable store definition (called seki)
 2. a script to run Fuseki pointing at its config file - the one provided as foowiki/etc/run-fuseki.bat should help as a starting point
-3. the FuWiki config file, foowiki/js/config.js - the one provided is the one I use against the two files above
+3. the FuWiki config file, foowiki/js/foowiki/config.js - the one provided is the one I use against the two files above
 
 ### Checking Fuseki 
 Assuming you have a setup close to this, opening http://localhost:3030 should take you to the Fuseki pages. Click on Control Panel. When offered, select the /seki dataset. You should now see Fuseki's raw SPARQL interface. 
