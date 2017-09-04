@@ -13,14 +13,17 @@
 // recursive
 // find ./ -type f -readable -writable -exec sed -i "s/FooWiki.preformatFormats/FooWiki.FooWiki.preformatFormats/g" {} \;
 
+//    in core.js :
+//  var getPageUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
    var FooWiki = {
        pagesBaseURI: "http://hyperdata.it/wiki/",
        graphURI: "http://hyperdata.it/wiki",
 
+       serverHostURI: "http://localhost:3030"
        serverRootPath: "/foowiki/",
-       sparqlQueryEndpoint: "/foowiki/sparql?query=", // move ? part ??
-       sparqlUpdateEndpoint: "/foowiki/update",
+       sparqlQueryEndpoint: serverHostURI + "/foowiki/sparql?query=", // move ? part ??
+       sparqlUpdateEndpoint: serverHostURI + "/foowiki/update",
 
        runnableFormats: [
        "http://purl.org/NET/mediatypes/application/javascript"
