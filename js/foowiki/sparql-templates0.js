@@ -27,7 +27,7 @@ PREFIX wiki: <http://purl.org/stuff/wiki#>  \n\
 
 var getListSparqlTemplate = commonPrefixes + " \n\
 SELECT DISTINCT * \n\
-FROM <~{graphURI}~>  \n\
+FROM NAMED <~{graphURI}~>  \n\
 WHERE { \n\
 ?uri \n\
 dc:format ?format ; \n\
@@ -53,7 +53,7 @@ LIMIT 15 \n\
 
 var getPageSparqlTemplate = commonPrefixes + "\n\
     SELECT DISTINCT * \n\
-    FROM <~{graphURI}~>  \n\
+    FROM NAMED <~{graphURI}~>  \n\
     WHERE { \n\
     <~{uri}~> \n\
     dc:format ?format ; \n\
@@ -72,7 +72,7 @@ var getPageSparqlTemplate = commonPrefixes + "\n\
 
 var getResourcesSparqlTemplate = commonPrefixes + "\n\
     SELECT DISTINCT * \n\
-    FROM <~{graphURI}~>  \n\
+    FROM NAMED <~{graphURI}~>  \n\
     WHERE { \n\
 OPTIONAL { \n\
      ?uri   dc:title ?title  \n\
@@ -90,13 +90,13 @@ ORDER BY ?title \n\
 
 var getTurtleSparqlTemplate = commonPrefixes + "\n\
     CONSTRUCT { <~{uri}~>  ?p ?o } \n\
-    FROM <~{graphURI}~>  \n\
+    FROM NAMED <~{graphURI}~>  \n\
     WHERE { <~{uri}~>  ?p ?o } \n\
 ";
 
 var getImageSparqlTemplate = commonPrefixes + "\n\
     SELECT DISTINCT * \n\
-    FROM <~{graphURI}~>  \n\
+    FROM NAMED <~{graphURI}~>  \n\
     WHERE { \n\
     <~{imageURI}~> a dctype:Image ; \n\
     wiki:base64 ?base64 .\n\
@@ -121,7 +121,7 @@ GRAPH <~{graphURI}~> {  \n\
 
 var getAllTagsSparqlTemplate = commonPrefixes + "\n\
 SELECT DISTINCT ?topicLabel   \n\
- FROM <~{graphURI}~>  \n\
+ FROM NAMED <~{graphURI}~>  \n\
 WHERE {  \n\
     ?s dc:topic ?topicURI . \n\
     ?topicURI rdfs:label ?topicLabel .  \n\
@@ -130,7 +130,7 @@ WHERE {  \n\
 
 var getTagsSparqlTemplate = commonPrefixes + "\n\
 SELECT DISTINCT *  \n\
- FROM <~{graphURI}~>  \n\
+ FROM NAMED <~{graphURI}~>  \n\
 WHERE {  \n\
 	<~{uri}~>  a wiki:Page ;  \n\
 	dc:topic ?topicURI .  \n\
@@ -175,7 +175,7 @@ GRAPH <~{graphURI}~> {  \n\
 
 var searchSparqlTemplate = commonPrefixes + "\n\
 SELECT DISTINCT *  \n\
- FROM <~{graphURI}~>  \n\
+ FROM NAMED <~{graphURI}~>  \n\
  WHERE { \n\
 ?uri \n\
 a sioc:Post ; \n\

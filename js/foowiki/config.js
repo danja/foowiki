@@ -15,15 +15,16 @@
 
 //    in core.js :
 //  var getPageUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
+//  serverHostURI: "http://localhost:3030"
 
    var FooWiki = {
        pagesBaseURI: "http://hyperdata.it/wiki/",
        graphURI: "http://hyperdata.it/wiki",
 
-       serverHostURI: "http://localhost:3030"
+
        serverRootPath: "/foowiki/",
-       sparqlQueryEndpoint: serverHostURI + "/foowiki/sparql?query=", // move ? part ??
-       sparqlUpdateEndpoint: serverHostURI + "/foowiki/update",
+       sparqlQueryEndpoint: "http://localhost:3030/foowiki/sparql?query=", // move ? part ??
+       sparqlUpdateEndpoint: "http://localhost:3030/foowiki/update",
 
        runnableFormats: [
        "http://purl.org/NET/mediatypes/application/javascript"
