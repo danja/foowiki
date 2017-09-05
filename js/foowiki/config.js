@@ -21,7 +21,6 @@
        pagesBaseURI: "http://hyperdata.it/wiki/",
        graphURI: "http://hyperdata.it/wiki",
 
-
        serverRootPath: "/foowiki/",
        sparqlQueryEndpoint: "http://localhost:3030/foowiki/sparql?query=", // move ? part ??
        sparqlUpdateEndpoint: "http://localhost:3030/foowiki/update",

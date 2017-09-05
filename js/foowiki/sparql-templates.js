@@ -29,15 +29,22 @@ var getListSparqlTemplate = commonPrefixes + " \n\
 SELECT DISTINCT * \n\
 FROM <~{graphURI}~>  \n\
 WHERE { \n\
-?uri \n\
-dc:format ?format ; \n\
-dc:created ?created ; \n\
-dc:modified ?modified ; \n\
-dc:title ?title ; \n\
-a wiki:Page ; \n\
-foaf:maker [ \n\
-foaf:nick ?nick \n\
-] . \n\
+  ?uri a wiki:Page ; \n\
+       dc:title ?title . \n\
+  OPTIONAL { \n\
+       ?uri dc:format ?format \n\
+  } \n\
+  OPTIONAL { \n\
+       ?uri dc:created ?created ; \n\
+  } \n\
+  OPTIONAL { \n\
+       ?uri dc:modified ?modified ; \n\
+  } \n\
+  OPTIONAL { \n\
+       ?uri foaf:maker [ \n\
+           foaf:nick ?nick \n\
+       ] . \n\
+  } \n\
 } \n\
 ";
 
