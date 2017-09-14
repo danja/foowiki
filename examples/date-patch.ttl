@@ -1,0 +1,151 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix wiki:  <http://purl.org/stuff/wiki#> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix dc:    <http://purl.org/dc/terms/> .
+@prefix sioc:  <http://rdfs.org/sioc/ns#> .
+
+<http://hyperdata.it/wiki/To%20Do%202015-01-12>
+        dc:created   "2015-01-13T13:03:33.875Z" ;
+        dc:modified  "2015-01-13T13:03:33.875Z" .
+
+<http://hyperdata.it/wiki/FooWiki%20Files>
+        dc:created   "2015-01-21T12:30:58.638Z" ;
+        dc:modified  "2015-01-21T12:30:58.638Z" .
+
+<http://hyperdata.it/wiki/Foo>
+        dc:created   "2015-01-31T10:00:11.933Z" ;
+        dc:modified  "2015-01-31T10:00:11.933Z" .
+
+<http://hyperdata.it/wiki/TestTest>
+        dc:created   "2015-01-27T07:55:42.554Z" ;
+        dc:modified  "2015-01-27T07:55:42.554Z" .
+
+<http://hyperdata.it/wiki/Foo%20To%20Do>
+        dc:created   "2015-01-30T13:26:25.439Z" ;
+        dc:modified  "2015-01-30T13:26:25.439Z" .
+
+<http://hyperdata.it/wiki/Basic%20Features>
+        dc:created   "2015-02-07T10:35:48.009Z" ;
+        dc:modified  "2015-02-07T10:35:48.009Z" .
+
+<http://hyperdata.it/wiki/New%20Place%20To%20Do%20Outside>
+        dc:created   "2015-01-30T11:08:53.329Z" ;
+        dc:modified  "2015-01-30T11:08:53.329Z" .
+
+<http://hyperdata.it/wiki/FooWiki%20Links>
+        dc:created   "2015-02-05T11:16:01.413Z" ;
+        dc:modified  "2015-02-05T11:16:01.413Z" .
+
+<http://hyperdata.it/wiki/FooWiki%20To%20Do>
+        dc:created   "2015-02-06T12:42:35.676Z" ;
+        dc:modified  "2015-02-06T12:42:35.676Z" .
+
+<http://hyperdata.it/wiki/Mish>
+        dc:created   "2015-01-31T11:48:31.560Z" ;
+        dc:modified  "2015-01-31T11:48:31.560Z" .
+
+<http://hyperdata.it/wiki/Creative%20Ideas>
+        dc:created   "2015-02-07T10:27:55.705Z" ;
+        dc:modified  "2015-02-07T10:27:55.705Z" .
+
+<http://hyperdata.it/wiki/Test>
+        dc:created   "2015-02-06T13:52:19.788Z" ;
+        dc:modified  "2015-02-06T13:52:19.788Z" .
+
+<http://hyperdata.it/wiki/FooWiki%20Docs>
+        dc:created   "2015-01-28T11:28:07.345Z" ;
+        dc:modified  "2015-01-28T11:28:07.345Z" .
+
+<http://hyperdata.it/wiki/New%20Place%20To%20Do%20Inside>
+        dc:created   "2015-01-29T12:55:05.915Z" ;
+        dc:modified  "2015-01-29T12:55:05.915Z" .
+
+<http://hyperdata.it/wiki/Hello%20World%201>
+        dc:created   "2015-01-16T12:41:51.142Z" ;
+        dc:modified  "2015-01-16T12:41:51.142Z" .
+
+<http://hyperdata.it/wiki/To%20Do%202015-01-24>
+        dc:created   "2015-01-24T07:51:01.602Z" ;
+        dc:modified  "2015-01-24T07:51:01.602Z" .
+
+<http://hyperdata.it/wiki/FooWiki%20Manual>
+        dc:created   "2015-02-07T10:45:53.309Z" ;
+        dc:modified  "2015-02-07T10:45:53.309Z" .
+
+<http://hyperdata.it/wiki/2.168.0.77:3030/foowiki/Mish%20To%20Do>
+        dc:created   "2015-01-24T09:42:25.403Z" ;
+        dc:modified  "2015-01-24T09:42:25.403Z" .
+
+<http://hyperdata.it/wiki/Home%20Page>
+        dc:created   "2012-04-02T07:24:53Z" ;
+        dc:modified  "2012-04-02T07:24:53Z" .
+
+<http://hyperdata.it/wiki/Content%20Model>
+        dc:created   "2015-01-28T11:28:46.129Z" , "2015-01-07T09:46:23.885Z" ;
+        dc:modified  "2015-01-28T11:28:46.129Z" , "2015-01-07T09:46:23.885Z" .
+
+<http://hyperdata.it/wiki/Misc%20to%20Do>
+        dc:created   "2015-01-30T17:47:42.269Z" ;
+        dc:modified  "2015-01-30T17:47:42.269Z" .
+
+<http://hyperdata.it/wiki/HelloWorld2>
+        dc:created   "2015-01-27T08:12:01.290Z" ;
+        dc:modified  "2015-01-27T08:12:01.290Z" .
+
+<http://hyperdata.it/wiki/Markdown%20Cheatsheet>
+        dc:created   "2015-02-05T11:12:54.374Z" ;
+        dc:modified  "2015-02-05T11:12:54.374Z" .
+
+<http://hyperdata.it/wiki/To%20Do%202015-01-23>
+        dc:created   "2015-01-23T15:16:13.129Z" ;
+        dc:modified  "2015-01-23T15:16:13.129Z" .
+
+<http://hyperdata.it/wiki/2.168.0.77:3030/foowiki/Mish>
+        dc:created   "2015-02-05T13:09:05.856Z" ;
+        dc:modified  "2015-02-05T13:09:05.856Z" .
+
+<http://hyperdata.it/wiki/Test%20Two>
+        dc:created   "2015-01-31T10:55:53.785Z" ;
+        dc:modified  "2015-01-31T10:55:53.785Z" .
+
+<http://hyperdata.it/wiki/Local%20Page>
+        dc:created   "2015-01-24T09:42:40.279Z" ;
+        dc:modified  "2015-01-24T09:42:40.279Z" .
+
+<http://hyperdata.it/wiki/Image%20Testing>
+        dc:created   "2015-01-27T11:08:03.111Z" ;
+        dc:modified  "2015-01-27T11:08:03.111Z" .
+
+<http://hyperdata.it/wiki/To%20Do>
+        dc:created   "2015-01-30T18:14:24.921Z" ;
+        dc:modified  "2015-01-30T18:14:24.921Z" .
+
+<http://hyperdata.it/wiki/calhost:3030/foowiki/Mish>
+        dc:created   "2015-01-14T18:58:05.994Z" ;
+        dc:modified  "2015-01-14T18:58:05.994Z" .
+
+<http://hyperdata.it/wiki/FooWiki%20Bugs>
+        dc:created   "2015-02-07T10:44:27.724Z" ;
+        dc:modified  "2015-02-07T10:44:27.724Z" .
+
+<http://hyperdata.it/wiki/Another%20Image%20Test>
+        dc:created   "2015-01-27T12:44:02.570Z" ;
+        dc:modified  "2015-01-27T12:44:02.570Z" .
+
+<http://hyperdata.it/wiki/FuWiki%20To%20Do>
+        dc:created   "2015-01-08T16:49:31.018Z" ;
+        dc:modified  "2015-01-08T16:49:31.018Z" .
+
+<http://hyperdata.it/wiki/Mish%20To%20Do%202015-01-24>
+        dc:created   "2015-01-24T09:41:12.373Z" ;
+        dc:modified  "2015-01-24T09:41:12.373Z" .
+
+<http://hyperdata.it/wiki/To%20Do%202015-01-31>
+        dc:created   "2015-01-30T18:27:30.081Z" ;
+        dc:modified  "2015-01-30T18:27:30.081Z" .
+
+<http://hyperdata.it/wiki/To%20Investigate>
+        dc:created   "2015-02-04T12:58:55.966Z" , "2015-01-08T10:12:56.585Z" ;
+        dc:modified  "2015-02-04T12:58:55.966Z" , "2015-01-08T10:12:56.585Z" .

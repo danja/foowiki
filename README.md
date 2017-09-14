@@ -18,8 +18,8 @@ Next download Fuseki according to the [instructions](http://jena.apache.org/docu
 2. a script to run Fuseki pointing at its config file - the one provided as foowiki/etc/run-fuseki.bat should help as a starting point
 3. the FuWiki config file, foowiki/js/config.js - the one provided is the one I use against the two files above
 
-### Checking Fuseki 
-Assuming you have a setup close to this, opening http://localhost:3030 should take you to the Fuseki pages. Click on Control Panel. When offered, select the /seki dataset. You should now see Fuseki's raw SPARQL interface. 
+### Checking Fuseki
+Assuming you have a setup close to this, opening http://localhost:3030 should take you to the Fuseki pages. Click on Control Panel. When offered, select the /seki dataset. You should now see Fuseki's raw SPARQL interface.
 
 ### Bootstrap Data
 It's easiest to bootstrap the Wiki with a few pages. Open http://localhost:3030/foowiki/index.html in a browser and go to Upload RDF at the bottom of the page, click Select Files and navigate to foowiki/examples/pages.ttl, select it then click Upload. (Currently you will need to use the back button to get back to http://localhost:3030/foowiki/index.html and refresh the browser to see the page list).
@@ -46,6 +46,22 @@ There's some sample data etc. in the foowiki/examples/ directory.
 Some background over here : https://dannyayers.wordpress.com/2014/12/30/browser-sparql-server-wiki/
 
 Apache 2 license.
+
+## Date Issue
+At some point I changed the date handling from a simple dc:date for each post to a dc:created and dc:modified
+
+The following was needed to patch the older data - run in the Fuseki admin console, downloaded and then uploaded to the graph :
+
+PREFIX dc: <http://purl.org/dc/terms/>   
+
+CONSTRUCT {
+    ?s  dc:created ?date .
+    ?s  dc:modified ?date .
+}
+FROM <http://hyperdata.it/wiki>  
+WHERE {
+    ?s dc:date ?date
+}
 
 
 ## See Also
