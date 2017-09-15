@@ -41,9 +41,7 @@
                 "FooWiki.graphURI": FooWiki.graphURI
             };
 
-            var getPageSparql = sparqlTemplater(getPageSparqlTemplate, map);
 
-            var getPageURL = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
             var doneCallback = function (entryJSON) {
                 //   var entry = xmlToEntry(xml, uri);
@@ -82,7 +80,9 @@
 
                 eval(toRun);
             };
-            getJsonForSparqlURL(getPageUrl, doneCallback);
+            var getPageSparql = sparqlTemplater(getPageSparqlTemplate, map);
+            var getPageURL = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
+            getJsonForSparqlURL(getPageURL, doneCallback);
             //  getDataForURL(doneCallback, getPageURL);
 
             $('#editButton').click(function () {
