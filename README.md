@@ -10,6 +10,9 @@ All FooWiki needs is a (static file) HTTP server and a SPARQL 1.1 server, i.e. *
 I'm aiming for it being a "living system", see [Foo](#Foo).
 
 ## Installation
+
+PS. FooWiki is now available via a Docker image, see https://github.com/danja/docker-hyperdata
+
 First clone the FooWiki files somewhere convenient. These will be served as regular HTML.
 
 Next download Fuseki according to the [instructions](http://jena.apache.org/documentation/serving_data/). Then adjust the configuration according to your setup and run it. There are three files to consider for this:
