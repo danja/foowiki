@@ -58,6 +58,11 @@ Some background over here : https://dannyayers.wordpress.com/2014/12/30/browser-
 
 Apache 2 license.
 
+## 'Static' Rendering
+There are copies of the scripts used to render pages (index-static.html, core-static.js etc) with all links to editing facilities removed. This is to provide a static archive of the content. Making the archive this way is not straightforward as for the content to be visible, the Javascript has to be run in a browser. So I'm working on a [Selenium](http://www.seleniumhq.org/)-based crawler to sort this out (and dump the content as files).
+
+I've nearly implemented this, but it's since occurred to me that it would be easier to pull the content directly from the SPARQL store with a script, ignoring the browser rendering altogether.  
+
 ## Date Issue
 At some point I changed the date handling from a simple dc:date for each post to a dc:created and dc:modified
 
@@ -73,7 +78,6 @@ FROM <http://hyperdata.it/wiki>
 WHERE {
     ?s dc:date ?date
 }
-
 
 ## See Also
 I plan to use the same data model in [Seki](https://github.com/danja/seki) (middleware/a front-end for connecting to an independent SPARQL server using node.js) and [Thiki](https://github.com/danja/thiki) (Personal Wiki for Android Devices).

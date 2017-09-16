@@ -1,0 +1,742 @@
+1505593760469	geckodriver	INFO	geckodriver 0.19.0
+1505593760476	geckodriver	INFO	Listening on 127.0.0.1:56289
+1505593760609	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.QPMY6P0TMkTN"
+1505593762947	Marionette	INFO	Enabled via --marionette
+
+(firefox:21355): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21355): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21355): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21355): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21355): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21355): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21355): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21355): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21355): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21355): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21355): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21355): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505593768890	Marionette	INFO	Listening on port 33875
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505593768963	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505593769931	Marionette	DEBUG	loaded listener.js
+1505593769967	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505593770097	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505593770098	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505593770299	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/index-static.html"
+1505593770301	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/index-static.html"
+1505593797635	geckodriver	INFO	geckodriver 0.19.0
+1505593797651	geckodriver	INFO	Listening on 127.0.0.1:50835
+1505593797790	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Zfq8lhNvG7uJ"
+1505593800066	Marionette	INFO	Enabled via --marionette
+
+(firefox:21500): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21500): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21500): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21500): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21500): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21500): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21500): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21500): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21500): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21500): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21500): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21500): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505593803365	Marionette	INFO	Listening on port 41431
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505593803470	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505593803514	Marionette	DEBUG	loaded listener.js
+1505593803539	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505593803553	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505593803553	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505593803766	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/index-static.html"
+1505593803768	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/index-static.html"
+1505593983101	geckodriver	INFO	geckodriver 0.19.0
+1505593983104	geckodriver	INFO	Listening on 127.0.0.1:44383
+1505593984240	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.qiMNywFGe7lG"
+1505593985162	Marionette	INFO	Enabled via --marionette
+
+(firefox:21680): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21680): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21680): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21680): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21680): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21680): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21680): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21680): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21680): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21680): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21680): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21680): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505593989144	Marionette	INFO	Listening on port 32925
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505593989175	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505593989215	Marionette	DEBUG	loaded listener.js
+1505593989241	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505593989256	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505593989256	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505593989478	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/index-static.html"
+1505593989481	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/index-static.html"
+1505593989643	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/index-static.html"
+1505593989653	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/index-static.html"
+1505593989654	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/index-static.html"
+1505593989756	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki//index-static.html"
+1505593989758	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki//index-static.html"
+1505594013668	geckodriver	INFO	geckodriver 0.19.0
+1505594013672	geckodriver	INFO	Listening on 127.0.0.1:60575
+1505594014800	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.WPvMqzrjWtMx"
+1505594015731	Marionette	INFO	Enabled via --marionette
+
+(firefox:21843): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21843): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21843): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21843): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21843): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21843): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21843): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21843): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21843): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21843): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21843): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21843): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505594018854	Marionette	INFO	Listening on port 40349
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505594018954	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505594018997	Marionette	DEBUG	loaded listener.js
+1505594019023	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505594019035	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505594019035	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505594019041	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowikiindex-static.html"
+1505594019049	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowikiindex-static.html"
+1505594041946	geckodriver	INFO	geckodriver 0.19.0
+1505594041949	geckodriver	INFO	Listening on 127.0.0.1:56837
+1505594043084	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.KC6k7RKuNeIO"
+1505594043999	Marionette	INFO	Enabled via --marionette
+
+(firefox:21974): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21974): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21974): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21974): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21974): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21974): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21974): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21974): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21974): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21974): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:21974): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:21974): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505594047458	Marionette	INFO	Listening on port 36815
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505594047507	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505594047547	Marionette	DEBUG	loaded listener.js
+1505594047572	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505594047587	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505594047588	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505594047785	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/index-static.html"
+1505594047787	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/index-static.html"
+1505594047948	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/index-static.html"
+1505594047955	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/index-static.html"
+1505594047956	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/index-static.html"
+1505594048059	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki//index-static.html"
+1505594048061	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki//index-static.html"
+1505594220045	geckodriver	INFO	geckodriver 0.19.0
+1505594220049	geckodriver	INFO	Listening on 127.0.0.1:54431
+1505594221178	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.6kTNZo4Ku9iH"
+1505594222008	Marionette	INFO	Enabled via --marionette
+
+(firefox:22138): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22138): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22138): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22138): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22138): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22138): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22138): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22138): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22138): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22138): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22138): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22138): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505594225771	Marionette	INFO	Listening on port 34721
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505594225819	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505594225873	Marionette	DEBUG	loaded listener.js
+1505594225896	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505594225913	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505594225913	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505594226129	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/"
+1505594226132	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/"
+1505594370880	geckodriver	INFO	geckodriver 0.19.0
+1505594370883	geckodriver	INFO	Listening on 127.0.0.1:46003
+1505594372017	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.L5Yx3shj4JBU"
+1505594373044	Marionette	INFO	Enabled via --marionette
+
+(firefox:22325): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22325): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22325): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22325): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22325): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22325): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22325): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22325): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22325): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22325): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22325): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22325): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505594376380	Marionette	INFO	Listening on port 34403
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505594376461	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505594376500	Marionette	DEBUG	loaded listener.js
+1505594376527	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505594376678	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505594376678	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505594376898	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/"
+1505594376900	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/"
+1505594377121	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/"
+1505594377129	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/"
+1505594377130	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/"
+1505594377235	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/index.html"
+1505594377237	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/index.html"
+1505594569033	geckodriver	INFO	geckodriver 0.19.0
+1505594569042	geckodriver	INFO	Listening on 127.0.0.1:35489
+1505594570241	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.1PgEIBNHdTDZ"
+1505594572395	Marionette	INFO	Enabled via --marionette
+
+(firefox:22505): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22505): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22505): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22505): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22505): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22505): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22505): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22505): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22505): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22505): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22505): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22505): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505594576908	Marionette	INFO	Listening on port 40105
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505594577002	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505594577219	Marionette	DEBUG	loaded listener.js
+1505594577266	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505594577282	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505594577282	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505594577500	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/index-static.html"
+1505594577503	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/index-static.html"
+1505594577671	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/index-static.html"
+1505594577680	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/index-static.html"
+1505594577680	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/index-static.html"
+1505594577789	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/"
+1505594577791	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/"
+1505594771145	geckodriver	INFO	geckodriver 0.19.0
+1505594771160	geckodriver	INFO	Listening on 127.0.0.1:58751
+1505594772330	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.YMp09IKCssUu"
+1505594774996	Marionette	INFO	Enabled via --marionette
+
+(firefox:22746): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22746): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22746): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22746): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22746): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22746): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22746): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22746): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22746): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22746): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:22746): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:22746): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505594780091	Marionette	INFO	Listening on port 35703
+1505594780101	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505594781198	Marionette	DEBUG	loaded listener.js
+1505594781237	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505594799864	addons.productaddons	WARN	Failed downloading XML, status: 0, reason: timeout
+1505594816245	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505594816261	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505594816262	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505594816532	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "about:neterror?e=connectionFailure&u=http%3A//fuseki.local/foowiki/index-static.html&c=UTF-8&f=regular&d=Firefox%20can%E2%80%99t%20establish%20a%20connection%20to%20the%20server%20at%20fuseki.local."
+1505594845524	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1505594870781	geckodriver	INFO	geckodriver 0.19.0
+1505594870797	geckodriver	INFO	Listening on 127.0.0.1:36661
+1505594870961	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.m7reXOamVuFX"
+1505594877079	Marionette	INFO	Enabled via --marionette
+
+(firefox:23058): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23058): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23058): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23058): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23058): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23058): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23058): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23058): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23058): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23058): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23058): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23058): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505594884526	Marionette	INFO	Listening on port 40001
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505594884541	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505594885515	Marionette	DEBUG	loaded listener.js
+1505594885559	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505594885571	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505594885572	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505594885917	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/index-static.html"
+1505594885922	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/index-static.html"
+1505594886112	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/index-static.html"
+1505594886119	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/index-static.html"
+1505594886120	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/index-static.html"
+1505594886226	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/"
+1505594886228	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/"
+1505595062893	geckodriver	INFO	geckodriver 0.19.0
+1505595062896	geckodriver	INFO	Listening on 127.0.0.1:34635
+1505595063083	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.FywFIw1GUQb6"
+1505595065315	Marionette	INFO	Enabled via --marionette
+
+(firefox:23368): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23368): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23368): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23368): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23368): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23368): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23368): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23368): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23368): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23368): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23368): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23368): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505595072012	Marionette	INFO	Listening on port 38713
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505595072049	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505595072761	Marionette	DEBUG	loaded listener.js
+1505595072807	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505595072824	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505595072825	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505595073046	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/index-static.html"
+1505595073048	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/index-static.html"
+1505595073200	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/index-static.html"
+1505595073209	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/index-static.html"
+1505595073209	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/index-static.html"
+1505595073323	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/"
+1505595073326	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/"
+1505595292803	geckodriver	INFO	geckodriver 0.19.0
+1505595292816	geckodriver	INFO	Listening on 127.0.0.1:60941
+1505595292941	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.8vVbpP4dZkIi"
+1505595295210	Marionette	INFO	Enabled via --marionette
+
+(firefox:23592): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23592): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23592): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23592): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23592): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23592): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23592): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23592): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23592): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23592): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:23592): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:23592): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505595299757	Marionette	INFO	Listening on port 43609
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505595299792	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505595300095	Marionette	DEBUG	loaded listener.js
+1505595300145	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505595300159	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505595300159	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505595300392	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/index-static.html"
+1505595300395	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/index-static.html"
+1505595300537	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/index-static.html"
+1505595300549	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/index-static.html"
+1505595300550	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/index-static.html"
+1505595300655	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/"
+1505595300657	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/"
+1505595629852	geckodriver	INFO	geckodriver 0.19.0
+1505595629895	geckodriver	INFO	Listening on 127.0.0.1:44589
+1505595631017	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.oByNA4FLgATN"
+1505595635071	Marionette	INFO	Enabled via --marionette
+
+(firefox:24058): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24058): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24058): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24058): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24058): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24058): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24058): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24058): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24058): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24058): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24058): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24058): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505595639651	Marionette	INFO	Listening on port 43577
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505595639678	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505595639715	Marionette	DEBUG	loaded listener.js
+1505595639738	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505595639750	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505595639751	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505595639950	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/index-static.html"
+1505595639952	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/index-static.html"
+1505595640072	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/index-static.html"
+1505596240971	geckodriver	INFO	geckodriver 0.19.0
+1505596241005	geckodriver	INFO	Listening on 127.0.0.1:49471
+1505596242168	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.wP5b9vCxXtP7"
+1505596245866	Marionette	INFO	Enabled via --marionette
+
+(firefox:24724): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24724): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24724): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24724): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24724): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24724): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24724): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24724): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24724): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24724): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24724): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24724): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505596250949	Marionette	INFO	Listening on port 45485
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505596251059	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505596251099	Marionette	DEBUG	loaded listener.js
+1505596251129	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505596251142	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505596251142	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505596251541	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/index-static.html"
+1505596251545	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/index-static.html"
+1505596253820	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/index-static.html"
+1505596253832	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/index-static.html"
+1505596253832	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/index-static.html"
+1505596253944	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Bugs"
+1505596253947	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Bugs"
+1505596256195	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Bugs"
+1505596256205	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Bugs"
+1505596256205	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Bugs"
+1505596256317	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Image%20Testing"
+1505596256319	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Image%20Testing"
+1505596258532	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Image%20Testing"
+1505596258541	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Image%20Testing"
+1505596258541	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Image%20Testing"
+1505596258647	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Links"
+1505596258648	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Links"
+1505596260943	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Links"
+1505596261071	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Links"
+1505596261073	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Links"
+1505596261200	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Basic%20Features"
+1505596261201	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Basic%20Features"
+1505596263466	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Basic%20Features"
+1505596263474	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Basic%20Features"
+1505596263474	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Basic%20Features"
+1505596263582	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20To%20Do"
+1505596263584	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20To%20Do"
+1505596265978	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20To%20Do"
+1505596265986	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20To%20Do"
+1505596265986	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20To%20Do"
+1505596266091	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Manual"
+1505596266094	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Manual"
+1505596268473	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Manual"
+1505596268480	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Manual"
+1505596268480	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Manual"
+1505596268586	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Hello%20World%201"
+1505596268589	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Hello%20World%201"
+1505596270813	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Hello%20World%201"
+1505596270820	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Hello%20World%201"
+1505596270820	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Hello%20World%201"
+1505596270933	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Markdown%20Cheatsheet"
+1505596270935	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Markdown%20Cheatsheet"
+JavaScript error: http://fuseki.local/foowiki/js/foowiki/core-static.js, line 122: TypeError: entryJSON[0] is undefined
+JavaScript error: http://fuseki.local/foowiki/js/foowiki/core-static.js, line 122: TypeError: entryJSON[0] is undefined
+1505596273400	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Markdown%20Cheatsheet"
+1505596273406	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Markdown%20Cheatsheet"
+1505596273406	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Markdown%20Cheatsheet"
+1505596273504	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Foo%20To%20Do"
+1505596273506	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Foo%20To%20Do"
+1505596275807	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Foo%20To%20Do"
+1505596275815	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Foo%20To%20Do"
+1505596275815	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Foo%20To%20Do"
+1505596275916	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Files"
+1505596275917	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Files"
+1505596278187	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Files"
+1505596278194	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Files"
+1505596278195	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Files"
+1505596278296	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Docs"
+1505596278298	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Docs"
+1505596280530	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Docs"
+1505596280539	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Docs"
+1505596280539	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Docs"
+1505596280646	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/HelloWorld2"
+1505596280648	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/HelloWorld2"
+1505596282920	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/HelloWorld2"
+1505596282928	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/HelloWorld2"
+1505596282929	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/HelloWorld2"
+1505596283034	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Foo"
+1505596283036	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Foo"
+1505596285289	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Foo"
+1505596285296	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Foo"
+1505596285296	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Foo"
+1505596285403	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/"
+1505596285405	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/"
+1505596287633	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/"
+1505596287640	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/"
+1505596287641	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/"
+1505596287744	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=undefined"
+1505596287745	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=undefined"
+1505596548310	geckodriver	INFO	geckodriver 0.19.0
+1505596548314	geckodriver	INFO	Listening on 127.0.0.1:52451
+1505596549445	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.uxSH1BS3QOPf"
+1505596550454	Marionette	INFO	Enabled via --marionette
+
+(firefox:24995): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24995): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24995): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24995): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24995): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24995): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24995): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24995): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24995): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24995): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:24995): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:24995): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505596553890	Marionette	INFO	Listening on port 39213
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505596554002	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505596554045	Marionette	DEBUG	loaded listener.js
+1505596554076	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505596554088	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505596554088	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505596554303	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/index-static.html"
+1505596554306	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/index-static.html"
+1505596572882	geckodriver	INFO	geckodriver 0.19.0
+1505596572886	geckodriver	INFO	Listening on 127.0.0.1:53969
+1505596574014	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.8Zp7MWf4yTgX"
+1505596575022	Marionette	INFO	Enabled via --marionette
+
+(firefox:25124): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:25124): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:25124): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:25124): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:25124): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:25124): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:25124): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:25124): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:25124): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:25124): Gtk-WARNING **: Loading IM context type 'ibus' failed
+
+(firefox:25124): Gtk-WARNING **: /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so: undefined symbol: ibus_input_context_set_cursor_location_relative
+
+(firefox:25124): Gtk-WARNING **: Loading IM context type 'ibus' failed
+1505596578599	Marionette	INFO	Listening on port 35087
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1505596578638	Marionette	WARN	TLS certificate errors will be ignored for this session
+1505596578674	Marionette	DEBUG	loaded listener.js
+1505596578696	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1505596578707	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1505596578707	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1505596578912	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/index-static.html"
+1505596578914	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/index-static.html"
+1505596582165	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/index-static.html"
+1505596582174	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/index-static.html"
+1505596582174	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/index-static.html"
+1505596582276	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Bugs"
+1505596582278	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Bugs"
+1505596585524	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Bugs"
+1505596585530	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Bugs"
+1505596585531	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Bugs"
+1505596585633	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Image%20Testing"
+1505596585634	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Image%20Testing"
+1505596588961	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Image%20Testing"
+1505596588968	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Image%20Testing"
+1505596588969	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Image%20Testing"
+1505596589080	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Links"
+1505596589083	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Links"
+1505596592394	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Links"
+1505596592402	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Links"
+1505596592402	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Links"
+1505596592506	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Basic%20Features"
+1505596592508	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Basic%20Features"
+1505596595778	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Basic%20Features"
+1505596595786	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Basic%20Features"
+1505596595786	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Basic%20Features"
+1505596595894	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20To%20Do"
+1505596595896	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20To%20Do"
+1505596599302	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20To%20Do"
+1505596599310	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20To%20Do"
+1505596599310	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20To%20Do"
+1505596599412	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Manual"
+1505596599414	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Manual"
+1505596602800	Marionette	DEBUG	Received DOM event "beforeunload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Manual"
+1505596602808	Marionette	DEBUG	Received DOM event "pagehide" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Manual"
+1505596602808	Marionette	DEBUG	Received DOM event "unload" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Manual"
+1505596602915	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Hello%20World%201"
+1505596602917	Marionette	DEBUG	Received DOM event "pageshow" for "http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Hello%20World%201"
