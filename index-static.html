@@ -34,9 +34,9 @@
     <!-- FooWiki scripts -->
     <script src="js/foowiki/config.js"></script>
     <script src="js/foowiki/sparql-templates.js"></script>
-    <script src="js/foowiki/html-templates.js"></script>
-    <script src="js/foowiki/utils.js"></script>
-    <script src="js/foowiki/core.js"></script>
+    <script src="js/foowiki/html-templates-static.js"></script>
+    <script src="js/foowiki/utils-static.js"></script>
+    <script src="js/foowiki/core-static.js"></script>
     <script src="js/foowiki/index.js"></script>
     <script src="js/foowiki/sparql-connector.js"></script>
 
@@ -48,7 +48,6 @@
 
         $(function () {
             setupErrorHandling();
-            spinner();
 
             $("#graphName").attr("value", FooWiki.graphURI);
             setupButtons();
@@ -69,13 +68,13 @@
     <div id="errorbox"></div>
 
     <div id="header">FooWiki</div>
-
+<p>These pages are a static rendition of a <a href="https://github.com/danja/foowiki">FooWiki</a> instance I have running locally - it will be my personal knowledgebase.</p>
     <div id="middle" class="column">
 
         <table id="pagesTable">
             <!-- refactor to use entryTableTemplate -->
             <tr>
-                <th colspan="3"><a href="index.html">All</a> Pages</th>
+                <th colspan="3"><a href="index-static.html">All</a> Pages</th>
             </tr>
             <tr>
                 <th class="center">Page</th>
@@ -89,10 +88,7 @@
     </div>
 
     <div id="left" class="column">
-
-        <div class="tab"><a href="page.html?uri=http://hyperdata.it/wiki/">Home Page</a>
-        </div>
-        <div class="tab"><a href="resources.html">Resource List</a>
+        <div class="tab"><a href="page-static.html?uri=http://hyperdata.it/wiki/">Home Page</a>
         </div>
     </div>
 
