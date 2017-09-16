@@ -22,8 +22,8 @@
        graphURI: "http://hyperdata.it/wiki",
 
        serverRootPath: "/foowiki/",
-       sparqlQueryEndpoint: "http://localhost:3030/foowiki/sparql?query=", // move ? part ??
-       sparqlUpdateEndpoint: "http://localhost:3030/foowiki/update",
+       sparqlQueryEndpoint: "http://fuseki.local:3030/foowiki/sparql?query=", // move ? part ??
+       sparqlUpdateEndpoint: "http://fuseki.local:3030/foowiki/update",
 
        runnableFormats: [
        "http://purl.org/NET/mediatypes/application/javascript"
