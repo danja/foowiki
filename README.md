@@ -9,6 +9,14 @@ All FooWiki needs is a (static file) HTTP server and a SPARQL 1.1 server, i.e. *
 
 I'm aiming for it being a "living system", see [Foo](#Foo).
 
+Some old notes on how it works:
+
+[Remarkably straightforward (and shiny!) browser UIs for SPARQL store-based apps](https://dannyayers.wordpress.com/2014/07/07/remarkably-straightforward-and-shiny-browser-uis-for-sparql-store-based-apps/)
+
+[SPARQL Templating for Fun and Profit](https://dannyayers.wordpress.com/2015/10/01/sparql-templating-for-fun-and-profit/)
+
+[Browser + SPARQL Server = Wiki](https://dannyayers.wordpress.com/2014/12/30/browser-sparql-server-wiki/)
+
 ## Installation
 
 PS. FooWiki is now available via a Docker image, see https://github.com/danja/docker-hyperdata
