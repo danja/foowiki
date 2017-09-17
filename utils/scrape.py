@@ -40,7 +40,9 @@ def convert_link(link):
     split = link.split("/")
     filename = split.pop()
     if filename == "":
-        return "Home.html"
+        print "\n"+link
+        print str(split)+"\n"
+        return ""
     # filename = filename.replace("-","-_") # edge cases - is adequate?
     filename = filename.replace("%20","-")
     if filename_special_cases.has_key(filename):
@@ -82,12 +84,13 @@ def getlinks(page):
             else:
                 local = True
 
-            # print link + str(local)
+            print "\n" + link + " local: " +str(local)+"\n"
             if local:
-            #    print link + " => " + convert_link(link)
+                if link.startswith("page"):
+                    print "FULL "+link + " => " + convert_link(link)
             #    print content
                 content = content.replace(link, convert_link(link))
-            #    print "TRIMMED = "+link[(len(url_base)+1):]
+                print "TRIMMED "+link[(len(url_base)+1):]+ " => "+convert_link(link[(len(url_base)+1):])
                 content = content.replace(link[(len(url_base)+1):], convert_link(link))
             #    print content
         save_page(filename, content)

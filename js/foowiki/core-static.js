@@ -326,7 +326,7 @@ function makeRecentChangesList() { // refactor with doSearch()
     var renderRecentChanges = function (json) {
 
             var results = makeLinkListHTML(json);
-            //   console.log("results = " + results);
+              console.log("results = " + results);
             //     $("#results").empty();
             $("#recentChanges").append(results);
             //  console.log("HERE" + results);
@@ -349,7 +349,7 @@ function makeLinkListHTML(entryArray) {
 
     for (var i = 0; i < entryArray.length; i++) {
         var entry = entryArray[i];
-        entry.uri = "page-static.html?uri=" + entry.uri;
+        entry.uri = "page-static.html?uri=" + entry.uri; 
         var link = templater(resultTemplate, entry);
         links += link;
     }

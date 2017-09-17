@@ -53,8 +53,8 @@ function getResource(uri, entryHandler) {
 
     var entry = Entry.setId(FooWiki.graphURI, uri);
 
-    
-    
+
+
     if (type == "image") {
         handleImageRequest(uri);
         return;
@@ -83,7 +83,7 @@ function getResource(uri, entryHandler) {
 }
 
 //function generateGetUrl(sparqlTemplate, entry) {
-    
+
 //}
 
 function generateGetUrl(sparqlTemplate, entry, typeHint) {
@@ -336,7 +336,7 @@ function makeRecentChangesList() { // refactor with doSearch()
     var renderRecentChanges = function (json) {
 
             var results = makeLinkListHTML(json);
-            //   console.log("results = " + results);
+            console.log("results = " + results);
             //     $("#results").empty();
             $("#recentChanges").append(results);
             //  console.log("HERE" + results);
@@ -409,7 +409,7 @@ function makeResourceListHTML(entryArray, showContent) {
  * @return {number} This returns something that has a description too long to
  *     fit in one line.
  */
-function formatRow(entry) { // content, 
+function formatRow(entry) { // content,
     //  entry.uri = "page.html?uri=" + entry.uri;
     entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
     var row = templater(rowTemplate, entry);
@@ -423,7 +423,7 @@ function formatRow(entry) { // content,
  * @return {number} This returns something that has a description too long to
  *     fit in one line.
  */
-function formatResourceRow(entry) { // content, 
+function formatResourceRow(entry) { // content,
     // console.log("ENTRY/RESOURCE= "+JSON.stringify(entry));
     var row = templater(resourceTemplate, entry);
     return row;
