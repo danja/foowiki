@@ -12,60 +12,10 @@
     <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
 
-    <script src="js/lib/jquery-1.10.2.js"></script>
-    <script src="js/lib/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-
-    <!-- from https://github.com/aehlke/tag-it -->
-    <script src="js/lib/tag-it.js" type="text/javascript" charset="utf-8"></script>
-
-    <!-- markdown processor -->
-    <script src="js/lib/marked.js"></script>
-
-    <!-- mustache template compiler -->
-    <script src="js/lib/hogan-3.0.2.js"></script>
-
-    <!-- script src="js/jquery-ui.js"></script>
-    <script src="js/jquery.fileupload.js"></script>
-    <script src="js/jquery.iframe-transport.js"></script -->
-
-    <!-- date formatting -->
-    <script src="js/lib/moment.js"></script>
-
-    <!-- FooWiki scripts -->
-    <script src="js/foowiki/config.js"></script>
-    <script src="js/foowiki/sparql-templates.js"></script>
-    <script src="js/foowiki/html-templates-static.js"></script>
-    <script src="js/foowiki/utils-static.js"></script>
-    <script src="js/foowiki/core-static.js"></script>
-    <script src="js/foowiki/index.js"></script>
-    <script src="js/foowiki/sparql-connector.js"></script>
-
-    <script type="text/javascript" language="javascript">
-        var getPageListSparql = sparqlTemplater(getPageListSparqlTemplate, {
-            "graphURI": FooWiki.graphURI
-        });
-        var getPagesUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getPageListSparql) + "&output=xml";
-
-        $(function () {
-            setupErrorHandling();
-
-            $("#graphName").attr("value", FooWiki.graphURI);
-            setupButtons();
-
-            var doneCallback = function (json) {
-                var rows = makeEntryListHTML(json, false);
-                $("#entries").replaceWith(rows);
-                setupTagsPanel("#tagsPanelTagsContainer");
-            };
-            getJsonForSparqlURL(getPagesUrl, doneCallback);
-            //      getDataForURL(doneCallback, getPagesUrl);
-        });
-    </script>
 </head>
 
 <body>
-    <!-- div id="container" -->
-    <div id="errorbox"></div>
+
 
     <div id="header">FooWiki</div>
 <p>These pages are a static rendition of a <a href="https://github.com/danja/foowiki">FooWiki</a> instance I have running locally - it will be my personal knowledgebase.</p>

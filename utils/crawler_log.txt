@@ -1,7 +1,0 @@
-Done scraping http://fuseki.local/foowiki/index-static.html
-Done scraping http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Bugs
-Done scraping http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Image%20Testing
-Done scraping http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Links
-Done scraping http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Basic%20Features
-Done scraping http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20To%20Do
-Done scraping http://fuseki.local/foowiki/page-static.html?uri=http://hyperdata.it/wiki/FooWiki%20Manual
