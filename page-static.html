@@ -13,9 +13,48 @@
     <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+
+    <script src="js/lib/marked.js"></script>
+
+    <!-- mustache template compiler -->
+    <script src="js/lib/hogan-3.0.2.js"></script>
+
+    <script src="js/lib/jquery-1.10.2.js"></script>
+    <script src="js/lib/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- from https://github.com/aehlke/tag-it -->
+    <script src="js/lib/tag-it.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- date formatting -->
+    <script src="js/lib/moment.js"></script>
+
+    <!-- FooWiki scripts -->
+    <script src="js/foowiki/config.js"></script>
+    <script src="js/foowiki/sparql-templates.js"></script>
+    <script src="js/foowiki/html-templates-static.js"></script>
+    <script src="js/foowiki/utils-static.js"></script>
+    <script src="js/foowiki/core-static.js"></script>
+    <script src="js/foowiki/view-static.js"></script>
+    <script src="js/foowiki/sparql-connector.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        $(function () {
+
+            setupErrorHandling();
+            var uri = queryString["uri"];
+            // console.log("URI="+uri);
+            uri = encodeURI(uri);
+            getResource(uri, buildPage);
+
+            makeRecentChangesList();
+
+        });
+    </script>
+
 </head>
 
 <body>
+    <div id="errorbox"></div>
 
     <div id="header">FooWiki</div>
 
