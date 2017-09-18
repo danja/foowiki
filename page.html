@@ -36,7 +36,7 @@
     <script src="js/foowiki/core.js"></script>
     <script src="js/foowiki/view.js"></script>
     <script src="js/foowiki/sparql-connector.js"></script>
-    
+
     <script type="text/javascript" language="javascript">
         $(function () {
 
@@ -46,7 +46,7 @@
             // console.log("URI="+uri);
             uri = encodeURI(uri);
             getResource(uri, buildPage);
-            
+
             makeRecentChangesList();
 
             $('#editButton').click(function () {
@@ -70,11 +70,16 @@
     </div>
 
     <div id="left" class="column">
-        <div class="tab"><a href="index.html">Page Index</a> 
+        <div class="tab"><a href="index.html">Page Index</a>
         </div>
         <div class="tab"><a href="page.html?uri=http://hyperdata.it/wiki/">Home Page</a>
         </div>
         <div>
+          <div id="newPage">
+              <button id="newPageButton">Create New Page</button>
+              <label for='newPageName'>New Page Title</label>
+              <input id="newPageName" type="text" />
+          </div>
             <div id="recentChangesContainer">
                 <label for='recentChanges'>Recent Changes</label>
                 <ul id="recentChanges"></ul>
@@ -95,7 +100,7 @@
         </div>
     </div>
 
-    <div id="footer"><em>thoughtcatchers.org</em>
+    <div id="footer"><em>hyperdata.it</em>
     </div>
 
     <div id="spinner" class="spinner"></div>

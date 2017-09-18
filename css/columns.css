@@ -2,7 +2,7 @@
 
 body {
     margin: 0;
-    padding-left: 200px;
+    padding-left: 240px; /* 200 */
     /* LC fullwidth */
     padding-right: 250px; /* was 190 */
     /* RC fullwidth + CC padding */
@@ -12,9 +12,9 @@ body {
 
 #header,
 #footer {
-    margin-left: -200px;
+    margin-left: -240px; /* -200px; */
     /* LC fullwidth */
-    margin-right: -190px;
+    margin-right: -240px; /* -190px; */
     /* RC fullwidth + CC padding */
     text-align: center;
     padding: 0.3em 0;
@@ -26,28 +26,28 @@ body {
 }
 
 #middle {
-    padding: 0 20px; 
+    padding: 0 20px; /*  0 20px; */
     width: 100%;
     /* was 100% */
 }
 
 #left {
-    width: 180 px;
+    width: 180 px; /* 180 px; */
     /* was 180 */
     /* LC width */
-    padding: 0 10px;
+    padding: 0 0; /*  0 10px; */
     /* LC padding */
-    right: 240px;
+    right: 280px; /* 240px; */
     /* was 240 */
     /* LC fullwidth + CC padding */
     margin-left: -100%;
 }
 
 #right {
-    width: 130px;
+    width: 130px; /* 130 */
     /* was 130 */
     /* RC width */
-    padding: 0 10px;
+    padding: 0 0; /* 0 10px; */
     /* RC padding */
     margin-right: -100%;
 }

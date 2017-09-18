@@ -23,13 +23,14 @@ ul.tagit {
     padding: 20px;
 }
 
+/*
 #newPage {
     width: 180px;
     border: 1px solid darkgray;
     border-radius: 10px;
     padding: 4px;
       margin: 5px;
-}
+}*/
 
 body {
     background-color: lightgray;
@@ -69,7 +70,7 @@ button {
 }
 
 #recentChangesContainer,
-#searchContainer {
+#searchContainer, #newPage {
     width: 100%;
     /*   width:180px; */
     /* Be VERY careful with this, breaks normal words wh_erever */
@@ -268,7 +269,7 @@ a:active {
     from {
         -webkit-transform: rotate(0deg);
     }
-    
+
 to {
         -webkit-transform: rotate(359deg);
     }
@@ -278,7 +279,7 @@ to {
     from {
         -moz-transform: rotate(0deg);
     }
-    
+
 to {
         -moz-transform: rotate(359deg);
     }
@@ -288,7 +289,7 @@ to {
     from {
         -o-transform: rotate(0deg);
     }
-    
+
 to {
         -o-transform: rotate(359deg);
     }
@@ -298,7 +299,7 @@ to {
     from {
         transform: rotate(0deg);
     }
-    
+
 to {
         transform: rotate(359deg);
     }
