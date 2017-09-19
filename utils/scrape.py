@@ -1,30 +1,31 @@
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException, StaleElementReferenceException
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import time
 
-pause = 3  # delay to allow page to fully load
+pause = 2  # delay to allow page to fully load/scripts to run
+
+firefox_profile = "/home/danny/.mozilla/firefox/profile.Selenium"
+
+binary = FirefoxBinary("/usr/bin/firefox")
 
 file_dir = "../archive/"
 
-# http://fuseki.local/foowiki/index-static.html
-# http://fuseki.local/foowiki/index-static.html
-url_base = "http://fuseki.local/foowiki"
-to_be_scraped = ["http://fuseki.local/foowiki/index-static.html"]
+# url_base = "http://fuseki.local/foowiki"
+# to_be_scraped = ["http://fuseki.local/foowiki/index-static.html"]
+
+url_base = "http://localhost:8888/foowiki"
+to_be_scraped = ["http://localhost:8888/foowiki/index-static.html"]
+
 scraped = []
 
 # list of wildcards to ignore in URL pattern.
 ignored = ["index.html", "edit.html", "page.html",
            "resources.html", "yasgui.html", "triples.html", "undefined"]
 
-
-filename_special_cases = {"index-static.html":"index.html"}
+filename_special_cases = {"index-static.html":"index.html"} # key is replaced by value
 
 log = open('crawler_log.txt', 'w')
-
-# I require a specific firefox profile, you may not.
-firefox_profile = "/home/danja/.mozilla/firefox/bxkc1pq1.Selenium"
-
 
 def uniqify(seq):
     # uniqifies a list.  Not order preserving
@@ -40,16 +41,18 @@ def convert_link(link):
     split = link.split("/")
     filename = split.pop()
     if filename == "":
-        print "\n"+link
-        print str(split)+"\n"
-        return ""
+        return "Home.html"
+
+    #     print "\n"+link
+    #     print str(split)+"\n"
+    #     return ""
     # filename = filename.replace("-","-_") # edge cases - is adequate?
     filename = filename.replace("%20","-")
     if filename_special_cases.has_key(filename):
         return filename_special_cases[filename]
     return filename+".html"
 
-def getlinks(page):
+def extract_links(page):
     print "GETting %s\n" % (page)
     try:
         driver.get(page)
@@ -76,8 +79,11 @@ def getlinks(page):
     try:
         content = driver.page_source
         # print links
+        links.sort(key = len, reverse=True)
         for link in links:
-            local = False # clunky logic, but I was getting confused
+            if link.endswith("/"):
+                continue
+            local = False # clunky longhand logic, but I was getting confused
             if link.startswith("http"):
                 if link[0:(len(url_base))] == url_base:
                     local = True
@@ -86,12 +92,22 @@ def getlinks(page):
 
             print "\n" + link + " local: " +str(local)+"\n"
             if local:
-                if link.startswith("page"):
-                    print "FULL "+link + " => " + convert_link(link)
+            #    if link.startswith("page"):
+                print "FULL "+link + " => " + convert_link(link)
             #    print content
-                content = content.replace(link, convert_link(link))
+
                 print "TRIMMED "+link[(len(url_base)+1):]+ " => "+convert_link(link[(len(url_base)+1):])
-                content = content.replace(link[(len(url_base)+1):], convert_link(link))
+# <a href="http://localhost:8888/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Link Test Target">Link Test Target</a>
+# FULL http://localhost:8888/foowiki/page-static.html?uri=http://hyperdata.it/wiki/Link%20Test%20Target => Link-Test-Target.html
+                renamed = convert_link(link)
+                unescaped_link = link.replace("%20"," ")
+                #
+                content = content.replace(link, renamed)
+                content = content.replace(unescaped_link, renamed)
+
+                content = content.replace(link[(len(url_base)+1):], renamed)
+                content = content.replace(unescaped_link[(len(url_base)+1):], renamed)
+
             #    print content
         save_page(filename, content)
     except:
@@ -117,7 +133,7 @@ def crawler():
     while to_be_scraped:
         page = to_be_scraped.pop(0)
         # print "page = " + page
-        links = getlinks(page)
+        links = extract_links(page)
         if not links:
             return
 
@@ -127,21 +143,17 @@ def crawler():
             if not link[0:(len(url_base))] == url_base:
                 continue
             elif link in scraped:
-                # print "%s has already been scraped" % (link)
                 continue
             elif link in to_be_scraped:
-                # print "%s is already on the queue" % (link)
                 continue
             elif ignore(link):
-                # print "%s is being ignored" % (link)
                 continue
             else:
-                # print "adding %s to the queue" % (link)
                 to_be_scraped.append(link)
 
-
-# to_be_scraped.append(url_base)
-# driver = webdriver.Firefox(webdriver.firefox.firefox_profile.FirefoxProfile(firefox_profile))
-driver = webdriver.Firefox()
+driver = webdriver.Firefox(webdriver.firefox.firefox_profile.FirefoxProfile(firefox_profile))
 crawler()
 log.close()
+crawler()
+log.close()
+driver.quit()
