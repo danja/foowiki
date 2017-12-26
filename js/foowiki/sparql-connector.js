@@ -20,6 +20,10 @@ function getJsonForSparqlURL(pageURL, callback) {
          }
      }).done(function (xml) {
          var json = sparqlXMLtoJSON(xml);
+
+         if(!json) {
+           json = "{}";
+         }
          console.log("JSON = "+JSON.stringify(json));
   //       doneCallback(json, getCurrentPageURI());
          callback(json);

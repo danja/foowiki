@@ -4,3 +4,4 @@ archive/*
 *~
 *.bak
 backups
+utils/geckodriver.log
