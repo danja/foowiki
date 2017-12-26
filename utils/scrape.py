@@ -9,18 +9,18 @@ firefox_profile = "/home/danny/.mozilla/firefox/profile.Selenium"
 
 binary = FirefoxBinary("/usr/bin/firefox")
 
-file_dir = "../archive/"
+file_dir = "~/danja.github.io/foo/"
 
 # url_base = "http://fuseki.local/foowiki"
 # to_be_scraped = ["http://fuseki.local/foowiki/index-static.html"]
 
-url_base = "http://localhost:8888/foowiki"
-to_be_scraped = ["http://localhost:8888/foowiki/index-static.html"]
+url_base = "http://fuseki.local/foowiki"
+to_be_scraped = ["http://fuseki.local/foowiki/index-static.html"]
 
 scraped = []
 
 # list of wildcards to ignore in URL pattern.
-ignored = ["index.html", "edit.html", "page.html",
+ignored = ["#", "index.html", "edit.html", "page.html",
            "resources.html", "yasgui.html", "triples.html", "undefined"]
 
 filename_special_cases = {"index-static.html":"index.html"} # key is replaced by value
@@ -42,11 +42,7 @@ def convert_link(link):
     filename = split.pop()
     if filename == "":
         return "Home.html"
-
-    #     print "\n"+link
-    #     print str(split)+"\n"
-    #     return ""
-    # filename = filename.replace("-","-_") # edge cases - is adequate?
+    filename = filename.replace("-","-_") # edge cases - is adequate?
     filename = filename.replace("%20","-")
     if filename_special_cases.has_key(filename):
         return filename_special_cases[filename]

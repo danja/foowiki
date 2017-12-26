@@ -24,7 +24,7 @@ function getJsonForSparqlURL(pageURL, callback) {
   //       doneCallback(json, getCurrentPageURI());
          callback(json);
      })  .fail(function() {
-    alert( "error" );
+    alert( "error in getJsonForSparqlURL sparql-connect line 27" );
   });
  }
 
@@ -44,18 +44,18 @@ function getJsonForSparqlURL(pageURL, callback) {
      // maybe force to ISO-8859-1, also known as Latin-1 instead?
 
      var $xml = $(xmlString);
-     
+
      var variables = $xml.find("variable");
-     
+
           if (variables.length == 0) {
          return false;
      }
      var jsonVariables = [];
-     
+
      variables.each(function () {
          jsonVariables.push($(this).attr("name"));
      });
-     
+
      var results = $xml.find("result");
 
      if (results.length == 0) {
@@ -76,7 +76,7 @@ function getJsonForSparqlURL(pageURL, callback) {
          }
          jsonResults.push(map);
      });
-     
+
     // console.log("RESULTS = "+JSON.stringify(jsonResults));
      return jsonResults;
  }

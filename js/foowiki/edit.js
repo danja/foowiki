@@ -38,7 +38,7 @@ var populateEditPage = function (entry, entryJSON) {
     };
     setupTags("#maintagscontainer", pageMap, false);
     $("textarea").autoGrow();
-    $("#maintagscontainer").addClass("editable"); // not working 
+    $("#maintagscontainer").addClass("editable"); // not working
 };
 
 /**
@@ -87,7 +87,7 @@ function setupPosting() {
 
 
             }).fail(function () {
-                alert("error"); // use error banner
+                alert("error posting data (edit.js line 90)"); // use error banner
             });
         }
         var uri = getCurrentPageURI();

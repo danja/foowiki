@@ -116,6 +116,10 @@ function getImage(imageURI, callback) {
     var getPageUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
     var makeDataURL = function (entryJSON) {
+      if(!entryJSON) {
+            console.log("makeDataURL empty entryJSON");
+            return "makeDataURL empty entryJSON";
+          }
             //   console.log("BBB");
             //   var entryXmlNames = ["base64"];
             // var entryJSON = sparqlXMLtoJSON(xml);
@@ -349,7 +353,7 @@ function makeLinkListHTML(entryArray) {
 
     for (var i = 0; i < entryArray.length; i++) {
         var entry = entryArray[i];
-        entry.uri = "page-static.html?uri=" + entry.uri; 
+        entry.uri = "page-static.html?uri=" + entry.uri;
         var link = templater(resultTemplate, entry);
         links += link;
     }

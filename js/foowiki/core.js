@@ -74,9 +74,11 @@ function getResource(uri, entryHandler) {
     var getPageUrl = generateGetUrl(getPageSparqlTemplate, entry);
 
     var handleEntry = function (entryJSON) {
+      if(!entryJSON) { alert("no entry json")}
         console.log("handleEntry " + JSON.stringify(entryJSON));
         entryHandler(entry, entryJSON);
     };
+
     console.log("getPageUrl = " + getPageUrl);
     getJsonForSparqlURL(getPageUrl, handleEntry);
     // getDataForURL(handleEntry, getPageUrl);
@@ -126,7 +128,10 @@ function getImage(imageURI, callback) {
     var getPageUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
     var makeDataURL = function (entryJSON) {
-            //   console.log("BBB");
+      if(!entryJSON) {
+            console.log("makeDataURL empty entryJSON");
+            return "makeDataURL empty entryJSON";
+          }
             //   var entryXmlNames = ["base64"];
             // var entryJSON = sparqlXMLtoJSON(xml);
             var src = "data:image/jpeg;base64," + entryJSON[0]["base64"];
