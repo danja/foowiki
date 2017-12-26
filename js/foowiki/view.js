@@ -14,7 +14,7 @@
  *     fit in one line.
  */
 function buildPage(pageMap, entryJSON) {
-    if (!entryJSON) {
+    if (!entryJSON || (entryJSON == "{}")) {
         entryJSON = { // is needed?
             content: "",
             created: "",

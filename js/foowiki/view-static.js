@@ -15,7 +15,7 @@
  */
 function buildPage(pageMap, entryJSON) {
   // console.log("in build page "+JSON.stringify(entryJSON))
-    if (!entryJSON) {
+    if (!entryJSON || (entryJSON == "{}")) {
         entryJSON = { // is needed?
             content: "",
             created: "",
@@ -23,7 +23,8 @@ function buildPage(pageMap, entryJSON) {
             title: "",
             nick: ""
         };
-        window.location.href = window.location.href.replace("page-static.html", "edit.html");
+        // TO DO - put an 404 page handler here?? for static rendition?
+      //  window.location.href = window.location.href.replace("page-static.html", "edit.html");
         return;
     }
 
@@ -53,7 +54,7 @@ function buildPage(pageMap, entryJSON) {
     //  fixImageLinks(entryObject);
 
     translateLinks(entryObject);
-    
+
     //  $("#entry").replaceWith(entryHTML);
     $("#entry").replaceWith(entryObject);
     //  translateLinks();
