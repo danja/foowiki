@@ -22,7 +22,7 @@ Some old notes on how it works:
 
 *Work in progress!*
 
-**2019-04-23** : the local server I was running this on is failing, so I decided to put this on my main laptop. This revealed several issues, so I've made the minimum necessary changes to get it working and edited this doc accordingly.
+**2019-04-23** : the local server I was running this on is failing, so I decided to put this on my main laptop. This revealed several issues, so I've made the minimum necessary changes to get it working.
 
 ## Installation
 
