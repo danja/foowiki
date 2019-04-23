@@ -17,9 +17,18 @@ Some old notes on how it works:
 
 [Browser + SPARQL Server = Wiki](https://dannyayers.wordpress.com/2014/12/30/browser-sparql-server-wiki/)
 
+
+## Status
+
+*Work in progress!*
+
+**2019-04-23** : the local server I was running this on is failing, so I decided to put this on my main laptop. This revealed several issues, so I've made the minimum necessary changes to get it working and edited this doc accordingly.
+
 ## Installation
 
-PS. FooWiki is now available via a Docker image, see https://github.com/danja/docker-hyperdata
+FooWiki is available via a Docker image, see https://github.com/danja/docker-hyperdata
+That means of installation is recommended.
+Also the notes here are a little out-of-date, the information over there is much more reliable.
 
 First clone the FooWiki files somewhere convenient. These will be served as regular HTML.
 
@@ -28,6 +37,8 @@ Next download Fuseki according to the [instructions](http://jena.apache.org/docu
 1. the Fuseki config file - the one provided as foowiki/etc/seki-config.ttl includes a suitable store definition (called seki)
 2. a script to run Fuseki pointing at its config file - the one provided as foowiki/etc/run-fuseki.bat should help as a starting point
 3. the FuWiki config file, foowiki/js/config.js - the one provided is the one I use against the two files above
+
+
 
 ### Checking Fuseki
 Assuming you have a setup close to this, opening http://localhost:3030 should take you to the Fuseki pages. Click on Control Panel. When offered, select the /seki dataset. You should now see Fuseki's raw SPARQL interface.
