@@ -11,7 +11,6 @@
  */
 var populateEditPage = function (entry, entryJSON) {
 
-    console.log("populateEditPage " + JSON.stringify(entryJSON));
     var uri = getCurrentPageURI();
     if (!entryJSON[0]) {
         var split = uri.split("/");

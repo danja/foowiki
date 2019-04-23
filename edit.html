@@ -35,37 +35,14 @@
     <script src="js/foowiki/sparql-connector.js"></script>
 
     <script type="text/javascript" language="javascript">
-        //    var uri = queryString["uri"];
-
-         //      uri = encodeURI(uri);
-
-        /*
-        var map = {
-            "uri": uri,
-            "FooWiki.graphURI": FooWiki.graphURI
-        };
-
-        var getPageSparql = sparqlTemplater(getPageSparqlTemplate, map);
-        var getPageUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
-*/
-         //       var uri = getCurrentPageURI();
-
-         //      uri = "page.html?uri=" + uri;
 
         $(function () {
             setupErrorHandling();
-
             spinner();
             setupImageUploading();
             var uri = queryString["uri"];
-
             uri = encodeURI(uri);
-
-            // function getResource(uri, entryHandler) {
-            console.log("AAAA");
             getResource(uri, populateEditPage);
-            console.log("BBB");
-            //     getJsonForSparqlURL(getPageUrl, populateEditPage);
             setupPosting();
         });
     </script>
@@ -92,8 +69,6 @@
     <div id="left" class="column">
         <div class="tab"><a href="index.html">Page Index</a>
         </div>
-        <!-- div class="tab"><a href="page.html?uri=http://hyperdata.it/wiki/">Home Page</a>
-        </div -->
     </div>
 
     <div id="right" class="column">

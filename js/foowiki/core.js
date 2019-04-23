@@ -1,14 +1,4 @@
 var Entry = {
-  /*
-  function () {
-      return this;
-  },
-
-  function (FooWiki.graphURI, uri) {
-      this.setId(FooWiki.graphURI, uri)
-      return this;
-  },
-  */
 
   setId: function(graphURI, uri) {
     this.graphURI = graphURI;
@@ -26,10 +16,9 @@ var Entry = {
   },
 
   create: function() {
-    //this.title = decodeURI(title);
     this.title = "";
     this.content = "";
-    this.nick = "danja";
+    this.nick = "";
     var now = (new Date()).toISOString();
     this.created = now;
     this.modified = now;
@@ -46,14 +35,8 @@ var Entry = {
  *     fit in one line.
  */
 function getResource(uri, entryHandler) {
-  // console.log("getresource " + uri);
   var type = queryString["type"];
-  console.log("TYPE=" + type);
-  // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image
-
   var entry = Entry.setId(FooWiki.graphURI, uri);
-
-
 
   if (type == "image") {
     handleImageRequest(uri);
@@ -70,25 +53,18 @@ function getResource(uri, entryHandler) {
     return;
   }
 
-
   var getPageUrl = generateGetUrl(getPageSparqlTemplate, entry);
 
   var handleEntry = function(entryJSON) {
     if (!entryJSON) {
       alert("no entry json");
     }
-    // console.log("handleEntry " + JSON.stringify(entryJSON));
     entryHandler(entry, entryJSON);
   };
 
   console.log("getPageUrl = " + getPageUrl);
   getJsonForSparqlURL(getPageUrl, handleEntry);
-  // getDataForURL(handleEntry, getPageUrl);
 }
-
-//function generateGetUrl(sparqlTemplate, entry) {
-
-//}
 
 function generateGetUrl(sparqlTemplate, entry, typeHint) {
   typeHint = typeHint ? typeHint : "xml"; // Fuseki convention
@@ -97,9 +73,6 @@ function generateGetUrl(sparqlTemplate, entry, typeHint) {
 }
 
 function handleImageRequest(uri) {
-  //  var fliptoImage = function (src) {
-  //     window.location.href = src;
-  //  };
   getImage(uri, redirectTo(target));
   return;
 }
@@ -134,13 +107,9 @@ function getImage(imageURI, callback) {
       console.log("makeDataURL empty entryJSON");
       return "makeDataURL empty entryJSON";
     }
-    //   var entryXmlNames = ["base64"];
-    // var entryJSON = sparqlXMLtoJSON(xml);
     var src = "data:image/jpeg;base64," + entryJSON[0]["base64"];
     callback(src);
   }
-  //   console.log("getPageUrl=" + getPageUrl);
-  //  getDataForURL(makeDataURL, getPageUrl);
   getJsonForSparqlURL(getPageUrl, makeDataURL);
 }
 
@@ -175,20 +144,12 @@ function setupImageUploading() {
  */
 // pushes image data to SPARQL store
 function storeImage(dataURL) {
-
-  //    console.log("base64 = " + base64);
   var file = $('#fileSelector')[0].files[0]
-  //if(file){
-  // console.log(file.name);
-  // }
   var imageLabel = file.name;
-
   var BASE64_MARKER = ';base64,';
-  //    if (dataURL.indexOf(BASE64_MARKER) == -1) {
   var parts = dataURL.split(',');
   var contentType = parts[0].split(':')[1];
   var raw = parts[1];
-  //     } ;
 
   // ADD MEDIA TYPE
   var map = {
@@ -210,35 +171,7 @@ function storeImage(dataURL) {
 }
 
 // image uploading
-/*
- function dataURLToBlob(dataURL) {
-     var BASE64_MARKER = ';base64,';
-     if (dataURL.indexOf(BASE64_MARKER) == -1) {
-         var parts = dataURL.split(',');
-         var contentType = parts[0].split(':')[1];
-         var raw = parts[1];
 
-         return new Blob([raw], {
-             type: contentType
-         });
-     } else {
-         var parts = dataURL.split(BASE64_MARKER);
-         var contentType = parts[0].split(':')[1];
-         var raw = window.atob(parts[1]);
-         var rawLength = raw.length;
-
-         var uInt8Array = new Uint8Array(rawLength);
-
-         for (var i = 0; i < rawLength; ++i) {
-             uInt8Array[i] = raw.charCodeAt(i);
-         }
-
-         return new Blob([uInt8Array], {
-             type: contentType
-         });
-     }
- }
-*/
 // SEARCH --------------------------
 
 /**
@@ -249,10 +182,6 @@ function storeImage(dataURL) {
  *     fit in one line.
  */
 function setupSearch(searchContainer) {
-
-  //  $(searchContainer).append("<button id='searchButton'>Search</button>");
-  //  $(searchContainer).append(entryTableTemplate);
-
   var renderTags = function(tags) {
     //  var tags = tagsXmlToJson(xml);
     var tagButtons = $(searchContainer + " #tagButtons");
