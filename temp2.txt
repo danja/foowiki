@@ -1,9 +1,0 @@
-./js/foowiki/temp2.txt:./index.js:        var newPageName = $("#newPageName").val();
-./js/foowiki/temp2.txt:./index.js:        window.location.href = window.location.href = FooWiki.serverRootPath + "edit.html?uri=" + FooWiki.graphURI + "/" + newPageName;
-./js/foowiki/index.js:        var newPageName = $("#newPageName").val();
-./js/foowiki/index.js:        window.location.href = window.location.href = FooWiki.serverRootPath + "edit.html?uri=" + FooWiki.graphURI + "/" + newPageName;
-./js/foowiki/temp.txt:./index.js:        window.location.href = window.location.href = FooWiki.serverRootPath + "edit.html?uri=" + FooWiki.graphURI + "/" + newPageName;
-./index.html:            <label for='newPageName'>New Page Title</label>
-./index.html:            <input id="newPageName" type="text" />
-./page.html:              <label for='newPageName'>New Page Title</label>
-./page.html:              <input id="newPageName" type="text" />

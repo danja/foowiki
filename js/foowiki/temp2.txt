@@ -1,2 +1,0 @@
-./index.js:        var newPageName = $("#newPageName").val();
-./index.js:        window.location.href = window.location.href = FooWiki.serverRootPath + "edit.html?uri=" + FooWiki.graphURI + "/" + newPageName;

@@ -90,7 +90,11 @@ function formatEntry(entry) {
 function formatContent(content) {
     content = unescapeLiterals(content);
     content = tweakBlockquotes(content);
+    console.log("\n\n\n\n***CONTENT BEFORE");
+    console.log(content);
     content = marked(content);
+    console.log("\n\n\n\n***CONTENT AFTER");
+    console.log(content);
     return content;
 }
 
