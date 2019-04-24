@@ -68,14 +68,8 @@ function buildPage(pageMap, entryJSON) {
  *     fit in one line.
  */
 function formatEntry(entry) {
-    //  entry.content = unescapeLiterals(entry.content);
-
-    //   entry.content = tweakBlockquotes(entry.content);
-    //  entry.content = marked(entry.content);
 
     entry.content = formatContent(entry.content);
-
-    // console.log("entry.content = " + entry.content);
     entry.date = moment(entry.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
     return templater(pageEntryTemplate, entry);
 }

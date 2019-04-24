@@ -43,14 +43,14 @@ tdb:GraphTDB    rdfs:subClassOf  ja:Model .
     .
 
 <#foowiki_dataset> rdf:type      tdb:DatasetTDB ;
+#########
+######### Set to the required database path
+#########
     tdb:location "/home/danny/workspace-javascript/seki/data/FooWikiDB" ;
+#########
+#########
         tdb:unionDefaultGraph true ;
 ##     # Query timeout on this dataset (milliseconds)
 ##     ja:context [ ja:cxtName "arq:queryTimeout" ;  ja:cxtValue "1000" ] ;
 ##     # Default graph for query is the (read-only) union of all named graphs.
      .
-
-
-
-
-

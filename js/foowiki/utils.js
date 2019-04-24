@@ -206,7 +206,7 @@ function spinner() {
         function reviseHref(aElement) {
             var oldHref = aElement.href;
 
-            //   if (!aElement.text && (location.href == aElement.href)) { // both blank, insert index link   
+            //   if (!aElement.text && (location.href == aElement.href)) { // both blank, insert index link
             //        aElement.text = "Home Page";
             //   }
 
@@ -256,7 +256,9 @@ function redirectTo(target) {
 
             //  $(aElement).append("filler");
             console.log("REF=" + aElement.href);
-
+console.log("REF=" + aElement.href);
+console.log("localRef =" + localRef );
+console.log("URI =" + uri );
             var handler = function (pageMap, entryJSON) { // entryHandler(pageMap, entryJSON);
                 //        console.log("pageMap=" + JSON.stringify(pageMap));
                 //        console.log("CONTEN=" + JSON.stringify(entryJSON));
@@ -282,7 +284,7 @@ function redirectTo(target) {
  *     fit in one line.
  */
          // little workaround for odd marked.js behaviour, at least in part due to marked.js line 793 regex
-         // if the header is a link, the id ends up as "-like-this-like-this-" 
+         // if the header is a link, the id ends up as "-like-this-like-this-"
         function fixHeaderIDs() {
             $(".content h1, .content h2, .content h3, .content h4, .content h5, .content h6").each(function () {
                 var id = $(this).attr("id");
