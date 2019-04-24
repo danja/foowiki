@@ -2,10 +2,6 @@
  * Functions associated with page.html
  */
 
-
-
-
-
 /**
  * Comment template.
  * @param {string} foo This is a param with a description too long to fit in

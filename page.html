@@ -44,10 +44,8 @@
             setupErrorHandling();
             spinner();
             var uri = queryString["uri"];
-            // console.log("URI="+uri);
             uri = encodeURI(uri);
             getResource(uri, buildPage);
-
             setupButtons();
             makeRecentChangesList();
 

@@ -205,7 +205,8 @@ function spinner() {
  */
         function reviseHref(aElement) {
             var oldHref = aElement.href;
-
+            console.log("PLDHREF");
+console.log(aElement.text+oldHref);
             //   if (!aElement.text && (location.href == aElement.href)) { // both blank, insert index link
             //        aElement.text = "Home Page";
             //   }
@@ -220,13 +221,24 @@ function spinner() {
                     return;
                 }
                 if (location.href == oldHref) { // link href was blank
-                    var before = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + FooWiki.serverRootPath + "page.html?uri=" + FooWiki.pagesBaseURI;
-                    return oldHref.substring(0, before.length) + linkText;
+                  //  var before = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + FooWiki.serverRootPath + "page.html?uri=" + FooWiki.pagesBaseURI;
+
+//////////////////////////////////////////////////////////////////////////////
+
+                    var ref = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + FooWiki.serverRootPath + "page.html?uri=" + linkText;
+                    // was var ref = oldHref.substring(0, before.length) + linkText;
+
+// alert("PLANK REF"+aElement.href);
+                //    console.log("BLANK REF");
+                  //  console.log(aElement.href);
+                    return ref;
                 } else {
                     var localRef = oldHref.substring(oldHref.indexOf(FooWiki.serverRootPath) + FooWiki.serverRootPath.length);
                     return FooWiki.serverRootPath + "page.html?uri=" + FooWiki.pagesBaseURI + localRef;
                 }
             }
+            console.log("NEWHREF");
+            console.log(aElement.href);
             includeContent(aElement);
             return;
 
