@@ -17,7 +17,6 @@ function setupButtons() {
 
     $("#newPageButton").click(function () {
         var newPageName = $("#newPageName").val();
-
         window.location.href = window.location.href = FooWiki.serverRootPath + "edit.html?uri=" + FooWiki.graphURI + "/" + newPageName;
     });
 

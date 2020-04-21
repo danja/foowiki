@@ -12,12 +12,14 @@
 var populateEditPage = function (entry, entryJSON) {
 
     var uri = getCurrentPageURI();
-    if (!entryJSON[0]) {
+    if (!entryJSON.title) {
         var split = uri.split("/");
         var rawTitle = split[split.length - 1];
         var entry = Entry.create();
         entry.title = decodeURI(rawTitle);
+// console.log("New Title = "+entry.title);
     } else {
+ // console.log("entryJSON = "+JSON.stringify(entryJSON));
         var entry = Entry.populate(entryJSON[0]);
     }
 
