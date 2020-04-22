@@ -12,7 +12,7 @@
 var populateEditPage = function (entry, entryJSON) {
 
     var uri = getCurrentPageURI();
-    if (!entryJSON[0].title) {
+    if (!entryJSON.title) {
         var split = uri.split("/");
         var rawTitle = split[split.length - 1];
         var entry = Entry.create();
@@ -20,7 +20,7 @@ var populateEditPage = function (entry, entryJSON) {
   entry.title = decodeURIComponent(rawTitle);
 console.log("New Title = "+entry.title);
     } else {
- // console.log("entryJSON = "+JSON.stringify(entryJSON));
+ console.log("entryJSON = "+JSON.stringify(entryJSON));
         var entry = Entry.populate(entryJSON[0]);
     }
 

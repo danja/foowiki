@@ -62,7 +62,7 @@ function getResource(uri, entryHandler) {
     entryHandler(entry, entryJSON);
   };
 
-  console.log("getPageUrl = " + getPageUrl);
+  // console.log("getPageUrl = " + getPageUrl);
   getJsonForSparqlURL(getPageUrl, handleEntry);
 }
 
