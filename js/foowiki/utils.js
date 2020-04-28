@@ -91,6 +91,39 @@ function spinner() {
             return text.replace(/"""/g, "&#34&#34&#34");
         }
 
+        /**
+         * Comment template.
+         * @param {string} foo This is a param with a description too long to fit in
+         *     one line.
+         * @return {number} This returns something that has a description too long to
+         *     fit in one line.
+*/
+
+
+         function hash(text){
+              return decimalToHex(hashCode(text), 8);
+         }
+
+/*
+         from https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
+                  */
+        function hashCode(text) {
+          var hash = 0, i, chr;
+          for (i = 0; i < this.length; i++) {
+            chr   = this.charCodeAt(i);
+            hash  = ((hash << 5) - hash) + chr;
+            hash |= 0; // Convert to 32bit integer
+          }
+          return hash;
+        }
+
+/*
+from https://stackoverflow.com/questions/57803/how-to-convert-decimal-to-hexadecimal-in-javascript
+*/
+        function decimalToHex(decimal, chars) {
+            return (decimal + Math.pow(16, chars)).toString(16).slice(-chars).toUpperCase();
+        }
+
 
 /**
  * Comment template.

@@ -23,6 +23,7 @@ PREFIX dctype: <http://purl.org/dc/dcmitype/> \n\
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>  \n\
 PREFIX sioc: <http://rdfs.org/sioc/ns#>  \n\
 PREFIX wiki: <http://purl.org/stuff/wiki#>  \n\
+PREFIX bookmark: <http://purl.org/stuff/bookmarks#>  \n\
 ";
 
 var getListSparqlTemplate = commonPrefixes + " \n\

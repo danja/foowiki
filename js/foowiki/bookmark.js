@@ -1,5 +1,5 @@
 /**
- * Functions associated with edit.html
+ * Functions associated with bookmark.html
  */
 
 /**
@@ -9,13 +9,15 @@
  * @return {number} This returns something that has a description too long to
  *     fit in one line.
  */
-var populateEditPage = function (entry, entryJSON) {
- entry = Entry.populate(entryJSON[0]);
-// console.log("3JSON = "+JSON.stringify(entryJSON));
-// console.log("TITLE = "+entry.title);
-// console.log("CONTENT = "+entry.content);
+var populateBookmarkPage = function (entry, entryJSON) {
+
+/*
+
+hash(string) function to generate id
+
+*/
     var uri = getCurrentPageURI();
-    if (!entry.title || entry.title == "") {
+    if (!entryJSON.title) {
         var split = uri.split("/");
         var rawTitle = split[split.length - 1];
         var entry = Entry.create();
@@ -23,11 +25,11 @@ var populateEditPage = function (entry, entryJSON) {
   entry.title = decodeURIComponent(rawTitle);
 console.log("New Title = "+entry.title);
     } else {
-// console.log("entryJSON = "+JSON.stringify(entryJSON));
-  //      var entry = Entry.populate(entryJSON);
+ console.log("entryJSON = "+JSON.stringify(entryJSON));
+        var entry = Entry.populate(entryJSON[0]);
     }
 
-    var entryHTML = templater(editEntryTemplate, entry);
+    var entryHTML = templater(editBookmarkTemplate, entry);
 
     $("#entry").replaceWith(entryHTML);
     $("#format option").each(

@@ -31,7 +31,7 @@
     <script src="js/foowiki/html-templates.js"></script>
     <script src="js/foowiki/utils.js"></script>
     <script src="js/foowiki/core.js"></script>
-    <script src="js/foowiki/edit.js"></script>
+    <script src="js/foowiki/bookmark.js"></script>
     <script src="js/foowiki/sparql-connector.js"></script>
 
     <script type="text/javascript" language="javascript">
@@ -39,10 +39,9 @@
         $(function () {
             setupErrorHandling();
             spinner();
-            setupImageUploading();
             var uri = queryString["uri"];
             uri = encodeURI(uri);
-            getResource(uri, populateEditPage);
+            getResource(uri, populateBookmarkPage);
             setupPosting();
         });
     </script>
@@ -67,26 +66,10 @@
     </div>
 
     <div id="left" class="column">
-        <div class="tab"><a href="index.html">Page Index</a>
-        </div>
     </div>
 
     <div id="right" class="column">
-        <div id='searchContainer'>
-            <button id='searchButton'>Search</button>
-            <!-- label for='searchText'>Search Text</label -->
-            <input id='searchText' type='text' value=''></input>
-            <div id='tagButtons'></div>
-            <ul id="results"></ul>
-        </div>
     </div>
-
-    <label for='fileSelector'>Upload Image</label>
-    <input type="file" name="fileSelector" id="fileSelector" />
-    <br/>
-    <!-- input type="text" name="imageName" id="imageName" / -->
-    <br/>
-    <img id="original_image" />
 
     <pre><span id="result"></span></pre>
 

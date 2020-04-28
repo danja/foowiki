@@ -59,6 +59,8 @@ function getResource(uri, entryHandler) {
     if (!entryJSON) {
       alert("no entry json");
     }
+    console.log("2TITLE = "+entry.title);
+    console.log("2CONTENT = "+entry.content);
     entryHandler(entry, entryJSON);
   };
 

@@ -325,7 +325,7 @@
         dc:modified   "2015-02-26T10:06:04.011Z" ;
         dc:title      "Online Presence" ;
         dc:topic      <http://hyperdata.it/tags/coding> ;
-        sioc:content  "see also [Dev Tools]()\n\n## Domain names :\n* [hyperdata.it](http://www.hyperdata.it)\n* [thoughtcatchers.org](http://www.thoughtcatchers.org)\n\n## [OpenShift Sites](https://openshift.redhat.com/app/console/applications)\n### ultimately\n* one for Live\n* one for Seki dev\n* one for Fusepool\n\n(for foowiki/Seki2) www.thoughtcatchers.org -&gt; fuseki-hyperdata.rhcloud.com\n\nwww.hyperdata.it -&gt; seki-hyperdata.rhcloud.com\n\ndanja-hyperdata.rhcloud.com" ;
+        sioc:content  "see also [Dev Tools]()\n\n## Domain names :\n* [hyperdata.it](http://www.hyperdata.it)\n* [hyperdata.it](http://www.hyperdata.it)\n\n## [OpenShift Sites](https://openshift.redhat.com/app/console/applications)\n### ultimately\n* one for Live\n* one for Seki dev\n* one for Fusepool\n\n(for foowiki/Seki2) www.hyperdata.it -&gt; fuseki-hyperdata.rhcloud.com\n\nwww.hyperdata.it -&gt; seki-hyperdata.rhcloud.com\n\ndanja-hyperdata.rhcloud.com" ;
         foaf:maker    <http://hyperdata.it/wiki/people/danja> .
 
 <http://hyperdata.it/tags/www>

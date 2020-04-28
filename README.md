@@ -22,6 +22,31 @@ Some old notes on how it works:
 
 *Work in progress!*
 
+**2020-04-28** : adding bookmarking functionality. The semweb-native style for doing this might be something along the lines of:
+
+```
+    <http://example.org> dc:title "Page Title" ;
+                         dc:description "Stuff about the page" .
+
+    <http://hyperdata.it/bookmarks/id1234> a :Bookmark ;
+          :target <http://example.org> .
+```      
+
+*but* the way FooWiki is setup at the moment is geared around having the wiki page as the central entity.
+
+`
+<http://hyperdata.it/wiki/PageX> a wiki:Page ;
+                    dc:title "Page Title" ;
+                    dc:description "Stuff about the page" .
+`
+So I reckon it'll be easiest to do a simple extension of the current usage, munging the data together:
+
+<http://hyperdata.it/wiki/id1234> a h:Bookmark ;
+                    dc:title "Page Title" ;
+                    dc:description "Stuff about the page" ;
+                    h:target  <http://example.org> .
+`
+
 **2019-04-23** : the local server I was running this on is failing, so I decided to put this on my main laptop. This revealed several issues, so I've made the minimum necessary changes to get it working.
 
 ## Installation

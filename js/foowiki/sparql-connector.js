@@ -24,7 +24,7 @@ function getJsonForSparqlURL(pageURL, callback) {
          if(!json) {
            json = "{}";
          }
-  //       console.log("JSON = "+JSON.stringify(json));
+       console.log("2JSON = "+JSON.stringify(json));
   //       doneCallback(json, getCurrentPageURI());
          callback(json);
      })  .fail(function() {
