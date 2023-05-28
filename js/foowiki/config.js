@@ -22,7 +22,7 @@
        graphURI: "http://hyperdata.it/wiki",
 
        serverRootPath: "/foowiki/",
-       sparqlQueryEndpoint: "http://fuseki.local:3030/foowiki/sparql?query=", // move ? part ??
+       sparqlQueryEndpoint: "http://hyperdata.it:3030/foowiki/sparql?query=", // move ? part ??
        sparqlUpdateEndpoint: "http://fuseki.local:3030/foowiki/update",
 
        runnableFormats: [
