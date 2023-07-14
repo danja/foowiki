@@ -38,7 +38,7 @@ var Entry = {
 function getResource(uri, entryHandler) {
     // console.log("getresource " + uri);
     var type = queryString["type"];
-            console.log("TYPE="+type);
+    console.log("TYPE=" + type);
     // http://localhost:3030/foowiki/page.html?uri=http://hyperdata.it/wiki/1unnamed.jpg&type=image
 
     var entry = Entry.setId(FooWiki.graphURI, uri);
@@ -77,15 +77,15 @@ function getResource(uri, entryHandler) {
 //}
 
 function generateGetUrl(sparqlTemplate, entry, typeHint) {
-    typeHint = typeHint ? typeHint :  "xml"; // Fuseki convention
+    typeHint = typeHint ? typeHint : "xml"; // Fuseki convention
     var sparql = sparqlTemplater(sparqlTemplate, entry);
-    return FooWiki.sparqlQueryEndpoint + encodeURIComponent(sparql) + "&output="+typeHint;
+    return FooWiki.sparqlQueryEndpoint + encodeURIComponent(sparql) + "&output=" + typeHint;
 }
 
 function handleImageRequest(uri) {
-  //  var fliptoImage = function (src) {
-   //     window.location.href = src;
-  //  };
+    //  var fliptoImage = function (src) {
+    //     window.location.href = src;
+    //  };
     getImage(uri, redirectTo(target));
     return;
 }
@@ -95,8 +95,8 @@ function handleMarkdownRequest(uri) {
 }
 
 function handleTurtleRequest(entry) {
-    var getPageUrl = generateGetUrl(getTurtleSparqlTemplate, entry,"text"); // hopefully will return text/turtle
-     redirectTo(getPageUrl);
+    var getPageUrl = generateGetUrl(getTurtleSparqlTemplate, entry, "text"); // hopefully will return text/turtle
+    redirectTo(getPageUrl);
 }
 
 /**
@@ -116,18 +116,18 @@ function getImage(imageURI, callback) {
     var getPageUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
     var makeDataURL = function (entryJSON) {
-      if(!entryJSON) {
+        if (!entryJSON) {
             console.log("makeDataURL empty entryJSON");
             return "makeDataURL empty entryJSON";
-          }
-            //   console.log("BBB");
-            //   var entryXmlNames = ["base64"];
-            // var entryJSON = sparqlXMLtoJSON(xml);
-            var src = "data:image/jpeg;base64," + entryJSON[0]["base64"];
-            callback(src);
         }
-        //   console.log("getPageUrl=" + getPageUrl);
-        //  getDataForURL(makeDataURL, getPageUrl);
+        //   console.log("BBB");
+        //   var entryXmlNames = ["base64"];
+        // var entryJSON = sparqlXMLtoJSON(xml);
+        var src = "data:image/jpeg;base64," + entryJSON[0]["base64"];
+        callback(src);
+    }
+    //   console.log("getPageUrl=" + getPageUrl);
+    //  getDataForURL(makeDataURL, getPageUrl);
     getJsonForSparqlURL(getPageUrl, makeDataURL);
 }
 
@@ -165,9 +165,9 @@ function storeImage(dataURL) {
 
     //    console.log("base64 = " + base64);
     var file = $('#fileSelector')[0].files[0]
-        //if(file){
-        // console.log(file.name);
-        // }
+    //if(file){
+    // console.log(file.name);
+    // }
     var imageLabel = file.name;
 
     var BASE64_MARKER = ';base64,';
@@ -191,7 +191,7 @@ function storeImage(dataURL) {
         data: ({
             update: data
         })
-    }).done(function () {});
+    }).done(function () { });
     $('#original_image').attr('src', dataURL);
     $('#original_image').attr('name', imageLabel);
 }
@@ -296,16 +296,16 @@ function doSearch() {
     var searchUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
 
     var renderSearchResults = function (json) {
-            //    console.log("entriesJSON = " + JSON.stringify(entriesJSON));
-            var results = makeLinkListHTML(json);
-            $("#results").empty();
-            $("#results").append(results);
-            //   console.log("HERE" + results);
-            $('html, body').animate({
-                scrollTop: $("#results").offset().top
-            }, 250); // milliseconds
-        }
-        //    getDataForURL(renderSearchResults, searchUrl);
+        //    console.log("entriesJSON = " + JSON.stringify(entriesJSON));
+        var results = makeLinkListHTML(json);
+        $("#results").empty();
+        $("#results").append(results);
+        //   console.log("HERE" + results);
+        $('html, body').animate({
+            scrollTop: $("#results").offset().top
+        }, 250); // milliseconds
+    }
+    //    getDataForURL(renderSearchResults, searchUrl);
     getJsonForSparqlURL(searchUrl, renderSearchResults);
 }
 
@@ -329,13 +329,13 @@ function makeRecentChangesList() { // refactor with doSearch()
     var searchUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
     var renderRecentChanges = function (json) {
 
-            var results = makeLinkListHTML(json);
-              console.log("results = " + results);
-            //     $("#results").empty();
-            $("#recentChanges").append(results);
-            //  console.log("HERE" + results);
-        }
-        //  getDataForURL(renderRecentChanges, searchUrl);
+        var results = makeLinkListHTML(json);
+        console.log("results = " + results);
+        //     $("#results").empty();
+        $("#recentChanges").append(results);
+        //  console.log("HERE" + results);
+    }
+    //  getDataForURL(renderRecentChanges, searchUrl);
     getJsonForSparqlURL(searchUrl, renderRecentChanges);
 }
 
@@ -368,6 +368,8 @@ function makeLinkListHTML(entryArray) {
  *     fit in one line.
  */
 // for index page
+
+//////////////////////////////////////////////////////////77
 function makeEntryListHTML(entryArray, showContent) {
     var rows = "";
     //  var entryArray = sparqlXMLtoJSON(xml);
@@ -377,6 +379,7 @@ function makeEntryListHTML(entryArray, showContent) {
     }
     return rows;
 }
+
 
 /**
  * Comment template.
@@ -491,23 +494,23 @@ function createTags(containerId, pageMap, readOnly) {
 
     var renderTags = function (tags) {
 
-            var tagitMap = {
-                readOnly: readOnly
-            };
+        var tagitMap = {
+            readOnly: readOnly
+        };
 
-            $(containerId).tagit(tagitMap);
+        $(containerId).tagit(tagitMap);
 
-            for (var i = 0; i < tags.length; i++) {
-                var uri = tags[i]["topicURI"];
-                var label = tags[i]["topicLabel"];
-                //  tagitMap[uri] = label;
-                $(containerId).tagit('createTag', label);
+        for (var i = 0; i < tags.length; i++) {
+            var uri = tags[i]["topicURI"];
+            var label = tags[i]["topicLabel"];
+            //  tagitMap[uri] = label;
+            $(containerId).tagit('createTag', label);
 
-                var selector = containerId + " input[value='" + label + "']";
-                $(selector).attr("name", uri);
-            }
+            var selector = containerId + " input[value='" + label + "']";
+            $(selector).attr("name", uri);
         }
-        // getDataForURL(renderTags, getTagsUrl);
+    }
+    // getDataForURL(renderTags, getTagsUrl);
     getJsonForSparqlURL(getTagsUrl, renderTags);
 }
 

@@ -33,13 +33,14 @@ ul.tagit {
 }*/
 
 body {
-    background-color: lightgray;
+    /*   background-color: lightgray; */
 }
 
 h4 {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
+
 /*  $("#maintagscontainer").addClass("editable"); */
 
 #left ul,
@@ -70,7 +71,8 @@ button {
 }
 
 #recentChangesContainer,
-#searchContainer, #newPage {
+#searchContainer,
+#newPage {
     width: 100%;
     /*   width:180px; */
     /* Be VERY careful with this, breaks normal words wh_erever */
@@ -126,6 +128,7 @@ button {
     /*     font-size: 150%;
     font-weight: bold; */
 }
+
 /*
 .tab {
     display: block;
@@ -182,6 +185,7 @@ th {
     border: 1px solid lightgray;
     padding: 4px;
 }
+
 /* Form elements */
 
 form {
@@ -218,7 +222,9 @@ input {
 }
 
 pre {
-    "Courier New", Courier, monospace;
+    "Courier New",
+    Courier,
+    monospace;
 }
 
 .missing {
@@ -247,6 +253,7 @@ a:hover {
 a:active {
     text-decoration: underline;
 }
+
 /* Spinner */
 
 .spinner {
@@ -270,7 +277,7 @@ a:active {
         -webkit-transform: rotate(0deg);
     }
 
-to {
+    to {
         -webkit-transform: rotate(359deg);
     }
 }
@@ -280,7 +287,7 @@ to {
         -moz-transform: rotate(0deg);
     }
 
-to {
+    to {
         -moz-transform: rotate(359deg);
     }
 }
@@ -290,7 +297,7 @@ to {
         -o-transform: rotate(0deg);
     }
 
-to {
+    to {
         -o-transform: rotate(359deg);
     }
 }
@@ -300,7 +307,7 @@ to {
         transform: rotate(0deg);
     }
 
-to {
+    to {
         transform: rotate(359deg);
     }
 }

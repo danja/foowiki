@@ -1,12 +1,12 @@
 var Entry = {
 
-  setId: function(graphURI, uri) {
+  setId: function (graphURI, uri) {
     this.graphURI = graphURI;
     this.uri = uri;
     return this;
   },
 
-  populate: function(json) {
+  populate: function (json) {
     this.title = json.title;
     this.content = json.content;
     this.nick = json.nick;
@@ -15,7 +15,7 @@ var Entry = {
     return this;
   },
 
-  create: function() {
+  create: function () {
     this.title = "";
     this.content = "";
     this.nick = "";
@@ -55,12 +55,12 @@ function getResource(uri, entryHandler) {
 
   var getPageUrl = generateGetUrl(getPageSparqlTemplate, entry);
 
-  var handleEntry = function(entryJSON) {
+  var handleEntry = function (entryJSON) {
     if (!entryJSON) {
       alert("no entry json");
     }
-    console.log("2TITLE = "+entry.title);
-    console.log("2CONTENT = "+entry.content);
+    console.log("2TITLE = " + entry.title);
+    console.log("2CONTENT = " + entry.content);
     entryHandler(entry, entryJSON);
   };
 
@@ -104,7 +104,7 @@ function getImage(imageURI, callback) {
   var getPageSparql = sparqlTemplater(getImageSparqlTemplate, pageMap);
   var getPageUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getPageSparql) + "&output=xml";
 
-  var makeDataURL = function(entryJSON) {
+  var makeDataURL = function (entryJSON) {
     if (!entryJSON) {
       console.log("makeDataURL empty entryJSON");
       return "makeDataURL empty entryJSON";
@@ -125,12 +125,12 @@ function getImage(imageURI, callback) {
  *     fit in one line.
  */
 function setupImageUploading() {
-  $('#fileSelector').change(function(event) {
+  $('#fileSelector').change(function (event) {
     var file = event.target.files[0];
     var reader = new FileReader();
     reader.readAsDataURL(file);
 
-    reader.onload = function(event) {
+    reader.onload = function (event) {
       storeImage(reader.result);
     }
 
@@ -167,7 +167,7 @@ function storeImage(dataURL) {
     data: ({
       update: data
     })
-  }).done(function() {});
+  }).done(function () { });
   $('#original_image').attr('src', dataURL);
   $('#original_image').attr('name', imageLabel);
 }
@@ -184,7 +184,7 @@ function storeImage(dataURL) {
  *     fit in one line.
  */
 function setupSearch(searchContainer) {
-  var renderTags = function(tags) {
+  var renderTags = function (tags) {
     //  var tags = tagsXmlToJson(xml);
     var tagButtons = $(searchContainer + " #tagButtons");
 
@@ -196,7 +196,7 @@ function setupSearch(searchContainer) {
     }
     $(tagButtons).buttonset();
 
-    $("#searchButton").click(function() {
+    $("#searchButton").click(function () {
       doSearch();
     });
   }
@@ -222,7 +222,7 @@ function doSearch() {
 
   var checkedTags = [];
 
-  $("#tagButtons label").each(function() {
+  $("#tagButtons label").each(function () {
     if ($(this).hasClass("ui-state-active")) {
       //     console.log("Checked = " + $(this).text());
       var checkedTag = {
@@ -239,7 +239,7 @@ function doSearch() {
   var searchSparql = sparqlTemplater(searchSparqlTemplate, searchMap);
   var searchUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
 
-  var renderSearchResults = function(json) {
+  var renderSearchResults = function (json) {
     //    console.log("entriesJSON = " + JSON.stringify(entriesJSON));
     var results = makeLinkListHTML(json);
     $("#results").empty();
@@ -271,7 +271,7 @@ function makeRecentChangesList() { // refactor with doSearch()
   var searchSparql = sparqlTemplater(getRecentChangesSparqlTemplate, searchMap);
   //   console.log("getRecentChangesSparqlTemplate = " + getRecentChangesSparqlTemplate);
   var searchUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(searchSparql) + "&output=xml";
-  var renderRecentChanges = function(json) {
+  var renderRecentChanges = function (json) {
 
     var results = makeLinkListHTML(json);
     console.log("results = " + results);
@@ -322,6 +322,17 @@ function makeEntryListHTML(entryArray, showContent) {
   return rows;
 }
 
+function makeGlossListHTML(entryArray, showContent) {
+  var rows = "";
+  //  var entryArray = sparqlXMLtoJSON(xml);
+
+  for (var i = 0; i < entryArray.length; i++) {
+    rows += formatGlossRow(entryArray[i]);
+  }
+  return rows;
+}
+
+
 /**
  * Comment template.
  * @param {string} foo This is a param with a description too long to fit in
@@ -354,6 +365,15 @@ function formatRow(entry) { // content,
   return row;
 }
 
+
+function formatGlossRow(entry) { // content,
+  //  entry.uri = "page.html?uri=" + entry.uri;
+  //  entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
+  var row = templater(glossRowTemplate, entry);
+  return row;
+}
+
+
 /**
  * Comment template.
  * @param {string} foo This is a param with a description too long to fit in
@@ -379,7 +399,7 @@ function setupTags(containerId, pageMap, readOnly) {
   if (readOnly) {
     createTags(containerId, pageMap, readOnly);
   } else {
-    setupTagsAutocomplete(containerId, function() {
+    setupTagsAutocomplete(containerId, function () {
       createTags(containerId, pageMap, readOnly);
     });
   }
@@ -393,7 +413,7 @@ function setupTags(containerId, pageMap, readOnly) {
  *     fit in one line.
  */
 function setupTagsAutocomplete(tagsContainerId, callback) {
-  var insertTagsAutocomplete = function(tags) {
+  var insertTagsAutocomplete = function (tags) {
     //  var tags = tagsXmlToJson(xml);
     var allTags = [];
 
@@ -433,7 +453,7 @@ function createTags(containerId, pageMap, readOnly) {
   var getTagsSparql = sparqlTemplater(getTagsSparqlTemplate, pageMap);
   var getTagsUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getTagsSparql) + "&output=xml";
 
-  var renderTags = function(tags) {
+  var renderTags = function (tags) {
 
     var tagitMap = {
       readOnly: readOnly
@@ -464,7 +484,7 @@ function createTags(containerId, pageMap, readOnly) {
  */
 function setupTagsPanel(tagsContainerId) { // is only used by index.html, nothing yet displayed -  for tag management, what's needed? is very similar to createTags
   console.log("setupTagsPanel CALLED on " + tagsContainerId);
-  var doneCallback = function(tags) {
+  var doneCallback = function (tags) {
 
     var tagitMap = {
       readOnly: true

@@ -19,15 +19,12 @@
 
 var FooWiki = {
     pagesBaseURI: "http://hyperdata.it/wiki/",
-    graphURI: "http://hyperdata.it/wiki",
+
     glossURI: "http://hyperdata.it/gloss/",
 
-    serverRootPath: "/foowiki/",
-    // sparqlQueryEndpoint: "https://hyperdata.it:3030/foowiki/sparql?query=", // move ? part ??
-    // sparqlUpdateEndpoint: "http://fuseki.local:3030/foowiki/update",
-
-    sparqlQueryEndpoint: "https://fuseki.hyperdata.it/foowiki/sparql?query=", // move ? part ??
-    sparqlUpdateEndpoint: "https://fuseki.hyperdata.it/foowiki/update",
+    // serverRootPath: "/gloss/",
+    sparqlQueryEndpoint: "https://fuseki.hyperdata.it/gloss/sparql?query=", // move ? part ??
+    sparqlUpdateEndpoint: "https://fuseki.hyperdata.it/gloss/update",
 
     runnableFormats: [
         "http://purl.org/NET/mediatypes/application/javascript"

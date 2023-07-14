@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>FooWiki</title>
+    <title>Gloss</title>
 
     <link rel="stylesheet" href="../css/columns.css" />
     <link rel="stylesheet" href="../css/normalize.css" />
@@ -32,34 +32,33 @@
     <script src="../js/lib/moment.js"></script>
 
     <!-- FooWiki scripts -->
-    <script src="../js/foowiki/config.js"></script>
+    <script src="config.js"></script>
     <script src="../js/foowiki/sparql-templates.js"></script>
     <script src="../js/foowiki/html-templates.js"></script>
     <script src="../js/foowiki/utils.js"></script>
     <script src="../js/foowiki/core.js"></script>
-    <script src="../js/foowiki/index.js"></script>
+    <!-- script src="../js/foowiki/index.js"></script -->
     <script src="../js/foowiki/sparql-connector.js"></script>
 
     <script type="text/javascript" language="javascript">
-        var getPageListSparql = sparqlTemplater(getPageListSparqlTemplate, {
-            "graphURI": FooWiki.graphURI
+        var getAllDefnsSparql = sparqlTemplater(getAllDefnsSparqlTemplate, {
+            "glossURI": FooWiki.glossURI
         });
-        var getPagesUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getPageListSparql) + "&output=xml";
+        var getDefnsUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getAllDefnsSparql) + "&output=xml";
 
         $(function () {
             setupErrorHandling();
             spinner();
 
-            $("#graphName").attr("value", FooWiki.graphURI);
-            setupButtons();
+            $("#graphName").attr("value", FooWiki.glossURI);
+           // setupButtons();
 
             var doneCallback = function (json) {
-                var rows = makeEntryListHTML(json, false);
+                var rows = makeGlossListHTML(json, false);
                 $("#entries").replaceWith(rows);
-                setupTagsPanel("#tagsPanelTagsContainer");
+             //   setupTagsPanel("#tagsPanelTagsContainer");
             };
-            getJsonForSparqlURL(getPagesUrl, doneCallback);
-            //      getDataForURL(doneCallback, getPagesUrl);
+            getJsonForSparqlURL(getDefnsUrl, doneCallback);
         });
     </script>
 </head>
@@ -78,9 +77,9 @@
                 <th colspan="3"><a href="index.html">All</a> Pages</th>
             </tr>
             <tr>
-                <th class="center">Page</th>
+                <th class="center">Term</th>
                 <th class="center">Date</th>
-                <th class="center">Creator</th>
+                <th class="center">Scheme</th>
             </tr>
             <tr id="entries"></tr>
         </table>
@@ -106,7 +105,7 @@
 
     </div>
 
-    <div id="left" class="column">
+    <!-- div id="left" class="column">
 
         <!-- div class="tab"><a href="page.html?uri=http://hyperdata.it/wiki/">Home Page</a>
         </div -->
@@ -120,9 +119,9 @@
             <label for='newPageName'>Title</label>
             <input id="newPageName" type="text" />
         </div>
-    </div>
+    </div -->
 
-    <div id="right" class="column">
+    <!-- div id="right" class="column">
         <div id='searchContainer'>
             <button id='searchButton'>Search</button>
             <!-- label for='searchText'>Search Text</label -->
@@ -130,7 +129,7 @@
             <div id='tagButtons'></div>
             <ul id="results"></ul>
         </div>
-    </div>
+    </div -->
 
     <div id="footer">hyperdata.it -Danny Ayers 2017<em><a href="index-static.html">static</a></em>
     </div>

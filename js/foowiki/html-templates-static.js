@@ -49,6 +49,8 @@ var rowTemplate = " <tr> \
             <td class='center'>~{nick}~</td> \
             </tr>";
 
+
+
 var resourceTemplate = " <tr> \
            <td>" + linkTemplate + "</td> \
       <td>" + turtleLinkTemplate + "</td> \

@@ -14,6 +14,7 @@ PREFIX dc: <http://purl.org/dc/terms/>  \n\
 PREFIX dctype: <http://purl.org/dc/dcmitype/> \n\
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>  \n\
 PREFIX sioc: <http://rdfs.org/sioc/ns#>  \n\
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> \n\
 PREFIX wiki: <http://purl.org/stuff/wiki#>  \n\
 PREFIX bookmark: <http://purl.org/stuff/bookmarks#>  \n\
 ";
@@ -46,7 +47,7 @@ ORDER By ?title  \n\
 # LIMIT 10 \n\
 ";
 
-var getRecentChangesSparqlTemplate = getListSparqlTemplate+ " \n\
+var getRecentChangesSparqlTemplate = getListSparqlTemplate + " \n\
 ORDER By DESC(?modified)  \n\
 LIMIT 15 \n\
 ";
@@ -214,3 +215,17 @@ DELETE {  \n\
 <~{uri}~>  ?p ?o .   \n\
 }  \n\
 WHERE { <~{uri}~>  ?p ?o } \n";
+
+// -------------------------- GLOSS
+
+var getAllDefnsSparqlTemplate = commonPrefixes + "\n\
+SELECT DISTINCT ?title ?defn   \n\
+ FROM <~{glossURI}~>  \n\
+WHERE {  \n\
+    ?s  a skos:Concept ; \n\
+        dc:title ?title ;  \n\
+        skos:definition ?defn ;  \n\
+        skos:inScheme ?scheme . \n\
+}  \n\
+";
+

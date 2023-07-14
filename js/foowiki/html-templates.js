@@ -22,6 +22,25 @@ var entryTableTemplate = " \n\
         </table> \n\
             ";
 
+var defnsTableTemplate = " \n\
+        <table id='pagesTable'> \n\
+            <tr> \n\
+                <th colspan='3'><a href='index.html'>FuWiki</a> Pages</th> \n\
+            </tr> \n\
+            <tr> \n\
+                <th class='center'>Term</th> \n\
+                <th class='center'>Definition</th> \n\
+                <th class='center'>Scheme</th> \n\
+            </tr> \n\
+            <tr id='entries'></tr> \n\
+        </table> \n\
+            ";
+
+var glossRowTemplate = " <tr> \
+           <td class='center'><strong>~{title}~</strong></td> \
+            <td class='center'>~{defn}~</td> \
+            </tr>";
+
 var resultTemplate = "<li><a href='~{uri}~'>~{title}~</a></li>";
 
 
