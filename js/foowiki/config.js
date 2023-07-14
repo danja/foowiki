@@ -25,8 +25,8 @@ var FooWiki = {
     // sparqlQueryEndpoint: "https://hyperdata.it:3030/foowiki/sparql?query=", // move ? part ??
     // sparqlUpdateEndpoint: "http://fuseki.local:3030/foowiki/update",
 
-    sparqlQueryEndpoint: "https://hyperdata.it:3030/foowiki/sparql?query=", // move ? part ??
-    sparqlUpdateEndpoint: "https://hyperdata.it:3030/foowiki/update",
+    sparqlQueryEndpoint: "https://fuseki.hyperdata.it/foowiki/sparql?query=", // move ? part ??
+    sparqlUpdateEndpoint: "https://fuseki.hyperdata.it/foowiki/update",
 
     runnableFormats: [
         "http://purl.org/NET/mediatypes/application/javascript"
