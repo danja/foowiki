@@ -65,6 +65,7 @@
 </head>
 
 <body>
+    <script id="replace_with_navbar" src="/hkms/share/nav.js"></script>
     <!-- div id="container" -->
     <div id="errorbox"></div>
 
@@ -90,18 +91,18 @@
                 <input type="file" id="upload-file" name="upload" />
                 <button type="submit" id="upload-button">Upload Turtle</button>
             </form -->
-            <h3>UBpload RDF</h3>
-            <form action="/foowiki/upload" enctype="multipart/form-data" method="post">
-                <!-- TODO move to config (bypass Fuseki) -->
-                <!-- onsubmit="window.location.href = 'index.html'; return false;" -->
-                <input id="filename" type="file" name="UNSET FILE NAME" size="40" multiple="">
-                <label for='graphName'>Graph</label>
-                <input name="graph" id="graphName" size="20" value="default" />
-                <br/>
-                <input type="submit" value="Upload">
-            </form>
-            <h3>Export Turtle</h3>
-            <button id="turtle">Export</button>
+        <h3>UBpload RDF</h3>
+        <form action="/foowiki/upload" enctype="multipart/form-data" method="post">
+            <!-- TODO move to config (bypass Fuseki) -->
+            <!-- onsubmit="window.location.href = 'index.html'; return false;" -->
+            <input id="filename" type="file" name="UNSET FILE NAME" size="40" multiple="">
+            <label for='graphName'>Graph</label>
+            <input name="graph" id="graphName" size="20" value="default" />
+            <br />
+            <input type="submit" value="Upload">
+        </form>
+        <h3>Export Turtle</h3>
+        <button id="turtle">Export</button>
         </p>
 
     </div>
