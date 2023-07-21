@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Gloss</title>
 
-    <link rel="stylesheet" href="../css/columns.css" />
+    <link rel="stylesheet" href="../css/flex-columns.css" />
     <link rel="stylesheet" href="../css/normalize.css" />
     <link rel="stylesheet" href="../css/common.css" />
     <link href="../css/jquery.tagit.css" rel="stylesheet" type="text/css">
@@ -40,34 +42,84 @@
     <!-- script src="../js/foowiki/index.js"></script -->
     <script src="../js/foowiki/sparql-connector.js"></script>
 
-    <script type="text/javascript" language="javascript">
-        var getAllDefnsSparql = sparqlTemplater(getAllDefnsSparqlTemplate, {
-            "glossURI": FooWiki.glossURI
+    <script>
+        function showTermsAlpha(firstLetter) {
+            var getTermsWithInitialSparql = sparqlTemplater(getTermsFromInitialSparqlTemplate, {
+                "glossURI": FooWiki.glossURI,
+                "initial": firstLetter
+            });
+            var getTermsWithInitialUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getTermsWithInitialSparql) + "&output=xml"; // json???
+
+            $(function () {
+                setupErrorHandling();
+                spinner();
+
+                $("#graphName").attr("value", FooWiki.glossURI);
+                // setupButtons();
+
+                var doneCallback = function (json) {
+
+                    var rows = makeGlossListHTML(json, false);
+                    $("#terms").replaceWith(rows);
+                    //   setupTagsPanel("#tagsPanelTagsContainer");
+                };
+                getJsonForSparqlURL(getTermsWithInitialUrl, doneCallback);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const lettersList = document.getElementById('letters');
+
+            for (let i = 65; i <= 90; i++) {
+                const letter = String.fromCharCode(i);
+                const listItem = document.createElement('li');
+                const anchor = document.createElement('a');
+                anchor.href = '';
+                anchor.textContent = letter;
+
+                anchor.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    showTermsAlpha(event.target.textContent)
+
+                });
+
+                listItem.appendChild(anchor);
+                lettersList.appendChild(listItem);
+            }
         });
-        var getDefnsUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getAllDefnsSparql) + "&output=xml";
 
-        $(function () {
-            setupErrorHandling();
-            spinner();
-
-            $("#graphName").attr("value", FooWiki.glossURI);
-           // setupButtons();
-
-            var doneCallback = function (json) {
-                var rows = makeGlossListHTML(json, false);
-                $("#entries").replaceWith(rows);
-             //   setupTagsPanel("#tagsPanelTagsContainer");
-            };
-            getJsonForSparqlURL(getDefnsUrl, doneCallback);
-        });
     </script>
 </head>
 
 <body>
     <!-- div id="container" -->
+    <script id="replace_with_navbar" src="/share/nav.js"></script>
     <div id="errorbox"></div>
 
-    <div id="header">FooWiki</div>
+    <div id="header">Glossary</div>
+
+    <!----------------------------------------------------------------------->
+
+    <section class="three-column">
+        <div>
+            <ul id="letters"></ul>
+        </div>
+
+        <div>
+            <ul id="terms"></ul>
+        </div>
+
+        <div>
+            <p>Column 2</p>
+        </div>
+    </section>
+
+
+
+    <!----------------------------------------------------------------------->
+
+
 
     <div id="middle" class="column">
 
@@ -89,18 +141,18 @@
                 <input type="file" id="upload-file" name="upload" />
                 <button type="submit" id="upload-button">Upload Turtle</button>
             </form -->
-            <h3>UBpload RDF</h3>
-            <form action="/foowiki/upload" enctype="multipart/form-data" method="post">
-                <!-- TODO move to config (bypass Fuseki) -->
-                <!-- onsubmit="window.location.href = 'index.html'; return false;" -->
-                <input id="filename" type="file" name="UNSET FILE NAME" size="40" multiple="">
-                <label for='graphName'>Graph</label>
-                <input name="graph" id="graphName" size="20" value="default" />
-                <br/>
-                <input type="submit" value="Upload">
-            </form>
-            <h3>Export Turtle</h3>
-            <button id="turtle">Export</button>
+        <h3>UBpload RDF</h3>
+        <form action="/foowiki/upload" enctype="multipart/form-data" method="post">
+            <!-- TODO move to config (bypass Fuseki) -->
+            <!-- onsubmit="window.location.href = 'index.html'; return false;" -->
+            <input id="filename" type="file" name="UNSET FILE NAME" size="40" multiple="">
+            <label for='graphName'>Graph</label>
+            <input name="graph" id="graphName" size="20" value="default" />
+            <br />
+            <input type="submit" value="Upload">
+        </form>
+        <h3>Export Turtle</h3>
+        <button id="turtle">Export</button>
         </p>
 
     </div>
@@ -109,26 +161,26 @@
 
         <!-- div class="tab"><a href="page.html?uri=http://hyperdata.it/wiki/">Home Page</a>
         </div -->
-        <div class="tab"><a href="resources.html">Resource List</a>
-        </div>
-        <div class="tab"><a href="yasgui.html">SPARQL</a>
-        </div>
+    <div class="tab"><a href="resources.html">Resource List</a>
+    </div>
+    <div class="tab"><a href="yasgui.html">SPARQL</a>
+    </div>
 
-        <div id="newPage">
-            <button id="newPageButton">Create New Page</button>
-            <label for='newPageName'>Title</label>
-            <input id="newPageName" type="text" />
-        </div>
+    <div id="newPage">
+        <button id="newPageButton">Create New Page</button>
+        <label for='newPageName'>Title</label>
+        <input id="newPageName" type="text" />
+    </div>
     </div -->
 
     <!-- div id="right" class="column">
         <div id='searchContainer'>
             <button id='searchButton'>Search</button>
             <!-- label for='searchText'>Search Text</label -->
-            <input id='searchText' type='text' value=''></input>
-            <div id='tagButtons'></div>
-            <ul id="results"></ul>
-        </div>
+    <input id='searchText' type='text' value=''></input>
+    <div id='tagButtons'></div>
+    <ul id="results"></ul>
+    </div>
     </div -->
 
     <div id="footer">hyperdata.it -Danny Ayers 2017<em><a href="index-static.html">static</a></em>

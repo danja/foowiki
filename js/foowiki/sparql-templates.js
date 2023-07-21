@@ -229,3 +229,12 @@ WHERE {  \n\
 }  \n\
 ";
 
+var getTermsFromInitialSparqlTemplate = commonPrefixes + "\n\
+SELECT DISTINCT ?concept ?title  \n\
+FROM <~{glossURI}~>  \n\
+WHERE {  \n\
+    ?s  a skos:Concept ; \n\
+        dc:title ?title . \n\
+        FILTER(REGEX(?title, '^~{initial}~', 'i')) \n\
+}  \n\
+";

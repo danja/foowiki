@@ -8,7 +8,7 @@
  *     fit in one line.
  */
 function getJsonForSparqlURL(pageURL, callback) {
-    console.log("pageURL = " + pageURL);
+    // console.log("pageURL = " + pageURL);
     $.ajax({
         url: pageURL,
         accept: {
@@ -25,7 +25,7 @@ function getJsonForSparqlURL(pageURL, callback) {
         if (!json) {
             json = "{}";
         }
-        console.log("2JSON = " + JSON.stringify(json));
+        //      console.log("2JSON = " + JSON.stringify(json));
         //       doneCallback(json, getCurrentPageURI());
         callback(json);
     }).fail(function () {

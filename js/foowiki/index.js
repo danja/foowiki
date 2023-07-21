@@ -23,7 +23,7 @@ function setupButtons() {
     // OLD
     $("#upload-button").click(function () {
         var data = new FormData($("#upload-file").val());
-        console.log("DATA = " + data);
+        //  console.log("DATA = " + data);
         $.ajax({
             url: FooWiki.sparqlUpdateEndpoint,
             type: 'POST',

@@ -322,12 +322,13 @@ function makeEntryListHTML(entryArray, showContent) {
   return rows;
 }
 
+/* GLOSS */
 function makeGlossListHTML(entryArray, showContent) {
   var rows = "";
   //  var entryArray = sparqlXMLtoJSON(xml);
 
   for (var i = 0; i < entryArray.length; i++) {
-    rows += formatGlossRow(entryArray[i]);
+    rows += letterElement(entryArray[i]);
   }
   return rows;
 }
@@ -366,7 +367,7 @@ function formatRow(entry) { // content,
 }
 
 
-function formatGlossRow(entry) { // content,
+function letterElement(entry) { // content,
   //  entry.uri = "page.html?uri=" + entry.uri;
   //  entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
   var row = templater(glossRowTemplate, entry);

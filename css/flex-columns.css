@@ -1,0 +1,84 @@
+/*
+@font-face {
+	font-family: 'italiana';
+	src: url('fonts/italiana.regular.ttf');
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: italiana;
+}
+*/
+
+/* ONE COLUMN */
+.one-column {
+	text-align: center;
+	vertical-align: baseline;
+
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+#front {
+	transform: scale(0.5);
+}
+
+/* TWO COLUMN FLEXBOX */
+.two-column {
+	display: flex;
+	flex-direction: row;
+}
+
+.two-column div {
+	/* border: 1px solid blue; */
+	margin: 3%;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.two-column.reverse {
+	flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 600px) {
+
+	.two-column,
+	.two-column.reverse {
+		flex-direction: column;
+	}
+}
+
+
+/* THREE COLUMN */
+.three-column {
+	display: flex;
+	align-items: stretch;
+}
+
+.three-column div {
+	margin: 3%;
+	flex: 1;
+	border: 1px solid;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: flex-end;
+	text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+
+	.three-column,
+	.three-column div {
+		flex-direction: column;
+	}
+}
