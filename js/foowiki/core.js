@@ -323,14 +323,16 @@ function makeEntryListHTML(entryArray, showContent) {
 }
 
 /* GLOSS */
+// for test
 function makeGlossListHTML(entryArray, showContent) {
-  var rows = "";
-  //  var entryArray = sparqlXMLtoJSON(xml);
+  // console.log(entryArray[0])
+  var rows = "<div id='terms'>";
 
   for (var i = 0; i < entryArray.length; i++) {
     rows += letterElement(entryArray[i]);
   }
-  return rows;
+  // console.log(rows)
+  return rows + '</div>';
 }
 
 
@@ -368,7 +370,7 @@ function formatRow(entry) { // content,
 
 
 function letterElement(entry) { // content,
-  //  entry.uri = "page.html?uri=" + entry.uri;
+
   //  entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
   var row = templater(glossRowTemplate, entry);
   return row;

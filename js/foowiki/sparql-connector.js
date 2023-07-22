@@ -20,6 +20,7 @@ function getJsonForSparqlURL(pageURL, callback) {
             //   'Accept-Charset': 'UTF-8' unsafe
         }
     }).done(function (xml) {
+        // TODO refactor
         var json = sparqlXMLtoJSON(xml);
 
         if (!json) {

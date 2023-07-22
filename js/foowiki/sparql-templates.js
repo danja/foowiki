@@ -218,6 +218,7 @@ WHERE { <~{uri}~>  ?p ?o } \n";
 
 // -------------------------- GLOSS
 
+// for testing
 var getAllDefnsSparqlTemplate = commonPrefixes + "\n\
 SELECT DISTINCT ?title ?defn   \n\
  FROM <~{glossURI}~>  \n\
@@ -233,8 +234,20 @@ var getTermsFromInitialSparqlTemplate = commonPrefixes + "\n\
 SELECT DISTINCT ?concept ?title  \n\
 FROM <~{glossURI}~>  \n\
 WHERE {  \n\
-    ?s  a skos:Concept ; \n\
+    ?concept  a skos:Concept ; \n\
         dc:title ?title . \n\
         FILTER(REGEX(?title, '^~{initial}~', 'i')) \n\
+}  \n\
+";
+
+// get everything on the skos:Concept
+var getDefnSparqlTemplate = commonPrefixes + "\n\
+SELECT DISTINCT *  \n\
+FROM <~{glossURI}~>  \n\
+WHERE {  \n\
+    <~{concept}~> \n\
+    dc:title ?title ;  \n\
+    skos:definition ?definition ;  \n\
+    skos:inScheme ?scheme . \n\
 }  \n\
 ";

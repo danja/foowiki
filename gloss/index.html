@@ -7,12 +7,13 @@
 
     <title>Gloss</title>
 
-    <link rel="stylesheet" href="../css/flex-columns.css" />
     <link rel="stylesheet" href="../css/normalize.css" />
     <link rel="stylesheet" href="../css/common.css" />
     <link href="../css/jquery.tagit.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../css/tagit.ui-zendesk.css">
     <link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+
+    <link rel="stylesheet" href="../css/flex-columns.css" />
 
     <script src="../js/lib/jquery-1.10.2.js"></script>
     <script src="../js/lib/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
@@ -43,6 +44,47 @@
     <script src="../js/foowiki/sparql-connector.js"></script>
 
     <script>
+        var showingDef = false
+
+        function showDefn(concept) {
+            const getTermsWithInitialSparql = sparqlTemplater(getDefnSparqlTemplate, {
+                "glossURI": FooWiki.glossURI,
+                "concept": concept
+            });
+
+            //   console.log(getTermsWithInitialSparql)
+
+            var doneCallback = function (json) {
+
+                //   console.log('json = ' + json)
+                // console.log('json[definition] = ' + json['definition'])
+
+                const newDef = "<div id='definition'>" + json[0]['definition'] + "</div>" // TODO refactor
+                $("#definition").replaceWith(newDef);
+
+                showingDef = true
+                //   setupTagsPanel("#tagsPanelTagsContainer");
+            };
+
+            var getDefnUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getTermsWithInitialSparql) + "&output=xml"; // json???
+            getJsonForSparqlURL(getDefnUrl, doneCallback);
+
+
+        }
+
+        function primeTermLinks() {
+            var termsLinks = document.querySelectorAll(".term-link");
+            termsLinks.forEach(termsLink => {
+                termsLink.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    console.log('event.target = ' + event.target)
+                    console.log('event.target.tagName = ' + event.target.tagName)
+                    event.target.setAttribute('style', 'color:#F00')
+                    showDefn(event.target.getAttribute('href'))
+                });
+            });
+        }
+
         function showTermsAlpha(firstLetter) {
             var getTermsWithInitialSparql = sparqlTemplater(getTermsFromInitialSparqlTemplate, {
                 "glossURI": FooWiki.glossURI,
@@ -50,6 +92,7 @@
             });
             var getTermsWithInitialUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getTermsWithInitialSparql) + "&output=xml"; // json???
 
+            //   document.addEventListener('DOMContentLoaded', function () {
             $(function () {
                 setupErrorHandling();
                 spinner();
@@ -61,8 +104,10 @@
 
                     var rows = makeGlossListHTML(json, false);
                     $("#terms").replaceWith(rows);
-                    //   setupTagsPanel("#tagsPanelTagsContainer");
+
+                    primeTermLinks()
                 };
+
                 getJsonForSparqlURL(getTermsWithInitialUrl, doneCallback);
             });
         }
@@ -81,7 +126,6 @@
                 anchor.addEventListener('click', function (event) {
                     event.preventDefault();
                     showTermsAlpha(event.target.textContent)
-
                 });
 
                 listItem.appendChild(anchor);
@@ -97,13 +141,21 @@
     <script id="replace_with_navbar" src="/share/nav.js"></script>
     <div id="errorbox"></div>
 
-    <div id="header">Glossary</div>
+    <div id="header">
+        <h1>AI Glossary</h1>
+    </div>
+    <p>
+    <ol>
+        <li>Click on a letter to see terms</li>
+        <li>Click on a term to see it's definition</li>
+    </ol>
+    </p>
 
     <!----------------------------------------------------------------------->
 
     <section class="three-column">
         <div>
-            <ul id="letters"></ul>
+            <ul id="letters" class="alpha"></ul>
         </div>
 
         <div>
@@ -111,11 +163,19 @@
         </div>
 
         <div>
-            <p>Column 2</p>
+            <p id="definition"></p>
         </div>
     </section>
 
-
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
 
     <!----------------------------------------------------------------------->
 
@@ -137,11 +197,12 @@
         </table>
         <p>
 
+
             <!-- form id="upload-form" enctype="multipart/form-data">
                 <input type="file" id="upload-file" name="upload" />
                 <button type="submit" id="upload-button">Upload Turtle</button>
             </form -->
-        <h3>UBpload RDF</h3>
+        <h3>Upload RDF</h3>
         <form action="/foowiki/upload" enctype="multipart/form-data" method="post">
             <!-- TODO move to config (bypass Fuseki) -->
             <!-- onsubmit="window.location.href = 'index.html'; return false;" -->

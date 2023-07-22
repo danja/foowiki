@@ -22,6 +22,7 @@ var entryTableTemplate = " \n\
         </table> \n\
             ";
 
+// for testing
 var defnsTableTemplate = " \n\
         <table id='pagesTable'> \n\
             <tr> \n\
@@ -37,7 +38,7 @@ var defnsTableTemplate = " \n\
             ";
 
 var glossRowTemplate = " <tr> \
-           <td class='center'><strong>~{title}~</strong></td> \
+           <td class='center'><a href='~{concept}~' class='term-link'>~{title}~</a></td> \
             <td class='center'>~{defn}~</td> \
             </tr>";
 
