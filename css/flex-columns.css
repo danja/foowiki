@@ -14,9 +14,6 @@ h6 {
 }
 */
 
-.alpha {
-	list-style-type: none
-}
 
 /* ONE COLUMN */
 .one-column {
@@ -71,8 +68,8 @@ img {
 .three-column div {
 	margin: 3%;
 	flex: 1;
-	border: 1px solid;
-	border-color: #333;
+	/*	border: 1px solid;
+	border-color: #333; */
 	display: flex;
 	flex-direction: column-reverse;
 	justify-content: flex-end;

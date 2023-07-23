@@ -1,0 +1,27 @@
+.alpha ul {
+    list-style-type: none;
+    /*   margin: 0;*/
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    /* background-color: #333333; */
+}
+
+.alpha ul li {
+    float: left;
+}
+
+.alpha ul li a {
+    display: block;
+    text-align: center;
+    padding: 3px;
+    text-decoration: none;
+}
+
+.alpha ul li a:hover {
+    background-color: #003;
+}
+
+#terms {
+    text-align: left;
+}

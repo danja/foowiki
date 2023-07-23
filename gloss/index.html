@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
 
     <link rel="stylesheet" href="../css/flex-columns.css" />
+    <link rel="stylesheet" href="../css/gloss.css" />
+
 
     <script src="../js/lib/jquery-1.10.2.js"></script>
     <script src="../js/lib/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
@@ -52,24 +54,18 @@
                 "concept": concept
             });
 
-            //   console.log(getTermsWithInitialSparql)
-
             var doneCallback = function (json) {
-
-                //   console.log('json = ' + json)
-                // console.log('json[definition] = ' + json['definition'])
 
                 const newDef = "<div id='definition'>" + json[0]['definition'] + "</div>" // TODO refactor
                 $("#definition").replaceWith(newDef);
 
-                showingDef = true
+                location.hash = 'defn';
+                // showingDef = true
                 //   setupTagsPanel("#tagsPanelTagsContainer");
             };
 
             var getDefnUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getTermsWithInitialSparql) + "&output=xml"; // json???
             getJsonForSparqlURL(getDefnUrl, doneCallback);
-
-
         }
 
         function primeTermLinks() {
@@ -104,7 +100,7 @@
 
                     var rows = makeGlossListHTML(json, false);
                     $("#terms").replaceWith(rows);
-
+                    location.hash = 'term-list';
                     primeTermLinks()
                 };
 
@@ -153,17 +149,27 @@
 
     <!----------------------------------------------------------------------->
 
+    <section class="one-column">
+        <div class="alpha">
+            <ul id="letters"></ul>
+        </div>
+    </section>
+
     <section class="three-column">
         <div>
-            <ul id="letters" class="alpha"></ul>
+            <p>something</p>
         </div>
-
+        <a name="term-list"></a>
         <div>
             <ul id="terms"></ul>
         </div>
 
         <div>
+            <a name="defn"></a>
             <p id="definition"></p>
+        </div>
+        <div>
+            <p>something</p>
         </div>
     </section>
 
