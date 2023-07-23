@@ -39,8 +39,9 @@ var defnsTableTemplate = " \n\
 
 var glossRowTemplate = " <tr> \
            <td class='center'><a href='~{concept}~' class='term-link'>~{title}~</a></td> \
-            <td class='center'>~{defn}~</td> \
-            </tr>";
+            </tr > ";
+
+//    <td class='center'>~{defn}~</td> \
 
 var resultTemplate = "<li><a href='~{uri}~'>~{title}~</a></li>";
 

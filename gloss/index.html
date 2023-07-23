@@ -73,8 +73,6 @@
             termsLinks.forEach(termsLink => {
                 termsLink.addEventListener('click', function (event) {
                     event.preventDefault();
-                    console.log('event.target = ' + event.target)
-                    console.log('event.target.tagName = ' + event.target.tagName)
                     event.target.setAttribute('style', 'color:#F00')
                     showDefn(event.target.getAttribute('href'))
                 });
@@ -156,9 +154,6 @@
     </section>
 
     <section class="three-column">
-        <div>
-            <p>something</p>
-        </div>
         <a name="term-list"></a>
         <div>
             <ul id="terms"></ul>

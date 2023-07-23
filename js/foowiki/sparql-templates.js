@@ -251,3 +251,26 @@ WHERE {  \n\
     skos:inScheme ?scheme . \n\
 }  \n\
 ";
+
+/*
+// TEMPLATE LITERALS
+var getTermsFromInitialSparqlTemplate = commonPrefixes + `\n
+SELECT DISTINCT ?concept ?title  \n
+FROM <${glossURI}>  \n
+WHERE {  \n
+    ?concept  a skos:Concept ; \n
+        dc:title ?title . \n
+        FILTER(REGEX(?title, '^${initial}', 'i')) \n
+}  \n`;
+
+// get everything on the skos:Concept
+var getDefnSparqlTemplate = commonPrefixes + `\n
+SELECT DISTINCT *  \n
+FROM <${glossURI}~>  \n
+WHERE {  \n
+    <${concept}> \n
+    dc:title ?title ;  \n
+    skos:definition ?definition ;  \n
+    skos:inScheme ?scheme . \n
+}  \n`;
+*/
