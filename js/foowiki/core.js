@@ -364,6 +364,9 @@ function makeResourceListHTML(entryArray, showContent) {
 function formatRow(entry) { // content,
   //  entry.uri = "page.html?uri=" + entry.uri;
   entry.modified = moment(entry.modified).format("dddd, MMMM Do YYYY, h:mm:ss a");
+  console.log("rowTemplate = " + rowTemplate)
+  console.log("entry = " + JSON.stringify(entry));
+
   var row = templater(rowTemplate, entry);
   return row;
 }

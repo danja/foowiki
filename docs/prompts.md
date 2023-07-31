@@ -33,3 +33,10 @@ const replacementMap = { "key1": "east", "key2": "west" };
 
 const result = templater(raw, replacementMap);
 console.log(result); // Output: "one two two three"
+
+-------------------
+
+In javascript, how do I do a regex that takes substrings of the form "~{name}~" and replace them with "${name}" without impacting the rest of the text. The strings are to be used in template literals, so please consider escaping any characters which may cause a problem.  
+
+, I get SyntaxError: Unexpected end of input.
+

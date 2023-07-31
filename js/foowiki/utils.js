@@ -139,28 +139,35 @@ using new Function() with user-provided input can be a security risk, so ensure 
 
 
  */
+
+/*
+ * The backtick and dollar sign are escaped with a single backslash (\`` and $`).
+ * Two backslashes are used to escape a single backslash (\\).
+ * A backslash is used to escape the opening curly brace inside the ${} placeholder (\${).
+*/
+
+function escapeForTemplateLiteral(text) {
+    return text.replace(/`/g, "\\`").replace(/\$/g, "\\$").replace(/\\/g, "\\\\").replace(/\${/g, "\\${");
+}
+
+// Create a template literal using the raw string and replacementMap
 function templater2(raw, replacementMap) {
-    // Create a template literal using the raw string and replacementMap
-    raw = raw.replaceAll('~{', '${')
-    raw = raw.replaceAll('}~', '}')
+
     const keys = Object.keys(replacementMap);
     const values = Object.values(replacementMap);
 
-    console.log('--RUNNABLE------')
-    console.log("return `" + raw + "`")
-    console.log('--------')
+    // const functionDefinitions = keys.map(key => `function ${key}() { return ${replacementMap[key]}; }`);
+
+    //  const template = new Function(...keys, ...functionDefinitions, `return \`${reviseHrefaw}\`;`)(...values);
+
 
     const template = new Function(...keys, "return `" + raw + "`")(...values);
 
-    return template;
+    return htmlUnescape(template);
 }
 
 function templater(raw, replacementMap) {
 
-    var result = templater2(raw, replacementMap)
-    ///////////////////////
-    return htmlUnescape(result)
-    /*
     console.log(JSON.stringify(replacementMap))
     var template = Hogan.compile(raw, {
         delimiters: '~{ }~'
@@ -173,8 +180,8 @@ function templater(raw, replacementMap) {
     console.log('--------')
 
     return htmlUnescape(result);
-    */
 }
+
 
 /* parse URL */
 var queryString = (function (a) {
